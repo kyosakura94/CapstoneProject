@@ -1,0 +1,72 @@
+﻿  CollisionDetection.cpp
+D:\CapstoneProject\GameEngines4\Engine\Rendering\3D\Model.h(13): warning C4091: 'static ': ignored on left of 'Model::<unnamed-enum-OUTSIDE>' when no variable is declared
+  CollisionHandler.cpp
+D:\CapstoneProject\GameEngines4\Engine\Rendering\3D\Model.h(13): warning C4091: 'static ': ignored on left of 'Model::<unnamed-enum-OUTSIDE>' when no variable is declared
+  Camera.cpp
+D:\CapstoneProject\GameEngines4\Engine\Rendering\3D\Model.h(13): warning C4091: 'static ': ignored on left of 'Model::<unnamed-enum-OUTSIDE>' when no variable is declared
+  Debug.cpp
+  CoreEngine.cpp
+D:\CapstoneProject\GameEngines4\Engine\Rendering\3D\Model.h(13): warning C4091: 'static ': ignored on left of 'Model::<unnamed-enum-OUTSIDE>' when no variable is declared
+  GameObject.cpp
+D:\CapstoneProject\GameEngines4\Engine\Rendering\3D\Model.h(13): warning C4091: 'static ': ignored on left of 'Model::<unnamed-enum-OUTSIDE>' when no variable is declared
+  EventListener.cpp
+D:\CapstoneProject\GameEngines4\Engine\Rendering\3D\Model.h(13): warning C4091: 'static ': ignored on left of 'Model::<unnamed-enum-OUTSIDE>' when no variable is declared
+  GameScene.cpp
+D:\CapstoneProject\GameEngines4\Engine\Rendering\3D\Model.h(13): warning C4091: 'static ': ignored on left of 'Model::<unnamed-enum-OUTSIDE>' when no variable is declared
+  GameTest.cpp
+D:\CapstoneProject\GameEngines4\Engine\Rendering\3D\Model.h(13): warning C4091: 'static ': ignored on left of 'Model::<unnamed-enum-OUTSIDE>' when no variable is declared
+  LightSource.cpp
+  LoadOBJModel.cpp
+D:\CapstoneProject\GameEngines4\Engine\Rendering\3D\LoadOBJModel.cpp(163,20): warning C4018: '<': signed/unsigned mismatch
+  Main.cpp
+D:\CapstoneProject\GameEngines4\Engine\Rendering\3D\Model.h(13): warning C4091: 'static ': ignored on left of 'Model::<unnamed-enum-OUTSIDE>' when no variable is declared
+  Window.cpp
+  Timer.cpp
+  StartScene.cpp
+D:\CapstoneProject\GameEngines4\Engine\Rendering\3D\Model.h(13): warning C4091: 'static ': ignored on left of 'Model::<unnamed-enum-OUTSIDE>' when no variable is declared
+  Mesh.cpp
+D:\CapstoneProject\GameEngines4\Engine\Rendering\3D\Mesh.cpp(62,20): warning C4018: '<': signed/unsigned mismatch
+  Model.cpp
+D:\CapstoneProject\GameEngines4\Engine\Rendering\3D\Model.h(13): warning C4091: 'static ': ignored on left of 'Model::<unnamed-enum-OUTSIDE>' when no variable is declared
+D:\CapstoneProject\GameEngines4\Engine\Rendering\3D\Model.cpp(255,20): warning C4018: '<': signed/unsigned mismatch
+  ShaderHandler.cpp
+  TextureHandler.cpp
+D:\CapstoneProject\GameEngines4\Engine\Graphics\TextureHandler.cpp(69,20): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+D:\CapstoneProject\GameEngines4\Engine\Graphics\TextureHandler.cpp(70,21): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+  MouseEventListener.cpp
+D:\CapstoneProject\GameEngines4\Engine\Rendering\3D\Model.h(13): warning C4091: 'static ': ignored on left of 'Model::<unnamed-enum-OUTSIDE>' when no variable is declared
+D:\CapstoneProject\GameEngines4\Engine\Event\MouseEventListener.cpp(94,55): warning C4244: '=': conversion from 'T' to 'int', possible loss of data
+          with
+          [
+              T=float
+          ]
+D:\CapstoneProject\GameEngines4\Engine\Event\MouseEventListener.cpp(98,29): warning C4244: '=': conversion from 'int' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
+D:\CapstoneProject\GameEngines4\Engine\Event\MouseEventListener.cpp(99,29): warning C4244: '=': conversion from 'int' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
+D:\CapstoneProject\GameEngines4\Engine\Event\MouseEventListener.cpp(105,16): warning C4244: '=': conversion from 'int' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
+D:\CapstoneProject\GameEngines4\Engine\Event\MouseEventListener.cpp(106,16): warning C4244: '=': conversion from 'int' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
+  Generating Code...
+  Compiling...
+  SceneGraph.cpp
+D:\CapstoneProject\GameEngines4\Engine\Rendering\3D\Model.h(13): warning C4091: 'static ': ignored on left of 'Model::<unnamed-enum-OUTSIDE>' when no variable is declared
+  MaterialHandler.cpp
+  MaterialLoader.cpp
+  OctSpatialPartition.cpp
+D:\CapstoneProject\GameEngines4\Engine\Rendering\3D\Model.h(13): warning C4091: 'static ': ignored on left of 'Model::<unnamed-enum-OUTSIDE>' when no variable is declared
+  Generating Code...
+  GameEngines4.vcxproj -> D:\CapstoneProject\Debug\GameEngines4.exe
