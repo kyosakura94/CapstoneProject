@@ -18,6 +18,15 @@ GameObject::GameObject(Model *model_, vec3 position_) : model(nullptr)
 
 GameObject::~GameObject()
 {
+	for (size_t i = 0; i < componentContainer.size(); i++)
+	{
+		if (componentContainer[i])
+		{
+			delete componentContainer[i];
+			componentContainer[i] = nullptr;
+		}
+	}
+
 	model = nullptr;
 }
 
@@ -31,6 +40,24 @@ void GameObject::Render(Camera *camera_)
 
 void GameObject::Update(const float deltaTime_)
 {
+	for (size_t i = 0; i < componentContainer.size(); i++)
+	{
+		componentContainer[i]->Update(deltaTime_);
+	}
+	//Move(position + vec3(0,0,0.005f));
+	SetAngle(angle + 0.005f);
+}
+
+void GameObject::Update(SteeringOutput steering, const float deltaTime_)
+{
+	position += velocity * deltaTime_;
+
+	for (size_t i = 0; i < componentContainer.size(); i++)
+	{
+		componentContainer[i]->Update(deltaTime_);
+	}
+
+	//Move(position + vec3(0, 0, 0.005f));
 	SetAngle(angle + 0.005f);
 }
 glm::vec3 GameObject::GetPosition() const
@@ -102,10 +129,32 @@ void GameObject::SetAngle(float angle_)
 	{
 		model->UpdateInstance(modelInstance, position, angle, rotation, scale);
 		box.transform = model->GetTransform(modelInstance);
+	}
+}
 
+void GameObject::Move(SteeringOutput steering, const float deltaTime_)
+{
+	//position = destination_;
+	if (model)
+	{
+		model->UpdateInstance(modelInstance, position, angle, rotation, scale);
+		box.transform = model->GetTransform(modelInstance);
 	}
 
+
 }
+
+void GameObject::Seek(vec3 destination_)
+{
+	//position += velocity * time;
+	//orientation += rotation * time;
+	//velocity += steering.linear * time;
+	//rotation += steering.angular * time;
+	//// clip velocity to a max speed, if needed 
+	//// this might've been done in the algorithm 
+	//if velocity.length() > maxSpeed  velocity.normalize velocity *= maxSpeed;
+}
+
 
 void GameObject::SetTag(string tag_)
 {
@@ -125,3 +174,66 @@ BoundingBox GameObject::GetBoundingBox() const
 {
 	return box;
 }
+
+//template<typename T>
+//void GameObject::AddComponent()
+//{
+//	T* b2;
+//
+//	if (Component* d = dynamic_cast<Component*>(b2))
+//	{
+//		if (GetComponent())
+//		{
+//			componentContainer.push_back(d);
+//			d->OnCreate(this);
+//		}
+//		else
+//		{
+//			cout << " Have the same component" << endl;
+//			delete b2;
+//			b2 = nullptr;
+//			return;
+//		}
+//	}
+//	else
+//	{
+//		cout << " Not child of object" << endl;
+//		delete b2;
+//		b2 = nullptr;
+//	}
+//}
+
+//template<typename T>
+//T* GameObject::GetComponent()
+//{
+//	if (componentContainer.size() != 0)
+//	{
+//		for (auto i = 0; i < componentContainer.size(); i++)
+//		{
+//			if (T* d = dynamic_cast<T*>(componentContainer[i]))
+//			{
+//				return d;
+//			}
+//			else
+//			{
+//				return nullptr;
+//			}
+//		}
+//	}
+//}
+
+//template<typename T>
+//void GameObject::RemoveComponent()
+//{
+//	for (size_t i = 0; i < componentContainer.size(); i++)
+//	{
+//		if (T* d = dynamic_cast<T*>(componentContainer[i]))
+//		{
+//			delete componentContainer[i];
+//			componentContainer[i] = nullptr;
+//
+//			componentContainer.begin();
+//			componentContainer.pop_back();
+//		}
+//	}
+//}

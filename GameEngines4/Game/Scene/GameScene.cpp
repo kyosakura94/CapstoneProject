@@ -36,6 +36,7 @@ bool GameScene::OnCreate()
 	SceneGraph::GetInstance()->AddModel(model1);
 	GameObject * test = new GameObject(model1, vec3(-1.0f, 0.0f, 0.0f));
 	SceneGraph::GetInstance()->AddGameObject(test, "DICE");
+	SceneGraph::GetInstance()->setTarget(test);
 
 
 	Model * model2 = new Model(
@@ -45,9 +46,20 @@ bool GameScene::OnCreate()
 
 	SceneGraph::GetInstance()->AddModel(model2);
 
-	GameObject *apple = new GameObject(model2, vec3(2.0f, 0.0f, -5.0f));
+	GameObject* apple = new GameObject(model2, vec3(2.0f, 0.0f, -5.0f));
+
 	//apple->SetScale(glm::vec3(1.0f));
+	apple->AddComponent<TestClassA>();
+	apple->GetComponent<TestClassA>();
+	//apple->RemoveComponent<TestClassA>();
+
+
 	SceneGraph::GetInstance()->AddGameObject(apple, "apple");
+	SceneGraph::GetInstance()->setCharacter(apple);
+	SceneGraph::GetInstance()->setupSeek();
+
+	
+	
 	{
 	//get from mesh annd obj loader
 	/*cout << "Min Vert: " << to_string(model3->GetBoundingBox().minVert) << endl;

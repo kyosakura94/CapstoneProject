@@ -6,7 +6,7 @@
 #include <vector>
 #include "../3D/GameObject.h"
 #include "../../Math/CollisionHandler.h"
-
+#include "../../Math/AI/Seek.h"
 
 class SceneGraph
 {
@@ -23,9 +23,13 @@ public:
 	void Update(const float deltatime_);
 	void Render(Camera * camera_);
 	void OnDestroy();
-
+	void setCharacter(GameObject *character_);
+	void setTarget(GameObject *target_);
+	void setupSeek();
 private:
-
+	Seek* test;
+	GameObject* target;
+	GameObject* character;
 	SceneGraph();
 	~SceneGraph();
 	string testTag;

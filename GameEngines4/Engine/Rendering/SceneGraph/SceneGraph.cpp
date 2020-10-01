@@ -79,7 +79,11 @@ void SceneGraph::Update(const float deltatime_)
 {
 	for (auto go : sceneGameObjects)
 	{
-		go.second->Update(deltatime_);
+		if (go.first == "apple")
+		{
+			go.second->Update(test->getSteering(), deltatime_);
+			go.second->Update(deltatime_);
+		}
 	}
 }
 
@@ -122,4 +126,19 @@ void SceneGraph::OnDestroy()
 		}
 		sceneModels.clear();
 	}
+}
+
+void SceneGraph::setCharacter(GameObject* character_)
+{
+	character = character_;
+}
+
+void SceneGraph::setTarget(GameObject* target_)
+{
+	target = target_;
+}
+
+void SceneGraph::setupSeek()
+{
+	test = new Seek(character, target);
 }

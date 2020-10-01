@@ -2,6 +2,9 @@
 #define GAMEOBJECT_H
 
 #include "Model.h"
+#include "Component.h"
+#include "../../Math/AI/SteeringOutput.h"
+
 using namespace glm;
 using namespace std;
 class GameObject
@@ -11,6 +14,7 @@ public:
 	~GameObject();
 	void Render(Camera *camera_);
 	void Update(const float deltaTime_);
+	void Update(SteeringOutput steering, const float deltaTime_);
 
 	glm::vec3 GetPosition() const;
 	glm::vec3 GetRotation() const;
@@ -23,12 +27,75 @@ public:
 	void SetRotation(glm::vec3 rotation_);
 	void SetScale(glm::vec3 scale_);
 	void SetAngle(float angle_);
+	void Move(SteeringOutput steering, const float deltaTime_);
+	void Seek(vec3 destination_);
 	void SetTag(string tag_);
 	void SetHit(bool hit_, int buttonType_);
 
 	BoundingBox GetBoundingBox() const;
 
+	template<typename T>
+	void AddComponent()
+	{
+		T* b2 = new T();
+
+		if (Component* d = dynamic_cast<Component*>(b2))
+		{
+			if (!GetComponent<T>())
+			{
+				componentContainer.push_back(d);
+				d->OnCreate(this);
+			}
+			else
+			{
+				cout << " Have the same component" << endl;
+				delete b2;
+				b2 = nullptr;
+				return;
+			}
+		}
+		else
+		{
+			cout << " Not child of object" << endl;
+			delete b2;
+			b2 = nullptr;
+		}
+	}
 	
+	template<typename T>
+	T* GetComponent() 
+	{
+		if (componentContainer.size() != 0)
+				{
+					for (auto i = 0; i < componentContainer.size(); i++)
+					{
+						if (T* d = dynamic_cast<T*>(componentContainer[i]))
+						{
+							return d;
+						}
+						else
+						{
+							return nullptr;
+						}
+					}
+		}
+	}
+	
+	template<typename T>
+	void RemoveComponent() 
+	{
+
+		for (size_t i = 0; i < componentContainer.size(); i++)
+		{
+			if (T* d = dynamic_cast<T*>(componentContainer[i]))
+			{
+				delete componentContainer[i];
+				componentContainer[i] = nullptr;
+
+				componentContainer.erase(componentContainer.begin() + i);
+			}
+		}
+	}
 	
 private:
 	Model *model;
@@ -38,11 +105,17 @@ private:
 	float angle;
 	glm::vec3 rotation;
 	glm::vec3 scale;
+	glm::vec3 velocity;
+	glm::vec3 orientation;
 	BoundingBox box;
 	string tag;
 
-	bool hit;
 
+	std::vector<Component*> componentContainer;
+	bool hit;
+	//static_cast<float>
 };
 
 #endif // !1
+
+

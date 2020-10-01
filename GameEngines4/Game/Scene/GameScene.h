@@ -3,7 +3,7 @@
 
 #include "../../Engine/Core/CoreEngine.h"
 #include <glm/gtx/string_cast.hpp>
-
+#include "../../Game/Test/TestClassA.h"
 class GameScene : public Scene
 {
 public:
