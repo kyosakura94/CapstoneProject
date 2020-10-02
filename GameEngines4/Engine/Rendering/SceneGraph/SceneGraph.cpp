@@ -141,4 +141,8 @@ void SceneGraph::setTarget(GameObject* target_)
 void SceneGraph::setupSeek()
 {
 	test = new Seek(character, target);
+<<<<<<< HEAD
+=======
+	test->setmaxAcceleration(5.0f);
+>>>>>>> GameEngine5
 }

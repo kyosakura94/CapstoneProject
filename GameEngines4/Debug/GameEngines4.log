@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 ﻿  DynamicArrive.cpp
   CollisionDetection.cpp
 D:\CapstoneProject\GameEngines4\Engine\Rendering\3D\Model.h(13): warning C4091: 'static ': ignored on left of 'Model::<unnamed-enum-OUTSIDE>' when no variable is declared
@@ -13,6 +14,9 @@ D:\CapstoneProject\GameEngines4\Engine\Rendering\3D\Model.h(13): warning C4091: 
   EventListener.cpp
 D:\CapstoneProject\GameEngines4\Engine\Rendering\3D\Model.h(13): warning C4091: 'static ': ignored on left of 'Model::<unnamed-enum-OUTSIDE>' when no variable is declared
   GameScene.cpp
+=======
+﻿  GameScene.cpp
+>>>>>>> GameEngine5
 D:\CapstoneProject\GameEngines4\Engine\Rendering\3D\Model.h(13): warning C4091: 'static ': ignored on left of 'Model::<unnamed-enum-OUTSIDE>' when no variable is declared
 D:\CapstoneProject\GameEngines4\Engine\Rendering\3D\GameObject.h(70,25): warning C4018: '<': signed/unsigned mismatch
 D:\CapstoneProject\GameEngines4\Game\Scene\GameScene.cpp(53): message : see reference to function template instantiation 'T *GameObject::GetComponent<TestClassA>(void)' being compiled
@@ -20,6 +24,7 @@ D:\CapstoneProject\GameEngines4\Game\Scene\GameScene.cpp(53): message : see refe
           [
               T=TestClassA
           ]
+<<<<<<< HEAD
   GameTest.cpp
 D:\CapstoneProject\GameEngines4\Engine\Rendering\3D\Model.h(13): warning C4091: 'static ': ignored on left of 'Model::<unnamed-enum-OUTSIDE>' when no variable is declared
   LightSource.cpp
@@ -84,4 +89,7 @@ D:\CapstoneProject\GameEngines4\Engine\Rendering\3D\Model.h(13): warning C4091: 
   SteeringOutput.cpp
 D:\CapstoneProject\GameEngines4\Engine\Rendering\3D\Model.h(13): warning C4091: 'static ': ignored on left of 'Model::<unnamed-enum-OUTSIDE>' when no variable is declared
   Generating Code...
+=======
+D:\CapstoneProject\GameEngines4\Engine\Rendering\3D\GameObject.h(82): warning C4715: 'GameObject::GetComponent<TestClassA>': not all control paths return a value
+>>>>>>> GameEngine5
   GameEngines4.vcxproj -> D:\CapstoneProject\Debug\GameEngines4.exe
