@@ -102,6 +102,9 @@
     <ClCompile Include="Engine\Math\AI\DynamicArrive.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Engine\Math\AI\Arrive.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Engine\Core\Window.h">
@@ -204,6 +207,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Engine\Math\AI\DynamicArrive.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\Math\AI\Arrive.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

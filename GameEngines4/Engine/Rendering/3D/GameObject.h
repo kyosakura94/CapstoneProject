@@ -19,6 +19,7 @@ public:
 	glm::vec3 GetPosition() const;
 	glm::vec3 GetRotation() const;
 	glm::vec3 GetScale() const;
+	glm::vec3 GetVelocity();
 	bool GetHit() const;
 	string GetTag() const;
 	float GetAngle() const;
@@ -26,6 +27,7 @@ public:
 	void SetPosition(glm::vec3 position_);
 	void SetRotation(glm::vec3 rotation_);
 	void SetScale(glm::vec3 scale_);
+	void SetVelocity(glm::vec3 Velocity_);
 	void SetAngle(float angle_);
 	void Move(SteeringOutput steering, const float deltaTime_);
 	void Seek(vec3 destination_);
@@ -103,6 +105,7 @@ private:
 
 	glm::vec3 position;
 	float angle;
+	float targetSpeed;
 	glm::vec3 rotation;
 	glm::vec3 scale;
 	glm::vec3 velocity;

@@ -48,11 +48,8 @@ bool GameScene::OnCreate()
 
 	GameObject* apple = new GameObject(model2, vec3(2.0f, 0.0f, -5.0f));
 
-<<<<<<< HEAD
-	//apple->SetScale(glm::vec3(1.0f));
-=======
 	apple->SetScale(glm::vec3(0.2f));
->>>>>>> GameEngine5
+
 	apple->AddComponent<TestClassA>();
 	apple->GetComponent<TestClassA>();
 	//apple->RemoveComponent<TestClassA>();
@@ -61,6 +58,7 @@ bool GameScene::OnCreate()
 	SceneGraph::GetInstance()->AddGameObject(apple, "apple");
 	SceneGraph::GetInstance()->setCharacter(apple);
 	SceneGraph::GetInstance()->setupSeek();
+	SceneGraph::GetInstance()->setupArrive();
 
 	
 	

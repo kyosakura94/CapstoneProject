@@ -50,19 +50,7 @@ void GameObject::Update(const float deltaTime_)
 
 void GameObject::Update(SteeringOutput steering, const float deltaTime_)
 {
-<<<<<<< HEAD
-	position += velocity * deltaTime_;
-
-	for (size_t i = 0; i < componentContainer.size(); i++)
-	{
-		componentContainer[i]->Update(deltaTime_);
-	}
-
-	//Move(position + vec3(0, 0, 0.005f));
-	SetAngle(angle + 0.005f);
-=======
 	Move(steering, deltaTime_);
->>>>>>> GameEngine5
 }
 glm::vec3 GameObject::GetPosition() const
 {
@@ -77,6 +65,11 @@ glm::vec3 GameObject::GetRotation() const
 glm::vec3 GameObject::GetScale() const
 {
 	return scale;
+}
+
+glm::vec3 GameObject::GetVelocity()
+{
+	return velocity;
 }
 
 bool GameObject::GetHit() const
@@ -126,6 +119,11 @@ void GameObject::SetScale(glm::vec3 scale_)
 	}
 }
 
+void GameObject::SetVelocity(glm::vec3 Velocity_)
+{
+	velocity = Velocity_;
+}
+
 void GameObject::SetAngle(float angle_)
 {
 	angle = angle_;
@@ -138,9 +136,7 @@ void GameObject::SetAngle(float angle_)
 
 void GameObject::Move(SteeringOutput steering, const float deltaTime_)
 {
-<<<<<<< HEAD
-	//position = destination_;
-=======
+
 	float maxSpeed = 5.0;
 	position += velocity * deltaTime_;
 	orientation += rotation * deltaTime_;
@@ -154,19 +150,12 @@ void GameObject::Move(SteeringOutput steering, const float deltaTime_)
 		velocity = normalize(velocity);
 		velocity *= maxSpeed;
 	}
-	
 
->>>>>>> GameEngine5
 	if (model)
 	{
 		model->UpdateInstance(modelInstance, position, angle, rotation, scale);
 		box.transform = model->GetTransform(modelInstance);
 	}
-<<<<<<< HEAD
-
-
-=======
->>>>>>> GameEngine5
 }
 
 void GameObject::Seek(vec3 destination_)

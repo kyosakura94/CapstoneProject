@@ -7,6 +7,7 @@
 #include "../3D/GameObject.h"
 #include "../../Math/CollisionHandler.h"
 #include "../../Math/AI/Seek.h"
+#include "../../Math/AI/Arrive.h"
 
 class SceneGraph
 {
@@ -26,8 +27,11 @@ public:
 	void setCharacter(GameObject *character_);
 	void setTarget(GameObject *target_);
 	void setupSeek();
+	void setupArrive();
 private:
 	Seek* test;
+	Arrive* arrivetest;
+
 	GameObject* target;
 	GameObject* character;
 	SceneGraph();

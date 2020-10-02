@@ -81,7 +81,7 @@ void SceneGraph::Update(const float deltatime_)
 	{
 		if (go.first == "apple")
 		{
-			go.second->Update(test->getSteering(), deltatime_);
+			go.second->Update(arrivetest->getSteering(), deltatime_);
 			go.second->Update(deltatime_);
 		}
 	}
@@ -141,8 +141,16 @@ void SceneGraph::setTarget(GameObject* target_)
 void SceneGraph::setupSeek()
 {
 	test = new Seek(character, target);
-<<<<<<< HEAD
-=======
 	test->setmaxAcceleration(5.0f);
->>>>>>> GameEngine5
+
+}
+
+void SceneGraph::setupArrive()
+{
+	arrivetest = new Arrive(character, target);
+	arrivetest->setmaxAcceleration(5.0f);
+	arrivetest->setmaxSpeed(2.0f);
+	arrivetest->setslowRadius(1.0f);
+	arrivetest->settargetRadius(1.0f);
+
 }
