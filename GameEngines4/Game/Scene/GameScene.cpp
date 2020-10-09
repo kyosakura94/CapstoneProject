@@ -34,7 +34,7 @@ bool GameScene::OnCreate()
 		ShaderHandler::getInstance()->GetShader("basicShader"));
 
 	SceneGraph::GetInstance()->AddModel(model1);
-	GameObject * test = new GameObject(model1, vec3(2.0f, 0.0f, -5.0f));
+	GameObject * test = new GameObject(model1, vec3(-1.0f, 0.0f, 0.0f));
 	SceneGraph::GetInstance()->AddGameObject(test, "DICE");
 	SceneGraph::GetInstance()->setTarget(test);
 
@@ -46,15 +46,10 @@ bool GameScene::OnCreate()
 
 	SceneGraph::GetInstance()->AddModel(model2);
 
-	GameObject* apple = new GameObject(model2, vec3(-1.0f, 0.0f, 0.0f));
+	GameObject* apple = new GameObject(model2, vec3(2.0f, 0.0f, -5.0f));
 
 	apple->SetScale(glm::vec3(0.2f));
-<<<<<<< Updated upstream
 	apple->AddComponent<TestClassA>();
-=======
-
-	apple->AddComponent<TestClassA>("test");
->>>>>>> Stashed changes
 	apple->GetComponent<TestClassA>();
 	//apple->RemoveComponent<TestClassA>();
 
@@ -64,13 +59,7 @@ bool GameScene::OnCreate()
 	SceneGraph::GetInstance()->setupSeek();
 
 	
-	GuiObject* gui = new GuiObject(vec2(CoreEngine::GetInstance()->GetWindowSize().x / 2.0f, CoreEngine::GetInstance()->GetWindowSize().y / 2.0f));
-
-	gui->AddComponent<GuiImageComponent>();
-	gui->GetComponent<GuiImageComponent>()->OnCreate("sun");
-
-	SceneGraph::GetInstance()->AddGuiObject(gui, "sunGUI");
-
+	
 	{
 	//get from mesh annd obj loader
 	/*cout << "Min Vert: " << to_string(model3->GetBoundingBox().minVert) << endl;
@@ -126,9 +115,4 @@ void GameScene::Render()
 	//glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
 	//shape->Render(CoreEngine::GetInstance()->GetCamera());
 	SceneGraph::GetInstance()->Render(CoreEngine::GetInstance()->GetCamera());
-}
-
-void GameScene::Draw()
-{
-	SceneGraph::GetInstance()->Draw(CoreEngine::GetInstance()->GetCamera());
 }
