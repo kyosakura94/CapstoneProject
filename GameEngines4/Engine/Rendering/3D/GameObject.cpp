@@ -44,8 +44,9 @@ void GameObject::Update(const float deltaTime_)
 	{
 		componentContainer[i]->Update(deltaTime_);
 	}
-	//Move(position + vec3(0,0,0.005f));
-	SetAngle(angle + 0.005f);
+
+	//MoveTest(deltaTime_);
+	SetAngle(angle + 0.008f);
 }
 
 void GameObject::Update(SteeringOutput steering, const float deltaTime_)
@@ -80,6 +81,21 @@ string GameObject::GetTag() const
 float GameObject::GetAngle() const
 {
 	return angle;
+}
+
+vec3 GameObject::GetAccel()
+{
+	return accel;
+}
+
+vec3 GameObject::GetAngVel()
+{
+	return angVel;
+}
+
+Quaternion GameObject::getQuaternion()
+{
+	return q;
 }
 
 void GameObject::SetPosition(glm::vec3 position_)
@@ -126,10 +142,22 @@ void GameObject::SetAngle(float angle_)
 
 void GameObject::Move(SteeringOutput steering, const float deltaTime_)
 {
+<<<<<<< Updated upstream
+=======
+	//Update AngluarVelocity
+	vec3 upvector(0.0f, 1.0f, 0.0f);
+
+	angVel = cross(velocity, upvector);
+	angVel = normalize(angVel);
+
+	angVel = angVel * (velocity.length() / radius);
+
+>>>>>>> Stashed changes
 	float maxSpeed = 5.0;
 	position += velocity * deltaTime_;
 	orientation += rotation * deltaTime_;
 
+	//Physics::SimpleNewtonMotion(*this, deltaTime_);
 
 	velocity += steering.getLinear() * deltaTime_;
 	rotation += steering.getAngular() * deltaTime_;
@@ -148,6 +176,44 @@ void GameObject::Move(SteeringOutput steering, const float deltaTime_)
 	}
 }
 
+//void GameObject::MoveTest(SteeringOutput steering, const float deltaTime_)
+//{
+//	vec3 upvector(0.0f, 1.0f, 0.0f);
+//
+//	angVel = cross(velocity, upvector);
+//	angVel = normalize(angVel);
+//
+//	angVel = angVel * (velocity.length() / radius);
+//
+//	SetAccel(vec3(0.2f,-0.2f,0.2f));
+//	Physics::SimpleNewtonMotion(*this, deltaTime_);
+//
+//	if (model)
+//	{
+//		model->UpdateInstance(modelInstance, position, angle, rotation, scale);
+//		box.transform = model->GetTransform(modelInstance);
+//	}
+//}
+
+void GameObject::MoveTest(const float deltaTime_)
+{
+	vec3 upvector(0.0f, 1.0f, 0.0f);
+
+	angVel = cross(velocity, upvector);
+	angVel = normalize(angVel);
+
+	angVel = angVel * (velocity.length() / radius);
+
+	SetAccel(vec3(0.2f,-0.35f,0.2f));
+	Physics::SimpleNewtonMotion(*this, deltaTime_);
+
+	if (model)
+	{
+		model->UpdateInstance(modelInstance, position, angle, rotation, scale);
+		box.transform = model->GetTransform(modelInstance);
+	}
+}
+
 void GameObject::Seek(vec3 destination_)
 {
 	//position += velocity * time;
@@ -157,6 +223,7 @@ void GameObject::Seek(vec3 destination_)
 	//// clip velocity to a max speed, if needed 
 	//// this might've been done in the algorithm 
 	//if velocity.length() > maxSpeed  velocity.normalize velocity *= maxSpeed;
+
 }
 
 
@@ -173,6 +240,23 @@ void GameObject::SetHit(bool hit_, int buttonType_)
 		cout << tag << " was hit" << endl;
 	}
 }
+
+void GameObject::SetAccel(vec3 accel_)
+{
+	accel = accel_;
+}
+
+void GameObject::SetAngVel(vec3 angVel_)
+{
+	angVel = angVel_;
+}
+
+void GameObject::SetQuaternion(Quaternion q_)
+{
+	q = q_;
+}
+
+
 
 BoundingBox GameObject::GetBoundingBox() const
 {
