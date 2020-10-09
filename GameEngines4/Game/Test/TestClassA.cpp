@@ -1,8 +1,8 @@
 #include "TestClassA.h"
 
-TestClassA::TestClassA() : Component()
+TestClassA::TestClassA(std::string test_) : Component()
 {
-
+	std::cout << test_ << std::endl;
 }
 
 TestClassA::~TestClassA()
@@ -10,7 +10,7 @@ TestClassA::~TestClassA()
 
 }
 
-bool TestClassA::OnCreate(GameObject *parent_) 
+bool TestClassA::OnCreate(GameObject * parent_) 
 {
 	parent = parent_;
 	return true;
@@ -18,6 +18,8 @@ bool TestClassA::OnCreate(GameObject *parent_)
 
 void TestClassA::Update(float deltaTime_)
 {
-	std::cout << "Update component A" << std::endl;
+	std::cout << "Update component A"<< std::endl;
 }
+
+
 

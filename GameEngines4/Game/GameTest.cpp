@@ -43,6 +43,7 @@ void GameTest::Update(const float deltaTime_)
 void GameTest::Render()
 {
 	currentScene->Render();
+	//currentScene->Draw();
 }
 
 void GameTest::BuildScene()
@@ -56,7 +57,7 @@ void GameTest::BuildScene()
 		currentScene = new GameScene();
 		break;
 	default:
-		currentScene = new StartScene();
+		//currentScene = new StartScene();
 		break;
 	}
 

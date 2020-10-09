@@ -59,6 +59,7 @@ void Mesh::Render(Camera* camera_, std::vector<glm::mat4> instances)
 
 
 	glBindVertexArray(VAO);
+
 	for (int i = 0; i < instances.size(); i++)
 	{
 		glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(instances[i]));
@@ -93,7 +94,7 @@ void Mesh::GenerateBuffers()
 
 	//TEXTURECORDINATE
 	glEnableVertexAttribArray(2);
-	glVertexAttribPointer(2, 2, GL_FLOAT, GL_FALSE, sizeof(Vertex), (GLvoid*)offsetof(Vertex, texCoords));
+	glVertexAttribPointer(2, 2, GL_FLOAT, GL_FALSE, sizeof(Vertex), (GLvoid*)offsetof(Vertex, texCoords ));
 
 	//COLOUR
 	glEnableVertexAttribArray(3);

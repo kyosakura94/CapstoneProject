@@ -5,9 +5,12 @@
 #include <map>
 #include <vector>
 #include "../3D/GameObject.h"
+#include "../2D/GuiObject.h"
 #include "../../Math/CollisionHandler.h"
 #include "../../Math/AI/Seek.h"
+#include "../../Core/CoreEngine.h"
 #include "../../Math/AI/Arrive.h"
+
 
 class SceneGraph
 {
@@ -20,9 +23,14 @@ public:
 	static SceneGraph *GetInstance();
 	void AddModel(Model * model_);
 	void AddGameObject(GameObject * go_, string tag_ ="");
+	void AddGuiObject(GuiObject * go_, string tag_ ="");
+
 	GameObject * getGameObject(string tag_);
+	GuiObject * getGuiObject(string tag_);
+
 	void Update(const float deltatime_);
 	void Render(Camera * camera_);
+	void Draw(Camera * camera_);
 	void OnDestroy();
 	void setCharacter(GameObject *character_);
 	void setTarget(GameObject *target_);
@@ -41,6 +49,7 @@ private:
 	friend default_delete<SceneGraph>;
 	static map<GLuint, vector<Model*>> sceneModels;
 	static map<string, GameObject*> sceneGameObjects;
+	static map<string, GuiObject*> sceneGuiObjects;
 
 };
 #endif // !SCENEGRAPH_H

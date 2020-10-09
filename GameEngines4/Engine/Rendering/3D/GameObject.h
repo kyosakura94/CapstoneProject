@@ -4,6 +4,8 @@
 #include "Model.h"
 #include "Component.h"
 #include "../../Math/AI/SteeringOutput.h"
+#include "../../Math/Quaternion.h"
+#include "../../Math/Physics/Physics.h"
 
 using namespace glm;
 using namespace std;
@@ -23,6 +25,9 @@ public:
 	bool GetHit() const;
 	string GetTag() const;
 	float GetAngle() const;
+	vec3 GetAccel();
+	vec3 GetAngVel();
+	Quaternion getQuaternion();
 
 	void SetPosition(glm::vec3 position_);
 	void SetRotation(glm::vec3 rotation_);
@@ -30,16 +35,20 @@ public:
 	void SetVelocity(glm::vec3 Velocity_);
 	void SetAngle(float angle_);
 	void Move(SteeringOutput steering, const float deltaTime_);
+	void MoveTest(const float deltaTime_);
 	void Seek(vec3 destination_);
 	void SetTag(string tag_);
 	void SetHit(bool hit_, int buttonType_);
+	void SetAccel(vec3 accel_);
+	void SetAngVel(vec3 angVel_);
+	void SetQuaternion(Quaternion q_);
 
 	BoundingBox GetBoundingBox() const;
 
-	template<typename T>
-	void AddComponent()
+	template<typename T, typename ... Args>
+	void AddComponent(Args&& ... args_)
 	{
-		T* b2 = new T();
+		T* b2 = new T(std::forward<Args>(args_)...);
 
 		if (Component* d = dynamic_cast<Component*>(b2))
 		{
@@ -106,10 +115,15 @@ private:
 	glm::vec3 position;
 	float angle;
 	float targetSpeed;
+	float radius;
 	glm::vec3 rotation;
 	glm::vec3 scale;
 	glm::vec3 velocity;
 	glm::vec3 orientation;
+	glm::vec3 accel;
+
+	Quaternion q;
+	vec3 angVel;
 	BoundingBox box;
 	string tag;
 

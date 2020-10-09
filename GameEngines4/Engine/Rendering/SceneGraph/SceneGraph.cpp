@@ -3,6 +3,7 @@
 unique_ptr<SceneGraph> SceneGraph::sceneGraphInstance = nullptr;
 map<GLuint, vector<Model*>> SceneGraph::sceneModels = map<GLuint, vector<Model*>>();
 map<string, GameObject*> SceneGraph::sceneGameObjects = map < string, GameObject*>();
+map<string, GuiObject*> SceneGraph::sceneGuiObjects = map < string, GuiObject*>();
 
 
 
@@ -66,11 +67,44 @@ void SceneGraph::AddGameObject(GameObject * go_, string tag_)
 	CollisionHandler::GetInstance()->AddGameObject(go_);
 }
 
+void SceneGraph::AddGuiObject(GuiObject* go_, string tag_)
+{
+	testTag = tag_;
+	if (tag_ == "")
+	{
+		string newTag = "GuiObject" + to_string(sceneGameObjects.size() + 1);
+		go_->SetTag(newTag);
+		sceneGuiObjects[newTag] = go_;
+	}
+	else if (sceneGameObjects.find(tag_) == sceneGameObjects.end())
+	{
+		go_->SetTag(tag_);
+		sceneGuiObjects[tag_] = go_;
+	}
+	else
+	{
+		Debug::Error("Try to add GuiObject with tag: '" + tag_ + "' that already exits", "SceneGraph", __LINE__);
+		string newTag = "GuiObject" + to_string(sceneGuiObjects.size() + 1);
+		go_->SetTag(newTag);
+		sceneGuiObjects[newTag] = go_;
+	}
+
+}
+
 GameObject* SceneGraph::getGameObject(string tag_)
 {
 	if (sceneGameObjects.find(tag_) != sceneGameObjects.end())
 	{
 		return sceneGameObjects[tag_];
+	}
+	return nullptr;
+}
+
+GuiObject* SceneGraph::getGuiObject(string tag_)
+{
+	if (sceneGuiObjects.find(tag_) != sceneGuiObjects.end())
+	{
+		return sceneGuiObjects[tag_];
 	}
 	return nullptr;
 }
@@ -81,9 +115,17 @@ void SceneGraph::Update(const float deltatime_)
 	{
 		if (go.first == "apple")
 		{
-			go.second->Update(arrivetest->getSteering(), deltatime_);
-			go.second->Update(deltatime_);
+			//go.second->Update(arrivetest->getSteering(), deltatime_);
+			go.second->Update(test->getSteering(), deltatime_);
 		}
+
+		if (go.first == "DICE")
+		{
+			go.second->Update(deltatime_);
+			//go.second->Update(arrivetest->getSteering(), deltatime_);
+		}
+
+		
 	}
 }
 
@@ -99,6 +141,23 @@ void SceneGraph::Render(Camera * camera_)
 	}
 }
 
+void SceneGraph::Draw(Camera* camera_)
+{
+	glDisable(GL_DEPTH_TEST);
+	glEnable(GL_BLEND);
+	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+	GLuint guiProgram = ShaderHandler::getInstance()->GetShader("spriteShader");
+	glUseProgram(guiProgram);
+
+	for (auto entry : sceneGuiObjects)
+	{
+		entry.second->Draw(camera_);
+	}
+
+	glDisable(GL_BLEND);
+	glEnable(GL_DEPTH_TEST);
+}
+
 void SceneGraph::OnDestroy()
 {
 	if (sceneGameObjects.size() > 0)
@@ -109,7 +168,18 @@ void SceneGraph::OnDestroy()
 			go.second = nullptr;
 		}
 		sceneGameObjects.clear();
+	}	
+	
+	if (sceneGuiObjects.size() > 0)
+	{
+		for (auto go : sceneGuiObjects)
+		{
+			delete go.second;
+			go.second = nullptr;
+		}
+		sceneGuiObjects.clear();
 	}
+
 	if (sceneModels.size() > 0)
 	{
 		for (auto entry : sceneModels)
@@ -148,9 +218,9 @@ void SceneGraph::setupSeek()
 void SceneGraph::setupArrive()
 {
 	arrivetest = new Arrive(character, target);
-	arrivetest->setmaxAcceleration(5.0f);
+	arrivetest->setmaxAcceleration(7.0f);
 	arrivetest->setmaxSpeed(2.0f);
-	arrivetest->setslowRadius(1.0f);
-	arrivetest->settargetRadius(1.0f);
+	arrivetest->setslowRadius(0.5f);
+	arrivetest->settargetRadius(2.0f);
 
 }

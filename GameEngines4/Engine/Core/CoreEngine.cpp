@@ -33,6 +33,7 @@ bool CoreEngine::OnCreate(std::string name_, int width_, int height_)
 	//ShaderHandler::getInstance()->CreateProgram("colorShader", "Engine/Shaders/ColorVertexShader.glsl", "Engine/Shaders/ColorFragmentShader.glsl");
 	
 	ShaderHandler::getInstance()->CreateProgram("basicShader", "Engine/Shaders/VertexShader.glsl", "Engine/Shaders/FragmentShader.glsl");
+	ShaderHandler::getInstance()->CreateProgram("spriteShader", "Engine/Shaders/SpriteVertShader.glsl", "Engine/Shaders/SpriteFragShader.glsl");
 	
 	if (gameInterface) //Gameinterface is not equal to != nullptr
 	{

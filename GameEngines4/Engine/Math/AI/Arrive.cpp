@@ -39,7 +39,7 @@ SteeringOutput Arrive::getSteering()
 	vec3 targetVelocity;
 	float targetSpeed;
 	vec3 direction = target->GetPosition() - character->GetPosition();
-	float distance = direction.length();
+	float distance = glm::length(direction);
 
 	if (distance < targetRadius) 
 	{
