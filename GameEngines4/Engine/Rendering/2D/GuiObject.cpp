@@ -31,19 +31,18 @@ void GuiObject::Draw(Camera* camera_)
 
 bool GuiObject::isInside(vec2 mousePosition_)
 {
-	bool result = false;
 	if (GuiComponentContainer.size() > 0)
 	{
 		for (size_t i = 0; i < GuiComponentContainer.size(); i++)
 		{
 			if (GuiComponentContainer[i]->FindContainingPoint(mousePosition_, position))
 			{
-				result = true;
+				return true;
 			}
 		}
 	}
 	
-	return result;
+	return false;
 }
 
 string GuiObject::GetTag() const

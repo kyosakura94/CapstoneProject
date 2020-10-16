@@ -15,7 +15,8 @@ public:
 	virtual void Update(float deltaTime);
 	virtual void Draw(Camera * camera_, vec2 parentPosition_);
 	virtual bool FindContainingPoint(vec2 mousePosition_, vec2 guiPosition_);
-
+	float area(int x1, int y1, int x2, int y2, int x3, int y3);
+	bool check(int x1, int y1, int x2, int y2, int x3, int y3, int x4, int y4, int x, int y);
 private:
 	SpriteSurface * surface;
 	vec2 offset;

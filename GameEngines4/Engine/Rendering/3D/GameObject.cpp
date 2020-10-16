@@ -40,18 +40,22 @@ void GameObject::Render(Camera *camera_)
 
 void GameObject::Update(const float deltaTime_)
 {
+	//MoveTest(deltaTime_);
+	SetAngle(angle + 0.008f);
 	for (size_t i = 0; i < componentContainer.size(); i++)
 	{
 		componentContainer[i]->Update(deltaTime_);
 	}
-
-	//MoveTest(deltaTime_);
-	SetAngle(angle + 0.008f);
 }
 
 void GameObject::Update(SteeringOutput steering, const float deltaTime_)
 {
+	SetAngle(angle - 0.008f);
 	Move(steering, deltaTime_);
+	for (size_t i = 0; i < componentContainer.size(); i++)
+	{
+		componentContainer[i]->Update(deltaTime_);
+	}
 }
 glm::vec3 GameObject::GetPosition() const
 {
@@ -155,16 +159,19 @@ void GameObject::Move(SteeringOutput steering, const float deltaTime_)
 	//Update AngluarVelocity
 	vec3 upvector(0.0f, 1.0f, 0.0f);
 
-	angVel = cross(velocity, upvector);
-	angVel = normalize(angVel);
+	//angVel = cross(velocity, upvector);
+	//
+	//angVel = normalize(angVel);
 
-	angVel = angVel * (velocity.length() / radius);
+	//angVel = angVel * (velocity.length() / radius);
+
+	//w = 45 * Math.PI / 180
 
 	float maxSpeed = 5.0;
 	position += velocity * deltaTime_;
 	orientation += rotation * deltaTime_;
 
-	//Physics::SimpleNewtonMotion(*this, deltaTime_);
+	Physics::SimpleNewtonMotion(*this, deltaTime_);
 
 	velocity += steering.getLinear() * deltaTime_;
 	rotation += steering.getAngular() * deltaTime_;
@@ -203,12 +210,12 @@ void GameObject::Move(SteeringOutput steering, const float deltaTime_)
 
 void GameObject::MoveTest(const float deltaTime_)
 {
-	vec3 upvector(0.0f, 1.0f, 0.0f);
+	//vec3 upvector(0.0f, 1.0f, 0.0f);
 
-	angVel = cross(velocity, upvector);
-	angVel = normalize(angVel);
+	//angVel = cross(velocity, upvector);
+	//angVel = normalize(angVel);
 
-	angVel = angVel * (velocity.length() / radius);
+	//angVel = angVel * (velocity.length() / radius);
 
 	SetAccel(vec3(0.2f,-0.35f,0.2f));
 	Physics::SimpleNewtonMotion(*this, deltaTime_);

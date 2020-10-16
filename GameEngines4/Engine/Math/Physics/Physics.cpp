@@ -12,7 +12,7 @@ void Physics::SimpleNewtonMotion(GameObject &model, const float deltTime_)
 	model.SetVelocity(model.GetVelocity() += 0.5f * (previous_accel + current_accel) * deltTime_);
 
 
-	model.SetQuaternion(model.getQuaternion() += (angularVelocity * model.getQuaternion() * deltTime_ * deltTime_));
+	model.SetQuaternion(model.getQuaternion() += (angularVelocity * model.getQuaternion() * deltTime_));
 	model.SetQuaternion(model.getQuaternion().Normalize());
 
 	previous_accel = current_accel ;

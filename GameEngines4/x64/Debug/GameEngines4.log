@@ -1,22 +1,86 @@
-﻿  Debug.cpp
+﻿  AudioHandler.cpp
+D:\CapstoneProject\GameEngines4\Engine\FX\Audio\AudioHandler.h(4,10): fatal error C1083: Cannot open include file: 'fmod.hpp': No such file or directory
+  AudioSource.cpp
+  Arrive.cpp
+D:\CapstoneProject\GameEngines4\Engine\Rendering\3D\Mesh.h(4,10): fatal error C1083: Cannot open include file: 'glew.h': No such file or directory
+  A_Star_Node_Priority.cpp
+  CollisionAvoidance.cpp
+D:\CapstoneProject\GameEngines4\Engine\Rendering\3D\Mesh.h(4,10): fatal error C1083: Cannot open include file: 'glew.h': No such file or directory
+  DynamicArrive.cpp
+  Graph.cpp
+D:\CapstoneProject\GameEngines4\Engine\Rendering\3D\Mesh.h(4,10): fatal error C1083: Cannot open include file: 'glew.h': No such file or directory
+  node.cpp
+  ObstacleAvoidance.cpp
+D:\CapstoneProject\GameEngines4\Engine\Rendering\3D\Mesh.h(4,10): fatal error C1083: Cannot open include file: 'glew.h': No such file or directory
+  CollisionDetection.cpp
+D:\CapstoneProject\GameEngines4\Engine\Camera\Camera.h(5,10): fatal error C1083: Cannot open include file: 'glm/glm.hpp': No such file or directory
+  CollisionHandler.cpp
+D:\CapstoneProject\GameEngines4\Engine\Math\Ray.h(4,10): fatal error C1083: Cannot open include file: 'glm/glm.hpp': No such file or directory
+  Camera.cpp
+D:\CapstoneProject\GameEngines4\Engine\Camera\Camera.h(5,10): fatal error C1083: Cannot open include file: 'glm/glm.hpp': No such file or directory
+  Debug.cpp
   CoreEngine.cpp
-d:\semeter4\gameengine4\gameengines4\gameengines4\engine\core\window.h(5): fatal error C1083: Cannot open include file: 'SDL.h': No such file or directory
+D:\CapstoneProject\GameEngines4\Engine\Core\Window.h(5,10): fatal error C1083: Cannot open include file: 'SDL.h': No such file or directory
+  Physics.cpp
+D:\CapstoneProject\GameEngines4\Engine\Rendering\3D\Mesh.h(4,10): fatal error C1083: Cannot open include file: 'glew.h': No such file or directory
+  Quaternion.cpp
+D:\CapstoneProject\GameEngines4\Engine\Math\Quaternion.h(4,10): fatal error C1083: Cannot open include file: 'glew.h': No such file or directory
+  Client.cpp
+  Server.cpp
   GameObject.cpp
-d:\semeter4\gameengine4\gameengines4\gameengines4\engine\rendering\3d\mesh.h(4): fatal error C1083: Cannot open include file: 'glew.h': No such file or directory
+D:\CapstoneProject\GameEngines4\Engine\Rendering\3D\Mesh.h(4,10): fatal error C1083: Cannot open include file: 'glew.h': No such file or directory
+  EventListener.cpp
+D:\CapstoneProject\GameEngines4\Engine\Event\MouseEventListener.h(4,10): fatal error C1083: Cannot open include file: 'SDL.h': No such file or directory
+  Generating Code...
+  Compiling...
   GameScene.cpp
-d:\semeter4\gameengine4\gameengines4\gameengines4\engine\core\window.h(5): fatal error C1083: Cannot open include file: 'SDL.h': No such file or directory
+D:\CapstoneProject\GameEngines4\Engine\Core\Window.h(5,10): fatal error C1083: Cannot open include file: 'SDL.h': No such file or directory
   GameTest.cpp
-d:\semeter4\gameengine4\gameengines4\gameengines4\engine\core\window.h(5): fatal error C1083: Cannot open include file: 'SDL.h': No such file or directory
+D:\CapstoneProject\GameEngines4\Engine\Core\Window.h(5,10): fatal error C1083: Cannot open include file: 'SDL.h': No such file or directory
+  LightSource.cpp
+D:\CapstoneProject\GameEngines4\Engine\FX\LightSource.h(4,10): fatal error C1083: Cannot open include file: 'glm/vec3.hpp': No such file or directory
+  LoadOBJModel.cpp
+D:\CapstoneProject\GameEngines4\Engine\Rendering\3D\Mesh.h(4,10): fatal error C1083: Cannot open include file: 'glew.h': No such file or directory
+  Kinematic.cpp
+D:\CapstoneProject\GameEngines4\Engine\Rendering\3D\Mesh.h(4,10): fatal error C1083: Cannot open include file: 'glew.h': No such file or directory
+  GuiObject.cpp
+D:\CapstoneProject\GameEngines4\Engine\Rendering\2D\SpriteSurface.h(4,10): fatal error C1083: Cannot open include file: 'glew.h': No such file or directory
+  GuiImageComponent.cpp
+D:\CapstoneProject\GameEngines4\Engine\Rendering\2D\SpriteSurface.h(4,10): fatal error C1083: Cannot open include file: 'glew.h': No such file or directory
   Main.cpp
-d:\semeter4\gameengine4\gameengines4\gameengines4\engine\core\window.h(5): fatal error C1083: Cannot open include file: 'SDL.h': No such file or directory
+D:\CapstoneProject\GameEngines4\Engine\Core\Window.h(5,10): fatal error C1083: Cannot open include file: 'SDL.h': No such file or directory
   Window.cpp
-d:\semeter4\gameengine4\gameengines4\gameengines4\engine\core\window.h(5): fatal error C1083: Cannot open include file: 'SDL.h': No such file or directory
+D:\CapstoneProject\GameEngines4\Engine\Core\Window.h(5,10): fatal error C1083: Cannot open include file: 'SDL.h': No such file or directory
   Timer.cpp
-d:\semeter4\gameengine4\gameengines4\gameengines4\engine\core\timer.h(4): fatal error C1083: Cannot open include file: 'SDL.h': No such file or directory
+D:\CapstoneProject\GameEngines4\Engine\Core\Timer.h(4,10): fatal error C1083: Cannot open include file: 'SDL.h': No such file or directory
   StartScene.cpp
-d:\semeter4\gameengine4\gameengines4\gameengines4\engine\core\window.h(5): fatal error C1083: Cannot open include file: 'SDL.h': No such file or directory
+D:\CapstoneProject\GameEngines4\Engine\Core\Window.h(5,10): fatal error C1083: Cannot open include file: 'SDL.h': No such file or directory
   Mesh.cpp
-d:\semeter4\gameengine4\gameengines4\gameengines4\engine\rendering\3d\mesh.h(4): fatal error C1083: Cannot open include file: 'glew.h': No such file or directory
+D:\CapstoneProject\GameEngines4\Engine\Rendering\3D\Mesh.h(4,10): fatal error C1083: Cannot open include file: 'glew.h': No such file or directory
   Model.cpp
-d:\semeter4\gameengine4\gameengines4\gameengines4\engine\rendering\3d\mesh.h(4): fatal error C1083: Cannot open include file: 'glew.h': No such file or directory
+D:\CapstoneProject\GameEngines4\Engine\Rendering\3D\Mesh.h(4,10): fatal error C1083: Cannot open include file: 'glew.h': No such file or directory
+  ShaderHandler.cpp
+D:\CapstoneProject\GameEngines4\Engine\Graphics\ShaderHandler.h(8,10): fatal error C1083: Cannot open include file: 'glew.h': No such file or directory
+  TextureHandler.cpp
+D:\CapstoneProject\GameEngines4\Engine\Graphics\TextureHandler.h(8,10): fatal error C1083: Cannot open include file: 'SDL.h': No such file or directory
+  MouseEventListener.cpp
+D:\CapstoneProject\GameEngines4\Engine\Event\MouseEventListener.h(4,10): fatal error C1083: Cannot open include file: 'SDL.h': No such file or directory
+  SceneGraph.cpp
+D:\CapstoneProject\GameEngines4\Engine\Rendering\3D\Mesh.h(4,10): fatal error C1083: Cannot open include file: 'glew.h': No such file or directory
+  MaterialHandler.cpp
+D:\CapstoneProject\GameEngines4\Engine\Graphics\MaterialHandler.h(5,10): fatal error C1083: Cannot open include file: 'glew.h': No such file or directory
+  MaterialLoader.cpp
+D:\CapstoneProject\GameEngines4\Engine\Graphics\MaterialHandler.h(5,10): fatal error C1083: Cannot open include file: 'glew.h': No such file or directory
+  OctSpatialPartition.cpp
+D:\CapstoneProject\GameEngines4\Engine\Math\Ray.h(4,10): fatal error C1083: Cannot open include file: 'glm/glm.hpp': No such file or directory
+  Generating Code...
+  Compiling...
+  TestClassA.cpp
+D:\CapstoneProject\GameEngines4\Engine\Rendering\3D\Mesh.h(4,10): fatal error C1083: Cannot open include file: 'glew.h': No such file or directory
+  Seek.cpp
+D:\CapstoneProject\GameEngines4\Engine\Rendering\3D\Mesh.h(4,10): fatal error C1083: Cannot open include file: 'glew.h': No such file or directory
+  SteeringOutput.cpp
+D:\CapstoneProject\GameEngines4\Engine\Rendering\3D\Mesh.h(4,10): fatal error C1083: Cannot open include file: 'glew.h': No such file or directory
+  SpriteSurface.cpp
+D:\CapstoneProject\GameEngines4\Engine\Rendering\2D\SpriteSurface.h(4,10): fatal error C1083: Cannot open include file: 'glew.h': No such file or directory
   Generating Code...

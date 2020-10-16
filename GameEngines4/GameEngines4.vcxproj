@@ -70,7 +70,7 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-    <IncludePath>C:\GameDev\SDL\include;C:\GameDev\OpenGL\include;$(IncludePath)</IncludePath>
+    <IncludePath>C:\GameDev\SDL\include;C:\GameDev\OpenGL\include;C:\GameDev\Audio\include;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -80,8 +80,8 @@
       <ConformanceMode>true</ConformanceMode>
     </ClCompile>
     <Link>
-      <AdditionalLibraryDirectories>C:\GameDev\OpenGL\lib;C:\GameDev\SDL\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>SDL2.lib;SDL2_image.lib;SDL2main.lib;SDL2test.lib;glew32.lib;glew32s.lib;opengl32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>C:\GameDev\OpenGL\lib;C:\GameDev\SDL\lib;C:\GameDev\Audio\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>SDL2.lib;SDL2_image.lib;SDL2main.lib;SDL2test.lib;glew32.lib;glew32s.lib;opengl32.lib;fmod_vc.lib;fmodL_vc.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <SubSystem>Console</SubSystem>
     </Link>
   </ItemDefinitionGroup>
@@ -122,13 +122,24 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Engine\FX\Audio\AudioHandler.cpp" />
+    <ClCompile Include="Engine\FX\Audio\AudioSource.cpp" />
     <ClCompile Include="Engine\Math\AI\Arrive.cpp" />
+    <ClCompile Include="Engine\Math\AI\A_Star_Node_Priority.cpp" />
+    <ClCompile Include="Engine\Math\AI\CollisionAvoidance.cpp" />
     <ClCompile Include="Engine\Math\AI\DynamicArrive.cpp" />
+    <ClCompile Include="Engine\Math\AI\Graph.cpp" />
+    <ClCompile Include="Engine\Math\AI\node.cpp" />
+    <ClCompile Include="Engine\Math\AI\ObstacleAvoidance.cpp" />
     <ClCompile Include="Engine\Math\CollisionDetection.cpp" />
     <ClCompile Include="Engine\Math\CollisionHandler.cpp" />
     <ClCompile Include="Engine\Camera\Camera.cpp" />
     <ClCompile Include="Engine\Core\Debug.cpp" />
     <ClCompile Include="Engine\Core\CoreEngine.cpp" />
+    <ClCompile Include="Engine\Math\Physics\Physics.cpp" />
+    <ClCompile Include="Engine\Math\Quaternion.cpp" />
+    <ClCompile Include="Engine\Network\Client.cpp" />
+    <ClCompile Include="Engine\Network\Server.cpp" />
     <ClCompile Include="Engine\Rendering\3D\GameObject.cpp" />
     <ClCompile Include="Engine\Event\EventListener.cpp" />
     <ClCompile Include="Game\Scene\GameScene.cpp" />
@@ -136,6 +147,8 @@
     <ClCompile Include="Engine\FX\LightSource.cpp" />
     <ClCompile Include="Engine\Rendering\3D\LoadOBJModel.cpp" />
     <ClCompile Include="Engine\Math\AI\Kinematic.cpp" />
+    <ClCompile Include="Engine\Rendering\2D\GuiObject.cpp" />
+    <ClCompile Include="Engine\Rendering\2D\GuiImageComponent.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="Engine\Core\Window.cpp" />
     <ClCompile Include="Engine\Core\Timer.cpp" />
@@ -152,12 +165,20 @@
     <ClCompile Include="Game\Test\TestClassA.cpp" />
     <ClCompile Include="Engine\Math\AI\Seek.cpp" />
     <ClCompile Include="Engine\Math\AI\SteeringOutput.cpp" />
+    <ClCompile Include="Engine\Rendering\2D\SpriteSurface.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Engine\FX\Audio\AudioHandler.h" />
+    <ClInclude Include="Engine\FX\Audio\AudioSource.h" />
     <ClInclude Include="Engine\Math\AI\Arrive.h" />
+    <ClInclude Include="Engine\Math\AI\A_Star_Node_Priority.h" />
+    <ClInclude Include="Engine\Math\AI\CollisionAvoidance.h" />
     <ClInclude Include="Engine\Math\AI\DynamicArrive.h" />
     <ClInclude Include="Engine\Camera\Plane.h" />
     <ClInclude Include="Engine\Core\OctSpatialPartition.h" />
+    <ClInclude Include="Engine\Math\AI\Graph.h" />
+    <ClInclude Include="Engine\Math\AI\node.h" />
+    <ClInclude Include="Engine\Math\AI\ObstacleAvoidance.h" />
     <ClInclude Include="Engine\Math\CollisionDetection.h" />
     <ClInclude Include="Engine\Math\CollisionHandler.h" />
     <ClInclude Include="Engine\Camera\Camera.h" />
@@ -168,7 +189,14 @@
     <ClInclude Include="Engine\Core\Window.h" />
     <ClInclude Include="Engine\Core\Timer.h" />
     <ClInclude Include="Engine\Math\BoundingBox.h" />
+    <ClInclude Include="Engine\Math\EulerAngles.h" />
+    <ClInclude Include="Engine\Math\Physics\Physics.h" />
+    <ClInclude Include="Engine\Math\Physics\Plane.h" />
+    <ClInclude Include="Engine\Math\Quaternion.h" />
     <ClInclude Include="Engine\Math\Ray.h" />
+    <ClInclude Include="Engine\Network\Client.h" />
+    <ClInclude Include="Engine\Network\Server.h" />
+    <ClInclude Include="Engine\Rendering\2D\GuiComponents.h" />
     <ClInclude Include="Engine\Rendering\3D\Component.h" />
     <ClInclude Include="Engine\Rendering\3D\GameObject.h" />
     <ClInclude Include="Engine\Event\EventListener.h" />
@@ -189,11 +217,16 @@
     <ClInclude Include="Engine\Math\AI\Kinematic.h" />
     <ClInclude Include="Engine\Math\AI\Seek.h" />
     <ClInclude Include="Engine\Math\AI\SteeringOutput.h" />
+    <ClInclude Include="Engine\Rendering\2D\GuiObject.h" />
+    <ClInclude Include="Engine\Rendering\2D\SpriteSurface.h" />
+    <ClInclude Include="Engine\Rendering\2D\GuiImageComponent.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Engine\Shaders\ColorFragmentShader.glsl" />
     <None Include="Engine\Shaders\ColorVertexShader.glsl" />
     <None Include="Engine\Shaders\FragmentShader.glsl" />
+    <None Include="Engine\Shaders\SpriteFragShader.glsl" />
+    <None Include="Engine\Shaders\SpriteVertShader.glsl" />
     <None Include="Engine\Shaders\VertexShader.glsl" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

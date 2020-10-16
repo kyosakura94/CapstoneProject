@@ -18,7 +18,9 @@ bool GameScene::OnCreate()
 	CoreEngine::GetInstance()->GetCamera()->SetPosition(vec3(0.0f, 1.0f, 4.0f));
 	CoreEngine::GetInstance()->GetCamera()->Addlightsources(new LightSource(glm::vec3(0.0f, 0.0f, 2.0f), glm::vec3(1.0f, 1.0f, 1.0f), 0.1f, 0.5f));
 
+	AudioHandler::getInstance()->Initialize(CoreEngine::GetInstance()->GetCamera()->GetPosition(), vec3(0), vec3(0, 0, -1), vec3(0,1,0));
 	CollisionHandler::GetInstance()->OnCreate(100.f);
+
 	
 	for (int i = 0; i < 6; i++)
 	{
@@ -34,10 +36,30 @@ bool GameScene::OnCreate()
 		ShaderHandler::getInstance()->GetShader("basicShader"));
 
 	SceneGraph::GetInstance()->AddModel(model1);
-	GameObject * test = new GameObject(model1, vec3(2.0f, 0.0f, -5.0f));
+
+	GameObject* test = new GameObject(model1, vec3(2.0f, 0.0f, -5.0f));
 	SceneGraph::GetInstance()->AddGameObject(test, "DICE");
 	SceneGraph::GetInstance()->setTarget(test);
 
+
+	//for (size_t i = 0; i < 10; i++)
+	//{
+	//	for (size_t j = 0; j < 10; j++)
+	//	{
+	//		vec3 pos = vec3(0.0f + (i + 2.0f), 0.0f, 0.0f + (j + 2.0f));
+	//		GameObject* test = new GameObject(model1, pos);
+	//		SceneGraph::GetInstance()->AddGameObject(test, "DICE" + i);
+	//	}
+	//}		
+	
+	for (size_t i = 0; i < 2 ; i++)
+	{
+		vec3 pos = vec3(2.0f + i + 2.0f , 0.0f, -5.0f - i - 2.0f );
+		GameObject* test = new GameObject(model1, pos);
+		SceneGraph::GetInstance()->AddGameObject(test, "DICE" + i);
+
+		SceneGraph::GetInstance()->setTargetList(test);
+	}	
 
 	Model * model2 = new Model(
 			"./Resources/Models/Apple.obj",
@@ -52,13 +74,15 @@ bool GameScene::OnCreate()
 
 	apple->AddComponent<TestClassA>("test");
 	apple->GetComponent<TestClassA>();
-	//apple->RemoveComponent<TestClassA>();
+	apple->RemoveComponent<TestClassA>();
 
 
 	SceneGraph::GetInstance()->AddGameObject(apple, "apple");
+
 	SceneGraph::GetInstance()->setCharacter(apple);
 	SceneGraph::GetInstance()->setupSeek();
 	SceneGraph::GetInstance()->setupArrive();
+	SceneGraph::GetInstance()->setupCollisionAvoidance();
 
 	
 	GuiObject* gui = new GuiObject(vec2(CoreEngine::GetInstance()->GetWindowSize().x / 2.0f, CoreEngine::GetInstance()->GetWindowSize().y / 2.0f));
@@ -67,6 +91,11 @@ bool GameScene::OnCreate()
 	gui->GetComponent<GuiImageComponent>()->OnCreate("sun");
 
 	SceneGraph::GetInstance()->AddGuiObject(gui, "sunGUI");
+
+	backroundSound = new AudioSource("Funky Chill 2 loop.wav");
+	backroundSound->OnCreate(nullptr);
+	backroundSound->playSound();
+
 
 	{
 	//get from mesh annd obj loader
@@ -116,6 +145,12 @@ void GameScene::Update(const float deltaTime_)
 	//std::cout << deltaTime_ << std::endl;
 	//shape->Update(deltaTime_);
 	SceneGraph::GetInstance()->Update(deltaTime_);
+
+	if (SceneGraph::GetInstance()->getGuiObject("sunGUI")->isInside(MouseEventListener::GetMousePosition()))
+	{
+		std::cout << "inside GUI" << std::endl;
+	}
+	
 }
 
 void GameScene::Render()

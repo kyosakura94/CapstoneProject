@@ -6,6 +6,8 @@
 #include "../../Game/Test/TestClassA.h"
 #include "../../Engine/Rendering/2D/GuiImageComponent.h"
 #include "../../Engine/Math/Quaternion.h"
+#include "../../Engine/FX/Audio/AudioHandler.h"
+#include "../../Engine/FX/Audio/AudioSource.h"
 
 class GameScene : public Scene
 {
@@ -18,6 +20,6 @@ public:
 	virtual void Render();
 	virtual void Draw();
 private:
-
+	AudioSource* backroundSound;
 };
 #endif

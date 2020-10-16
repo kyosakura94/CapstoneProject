@@ -64,12 +64,12 @@ void SpriteSurface::Draw(Camera* camera_, vec2 position_)
 
 	glBindVertexArray(VAO);
 
-	for (int i = 0; i < vertexList.size(); i++)
-	{
-		glDrawArrays(GL_TRIANGLE_STRIP, 0, vertexList.size());
-	}
+	//for (int i = 0; i < vertexList.size(); i++)
+	//{
+	//	glDrawArrays(GL_TRIANGLE_STRIP, 0, vertexList.size());
+	//}
 
-	//glDrawArrays(GL_TRIANGLE_STRIP, 0, vertexList.size());
+	glDrawArrays(GL_TRIANGLE_STRIP, 0, vertexList.size());
 
 	glBindVertexArray(0);
 	glBindTexture(GL_TEXTURE_2D, 0);
@@ -98,7 +98,7 @@ void SpriteSurface::GenerateBuffers()
 	
 	//POSITION
 	glEnableVertexAttribArray(0);
-	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, sizeof(Vertex2D), (GLvoid*)0);
+	glVertexAttribPointer(0, 2, GL_FLOAT, GL_FALSE, sizeof(Vertex2D), (GLvoid*)0);
 
 	//TEXTURECORDINATE
 	glEnableVertexAttribArray(1);

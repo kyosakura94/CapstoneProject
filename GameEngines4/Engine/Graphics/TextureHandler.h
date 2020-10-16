@@ -29,6 +29,7 @@ public:
 	TextureHandler& operator = (TextureHandler&&) = delete;
 
 	static TextureHandler* getInstance();
+
 	void OnDestroy();
 	void CreateTexture(const string& textureName_, const string& textureFilePath_);
 	static const GLuint GetTexture(const string& textureName_);

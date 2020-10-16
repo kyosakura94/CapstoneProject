@@ -50,12 +50,12 @@ public:
 	{
 		T* b2 = new T(std::forward<Args>(args_)...);
 
-		if (Component* d = dynamic_cast<Component*>(b2))
+		if (dynamic_cast<Component*>(b2))
 		{
 			if (!GetComponent<T>())
 			{
-				componentContainer.push_back(d);
-				d->OnCreate(this);
+				componentContainer.push_back(b2);
+				b2->OnCreate(this);
 			}
 			else
 			{
@@ -77,33 +77,30 @@ public:
 	T* GetComponent() 
 	{
 		if (componentContainer.size() != 0)
+		{
+			for (auto i = 0; i < componentContainer.size(); i++)
+			{
+				if (T* d = dynamic_cast<T*>(componentContainer[i]))
 				{
-					for (auto i = 0; i < componentContainer.size(); i++)
-					{
-						if (T* d = dynamic_cast<T*>(componentContainer[i]))
-						{
-							return d;
-						}
-						else
-						{
-							return nullptr;
-						}
-					}
+					return d;
+				}
+			}
 		}
+
+		return nullptr;
 	}
 	
 	template<typename T>
 	void RemoveComponent() 
 	{
-
 		for (size_t i = 0; i < componentContainer.size(); i++)
 		{
 			if (T* d = dynamic_cast<T*>(componentContainer[i]))
 			{
 				delete componentContainer[i];
 				componentContainer[i] = nullptr;
-
 				componentContainer.erase(componentContainer.begin() + i);
+				break;
 			}
 		}
 	}

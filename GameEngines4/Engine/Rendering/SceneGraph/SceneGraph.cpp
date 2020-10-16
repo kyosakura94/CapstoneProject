@@ -106,6 +106,7 @@ GuiObject* SceneGraph::getGuiObject(string tag_)
 	{
 		return sceneGuiObjects[tag_];
 	}
+
 	return nullptr;
 }
 
@@ -115,17 +116,23 @@ void SceneGraph::Update(const float deltatime_)
 	{
 		if (go.first == "apple")
 		{
-			//go.second->Update(arrivetest->getSteering(), deltatime_);
-			go.second->Update(test->getSteering(), deltatime_);
+			//go.second->Update(seek->getSteering(), deltatime_);
+			go.second->Update(avoidance->getSteering(), deltatime_);
 		}
-
-		if (go.first == "DICE")
+		else
 		{
 			go.second->Update(deltatime_);
-			//go.second->Update(arrivetest->getSteering(), deltatime_);
+			//if (go.first == "DICE")
+			//{
+			//	go.second->Update(deltatime_);
+			//	//go.second->Update(arrivetest->getSteering(), deltatime_);
+			//}
+			//else
+			//{
+			//	
+			//}
 		}
 
-		
 	}
 }
 
@@ -207,11 +214,15 @@ void SceneGraph::setTarget(GameObject* target_)
 {
 	target = target_;
 }
+void SceneGraph::setTargetList(GameObject* target_)
+{
+	targetList.push_back(target_);
+}
 
 void SceneGraph::setupSeek()
 {
-	test = new Seek(character, target);
-	test->setmaxAcceleration(5.0f);
+	seek = new Seek(character, target);
+	seek->setmaxAcceleration(5.0f);
 
 }
 
@@ -223,4 +234,11 @@ void SceneGraph::setupArrive()
 	arrivetest->setslowRadius(0.5f);
 	arrivetest->settargetRadius(2.0f);
 
+}
+
+void SceneGraph::setupCollisionAvoidance()
+{
+	avoidance = new CollisionAvoidance(character, target, targetList);
+	avoidance->setmaxAcceleration(1.0f);
+	avoidance->setRadius(3.0f);
 }

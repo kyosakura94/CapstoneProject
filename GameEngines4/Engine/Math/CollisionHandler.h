@@ -7,7 +7,7 @@
 
 using namespace std;
 using namespace glm;
-class CollisionHandler
+class CollisionHandler 
 {
 public:
 	CollisionHandler(const CollisionHandler&) = delete;

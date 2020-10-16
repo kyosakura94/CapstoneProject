@@ -37,6 +37,7 @@ public:
 	MaterialHandler& operator = (MaterialHandler&&) = delete;
 
 	static MaterialHandler * getInstance();
+
 	void AddMaterial(Material mat_);
 	const Material GetMaterial(const string & matName_);
 	void OnDestroy();

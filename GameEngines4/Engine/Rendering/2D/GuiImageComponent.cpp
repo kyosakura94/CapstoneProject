@@ -1,6 +1,6 @@
-#include "GuiImageComponent.h"
+﻿#include "GuiImageComponent.h"
 
-GuiImageComponent::GuiImageComponent(): angle_(0), scale_(1), offset(vec2(0,0)), tintColor_(vec4(1.0f, 1.0f, 1.0f, 1.0f))
+GuiImageComponent::GuiImageComponent() : angle_(0), scale_(1), offset(vec2(0, 0)), tintColor_(vec4(1.0f, 1.0f, 1.0f, 1.0f))
 {
 
 }
@@ -24,52 +24,22 @@ void GuiImageComponent::Draw(Camera* camera_, vec2 parentPosition_)
 
 bool GuiImageComponent::FindContainingPoint(vec2 mousePosition_, vec2 guiPosition_)
 {
-	bool result = false;
-	if (surface != nullptr)
+	float height = surface->getHeight();
+	float width = surface->getWidth();
+
+	vec2 AB(height, 0);
+	vec2 AM(mousePosition_.x - guiPosition_.x + (height/2), mousePosition_.y - guiPosition_.y - (width/2));
+	vec2 AD(0, -width);
+
+	//(0 < AM⋅AB < AB⋅AB)∧(0 < AM⋅AD < AD⋅AD)
+	if (0 < dot(AM, AB) && dot(AM, AB) < dot(AB, AB)
+		&& 0 < dot(AM, AD) && dot(AM, AD) < dot(AD, AD))
 	{
-		float tMin = surface->getWidth();
-		float tMax = surface->getHeight();
-
-
-		vec2 delta = guiPosition_ - mousePosition_;
-
-		{
-			float e = dot(guiPosition_, delta);
-			float f = dot(vec2(0.0f), guiPosition_);
-
-			if (fabs(f) > 0.001f)
-			{
-				float t1 = (e + tMin) / f;
-				float t2 = (e + tMax) / f;
-
-				if (t1 > t2)
-				{
-					float w = t1;
-					t1 = t2;
-					t2 = w;
-				}
-				if (t2 < tMax)
-				{
-					tMax = t2;
-				}
-				if (t1 > tMin)
-				{
-					tMin = t1;
-				}
-
-				if (tMax < tMin)
-				{
-					return false;
-				}
-			}
-			else
-			{
-				if (-e + tMin > 0.0f || -e + tMax < 0.0f)
-				{
-					return false;
-				}
-			}
-		}
+		return true;
 	}
-	return result;
+	else
+	{
+		return false;
+	}
 }
+

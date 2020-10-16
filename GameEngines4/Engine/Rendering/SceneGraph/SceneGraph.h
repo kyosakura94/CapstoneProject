@@ -6,10 +6,11 @@
 #include <vector>
 #include "../3D/GameObject.h"
 #include "../2D/GuiObject.h"
+#include "../../Core/CoreEngine.h"
 #include "../../Math/CollisionHandler.h"
 #include "../../Math/AI/Seek.h"
-#include "../../Core/CoreEngine.h"
 #include "../../Math/AI/Arrive.h"
+#include "../../Math/AI/CollisionAvoidance.h"
 
 
 class SceneGraph
@@ -34,14 +35,23 @@ public:
 	void OnDestroy();
 	void setCharacter(GameObject *character_);
 	void setTarget(GameObject *target_);
+	void setTargetList(GameObject *target_);
 	void setupSeek();
 	void setupArrive();
+	//set up all needed information for avoidance
+	void setupCollisionAvoidance();
 private:
-	Seek* test;
+	Seek* seek;
 	Arrive* arrivetest;
+	//create point to avoidance clas
+	CollisionAvoidance* avoidance;
 
 	GameObject* target;
-	GameObject* character;
+	GameObject* character; 
+
+	//list of targert
+	vector<GameObject*> targetList;
+
 	SceneGraph();
 	~SceneGraph();
 	string testTag;

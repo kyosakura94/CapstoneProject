@@ -1,8 +1,99 @@
-﻿  Arrive.cpp
+﻿  Camera.cpp
 D:\CapstoneProject\GameEngines4\Engine\Rendering\3D\Model.h(13): warning C4091: 'static ': ignored on left of 'Model::<unnamed-enum-OUTSIDE>' when no variable is declared
 D:\CapstoneProject\GameEngines4\Engine\Math\AI\Arrive.h(31,26): warning C4305: 'initializing': truncation from 'double' to 'float'
-D:\CapstoneProject\GameEngines4\Engine\Math\AI\Arrive.cpp(42,17): warning C4244: 'initializing': conversion from 'glm::tvec3<float,0>::length_type' to 'float', possible loss of data
+  CoreEngine.cpp
+D:\CapstoneProject\GameEngines4\Engine\Rendering\3D\Model.h(13): warning C4091: 'static ': ignored on left of 'Model::<unnamed-enum-OUTSIDE>' when no variable is declared
+D:\CapstoneProject\GameEngines4\Engine\Math\AI\Arrive.h(31,26): warning C4305: 'initializing': truncation from 'double' to 'float'
+  OctSpatialPartition.cpp
+D:\CapstoneProject\GameEngines4\Engine\Rendering\3D\Model.h(13): warning C4091: 'static ': ignored on left of 'Model::<unnamed-enum-OUTSIDE>' when no variable is declared
+  EventListener.cpp
+D:\CapstoneProject\GameEngines4\Engine\Rendering\3D\Model.h(13): warning C4091: 'static ': ignored on left of 'Model::<unnamed-enum-OUTSIDE>' when no variable is declared
+D:\CapstoneProject\GameEngines4\Engine\Math\AI\Arrive.h(31,26): warning C4305: 'initializing': truncation from 'double' to 'float'
+  MouseEventListener.cpp
+D:\CapstoneProject\GameEngines4\Engine\Rendering\3D\Model.h(13): warning C4091: 'static ': ignored on left of 'Model::<unnamed-enum-OUTSIDE>' when no variable is declared
+D:\CapstoneProject\GameEngines4\Engine\Math\AI\Arrive.h(31,26): warning C4305: 'initializing': truncation from 'double' to 'float'
+D:\CapstoneProject\GameEngines4\Engine\Event\MouseEventListener.cpp(94,55): warning C4244: '=': conversion from 'T' to 'int', possible loss of data
+          with
+          [
+              T=float
+          ]
+D:\CapstoneProject\GameEngines4\Engine\Event\MouseEventListener.cpp(98,29): warning C4244: '=': conversion from 'int' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
+D:\CapstoneProject\GameEngines4\Engine\Event\MouseEventListener.cpp(99,29): warning C4244: '=': conversion from 'int' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
+D:\CapstoneProject\GameEngines4\Engine\Event\MouseEventListener.cpp(105,16): warning C4244: '=': conversion from 'int' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
+D:\CapstoneProject\GameEngines4\Engine\Event\MouseEventListener.cpp(106,16): warning C4244: '=': conversion from 'int' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
+  AudioHandler.cpp
+  AudioSource.cpp
+  Arrive.cpp
+D:\CapstoneProject\GameEngines4\Engine\Rendering\3D\Model.h(13): warning C4091: 'static ': ignored on left of 'Model::<unnamed-enum-OUTSIDE>' when no variable is declared
+D:\CapstoneProject\GameEngines4\Engine\Math\AI\Arrive.h(31,26): warning C4305: 'initializing': truncation from 'double' to 'float'
+  CollisionAvoidance.cpp
+D:\CapstoneProject\GameEngines4\Engine\Rendering\3D\Model.h(13): warning C4091: 'static ': ignored on left of 'Model::<unnamed-enum-OUTSIDE>' when no variable is declared
+  Graph.cpp
+D:\CapstoneProject\GameEngines4\Engine\Rendering\3D\Model.h(13): warning C4091: 'static ': ignored on left of 'Model::<unnamed-enum-OUTSIDE>' when no variable is declared
+  ObstacleAvoidance.cpp
+D:\CapstoneProject\GameEngines4\Engine\Rendering\3D\Model.h(13): warning C4091: 'static ': ignored on left of 'Model::<unnamed-enum-OUTSIDE>' when no variable is declared
   Seek.cpp
 D:\CapstoneProject\GameEngines4\Engine\Rendering\3D\Model.h(13): warning C4091: 'static ': ignored on left of 'Model::<unnamed-enum-OUTSIDE>' when no variable is declared
+  CollisionDetection.cpp
+D:\CapstoneProject\GameEngines4\Engine\Rendering\3D\Model.h(13): warning C4091: 'static ': ignored on left of 'Model::<unnamed-enum-OUTSIDE>' when no variable is declared
+D:\CapstoneProject\GameEngines4\Engine\Math\AI\Arrive.h(31,26): warning C4305: 'initializing': truncation from 'double' to 'float'
+  CollisionHandler.cpp
+D:\CapstoneProject\GameEngines4\Engine\Rendering\3D\Model.h(13): warning C4091: 'static ': ignored on left of 'Model::<unnamed-enum-OUTSIDE>' when no variable is declared
+D:\CapstoneProject\GameEngines4\Engine\Math\AI\Arrive.h(31,26): warning C4305: 'initializing': truncation from 'double' to 'float'
+  Physics.cpp
+D:\CapstoneProject\GameEngines4\Engine\Rendering\3D\Model.h(13): warning C4091: 'static ': ignored on left of 'Model::<unnamed-enum-OUTSIDE>' when no variable is declared
+  GuiImageComponent.cpp
+D:\CapstoneProject\GameEngines4\Engine\Rendering\3D\Model.h(13): warning C4091: 'static ': ignored on left of 'Model::<unnamed-enum-OUTSIDE>' when no variable is declared
+D:\CapstoneProject\GameEngines4\Engine\Math\AI\Arrive.h(31,26): warning C4305: 'initializing': truncation from 'double' to 'float'
+  GuiObject.cpp
+D:\CapstoneProject\GameEngines4\Engine\Rendering\3D\Model.h(13): warning C4091: 'static ': ignored on left of 'Model::<unnamed-enum-OUTSIDE>' when no variable is declared
+  GameObject.cpp
+D:\CapstoneProject\GameEngines4\Engine\Rendering\3D\Model.h(13): warning C4091: 'static ': ignored on left of 'Model::<unnamed-enum-OUTSIDE>' when no variable is declared
+  SceneGraph.cpp
+D:\CapstoneProject\GameEngines4\Engine\Rendering\3D\Model.h(13): warning C4091: 'static ': ignored on left of 'Model::<unnamed-enum-OUTSIDE>' when no variable is declared
+D:\CapstoneProject\GameEngines4\Engine\Math\AI\Arrive.h(31,26): warning C4305: 'initializing': truncation from 'double' to 'float'
+  GameTest.cpp
+D:\CapstoneProject\GameEngines4\Engine\Rendering\3D\Model.h(13): warning C4091: 'static ': ignored on left of 'Model::<unnamed-enum-OUTSIDE>' when no variable is declared
+D:\CapstoneProject\GameEngines4\Engine\Math\AI\Arrive.h(31,26): warning C4305: 'initializing': truncation from 'double' to 'float'
   Generating Code...
+  Compiling...
+  GameScene.cpp
+D:\CapstoneProject\GameEngines4\Engine\Rendering\3D\Model.h(13): warning C4091: 'static ': ignored on left of 'Model::<unnamed-enum-OUTSIDE>' when no variable is declared
+D:\CapstoneProject\GameEngines4\Engine\Math\AI\Arrive.h(31,26): warning C4305: 'initializing': truncation from 'double' to 'float'
+D:\CapstoneProject\GameEngines4\Engine\Rendering\3D\GameObject.h(81,23): warning C4018: '<': signed/unsigned mismatch
+D:\CapstoneProject\GameEngines4\Game\Scene\GameScene.cpp(76): message : see reference to function template instantiation 'T *GameObject::GetComponent<TestClassA>(void)' being compiled
+          with
+          [
+              T=TestClassA
+          ]
+D:\CapstoneProject\GameEngines4\Engine\Rendering\2D\GuiObject.h(53,23): warning C4018: '<': signed/unsigned mismatch
+D:\CapstoneProject\GameEngines4\Game\Scene\GameScene.cpp(91): message : see reference to function template instantiation 'T *GuiObject::GetComponent<GuiImageComponent>(void)' being compiled
+          with
+          [
+              T=GuiImageComponent
+          ]
+  StartScene.cpp
+D:\CapstoneProject\GameEngines4\Engine\Rendering\3D\Model.h(13): warning C4091: 'static ': ignored on left of 'Model::<unnamed-enum-OUTSIDE>' when no variable is declared
+D:\CapstoneProject\GameEngines4\Engine\Math\AI\Arrive.h(31,26): warning C4305: 'initializing': truncation from 'double' to 'float'
+  Main.cpp
+D:\CapstoneProject\GameEngines4\Engine\Rendering\3D\Model.h(13): warning C4091: 'static ': ignored on left of 'Model::<unnamed-enum-OUTSIDE>' when no variable is declared
+D:\CapstoneProject\GameEngines4\Engine\Math\AI\Arrive.h(31,26): warning C4305: 'initializing': truncation from 'double' to 'float'
+  Generating Code...
+D:\CapstoneProject\GameEngines4\Engine\Rendering\2D\GuiObject.h(65): warning C4715: 'GuiObject::GetComponent<GuiImageComponent>': not all control paths return a value
   GameEngines4.vcxproj -> D:\CapstoneProject\Debug\GameEngines4.exe

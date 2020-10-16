@@ -43,7 +43,7 @@ void GameTest::Update(const float deltaTime_)
 void GameTest::Render()
 {
 	currentScene->Render();
-	//currentScene->Draw();
+	currentScene->Draw();
 }
 
 void GameTest::BuildScene()
