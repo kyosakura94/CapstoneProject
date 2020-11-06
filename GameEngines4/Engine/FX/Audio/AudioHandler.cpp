@@ -10,7 +10,7 @@ AudioHandler::AudioHandler()
 }
 AudioHandler::~AudioHandler()
 {
-	OnDestroy();
+
 }
 
 FMOD_VECTOR AudioHandler::convertvec3toFVector(vec3 vector_)
@@ -27,9 +27,9 @@ void AudioHandler::LoadSound(string name_, bool isLoop_, bool is3D_, bool mode_)
 {
 	isLoop = isLoop_;
 	is3D = is3D_;
-	mode = mode_;
+	playmode = mode_;
 
-	if (getSound(name_) == nullptr)
+	if (getSound(name_) != nullptr)
 	{
 		return;
 	}
@@ -38,21 +38,29 @@ void AudioHandler::LoadSound(string name_, bool isLoop_, bool is3D_, bool mode_)
 
 	if (isLoop_ == true)
 	{
-		mode = FMOD_DEFAULT | FMOD_LOOP_NORMAL;
+		mode = mode | FMOD_LOOP_NORMAL;
+	}
+	else
+	{
+		mode = mode | FMOD_LOOP_OFF;
 	}
 
 	if (is3D_ == true)
 	{
-		mode = FMOD_DEFAULT | FMOD_3D;
-	}
-
-	if (mode_ == true)
-	{
-		mode = FMOD_DEFAULT | FMOD_CREATESTREAM | FMOD_CREATECOMPRESSEDSAMPLE;
+		mode = mode | FMOD_3D;
 	}
 	else
 	{
-		mode = FMOD_DEFAULT | FMOD_CREATESAMPLE;
+		mode = mode | FMOD_2D;
+	}
+
+	if (playmode == true)
+	{
+		mode = mode | FMOD_CREATESTREAM;
+	}
+	else
+	{
+		mode = mode | FMOD_CREATECOMPRESSEDSAMPLE;
 	}
 
 	FMOD::Sound *sound = nullptr;
@@ -82,7 +90,7 @@ int AudioHandler::playSound(string name_, vec3 position_, vec3 velocity_, float 
 
 	if (getSound(name_) == nullptr)
 	{
-		LoadSound(name_, isLoop, is3D, mode);
+		LoadSound(name_, isLoop, is3D, playmode);
 
 		if (getSound(name_) == nullptr)
 		{

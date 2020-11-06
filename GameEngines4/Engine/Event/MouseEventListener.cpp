@@ -34,6 +34,31 @@ void MouseEventListener::Update(SDL_Event e_)
 	}
 }
 
+void MouseEventListener::Update(SDL_Event e_, const Uint8* keystate)
+{
+	if (e_.type == SDL_MOUSEBUTTONDOWN)
+	{
+		UpdateMousePosition();
+		NotifyOfMousePressed(e_.button.button);
+	}
+	else if (e_.type == SDL_MOUSEBUTTONUP)
+	{
+		UpdateMousePosition();
+		NotifyOfMouseReleased(e_.button.button);
+	}
+	else if (e_.type == SDL_MOUSEMOTION && keystate[SDL_SCANCODE_LALT])
+	{
+		cout << "move" << endl;
+		UpdateMousePosition();
+		NotifyOfMouseMove();
+	}
+	else if (e_.type == SDL_MOUSEWHEEL)
+	{
+		NotifyOfMouseScroll(e_.wheel.y);
+	}
+
+}
+
 MouseEventListener::~MouseEventListener()
 {
 	engineInstance = nullptr;
@@ -69,6 +94,11 @@ void MouseEventListener::NotifyOfMouseScroll(int y_)
 	{
 		engineInstance->NotifyOfMouseScroll(y_);
 	}
+}
+
+bool MouseEventListener::ClickButton()
+{
+	return false;
 }
 
 vec2 MouseEventListener::GetMousePosition()

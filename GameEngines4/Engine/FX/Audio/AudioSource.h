@@ -4,6 +4,7 @@
 #include <string>
 #include <glm/glm.hpp>
 #include "../../Rendering/3D/Component.h"
+#include "../../Rendering/3D/GameObject.h"
 
 using namespace glm;
 using namespace std;

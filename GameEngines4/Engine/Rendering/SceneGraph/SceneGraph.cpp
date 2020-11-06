@@ -7,6 +7,7 @@ map<string, GuiObject*> SceneGraph::sceneGuiObjects = map < string, GuiObject*>(
 
 
 
+
 SceneGraph::SceneGraph()
 {
 }
@@ -114,6 +115,10 @@ void SceneGraph::Update(const float deltatime_)
 {
 	for (auto go : sceneGameObjects)
 	{
+		if (go.second->GetHit() == true)
+		{
+			cout << glm::to_string(go.second->GetPosition()) << std::endl << endl;
+		}
 		if (go.first == "apple")
 		{
 			//go.second->Update(seek->getSteering(), deltatime_);
@@ -121,7 +126,7 @@ void SceneGraph::Update(const float deltatime_)
 		}
 		else
 		{
-			go.second->Update(deltatime_);
+			//go.second->Update(deltatime_);
 			//if (go.first == "DICE")
 			//{
 			//	go.second->Update(deltatime_);
@@ -136,6 +141,54 @@ void SceneGraph::Update(const float deltatime_)
 	}
 }
 
+void SceneGraph::UpdateClick(const float deltatime_, Graph<Node> grid, SDL_Event e_)
+{
+	AStarPathFinding* path = new AStarPathFinding(grid);
+
+	for (auto go : sceneGameObjects)
+	{
+		if (go.second->GetHit() == true)
+		{
+			cout << glm::to_string(go.second->GetPosition()) << std::endl << endl;
+			movingPath = path->FindPath(character, go.second);
+
+			//movingPath = path->FindPath(0, 0, 4, 4);
+			go.second->SetHit(false, 0);
+			break;
+		}
+
+
+	}
+
+
+	if (movingPath.size() != 0)
+	{
+		vec3 targetPosition = movingPath[currentPathIndex];
+
+		vec3 diff = targetPosition - character->GetPosition(); 
+		float distance = sqrtf(dot(diff, diff));
+
+		if (distance > 1.0f)
+		{
+			vec3 moveDir = normalize(diff);
+			vec3 pos = character->GetPosition() + moveDir * 2.0f * deltatime_;
+			character->SetPosition(pos);
+		}
+		else
+		{
+			currentPathIndex++;
+			if (currentPathIndex >= movingPath.size())
+			{
+				StopMoving();
+			}
+		}
+	}
+}
+
+void SceneGraph::StopMoving()
+{
+	movingPath.clear();
+}
 void SceneGraph::Render(Camera * camera_)
 {
 	for (auto entry : sceneModels)
@@ -153,6 +206,7 @@ void SceneGraph::Draw(Camera* camera_)
 	glDisable(GL_DEPTH_TEST);
 	glEnable(GL_BLEND);
 	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+
 	GLuint guiProgram = ShaderHandler::getInstance()->GetShader("spriteShader");
 	glUseProgram(guiProgram);
 

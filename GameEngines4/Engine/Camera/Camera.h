@@ -7,8 +7,10 @@
 #include "../FX/LightSource.h"
 #include <vector>
 #include "Plane.h"
+#include "../Math/Randomizer.h"
 
 using namespace glm;
+using namespace MATH;
 
 class Camera
 {

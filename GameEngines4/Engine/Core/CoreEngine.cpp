@@ -3,7 +3,7 @@
 std::unique_ptr<CoreEngine> CoreEngine::engineInstance = nullptr;
 
 CoreEngine::CoreEngine() : window(nullptr), isRunning(false), fps(120), 
-							gameInterface(nullptr), currentSceneNum(0), camera(nullptr)
+	renderer (nullptr), gameInterface(nullptr), currentSceneNum(0), camera(nullptr), rendererType(RendererType::OPENGL)
 {
 
 }
@@ -18,32 +18,43 @@ bool CoreEngine::OnCreate(std::string name_, int width_, int height_)
 {
 	Debug::DebugInit();
 	Debug::SetSeverity(MessageType::TYPE_INFO);
-	window = new Window();
-	if (!window->OnCreate(name_, width_, height_))
+
+	switch (rendererType)
 	{
+	case RendererType::OPENGL:
 
-		Debug::Fatal_error("Window failed to innitate", "CoreEngine.cpp", __LINE__);
-		//std::cout << "Window failed to innitate" << std::endl;
-		return isRunning = false;
-	}
-	SDL_WarpMouseInWindow(window->GetWindow(), window->GetWidth() / 2, window->GetHeight() / 2);
-
-	MouseEventListener::RegisterEngineObject(this);
-
-	//ShaderHandler::getInstance()->CreateProgram("colorShader", "Engine/Shaders/ColorVertexShader.glsl", "Engine/Shaders/ColorFragmentShader.glsl");
-	
-	ShaderHandler::getInstance()->CreateProgram("basicShader", "Engine/Shaders/VertexShader.glsl", "Engine/Shaders/FragmentShader.glsl");
-	ShaderHandler::getInstance()->CreateProgram("spriteShader", "Engine/Shaders/SpriteVertShader.glsl", "Engine/Shaders/SpriteFragShader.glsl");
-	
-	if (gameInterface) //Gameinterface is not equal to != nullptr
-	{
-		if (!gameInterface->OnCreate())
+		renderer = new OpenGLRenderer();
+		window = new Window();
+		if (!window->OnCreate(name_, width_, height_, renderer))
 		{
-			//Debug
-			Debug::Fatal_error("Game interface failed to innitate", "CoreEngine.cpp", __LINE__);
+			Debug::Fatal_error("Window failed to innitate", "CoreEngine.cpp", __LINE__);
+			//std::cout << "Window failed to innitate" << std::endl;
 			return isRunning = false;
 		}
+		SDL_WarpMouseInWindow(window->GetWindow(), window->GetWidth() / 2, window->GetHeight() / 2);
+
+		MouseEventListener::RegisterEngineObject(this);
+
+		//ShaderHandler::getInstance()->CreateProgram("colorShader", "Engine/Shaders/ColorVertexShader.glsl", "Engine/Shaders/ColorFragmentShader.glsl");
+
+
+		if (gameInterface) //Gameinterface is not equal to != nullptr
+		{
+			if (!gameInterface->OnCreate())
+			{
+				//Debug
+				Debug::Fatal_error("Game interface failed to innitate", "CoreEngine.cpp", __LINE__);
+				return isRunning = false;
+			}
+		}
+
+		break;
+
+	default:
+		renderer = new OpenGLRenderer();
+		break;
 	}
+
 
 
 	timer.Start();
@@ -87,6 +98,7 @@ CoreEngine * CoreEngine::GetInstance()
 void CoreEngine::SetGameInterface(GameInterface * gameInterface_)
 {
 	gameInterface = gameInterface_;
+	rendererType = RendererType::OPENGL;
 }
 
 void CoreEngine::SetCurrentScene(int sceneNum_)
@@ -121,6 +133,7 @@ void CoreEngine::NotifyOfMousePressed(vec2 mouse_)
 
 void CoreEngine::NotifyOfMouseReleased(vec2 mouse_, int buttonType_)
 {
+
 	CollisionHandler::GetInstance()->MouseUpdate(mouse_, buttonType_);
 }
 
@@ -151,6 +164,7 @@ void CoreEngine::OnDestroy()
 	TextureHandler::getInstance()->OnDestroy();
 	SceneGraph::GetInstance()->OnDestroy();
 	CollisionHandler::GetInstance()->OnDestroy();
+	AudioHandler::getInstance()->OnDestroy();
 
 	delete camera;
 	camera = nullptr;
@@ -177,10 +191,12 @@ void CoreEngine::Render()
 	glClearColor(0.0f, 0.0f, 0.0f, 1);
 	//glClearColor(1.0f, 1.0f, 1.0f, 1);
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+
 	if (gameInterface)
 	{
 		gameInterface->Render();
 	}
+
 	//Game's render
 	SDL_GL_SwapWindow(window->GetWindow());
 }

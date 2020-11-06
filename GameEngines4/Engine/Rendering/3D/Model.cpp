@@ -1,12 +1,13 @@
 #include "Model.h"
 
-Model::Model(const string& objFilepath_, const string& matFilepath_, GLuint shaderProgram_): subMesh(std::vector<Mesh*>()), shaderProgram(0), 
+Model::Model(const string& objFilepath_, const string& matFilepath_, GLuint shaderProgram_, RendererType rendererType_): subMesh(std::vector<OpenGLMesh*>()), shaderProgram(0),
 modelInstances(vector<mat4>()), obj(nullptr)
 {
 	subMesh.reserve(10);
 	modelInstances.reserve(5);
 	modelInstances.reserve(5);
 	shaderProgram = shaderProgram_;
+	rendererType = rendererType_;
 	obj = new LoadOBJModel();
 	obj->LoadModel(objFilepath_, matFilepath_);
 	this->LoadModel();
@@ -50,7 +51,7 @@ void Model::Render(Camera *camera_, string tag)
 	}
 }
 
-void Model::AddMesh(Mesh * mesh_)
+void Model::AddMesh(OpenGLMesh* mesh_)
 {
 	subMesh.push_back(mesh_);
 
@@ -252,10 +253,23 @@ glm::mat4 Model::GetTransform(vec3 position_, float angle_, vec3 rotation_, vec3
 
 void Model::LoadModel()
 {
-	for (int i = 0; i < obj->GetSubMeshes().size(); i++)
+	switch (rendererType)
 	{
-		subMesh.push_back(new Mesh(obj->GetSubMeshes()[i], shaderProgram));
+	case RendererType::OPENGL:
+		for (int i = 0; i < obj->GetSubMeshes().size(); i++)
+		{
+			subMesh.push_back(new OpenGLMesh(obj->GetSubMeshes()[i], shaderProgram));
+		}
+		break;
+
+	default:
+		for (int i = 0; i < obj->GetSubMeshes().size(); i++)
+		{
+			subMesh.push_back(new OpenGLMesh(obj->GetSubMeshes()[i], shaderProgram));
+		}
+		break;
 	}
+
 	box = obj->GetBoundingBox();
 
 	delete obj;

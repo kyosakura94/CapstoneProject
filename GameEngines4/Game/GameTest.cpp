@@ -13,6 +13,10 @@ GameTest::~GameTest()
 
 bool GameTest::OnCreate()
 {
+	ShaderHandler::getInstance()->CreateProgram("basicShader", "Engine/Shaders/VertexShader.glsl", "Engine/Shaders/FragmentShader.glsl");
+	ShaderHandler::getInstance()->CreateProgram("spriteShader", "Engine/Shaders/SpriteVertShader.glsl", "Engine/Shaders/SpriteFragShader.glsl");
+	ShaderHandler::getInstance()->CreateProgram("particleShader", "Engine/Shaders/ParticleVertexShader.glsl", "Engine/Shaders/ParticleFragmentShader.glsl");
+
 	if (CoreEngine::GetInstance()->GetCurrentScene() == 0 )
 	{
 		currentScene = new StartScene();

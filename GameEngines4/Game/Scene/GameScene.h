@@ -8,6 +8,10 @@
 #include "../../Engine/Math/Quaternion.h"
 #include "../../Engine/FX/Audio/AudioHandler.h"
 #include "../../Engine/FX/Audio/AudioSource.h"
+#include "../../Engine/Math/AI/Graph.h"
+#include "../../Engine/Math/AI/node.h"
+#include "../../Engine/Math/AI/AStarPathFinding.h"
+#include "../../Engine/FX/Partice/ParticleEmitter.h"
 
 class GameScene : public Scene
 {
@@ -20,6 +24,10 @@ public:
 	virtual void Render();
 	virtual void Draw();
 private:
+	SDL_Event e_;
+	Graph<Node>  grid;
 	AudioSource* backroundSound;
+	ParticleEmitter* emmitter;
+
 };
 #endif

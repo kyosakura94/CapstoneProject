@@ -20,8 +20,8 @@ class Client
 public:
 	Client();
 	~Client();
+	void sendMsg();
 	bool OnCreate();
-
 private:
 
 };

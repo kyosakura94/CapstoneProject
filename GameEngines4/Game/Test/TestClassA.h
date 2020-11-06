@@ -3,6 +3,8 @@
 
 #include "../../Engine/Rendering/3D/Component.h"
 #include "../../Engine/Math/AI/SteeringOutput.h"
+#include "../../Engine/Rendering/3D/GameObject.h"
+
 #include <iostream>
 
 class TestClassA :  public Component

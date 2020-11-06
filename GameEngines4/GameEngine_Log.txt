@@ -1,4 +1,3 @@
 [INFO]:Create Start Scene in: StartScene.cpp occur line: 15
-[INFO]:Everything was created fine in: CoreEngine.cpp occur line: 50
-[INFO]:Creating Game Scene in: GameScene.cpp occur line: 15
-[ERROR]:Try to add gameObject with tag: 'DICE' that already exits in: SceneGraph occur line: 61
+[INFO]:Everything was created fine in: CoreEngine.cpp occur line: 61
+[INFO]:Creating Game Scene in: GameScene.cpp occur line: 20

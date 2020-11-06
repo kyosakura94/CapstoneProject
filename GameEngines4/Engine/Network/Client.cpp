@@ -9,6 +9,11 @@ Client::~Client()
 {
 }
 
+void Client::sendMsg()
+{
+
+}
+
 bool Client::OnCreate()
 {
 	WSADATA wsaData;

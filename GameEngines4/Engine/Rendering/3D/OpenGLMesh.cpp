@@ -1,6 +1,6 @@
-#include "Mesh.h"
+#include "OpenGLMesh.h"
 
-Mesh::Mesh(SubMesh subMesh_, GLuint shaderProgram_):
+OpenGLMesh::OpenGLMesh(SubMesh subMesh_, GLuint shaderProgram_):
 VAO(0), VBO(0), 
 modelLoc(0),viewLoc(0), projLoc(0), 
 diffuseMap(0), shininess(0), transparency(0), ambient(0), diffuse(0), specular(0),
@@ -12,14 +12,14 @@ viewPosition(0), lightPosition(0), ambientValue(0), diffuseValue(0), lightColour
 	GenerateBuffers();
 }
 
-Mesh::~Mesh()
+OpenGLMesh::~OpenGLMesh()
 {
 	subMesh.vertexList.clear();
 	glDeleteVertexArrays(1, &VAO);
 	glDeleteBuffers(1, &VBO);
 }
 
-void Mesh::Render(Camera* camera_, std::vector<glm::mat4> instances)
+void OpenGLMesh::Render(Camera* camera_, std::vector<glm::mat4> instances)
 {
 	glUniform1i(diffuseMap, 0);
 
@@ -70,12 +70,12 @@ void Mesh::Render(Camera* camera_, std::vector<glm::mat4> instances)
 	glBindTexture(GL_TEXTURE_2D, 0);
 }
 
-SubMesh Mesh::getSubmesh()
+SubMesh OpenGLMesh::getSubmesh()
 {
 	return subMesh;
 }
 
-void Mesh::GenerateBuffers()
+void OpenGLMesh::GenerateBuffers()
 {
 	glGenVertexArrays(1, &VAO);
 	glGenBuffers(1, &VBO);
@@ -84,6 +84,7 @@ void Mesh::GenerateBuffers()
 	glBindBuffer(GL_ARRAY_BUFFER, VBO);
 
 	glBufferData(GL_ARRAY_BUFFER, subMesh.vertexList.size() * sizeof(Vertex), &subMesh.vertexList[0], GL_STATIC_DRAW);
+
 	//POSITION
 	glEnableVertexAttribArray(0);
 	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, sizeof(Vertex), (GLvoid*)0);
@@ -107,6 +108,7 @@ void Mesh::GenerateBuffers()
 	modelLoc = glGetUniformLocation(shaderProgram, "model");
 	viewLoc = glGetUniformLocation(shaderProgram, "view");
 	projLoc = glGetUniformLocation(shaderProgram, "proj");
+
 	//textureLoc = glGetUniformLocation(shaderProgram, "inputTexture");
 
 	diffuseMap = glGetUniformLocation(shaderProgram, "material.diffuseMap");
@@ -123,9 +125,4 @@ void Mesh::GenerateBuffers()
 	lightColour = glGetUniformLocation(shaderProgram, "light.lightColor");
 	ambientValue = glGetUniformLocation(shaderProgram, "light.ambient");
 	diffuseValue = glGetUniformLocation(shaderProgram, "light.diffusevalue");
-
-
-
-
-
 }

@@ -18,5 +18,5 @@ A_Star_Node_Priority::A_Star_Node_Priority( Node *node_, float priority_ )
 
 void A_Star_Node_Priority::print()
 {
-    printf( "Node: %i, priority: %.2f \n", node->label, priority );
+    //printf( "Node: %i, priority: %.2f \n", node->label, priority );
 }

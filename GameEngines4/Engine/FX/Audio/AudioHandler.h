@@ -49,7 +49,7 @@ private:
 	int  playSound(string name_, vec3 position_, vec3 velocity_ = vec3(0), float volume = 1.0f);
 	void UpdateVelocityAndPossition(int channelID_, vec3 position_, vec3 vel_ = vec3(0));
 	bool isPlaying(int channelID_);
-	bool isLoop, is3D, mode;
+	bool isLoop, is3D, playmode;
 };
 
 

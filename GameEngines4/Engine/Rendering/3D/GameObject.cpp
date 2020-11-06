@@ -248,8 +248,16 @@ void GameObject::SetTag(string tag_)
 void GameObject::SetHit(bool hit_, int buttonType_)
 {
 	hit = hit_;
+
 	if (hit)
 	{
+		if (GetComponent<AudioSource>() != nullptr)
+		{
+			GetComponent<AudioSource>()->OnCreate(this);
+			GetComponent<AudioSource>()->playSound();
+			cout << tag << " play sound" << endl;
+		}
+
 		cout << tag << " was hit" << endl;
 	}
 }

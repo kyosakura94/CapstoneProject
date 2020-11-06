@@ -2,7 +2,7 @@
 #ifndef LOADOBJMODEL_H
 #define LOADOBJMODEL_H
 
-#include "Mesh.h"
+#include "OpenGLMesh.h"
 #include "../../Core/Debug.h"
 #include "../../FX/MaterialLoader.h"
 #include <sstream>

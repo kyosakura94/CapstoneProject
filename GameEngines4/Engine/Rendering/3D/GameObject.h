@@ -6,6 +6,7 @@
 #include "../../Math/AI/SteeringOutput.h"
 #include "../../Math/Quaternion.h"
 #include "../../Math/Physics/Physics.h"
+#include "../../FX/Audio/AudioSource.h"
 
 using namespace glm;
 using namespace std;

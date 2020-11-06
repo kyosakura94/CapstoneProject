@@ -26,7 +26,15 @@ void AudioSource::Update(float deltaTime)
 
 int AudioSource::playSound()
 {
-	channelID = AudioHandler::getInstance()->playSound(name, vec3(0));
+	if (gameObject != nullptr)
+	{
+		channelID = AudioHandler::getInstance()->playSound(name, gameObject->GetPosition());
+	}
+	else
+	{
+		channelID = AudioHandler::getInstance()->playSound(name, vec3(0));
+	}
+
 	return channelID;
 }
 

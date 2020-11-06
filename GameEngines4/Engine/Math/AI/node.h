@@ -1,25 +1,54 @@
-//
-//  node.h
-//  Demo Priority Queue
-//
-//  Created by Gail Harris on 2020-Oct-11.
-//  Copyright © 2020 Gail Harris. All rights reserved.
-//
-
 #ifndef NODE_H
 #define NODE_H
 
-class Node
+#include "Graph.h"
+#include "../../Rendering/3D/GameObject.h"
+
+class Node 
 {
 public:
-    // member variables
-    int label;
-    
-    // constructors
+
+    Graph<Node> * grid;
+    int x;
+    int y;
+
+    int gCost;
+    int hCost;
+    int fCost;
+
+    bool isWalkable;
+    Node * cameFromNode;
+
+    GameObject* obj;
+
+    Node(Graph<Node> * grid_, int x_, int y_)
+    {
+        grid = grid_;
+        x = x_;
+        y = y_;
+        isWalkable = true;
+    }
+
     Node();
-    Node( int i_ );
+
+    ~Node();
+
+    void CalculateFCost() {
+        fCost = gCost + hCost;
+    }
+
+    void SetIsWalkable(bool isWalkable_) {
+        isWalkable = isWalkable_;
+    }
+
+    void setObjRef(GameObject * obj_) {
+        obj = obj_;
+    }
     
-    // useful functions
+    GameObject * getobjRef() 
+    {
+        return obj;
+    }
     void print();
 };
 

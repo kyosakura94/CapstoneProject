@@ -7,13 +7,14 @@
 #include <SDL_opengl.h>
 #include <string> 
 #include <iostream>
+#include "../Rendering/Renderer/Renderer.h"
 
 class Window
 {
 	public:
 		Window();
 		~Window();
-		bool OnCreate(std::string name_, int width_, int height_);
+		bool OnCreate(std::string name_, int width_, int height_, Renderer * renderer_);
 		void OnDestroy();
 		int GetWidth();
 		int GetHeight();

@@ -13,7 +13,9 @@
 #include "../Graphics/TextureHandler.h"
 #include "../Event/EventListener.h"
 #include "../Rendering/SceneGraph/SceneGraph.h"
-
+#include "../FX/Audio/AudioHandler.h"
+#include "../Rendering/Renderer/Renderer.h"
+#include "../Rendering/Renderer/OpenGLRenderer.h"
 
 class CoreEngine
 {
@@ -43,6 +45,9 @@ public:
 	void NotifyOfMouseReleased(vec2 mouse_, int buttonType_);
 	void NotifyOfMouseMove(vec2 mouse_);
 	void NotifyOfMouseScroll(int y_);
+	Renderer* getRenderer() { return renderer; }
+	RendererType getRendererType() { return rendererType; }
+	Window* getWindow() { return window; };
 
 	void Exit();
 private:
@@ -65,6 +70,9 @@ private:
 
 	int currentSceneNum;
 	Camera *camera;
+
+	Renderer* renderer;
+	RendererType rendererType;
 	
 };
 #endif // !1

@@ -5,6 +5,7 @@ SpriteSurface::SpriteSurface(string nametexture_, float scale_, float angle_, ve
 	VAO(0), VBO(0), modelLoc(0), viewLoc(0), projLoc(0), textureLoc(0)
 {
 	shaderProgram = shaderProgram_;
+
 	Vertex2D vertA;
 	vertA.position = vec2(-0.5f, 0.5f);
 	vertA.texCoords = vec2(0.0f, 0.0f);

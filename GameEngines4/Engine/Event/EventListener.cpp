@@ -7,6 +7,7 @@ EventListener::~EventListener()
 
 void EventListener::Update()
 {
+	const Uint8*  keystate = SDL_GetKeyboardState(NULL);
 	SDL_Event sdlEvent;
 	while (SDL_PollEvent(&sdlEvent))
 	{
@@ -20,9 +21,8 @@ void EventListener::Update()
 		case SDL_MOUSEBUTTONUP:
 		case SDL_MOUSEMOTION:
 		case SDL_MOUSEWHEEL:
-			MouseEventListener::Update(sdlEvent);
+			MouseEventListener::Update(sdlEvent, keystate);
 			break;
-
 		default:
 
 			break;

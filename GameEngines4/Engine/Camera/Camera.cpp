@@ -157,6 +157,7 @@ void Camera::ProcessMouseMovement(vec2 offset_)
 		pitch = -89.0f;
 	}
 
+	SetRotation(yaw, pitch);
 	UpdateCameraVectors();
 }
 
@@ -166,6 +167,7 @@ void Camera::ProcessMoouseScroll(int y_)
 	{
 		position += static_cast<float>(y_) * (forward * 2.0f);
 	}
+
 	UpdateCameraVectors();
 }
 

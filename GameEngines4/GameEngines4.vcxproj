@@ -122,6 +122,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Engine\Math\AI\AStarPathFinding.cpp" />
     <ClCompile Include="Engine\FX\Audio\AudioHandler.cpp" />
     <ClCompile Include="Engine\FX\Audio\AudioSource.cpp" />
     <ClCompile Include="Engine\Math\AI\Arrive.cpp" />
@@ -138,10 +139,12 @@
     <ClCompile Include="Engine\Core\CoreEngine.cpp" />
     <ClCompile Include="Engine\Math\Physics\Physics.cpp" />
     <ClCompile Include="Engine\Math\Quaternion.cpp" />
+    <ClCompile Include="Engine\Math\Randomizer.cpp" />
     <ClCompile Include="Engine\Network\Client.cpp" />
     <ClCompile Include="Engine\Network\Server.cpp" />
     <ClCompile Include="Engine\Rendering\3D\GameObject.cpp" />
     <ClCompile Include="Engine\Event\EventListener.cpp" />
+    <ClCompile Include="Engine\Rendering\Renderer\Renderer.cpp" />
     <ClCompile Include="Game\Scene\GameScene.cpp" />
     <ClCompile Include="Game\GameTest.cpp" />
     <ClCompile Include="Engine\FX\LightSource.cpp" />
@@ -153,7 +156,7 @@
     <ClCompile Include="Engine\Core\Window.cpp" />
     <ClCompile Include="Engine\Core\Timer.cpp" />
     <ClCompile Include="Game\Scene\StartScene.cpp" />
-    <ClCompile Include="Engine\Rendering\3D\Mesh.cpp" />
+    <ClCompile Include="Engine\Rendering\3D\OpenGLMesh.cpp" />
     <ClCompile Include="Engine\Rendering\3D\Model.cpp" />
     <ClCompile Include="Engine\Graphics\ShaderHandler.cpp" />
     <ClCompile Include="Engine\Graphics\TextureHandler.cpp" />
@@ -166,8 +169,12 @@
     <ClCompile Include="Engine\Math\AI\Seek.cpp" />
     <ClCompile Include="Engine\Math\AI\SteeringOutput.cpp" />
     <ClCompile Include="Engine\Rendering\2D\SpriteSurface.cpp" />
+    <ClCompile Include="Engine\FX\Partice\Particle.cpp" />
+    <ClCompile Include="Engine\FX\Partice\ParticleEmitter.cpp" />
+    <ClCompile Include="Engine\Rendering\Renderer\OpenGLRenderer.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Engine\Math\AI\AStarPathFinding.h" />
     <ClInclude Include="Engine\FX\Audio\AudioHandler.h" />
     <ClInclude Include="Engine\FX\Audio\AudioSource.h" />
     <ClInclude Include="Engine\Math\AI\Arrive.h" />
@@ -193,17 +200,20 @@
     <ClInclude Include="Engine\Math\Physics\Physics.h" />
     <ClInclude Include="Engine\Math\Physics\Plane.h" />
     <ClInclude Include="Engine\Math\Quaternion.h" />
+    <ClInclude Include="Engine\Math\Randomizer.h" />
     <ClInclude Include="Engine\Math\Ray.h" />
     <ClInclude Include="Engine\Network\Client.h" />
     <ClInclude Include="Engine\Network\Server.h" />
     <ClInclude Include="Engine\Rendering\2D\GuiComponents.h" />
+    <ClInclude Include="Engine\Rendering\3D\BaseMesh.h" />
     <ClInclude Include="Engine\Rendering\3D\Component.h" />
     <ClInclude Include="Engine\Rendering\3D\GameObject.h" />
     <ClInclude Include="Engine\Event\EventListener.h" />
+    <ClInclude Include="Engine\Rendering\Renderer\Renderer.h" />
     <ClInclude Include="Game\Scene\GameScene.h" />
     <ClInclude Include="Game\GameTest.h" />
     <ClInclude Include="Game\Scene\StartScene.h" />
-    <ClInclude Include="Engine\Rendering\3D\Mesh.h" />
+    <ClInclude Include="Engine\Rendering\3D\OpenGLMesh.h" />
     <ClInclude Include="Engine\Rendering\3D\Model.h" />
     <ClInclude Include="Engine\Graphics\ShaderHandler.h" />
     <ClInclude Include="Engine\Graphics\TextureHandler.h" />
@@ -220,11 +230,16 @@
     <ClInclude Include="Engine\Rendering\2D\GuiObject.h" />
     <ClInclude Include="Engine\Rendering\2D\SpriteSurface.h" />
     <ClInclude Include="Engine\Rendering\2D\GuiImageComponent.h" />
+    <ClInclude Include="Engine\FX\Partice\Particle.h" />
+    <ClInclude Include="Engine\FX\Partice\ParticleEmitter.h" />
+    <ClInclude Include="Engine\Rendering\Renderer\OpenGLRenderer.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Engine\Shaders\ColorFragmentShader.glsl" />
     <None Include="Engine\Shaders\ColorVertexShader.glsl" />
     <None Include="Engine\Shaders\FragmentShader.glsl" />
+    <None Include="Engine\Shaders\ParticleFragmentShader.glsl" />
+    <None Include="Engine\Shaders\ParticleVertexShader.glsl" />
     <None Include="Engine\Shaders\SpriteFragShader.glsl" />
     <None Include="Engine\Shaders\SpriteVertShader.glsl" />
     <None Include="Engine\Shaders\VertexShader.glsl" />
