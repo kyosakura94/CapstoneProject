@@ -10,7 +10,7 @@ public:
 
 	virtual bool OnCreate(GameObject * parent) = 0;
 	virtual void Update(float deltaTime) = 0;
-
+	virtual bool delayedUpdate() = 0;
 protected:
 	GameObject* parent;
 };

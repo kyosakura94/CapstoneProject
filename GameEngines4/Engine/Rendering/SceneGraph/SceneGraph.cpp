@@ -119,6 +119,7 @@ void SceneGraph::Update(const float deltatime_)
 		{
 			cout << glm::to_string(go.second->GetPosition()) << std::endl << endl;
 		}
+
 		if (go.first == "apple")
 		{
 			//go.second->Update(seek->getSteering(), deltatime_);
@@ -137,7 +138,8 @@ void SceneGraph::Update(const float deltatime_)
 			//	
 			//}
 		}
-
+	
+		//go.second->Update(deltatime_);
 	}
 }
 
@@ -147,17 +149,18 @@ void SceneGraph::UpdateClick(const float deltatime_, Graph<Node> grid, SDL_Event
 
 	for (auto go : sceneGameObjects)
 	{
-		if (go.second->GetHit() == true)
+		if (go.second->GetDelayUpdate() != true)
 		{
-			cout << glm::to_string(go.second->GetPosition()) << std::endl << endl;
-			movingPath = path->FindPath(character, go.second);
+			if (go.second->GetHit() == true)
+			{
+				cout << glm::to_string(go.second->GetPosition()) << std::endl << endl;
+				movingPath = path->FindPath(character, go.second);
 
-			//movingPath = path->FindPath(0, 0, 4, 4);
-			go.second->SetHit(false, 0);
-			break;
+				//movingPath = path->FindPath(0, 0, 4, 4);
+				go.second->SetHit(false, 0);
+				break;
+			}
 		}
-
-
 	}
 
 
@@ -188,6 +191,17 @@ void SceneGraph::UpdateClick(const float deltatime_, Graph<Node> grid, SDL_Event
 void SceneGraph::StopMoving()
 {
 	movingPath.clear();
+}
+void SceneGraph::DelayedRender(const float deltatime_)
+{
+	for (auto go : sceneGameObjects)
+	{
+		if (go.second->GetDelayUpdate() == true)
+		{
+			go.second->DelayRender(deltatime_);
+		}
+	}
+
 }
 void SceneGraph::Render(Camera * camera_)
 {

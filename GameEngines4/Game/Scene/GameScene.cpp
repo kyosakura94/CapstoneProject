@@ -28,6 +28,8 @@ bool GameScene::OnCreate()
 
 	CollisionHandler::GetInstance()->OnCreate(100.f);
 
+	bool result =  GJKCheck->CollisonCheck();
+
 	grid.OnCreate(6,6,10,vec3(0,0,0));
 
 	//grid->GetGridObject(1, 0);
@@ -111,7 +113,7 @@ bool GameScene::OnCreate()
 		}
 	}		
 	
-	emmitter = new ParticleEmitter(10, "particleShader");
+	//emmitter = new ParticleEmitter(10, "particleShader");
 	//for (size_t i = 0; i < 2 ; i++)
 	//{
 	//	vec3 pos = vec3(2.0f + i + 2.0f , 0.0f, -5.0f - i - 2.0f );
@@ -137,14 +139,18 @@ bool GameScene::OnCreate()
 	apple->GetComponent<TestClassA>();
 	apple->RemoveComponent<TestClassA>();
 
+	apple->AddComponent<ParticleEmitter>(10, "particleShader");
+
 
 	SceneGraph::GetInstance()->AddGameObject(apple, "apple");
 
 	SceneGraph::GetInstance()->setCharacter(apple);
 	SceneGraph::GetInstance()->setupSeek();
 	SceneGraph::GetInstance()->setupArrive();
+
 	SceneGraph::GetInstance()->setupCollisionAvoidance();
 
+	//emmitter->Init(10, "particleShader");
 	
 	GuiObject* gui = new GuiObject(vec2(50, CoreEngine::GetInstance()->GetWindowSize().y - 50));
 
@@ -206,17 +212,14 @@ void GameScene::Update(const float deltaTime_)
 {
 	//std::cout << deltaTime_ << std::endl;
 	//shape->Update(deltaTime_);
-
-	SceneGraph::GetInstance()->UpdateClick(deltaTime_, grid, e_);
-	//SceneGraph::GetInstance()->Update(deltaTime_);
+	deltaTime = deltaTime_;
+	//SceneGraph::GetInstance()->UpdateClick(deltaTime_, grid, e_);
+	SceneGraph::GetInstance()->Update(deltaTime_);
 
 	if (SceneGraph::GetInstance()->getGuiObject("sunGUI")->isInside(MouseEventListener::GetMousePosition()))
 	{
 		std::cout << "inside GUI" << std::endl;
 	}
-
-	emmitter->Update(deltaTime_);
-
 }
 
 void GameScene::Render()
@@ -224,7 +227,9 @@ void GameScene::Render()
 	//glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
 	//shape->Render(CoreEngine::GetInstance()->GetCamera());
 	SceneGraph::GetInstance()->Render(CoreEngine::GetInstance()->GetCamera());
-	emmitter->Render(CoreEngine::GetInstance()->GetCamera());
+	SceneGraph::GetInstance()->DelayedRender(deltaTime);
+
+	//emmitter->Render(CoreEngine::GetInstance()->GetCamera());
 }
 
 void GameScene::Draw()

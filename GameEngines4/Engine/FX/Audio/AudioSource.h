@@ -18,6 +18,7 @@ public:
 	virtual ~AudioSource();
 	virtual bool OnCreate(GameObject* parent);
 	virtual void Update(float deltaTime);
+	virtual bool delayedUpdate();
 	int  playSound();
 	bool isPlaying(int channelID_);
 

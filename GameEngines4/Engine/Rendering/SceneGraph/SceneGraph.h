@@ -45,8 +45,11 @@ public:
 	void setupSeek();
 	void setupArrive();
 	void StopMoving();
+	void DelayedRender(const float deltatime_);
 	//set up all needed information for avoidance
 	void setupCollisionAvoidance();
+
+
 private:
 	Seek* seek;
 	Arrive* arrivetest;
@@ -58,6 +61,7 @@ private:
 
 	//list of targert
 	vector<GameObject*> targetList;
+	vector<GameObject*> delayUpdate;
 
 	SceneGraph();
 	~SceneGraph();

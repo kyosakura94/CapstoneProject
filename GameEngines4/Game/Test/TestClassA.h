@@ -14,7 +14,7 @@ public:
 	virtual ~TestClassA();
 	virtual bool OnCreate(GameObject* parent);
 	virtual void Update(float deltaTime_);
-
+	virtual bool delayedUpdate();
 private:
 	GameObject * gameObject;
 	SteeringOutput steering;

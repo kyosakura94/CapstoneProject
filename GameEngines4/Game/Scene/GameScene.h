@@ -12,6 +12,7 @@
 #include "../../Engine/Math/AI/node.h"
 #include "../../Engine/Math/AI/AStarPathFinding.h"
 #include "../../Engine/FX/Partice/ParticleEmitter.h"
+#include "../../Engine/Math/Physics/GJKCollision.h"
 
 class GameScene : public Scene
 {
@@ -28,6 +29,8 @@ private:
 	Graph<Node>  grid;
 	AudioSource* backroundSound;
 	ParticleEmitter* emmitter;
-
+	float deltaTime;
+	GJKCollision* GJKCheck;
+	
 };
 #endif

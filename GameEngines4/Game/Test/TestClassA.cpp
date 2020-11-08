@@ -23,5 +23,10 @@ void TestClassA::Update(float deltaTime_)
 	std::cout << "Update component A"<< std::endl;
 }
 
+bool TestClassA::delayedUpdate()
+{
+	return false;
+}
+
 
 

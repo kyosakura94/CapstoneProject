@@ -152,6 +152,7 @@
     <ClCompile Include="Engine\Math\AI\Kinematic.cpp" />
     <ClCompile Include="Engine\Rendering\2D\GuiObject.cpp" />
     <ClCompile Include="Engine\Rendering\2D\GuiImageComponent.cpp" />
+    <ClCompile Include="Engine\Math\Physics\GJKCollision.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="Engine\Core\Window.cpp" />
     <ClCompile Include="Engine\Core\Timer.cpp" />
@@ -233,6 +234,7 @@
     <ClInclude Include="Engine\FX\Partice\Particle.h" />
     <ClInclude Include="Engine\FX\Partice\ParticleEmitter.h" />
     <ClInclude Include="Engine\Rendering\Renderer\OpenGLRenderer.h" />
+    <ClInclude Include="Engine\Math\Physics\GJKCollision.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Engine\Shaders\ColorFragmentShader.glsl" />

@@ -24,6 +24,11 @@ void AudioSource::Update(float deltaTime)
 {
 }
 
+bool AudioSource::delayedUpdate()
+{
+	return false;
+}
+
 int AudioSource::playSound()
 {
 	if (gameObject != nullptr)

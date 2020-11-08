@@ -24,6 +24,7 @@ public:
 	glm::vec3 GetScale() const;
 	glm::vec3 GetVelocity();
 	bool GetHit() const;
+	bool GetDelayUpdate();
 	string GetTag() const;
 	float GetAngle() const;
 	vec3 GetAccel();
@@ -40,10 +41,11 @@ public:
 	void Seek(vec3 destination_);
 	void SetTag(string tag_);
 	void SetHit(bool hit_, int buttonType_);
+	void SetDelay(bool delay_);
 	void SetAccel(vec3 accel_);
 	void SetAngVel(vec3 angVel_);
 	void SetQuaternion(Quaternion q_);
-
+	void DelayRender(const float deltaTime_);
 	BoundingBox GetBoundingBox() const;
 
 	template<typename T, typename ... Args>
@@ -55,7 +57,17 @@ public:
 		{
 			if (!GetComponent<T>())
 			{
-				componentContainer.push_back(b2);
+				
+				if (b2->delayedUpdate() == true)
+				{
+					delayedUpdate = true;
+					delayComponent.push_back(b2);
+				}
+				else
+				{
+					componentContainer.push_back(b2);
+				}
+
 				b2->OnCreate(this);
 			}
 			else
@@ -127,7 +139,12 @@ private:
 
 
 	std::vector<Component*> componentContainer;
+	std::vector<Component*> delayComponent;
 	bool hit;
+
+	//only for particle emmtter objects
+	bool delayedUpdate;
+
 	//static_cast<float>
 };
 

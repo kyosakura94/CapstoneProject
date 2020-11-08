@@ -41,7 +41,8 @@ void GameObject::Render(Camera *camera_)
 void GameObject::Update(const float deltaTime_)
 {
 	//MoveTest(deltaTime_);
-	SetAngle(angle + 0.008f);
+	//SetAngle(angle + 0.008f);
+
 	for (size_t i = 0; i < componentContainer.size(); i++)
 	{
 		componentContainer[i]->Update(deltaTime_);
@@ -52,6 +53,7 @@ void GameObject::Update(SteeringOutput steering, const float deltaTime_)
 {
 	SetAngle(angle - 0.008f);
 	Move(steering, deltaTime_);
+
 	for (size_t i = 0; i < componentContainer.size(); i++)
 	{
 		componentContainer[i]->Update(deltaTime_);
@@ -80,6 +82,11 @@ glm::vec3 GameObject::GetVelocity()
 bool GameObject::GetHit() const
 {
 	return hit;
+}
+
+bool GameObject::GetDelayUpdate()
+{
+	return delayedUpdate;
 }
 
 string GameObject::GetTag() const
@@ -262,6 +269,11 @@ void GameObject::SetHit(bool hit_, int buttonType_)
 	}
 }
 
+void GameObject::SetDelay(bool delay_)
+{
+	delayedUpdate = delay_;
+}
+
 void GameObject::SetAccel(vec3 accel_)
 {
 	accel = accel_;
@@ -277,72 +289,15 @@ void GameObject::SetQuaternion(Quaternion q_)
 	q = q_;
 }
 
-
+void GameObject::DelayRender(const float deltaTime_)
+{
+	for (auto entry : delayComponent)
+	{
+		entry->Update(deltaTime_);
+	}
+}
 
 BoundingBox GameObject::GetBoundingBox() const
 {
 	return box;
 }
-
-//template<typename T>
-//void GameObject::AddComponent()
-//{
-//	T* b2;
-//
-//	if (Component* d = dynamic_cast<Component*>(b2))
-//	{
-//		if (GetComponent())
-//		{
-//			componentContainer.push_back(d);
-//			d->OnCreate(this);
-//		}
-//		else
-//		{
-//			cout << " Have the same component" << endl;
-//			delete b2;
-//			b2 = nullptr;
-//			return;
-//		}
-//	}
-//	else
-//	{
-//		cout << " Not child of object" << endl;
-//		delete b2;
-//		b2 = nullptr;
-//	}
-//}
-
-//template<typename T>
-//T* GameObject::GetComponent()
-//{
-//	if (componentContainer.size() != 0)
-//	{
-//		for (auto i = 0; i < componentContainer.size(); i++)
-//		{
-//			if (T* d = dynamic_cast<T*>(componentContainer[i]))
-//			{
-//				return d;
-//			}
-//			else
-//			{
-//				return nullptr;
-//			}
-//		}
-//	}
-//}
-
-//template<typename T>
-//void GameObject::RemoveComponent()
-//{
-//	for (size_t i = 0; i < componentContainer.size(); i++)
-//	{
-//		if (T* d = dynamic_cast<T*>(componentContainer[i]))
-//		{
-//			delete componentContainer[i];
-//			componentContainer[i] = nullptr;
-//
-//			componentContainer.begin();
-//			componentContainer.pop_back();
-//		}
-//	}
-//}
