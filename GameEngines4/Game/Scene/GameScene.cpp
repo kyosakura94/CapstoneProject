@@ -213,8 +213,8 @@ void GameScene::Update(const float deltaTime_)
 	//std::cout << deltaTime_ << std::endl;
 	//shape->Update(deltaTime_);
 	deltaTime = deltaTime_;
-	//SceneGraph::GetInstance()->UpdateClick(deltaTime_, grid, e_);
-	SceneGraph::GetInstance()->Update(deltaTime_);
+	SceneGraph::GetInstance()->UpdateClick(deltaTime_, grid, e_);
+	//SceneGraph::GetInstance()->Update(deltaTime_);
 
 	if (SceneGraph::GetInstance()->getGuiObject("sunGUI")->isInside(MouseEventListener::GetMousePosition()))
 	{
@@ -230,6 +230,7 @@ void GameScene::Render()
 	SceneGraph::GetInstance()->DelayedRender(deltaTime);
 
 	//emmitter->Render(CoreEngine::GetInstance()->GetCamera());
+	Draw();
 }
 
 void GameScene::Draw()

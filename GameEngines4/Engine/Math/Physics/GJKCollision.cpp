@@ -24,7 +24,7 @@ bool GJKCollision::CollisonCheck()
 	vec3 c1 = (A + B + C + D) / 4.0f;
 	vec3 c2 = (E + F + G + H) / 4.0f;
 
-	vec3 d1 = vec3(round(c2 - c1).x, round(c2 - c1).y, round(c2 - c1).z);
+	vec3 d1 = normalize(c2 - c1);
 
 	vec3 d2 = vec3(-(d1.x), -(d1.y), -(d1.z));
 

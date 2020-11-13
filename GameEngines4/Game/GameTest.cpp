@@ -46,8 +46,15 @@ void GameTest::Update(const float deltaTime_)
 
 void GameTest::Render()
 {
+	glClearColor(0.0f, 0.0f, 0.0f, 1);
+	//glClearColor(1.0f, 1.0f, 1.0f, 1);
+	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+
 	currentScene->Render();
-	currentScene->Draw();
+	//currentScene->Draw();
+
+	//Game's render
+	SDL_GL_SwapWindow(CoreEngine::GetInstance()->getWindow()->GetWindow());
 }
 
 void GameTest::BuildScene()

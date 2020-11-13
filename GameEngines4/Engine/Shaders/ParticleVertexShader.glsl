@@ -13,7 +13,7 @@ uniform mat4 model;
 uniform mat4 view;
 uniform mat4 proj;
 uniform float size;
-//uniform vec3 color;
+
 
 void main()
 {

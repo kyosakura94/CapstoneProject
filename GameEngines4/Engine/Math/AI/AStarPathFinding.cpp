@@ -39,7 +39,12 @@ std::vector<vec3> AStarPathFinding::FindPath(vec3 startWorldPosition, vec3 endWo
 
 std::vector<vec3> AStarPathFinding::FindPath(GameObject* first, GameObject* last)
 {
-	Node* startNode = grid.GetGridObject(0,0);
+	Node* startNode = grid.GetGridObject(0, 0);
+
+	//if (startNode == nullptr)
+	//{
+	//	startNode = grid.GetGridObject(0,0);
+	//}
 	//Node * startNode = grid.GetGridObject(first);
 	Node * endNode = grid.GetGridObject(last);
 
@@ -181,6 +186,7 @@ std::vector<Node*> AStarPathFinding::FindPath(Node* startNode_, Node* endNode_)
 		}
 		
 		auto it = std::find(openlist.begin(), openlist.end(), currentNode);
+		//pop out
 		if (it != openlist.end()) { openlist.erase(it); }
 
 

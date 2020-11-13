@@ -7,8 +7,9 @@
 #include <glm/glm.hpp>
 #include "../../Camera/Camera.h"
 #include <glm/gtc/type_ptr.hpp>
+#include <json.hpp>
 
-
+using json = nlohmann::json;
 class Particle
 {
 public:
@@ -21,6 +22,8 @@ public:
 	float getLifetime();
 	void setOriginal(vec3 pos_);
 	void setVelocity(vec3 vel_) { Velocity = vel_; };
+	void setSize(float size_) { size = size_; };
+	void setColor(vec3 color_) { colour = color_; };
 
 private:
 	void GenerateBuffers();

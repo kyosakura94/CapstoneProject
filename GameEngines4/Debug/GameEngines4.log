@@ -1,37 +1,13 @@
-﻿  GJKCollision.cpp
-D:\CapstoneProject\GameEngines4\Engine\Math\Physics\GJKCollision.cpp(53,23): warning C4018: '<=': signed/unsigned mismatch
-D:\CapstoneProject\GameEngines4\Engine\Math\Physics\GJKCollision.cpp(73,23): warning C4018: '<=': signed/unsigned mismatch
-D:\CapstoneProject\GameEngines4\Engine\Math\Physics\GJKCollision.cpp(93,23): warning C4018: '<=': signed/unsigned mismatch
-  GameTest.cpp
+﻿  Main.cpp
 D:\CapstoneProject\GameEngines4\Engine\Math\Randomizer.h(56,20): warning C4244: 'return': conversion from 'double' to 'float', possible loss of data
 D:\CapstoneProject\GameEngines4\Engine\Rendering\3D\Model.h(14): warning C4091: 'static ': ignored on left of 'Model::<unnamed-enum-OUTSIDE>' when no variable is declared
 D:\CapstoneProject\GameEngines4\Engine\Math\AI\Arrive.h(31,26): warning C4305: 'initializing': truncation from 'double' to 'float'
 D:\CapstoneProject\GameEngines4\Engine\Math\AI\AStarPathFinding.h(4,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
-  GameScene.cpp
-D:\CapstoneProject\GameEngines4\Engine\Math\Randomizer.h(56,20): warning C4244: 'return': conversion from 'double' to 'float', possible loss of data
-D:\CapstoneProject\GameEngines4\Engine\Rendering\3D\Model.h(14): warning C4091: 'static ': ignored on left of 'Model::<unnamed-enum-OUTSIDE>' when no variable is declared
-D:\CapstoneProject\GameEngines4\Engine\Math\AI\Arrive.h(31,26): warning C4305: 'initializing': truncation from 'double' to 'float'
-D:\CapstoneProject\GameEngines4\Engine\Math\AI\AStarPathFinding.h(4,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
-D:\CapstoneProject\GameEngines4\Game\Scene\GameScene.cpp(68,23): warning C4018: '<': signed/unsigned mismatch
-D:\CapstoneProject\GameEngines4\Game\Scene\GameScene.cpp(72,24): warning C4018: '<': signed/unsigned mismatch
-D:\CapstoneProject\GameEngines4\Game\Scene\GameScene.cpp(78,10): warning C4018: '<': signed/unsigned mismatch
-D:\CapstoneProject\GameEngines4\Engine\Rendering\3D\GameObject.h(94,23): warning C4018: '<': signed/unsigned mismatch
-D:\CapstoneProject\GameEngines4\Game\Scene\GameScene.cpp(139): message : see reference to function template instantiation 'T *GameObject::GetComponent<TestClassA>(void)' being compiled
-          with
-          [
-              T=TestClassA
-          ]
-D:\CapstoneProject\GameEngines4\Engine\Rendering\2D\GuiObject.h(53,23): warning C4018: '<': signed/unsigned mismatch
-D:\CapstoneProject\GameEngines4\Game\Scene\GameScene.cpp(158): message : see reference to function template instantiation 'T *GuiObject::GetComponent<GuiImageComponent>(void)' being compiled
-          with
-          [
-              T=GuiImageComponent
-          ]
-  Main.cpp
-D:\CapstoneProject\GameEngines4\Engine\Math\Randomizer.h(56,20): warning C4244: 'return': conversion from 'double' to 'float', possible loss of data
-D:\CapstoneProject\GameEngines4\Engine\Rendering\3D\Model.h(14): warning C4091: 'static ': ignored on left of 'Model::<unnamed-enum-OUTSIDE>' when no variable is declared
-D:\CapstoneProject\GameEngines4\Engine\Math\AI\Arrive.h(31,26): warning C4305: 'initializing': truncation from 'double' to 'float'
-D:\CapstoneProject\GameEngines4\Engine\Math\AI\AStarPathFinding.h(4,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
-  Generating Code...
-D:\CapstoneProject\GameEngines4\Engine\Rendering\2D\GuiObject.h(65): warning C4715: 'GuiObject::GetComponent<GuiImageComponent>': not all control paths return a value
+D:\CapstoneProject\GameEngines4\Engine\Network\Client.h(6,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+D:\CapstoneProject\GameEngines4\Engine\Network\Client.h(7,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+D:\CapstoneProject\GameEngines4\Engine\Network\Client.h(235,1): warning C4065: switch statement contains 'default' but no 'case' labels
+D:\CapstoneProject\GameEngines4\Engine\Network\Client.h(298,17): warning C4101: 'packetData': unreferenced local variable
+D:\CapstoneProject\GameEngines4\Engine\Network\Client.h(6,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+D:\CapstoneProject\GameEngines4\Engine\Network\Client.h(7,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+D:\CapstoneProject\GameEngines4\Engine\Network\Server.h(453,17): warning C4101: 'packetData': unreferenced local variable
   GameEngines4.vcxproj -> D:\CapstoneProject\Debug\GameEngines4.exe

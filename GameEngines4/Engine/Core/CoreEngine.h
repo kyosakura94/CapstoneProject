@@ -32,7 +32,7 @@ public:
 
 	static CoreEngine *GetInstance();
 
-	void SetGameInterface(GameInterface * gameInterface_);
+	void SetGameInterface(GameInterface * gameInterface_, RendererType rendererType_ = RendererType::OPENGL);
 
 	void SetCurrentScene(int sceneNum_);
 	int GetCurrentScene();

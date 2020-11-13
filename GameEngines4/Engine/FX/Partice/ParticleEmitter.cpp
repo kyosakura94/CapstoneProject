@@ -45,12 +45,15 @@ void ParticleEmitter::Update(const float timeDelta_)
 				break;
 			}
 			float x = random->rand(0.0f, 1.0f);
-			float y = random->rand(0.0f, 1.0f);
-			float z = random->rand(0.0f, 1.0f);
+			float y = random->rand(0.0f, 1.5f);
+			float z = random->rand(0.0f, 2.5f);
+			float size = random->rand(1.0f, 5.0f);
 
 
-			//particleList[i]->setOriginal(gameObject->GetPosition());
+			particleList[i]->setOriginal(vec3(x, y, z) + gameObject->GetPosition());
 			particleList[i]->setVelocity(gameObject->GetVelocity());
+			particleList[i]->setColor(vec3(y,x,z));
+			particleList[i]->setSize(size);
 
 			particleList[i]->Update(timeDelta_);
 

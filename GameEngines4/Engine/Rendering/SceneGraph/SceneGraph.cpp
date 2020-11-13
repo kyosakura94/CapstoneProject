@@ -190,6 +190,7 @@ void SceneGraph::UpdateClick(const float deltatime_, Graph<Node> grid, SDL_Event
 
 void SceneGraph::StopMoving()
 {
+	//currentPathIndex = 0;
 	movingPath.clear();
 }
 void SceneGraph::DelayedRender(const float deltatime_)

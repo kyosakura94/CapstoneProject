@@ -38,16 +38,6 @@ bool CoreEngine::OnCreate(std::string name_, int width_, int height_)
 		//ShaderHandler::getInstance()->CreateProgram("colorShader", "Engine/Shaders/ColorVertexShader.glsl", "Engine/Shaders/ColorFragmentShader.glsl");
 
 
-		if (gameInterface) //Gameinterface is not equal to != nullptr
-		{
-			if (!gameInterface->OnCreate())
-			{
-				//Debug
-				Debug::Fatal_error("Game interface failed to innitate", "CoreEngine.cpp", __LINE__);
-				return isRunning = false;
-			}
-		}
-
 		break;
 
 	default:
@@ -55,7 +45,15 @@ bool CoreEngine::OnCreate(std::string name_, int width_, int height_)
 		break;
 	}
 
-
+	if (gameInterface) //Gameinterface is not equal to != nullptr
+	{
+		if (!gameInterface->OnCreate())
+		{
+			//Debug
+			Debug::Fatal_error("Game interface failed to innitate", "CoreEngine.cpp", __LINE__);
+			return isRunning = false;
+		}
+	}
 
 	timer.Start();
 	Debug::Info("Everything was created fine", "CoreEngine.cpp", __LINE__);
@@ -95,10 +93,10 @@ CoreEngine * CoreEngine::GetInstance()
 	return engineInstance.get();
 }
 
-void CoreEngine::SetGameInterface(GameInterface * gameInterface_)
+void CoreEngine::SetGameInterface(GameInterface * gameInterface_, RendererType rendererType_)
 {
 	gameInterface = gameInterface_;
-	rendererType = RendererType::OPENGL;
+	rendererType = rendererType_;
 }
 
 void CoreEngine::SetCurrentScene(int sceneNum_)
@@ -188,15 +186,8 @@ void CoreEngine::Update(const float timeDelta_)
 
 void CoreEngine::Render()
 {
-	glClearColor(0.0f, 0.0f, 0.0f, 1);
-	//glClearColor(1.0f, 1.0f, 1.0f, 1);
-	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-
 	if (gameInterface)
 	{
 		gameInterface->Render();
 	}
-
-	//Game's render
-	SDL_GL_SwapWindow(window->GetWindow());
 }
