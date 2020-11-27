@@ -127,5 +127,17 @@
 //
 //	return true;
 //}
+std::unique_ptr<Server> Server::ServerInstance = nullptr;
+Server* Server::getInstance()
+{
+	if (ServerInstance.get() == nullptr)
+	{
+		ServerInstance.reset(new Server());
+	}
 
+	return ServerInstance.get();
+}
 
+Server::Server()
+{
+}

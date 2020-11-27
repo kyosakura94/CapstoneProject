@@ -27,6 +27,8 @@ public:
 	std::vector<Node*> GetNeighbourList(Node* currentNode);
 	std::vector<Node*> CalculatePath(Node* endNode);
 	Node* GetNode(int x, int y);
+	void Reset();
+
 private:
 	int MOVE_STRAIGHT_COST = 10;
 	int MOVE_DIAGONAL_COST = 14;
@@ -35,8 +37,9 @@ private:
 	
 	std::vector<Node *> openlist;
 	std::vector<Node *> closedList;
-	std::vector<Node*> finalpath;
+	std::vector<Node *> finalpath;
 
+	GameObject* lastnote;
 
 };
 #endif // !1

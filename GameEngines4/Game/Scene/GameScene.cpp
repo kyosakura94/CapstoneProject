@@ -28,7 +28,7 @@ bool GameScene::OnCreate()
 
 	CollisionHandler::GetInstance()->OnCreate(100.f);
 
-	bool result =  GJKCheck->CollisonCheck();
+	
 
 	grid.OnCreate(6,6,10,vec3(0,0,0));
 
@@ -55,12 +55,19 @@ bool GameScene::OnCreate()
 		CoreEngine::GetInstance()->getRendererType());
 
 
-
 	SceneGraph::GetInstance()->AddModel(model1);
 	SceneGraph::GetInstance()->AddModel(model3);
 
 	GameObject* test = new GameObject(model1, vec3(2.0f, 0.0f, -5.0f));
+
 	SceneGraph::GetInstance()->AddGameObject(test, "DICE");
+	
+	
+	for (auto m : test->getModel()->getvertercies(test->getModelIntances()))
+	{
+		cout << "Vertecies" << to_string(m) << endl;
+	}
+
 	SceneGraph::GetInstance()->setTarget(test);
 
 	test->AddComponent<AudioSource>("enemy_fire.wav", false);
@@ -97,19 +104,6 @@ bool GameScene::OnCreate()
 				grid.setObj(x, y, test);
 				grid.setWalkable(x, y, true);
 			}
-
-			//else if (y < (grid.GetHeight() - 1) && x == 2)
-			//{
-			//	//GameObject* test = new GameObject(model3, pos);
-			//	//string tag = "DICE";
-			//	//tag.append(std::to_string(x));
-			//	//tag.append(std::to_string(y));
-			//	//SceneGraph::GetInstance()->AddGameObject(test, tag);
-
-			//	//grid.setObj(x, y, test);
-			//	//grid.setWalkable(x, y, false);
-			//}
-
 		}
 	}		
 	
@@ -131,7 +125,7 @@ bool GameScene::OnCreate()
 
 	SceneGraph::GetInstance()->AddModel(model2);
 
-	GameObject* apple = new GameObject(model2, vec3(-1.0f, 0.0f, 0.0f));
+	GameObject* apple = new GameObject(model2, vec3(1.0f, 0.0f, 2.0f));
 
 	apple->SetScale(glm::vec3(0.2f));
 
@@ -141,7 +135,6 @@ bool GameScene::OnCreate()
 
 	apple->AddComponent<ParticleEmitter>(10, "particleShader");
 
-
 	SceneGraph::GetInstance()->AddGameObject(apple, "apple");
 
 	SceneGraph::GetInstance()->setCharacter(apple);
@@ -149,6 +142,8 @@ bool GameScene::OnCreate()
 	SceneGraph::GetInstance()->setupArrive();
 
 	SceneGraph::GetInstance()->setupCollisionAvoidance();
+
+	bool result = GJKCheck->CollisonCheck(apple, test);
 
 	//emmitter->Init(10, "particleShader");
 	
@@ -205,6 +200,7 @@ bool GameScene::OnCreate()
 
 	}
 
+	SceneGraph::GetInstance()->setGrid(grid);
 	return true;
 }
 
@@ -212,9 +208,23 @@ void GameScene::Update(const float deltaTime_)
 {
 	//std::cout << deltaTime_ << std::endl;
 	//shape->Update(deltaTime_);
+	//SceneGraph::GetInstance()->Update(deltaTime_);
+
 	deltaTime = deltaTime_;
 	SceneGraph::GetInstance()->UpdateClick(deltaTime_, grid, e_);
-	//SceneGraph::GetInstance()->Update(deltaTime_);
+
+
+	SceneGraph::GetInstance()->getGameObject("DICE");
+	bool result = GJKCheck->CollisonCheck(SceneGraph::GetInstance()->getGameObject("DICE"), SceneGraph::GetInstance()->getGameObject("apple"));
+
+	if (result == true)
+	{
+		std::cout << "Collided" << std::endl;
+	}
+	else
+	{
+		std::cout << "Not Collided" << std::endl;
+	}
 
 	if (SceneGraph::GetInstance()->getGuiObject("sunGUI")->isInside(MouseEventListener::GetMousePosition()))
 	{
@@ -236,4 +246,13 @@ void GameScene::Render()
 void GameScene::Draw()
 {
 	SceneGraph::GetInstance()->Draw(CoreEngine::GetInstance()->GetCamera());
+}
+
+void GameScene::CreatePlayer(vec3 pos, string modelName, string tag)
+{
+}
+
+void GameScene::CreatePlayer(string json_)
+{
+
 }

@@ -41,7 +41,9 @@ void GameTest::Update(const float deltaTime_)
 	{
 		BuildScene();
 	}
+
 	currentScene->Update(deltaTime_);
+
 }
 
 void GameTest::Render()
@@ -66,7 +68,10 @@ void GameTest::BuildScene()
 	{
 	case 1:
 		currentScene = new GameScene();
+
 		break;
+	case 2:
+		currentScene = new NetworkScene();
 	default:
 		//currentScene = new StartScene();
 		break;
@@ -80,4 +85,40 @@ void GameTest::BuildScene()
 	}
 
 	currentSceneNum = CoreEngine::GetInstance()->GetCurrentScene();
+
+	//this will send a packet to a server said that I want to create a player -> could server do it for me?
+	//if (Client::getInstance()->IsConnected())
+	//{
+	//	//Send packet to Server
+	//	Client::getInstance()->SendPackets();
+
+	//	//Server get data and echo back to client
+	//	
+	//	Server::getInstance()->ReceivePackets(Timer::Timer().GetDeltaTime());
+	//	
+	//}
+
+	//Packet* packet = Client::getInstance()->ReceivePackets();
+
+	//const TestPacket& data = *(TestPacket*)packet;
+
+	//currentScene->CreatePlayer(data.position, (char*)data.modelName, (char*)data.tagName);
+
+	//if (Client::getInstance()->IsConnected())
+	//{
+	//	Packet* packet = Client::getInstance()->ReceiveAPacket(Timer::Timer().GetDeltaTime());
+
+	//	if (packet != nullptr)
+	//	{
+	//		switch (packet->GetType())
+	//		{
+	//		case PACKET_JSON:
+	//			const JsonPacket* jsonpacket;
+	//			jsonpacket = (JsonPacket*)packet;
+	//			currentScene->CreatePlayer((char*)jsonpacket->jsonString);
+	//			break;
+	//		}
+	//	}
+	//}
+
 }

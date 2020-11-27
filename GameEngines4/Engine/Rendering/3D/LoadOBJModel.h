@@ -21,8 +21,9 @@ public:
 	std::vector<int> GetIndices();
 	std::vector<SubMesh> GetSubMeshes();
 	BoundingBox GetBoundingBox();
-
+	std::string getModelName() { return modelName; };
 	void OnDestroy();
+	vector<vec3> getvertercies() { return vertercies; };
 private:
 	vector<vec3> vertercies;
 	vector<vec3> normals;
@@ -33,6 +34,7 @@ private:
 	vector<Vertex> meshVerterices;
 	vector<SubMesh> subMeshes;
 
+	std::string modelName;
 	void PostProcessing();
 	void LoadMaterial(const string& fileName_);
 	void LoadMaterialLibary(const string& matFilePath_);

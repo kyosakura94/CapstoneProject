@@ -5,6 +5,7 @@
 #include "..\Engine\Core\CoreEngine.h"
 #include "Scene/StartScene.h"
 #include "Scene/GameScene.h"
+#include "Scene/NetworkScene.h"
 
 class GameTest : public GameInterface
 {
@@ -14,6 +15,7 @@ public:
 	virtual bool OnCreate();
 	virtual void Update(const float deltaTime_);
 	virtual void Render();
+
 private:
 	Scene* currentScene;
 	int currentSceneNum;

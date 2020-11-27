@@ -23,6 +23,7 @@ public:
 	AudioHandler& operator = (const AudioHandler&) = delete;
 	AudioHandler& operator = (AudioHandler&&) = delete;
 	static AudioHandler* getInstance();
+
 	bool Initialize(vec3 position_, vec3 velocity_, vec3 forwardDirection_, vec3 upDirection_);
 	void OnDestroy();
 	void Update();

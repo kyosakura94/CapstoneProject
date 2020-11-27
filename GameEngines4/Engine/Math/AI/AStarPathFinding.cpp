@@ -39,7 +39,17 @@ std::vector<vec3> AStarPathFinding::FindPath(vec3 startWorldPosition, vec3 endWo
 
 std::vector<vec3> AStarPathFinding::FindPath(GameObject* first, GameObject* last)
 {
-	Node* startNode = grid.GetGridObject(0, 0);
+	Node* startNode;
+	if (lastnote != nullptr)
+	{
+		startNode = grid.GetGridObject(lastnote);
+		lastnote = last;
+	}
+	else
+	{
+		startNode = grid.GetGridObject(0, 0);
+		lastnote = last;
+	}
 
 	//if (startNode == nullptr)
 	//{
@@ -77,6 +87,7 @@ std::vector<vec3> AStarPathFinding::FindPath(GameObject* first, GameObject* last
 
 std::vector<Node*> AStarPathFinding::FindPath(int startX, int startY, int endX, int endY)
 {
+	Reset();
 	Node* startNode = grid.GetGridObject(startX, startY);
 	Node* endNode = grid.GetGridObject(endX, endY);
 
@@ -152,6 +163,8 @@ std::vector<Node*> AStarPathFinding::FindPath(int startX, int startY, int endX, 
 
 std::vector<Node*> AStarPathFinding::FindPath(Node* startNode_, Node* endNode_)
 {
+	Reset();
+
 	Node* startNode = startNode_;
 	Node* endNode = endNode_;
 
@@ -303,6 +316,13 @@ std::vector<Node*> AStarPathFinding::CalculatePath(Node* endNode)
 Node* AStarPathFinding::GetNode(int x, int y)
 {
 	return grid.GetGridObject(x, y);
+}
+
+void AStarPathFinding::Reset()
+{
+	openlist.clear();
+	finalpath.clear();
+	closedList.clear();
 }
 
 

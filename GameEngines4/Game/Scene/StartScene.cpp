@@ -29,3 +29,11 @@ void StartScene::Render()
 void StartScene::Draw()
 {
 }
+
+void StartScene::CreatePlayer(vec3 pos, string modelName, string tag)
+{
+}
+
+void StartScene::CreatePlayer(string json_)
+{
+}

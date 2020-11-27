@@ -2,8 +2,8 @@
 
 std::unique_ptr<CoreEngine> CoreEngine::engineInstance = nullptr;
 
-CoreEngine::CoreEngine() : window(nullptr), isRunning(false), fps(120), 
-	renderer (nullptr), gameInterface(nullptr), currentSceneNum(0), camera(nullptr), rendererType(RendererType::OPENGL)
+CoreEngine::CoreEngine() : window(nullptr), isRunning(false), fps(120),
+renderer(nullptr), gameInterface(nullptr), currentSceneNum(0), camera(nullptr), rendererType(RendererType::OPENGL)
 {
 
 }
@@ -37,7 +37,6 @@ bool CoreEngine::OnCreate(std::string name_, int width_, int height_)
 
 		//ShaderHandler::getInstance()->CreateProgram("colorShader", "Engine/Shaders/ColorVertexShader.glsl", "Engine/Shaders/ColorFragmentShader.glsl");
 
-
 		break;
 
 	default:
@@ -60,17 +59,28 @@ bool CoreEngine::OnCreate(std::string name_, int width_, int height_)
 	return isRunning = true;
 }
 
+void test(std::promise<PacketFactory>& m_packetFactory)
+{
+
+}
 void CoreEngine::Run()
 {
+	isRunning = true;
+	printf("\Accept packets\n\n");
+
 	while (isRunning)
 	{
 		timer.UpdateFrameTicks();
-		EventListener::Update();
+		//EventListener::Update();
 
-		Update(timer.GetDeltaTime());
-		Render();
 
-		SDL_Delay(timer.GetSleepTime(fps));
+		Server::getInstance()->ReceivePackets(timer.GetDeltaTime());
+		//Server::getInstance()->SendPackets(timer.GetDeltaTime());
+		Server::getInstance()->CheckForTimeOut(timer.GetDeltaTime());
+
+		//Update(timer.GetDeltaTime());
+		//Render();
+		//SDL_Delay(timer.GetSleepTime(fps));
 	}
 
 	if (!isRunning)
@@ -84,7 +94,7 @@ bool CoreEngine::GetIsRunning() const
 	return isRunning;
 }
 
-CoreEngine * CoreEngine::GetInstance()
+CoreEngine* CoreEngine::GetInstance()
 {
 	if (engineInstance.get() == nullptr)
 	{
@@ -93,7 +103,7 @@ CoreEngine * CoreEngine::GetInstance()
 	return engineInstance.get();
 }
 
-void CoreEngine::SetGameInterface(GameInterface * gameInterface_, RendererType rendererType_)
+void CoreEngine::SetGameInterface(GameInterface* gameInterface_, RendererType rendererType_)
 {
 	gameInterface = gameInterface_;
 	rendererType = rendererType_;
@@ -114,12 +124,12 @@ glm::vec2 CoreEngine::GetWindowSize() const
 	return glm::vec2(window->GetWidth(), window->GetHeight());
 }
 
-void CoreEngine::SetCamera(Camera * camera_)
+void CoreEngine::SetCamera(Camera* camera_)
 {
 	camera = camera_;
 }
 
-Camera * CoreEngine::GetCamera() const
+Camera* CoreEngine::GetCamera() const
 {
 	return camera;
 }

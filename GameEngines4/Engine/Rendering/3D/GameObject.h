@@ -13,9 +13,9 @@ using namespace std;
 class GameObject
 {
 public:
-	GameObject(Model *model_, glm::vec3 position_ = vec3());
+	GameObject(Model* model_, glm::vec3 position_ = vec3());
 	~GameObject();
-	void Render(Camera *camera_);
+	void Render(Camera* camera_);
 	void Update(const float deltaTime_);
 	void Update(SteeringOutput steering, const float deltaTime_);
 
@@ -30,7 +30,7 @@ public:
 	vec3 GetAccel();
 	vec3 GetAngVel();
 	Quaternion getQuaternion();
-
+	int getModelIntances() { return modelInstance; };
 	void SetPosition(glm::vec3 position_);
 	void SetRotation(glm::vec3 rotation_);
 	void SetScale(glm::vec3 scale_);
@@ -46,8 +46,9 @@ public:
 	void SetAngVel(vec3 angVel_);
 	void SetQuaternion(Quaternion q_);
 	void DelayRender(const float deltaTime_);
-	BoundingBox GetBoundingBox() const;
 
+	BoundingBox GetBoundingBox() const;
+	Model* getModel() { return model; }
 	template<typename T, typename ... Args>
 	void AddComponent(Args&& ... args_)
 	{

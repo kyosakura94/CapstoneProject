@@ -1,13 +1,15 @@
 ﻿  Main.cpp
 D:\CapstoneProject\GameEngines4\Engine\Math\Randomizer.h(56,20): warning C4244: 'return': conversion from 'double' to 'float', possible loss of data
-D:\CapstoneProject\GameEngines4\Engine\Rendering\3D\Model.h(14): warning C4091: 'static ': ignored on left of 'Model::<unnamed-enum-OUTSIDE>' when no variable is declared
+D:\CapstoneProject\GameEngines4\Engine\Rendering\3D\Model.h(15): warning C4091: 'static ': ignored on left of 'Model::<unnamed-enum-OUTSIDE>' when no variable is declared
 D:\CapstoneProject\GameEngines4\Engine\Math\AI\Arrive.h(31,26): warning C4305: 'initializing': truncation from 'double' to 'float'
 D:\CapstoneProject\GameEngines4\Engine\Math\AI\AStarPathFinding.h(4,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
 D:\CapstoneProject\GameEngines4\Engine\Network\Client.h(6,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
-D:\CapstoneProject\GameEngines4\Engine\Network\Client.h(7,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
-D:\CapstoneProject\GameEngines4\Engine\Network\Client.h(235,1): warning C4065: switch statement contains 'default' but no 'case' labels
-D:\CapstoneProject\GameEngines4\Engine\Network\Client.h(298,17): warning C4101: 'packetData': unreferenced local variable
-D:\CapstoneProject\GameEngines4\Engine\Network\Client.h(6,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
-D:\CapstoneProject\GameEngines4\Engine\Network\Client.h(7,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
-D:\CapstoneProject\GameEngines4\Engine\Network\Server.h(453,17): warning C4101: 'packetData': unreferenced local variable
+D:\CapstoneProject\GameEngines4\Engine\Network\Address.h(114,34): warning C4244: 'return': conversion from 'network1::SocketHandle' to 'int', possible loss of data
+D:\CapstoneProject\GameEngines4\Engine\Network\Address.h(129,1): warning C4005: '_CRT_SECURE_NO_WARNINGS': macro redefinition
+D:\CapstoneProject\GameEngines4\Main.cpp : message : see previous definition of '_CRT_SECURE_NO_WARNINGS'
+D:\CapstoneProject\GameEngines4\Engine\Network\Server.h(499,30): warning C4018: '<': signed/unsigned mismatch
+D:\CapstoneProject\GameEngines4\Engine\Network\Server.h(511,30): warning C4018: '<': signed/unsigned mismatch
+D:\CapstoneProject\GameEngines4\Engine\Network\Server.h(523,30): warning C4018: '<': signed/unsigned mismatch
+D:\CapstoneProject\GameEngines4\Main.cpp(12,9): warning C4129: 's': unrecognized character escape sequence
+D:\CapstoneProject\GameEngines4\Main.cpp(33,10): warning C4129: 'A': unrecognized character escape sequence
   GameEngines4.vcxproj -> D:\CapstoneProject\Debug\GameEngines4.exe

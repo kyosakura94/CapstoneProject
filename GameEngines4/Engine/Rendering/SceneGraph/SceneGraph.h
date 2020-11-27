@@ -24,32 +24,35 @@ public:
 	SceneGraph& operator = (const SceneGraph&) = delete;
 	SceneGraph& operator = (SceneGraph&&) = delete;
 
-	static SceneGraph *GetInstance();
-	void AddModel(Model * model_);
-	void AddGameObject(GameObject * go_, string tag_ ="");
-	void AddGuiObject(GuiObject * go_, string tag_ ="");
+	static SceneGraph* GetInstance();
+	void AddModel(Model* model_);
+	void AddModel(Model* model_, string name_);
+	Model* getModel(string  modelName_);
+	void AddGameObject(GameObject* go_, string tag_ = "");
+	void AddGuiObject(GuiObject* go_, string tag_ = "");
 
-	GameObject * getGameObject(string tag_);
-	GuiObject * getGuiObject(string tag_);
+	GameObject* getGameObject(string tag_);
+	GuiObject* getGuiObject(string tag_);
 
 	void Update(const float deltatime_);
 
 	void UpdateClick(const float deltatime_, Graph<Node> grid, SDL_Event e_);
 
-	void Render(Camera * camera_);
-	void Draw(Camera * camera_);
+	void Render(Camera* camera_);
+	void Draw(Camera* camera_);
 	void OnDestroy();
-	void setCharacter(GameObject *character_);
-	void setTarget(GameObject *target_);
-	void setTargetList(GameObject *target_);
+	void setCharacter(GameObject* character_);
+	void setTarget(GameObject* target_);
+	void setTargetList(GameObject* target_);
 	void setupSeek();
 	void setupArrive();
 	void StopMoving();
 	void DelayedRender(const float deltatime_);
 	//set up all needed information for avoidance
 	void setupCollisionAvoidance();
-
-
+	void PlayerMoving(string tagName, vec3 pos_);
+	void RPGPlayerMoving(const float deltatime_);
+	void setGrid(Graph<Node> gird);
 private:
 	Seek* seek;
 	Arrive* arrivetest;
@@ -57,7 +60,7 @@ private:
 	CollisionAvoidance* avoidance;
 
 	GameObject* target;
-	GameObject* character; 
+	GameObject* character;
 
 	//list of targert
 	vector<GameObject*> targetList;
@@ -73,7 +76,7 @@ private:
 	static map<string, GuiObject*> sceneGuiObjects;
 	int currentPathIndex;
 	std::vector<vec3> movingPath;
-
+	AStarPathFinding* path;
 };
 #endif // !SCENEGRAPH_H
 

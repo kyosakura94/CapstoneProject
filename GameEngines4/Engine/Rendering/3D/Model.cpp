@@ -10,8 +10,15 @@ modelInstances(vector<mat4>()), obj(nullptr)
 	rendererType = rendererType_;
 	obj = new LoadOBJModel();
 	obj->LoadModel(objFilepath_, matFilepath_);
-	this->LoadModel();
+	modelName = obj->getModelName();
 
+	for (auto m : obj->getvertercies())
+	{
+		vertercies.push_back(m);
+	}
+
+
+	this->LoadModel();
 }
 
 Model::~Model()
@@ -47,6 +54,7 @@ void Model::Render(Camera *camera_, string tag)
 
 	for (auto m : subMesh)
 	{
+
 		m->Render(camera_, modelInstances);
 	}
 }
@@ -67,7 +75,6 @@ int Model::CreateInstance(vec3 position_, float angle_, vec3 rotation_, vec3 sca
 void Model::UpdateInstance(int index_, vec3 position_, float angle_, vec3 rotation_, vec3 scale_)
 {
 	modelInstances[index_] = GetTransform(position_, angle_, rotation_, scale_);
-
 }
 
 BoundingBox Model::GetBoundingBox()
@@ -238,6 +245,23 @@ int Model::AABBandFrustum(Camera * camera)
 	
 	}
 
+}
+
+LoadOBJModel* Model::getLoadOBJModel()
+{
+	return obj;
+}
+
+vector<vec3> Model::getvertercies(int index_)
+{
+	worldVertecies.clear();
+	for (auto m : vertercies)
+	{
+		vec4 worldPosition = GetTransform(index_) * vec4(m, 1.0f);
+		worldVertecies.push_back(vec3(worldPosition.x, worldPosition.y, worldPosition.z));
+	}
+
+	return worldVertecies;
 }
 
 glm::mat4 Model::GetTransform(vec3 position_, float angle_, vec3 rotation_, vec3 scale_) const

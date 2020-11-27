@@ -31,6 +31,36 @@ bool GJKCollision::CollisonCheck()
 	vec3 shapeOne[] = { A, B, C, D};
 	vec3 shapeTwo[] = { E, F, G, H};
 
+	vec3 PointA;
+	//= largest(shapeOne, d1) - smallest(shapeTwo, d1);
+	vec3 PointB;
+	//= largest(shapeOne, d2) - smallest1(shapeTwo, d2);
+
+	vec3 ab = PointB - PointA;
+	vec3 ao = vec3(0, 0, 0) - PointA;
+
+	vec3 d = cross((cross(ab, ao)), ab);
+
+	vec3 PointC;
+	//= largest(shapeOne, d) - smallest(shapeTwo, d);
+
+	return {};
+	//return check(PointA, PointB, PointC, shapeOne, shapeTwo);
+}
+
+bool GJKCollision::CollisonCheck(GameObject* obj1, GameObject* obj2)
+{
+	vec3 orgin(0, 0, 0);
+	vector<vec3> shapeOne = obj1->getModel()->getvertercies(obj1->getModelIntances());
+	vector<vec3> shapeTwo = obj2->getModel()->getvertercies(obj2->getModelIntances());
+
+	vec3 c1 = Center(shapeOne);
+	vec3 c2 = Center(shapeTwo);
+
+	vec3 d1 = normalize(c2 - c1);
+
+	vec3 d2 = vec3(-(d1.x), -(d1.y), -(d1.z));
+
 	vec3 PointA = largest(shapeOne, d1) - smallest(shapeTwo, d1);
 	vec3 PointB = largest(shapeOne, d2) - smallest1(shapeTwo, d2);
 
@@ -44,13 +74,13 @@ bool GJKCollision::CollisonCheck()
 	return check(PointA, PointB, PointC, shapeOne, shapeTwo);
 }
 
-vec3 GJKCollision::smallest(vec3 aray_[], vec3 direct_)
+vec3 GJKCollision::smallest(vector<vec3> aray_, vec3 direct_)
 {
 	float maxValue = 999;
 
 	vec3 result = aray_[0];
 
-	for (size_t i = 0; i <= aray_->length(); i++)
+	for (size_t i = 0; i < aray_.size(); i++)
 	{
 		vec3 check = aray_[i];
 		float tmp = dot(check, direct_);
@@ -64,33 +94,45 @@ vec3 GJKCollision::smallest(vec3 aray_[], vec3 direct_)
 	return result;
 }
 
-vec3 GJKCollision::smallest1(vec3 aray_[], vec3 direct_)
+vec3 GJKCollision::Center(vector<vec3> aray_)
+{
+	vec3 sum_of_elems;
+	for (auto& n : aray_) 
+	{
+		sum_of_elems += n;
+	}
+	float size = aray_.size();
+
+	return (sum_of_elems / size);
+}
+
+vec3 GJKCollision::smallest1(vector<vec3> array_, vec3 direct_)
 {
 	float maxValue = 999;
 
-	vec3 result = aray_[0];
+	vec3 result = array_[0];
 
-	for (size_t i = 0; i <= aray_->length(); i++)
+	for (size_t i = 0; i < array_.size(); i++)
 	{
-		vec3 check = aray_[i];
+		vec3 check = array_[i];
 		float tmp = dot(check, direct_);
 		if (tmp < maxValue)
 		{
 			maxValue = tmp;
-			result = aray_[i];
+			result = array_[i];
 		}
 	}
 
 	return result;
 }
 
-vec3 GJKCollision::largest(vec3 aray_[], vec3 direct_)
+vec3 GJKCollision::largest(vector<vec3> aray_, vec3 direct_)
 {
 	float minValue = -999;
 
 	vec3 result = aray_[0];
 
-	for (size_t i = 0; i <= aray_->length(); i++)
+	for (size_t i = 0; i < aray_.size(); i++)
 	{
 		vec3 check = aray_[i];
 		float tmp = dot(aray_[i], direct_);
@@ -104,7 +146,7 @@ vec3 GJKCollision::largest(vec3 aray_[], vec3 direct_)
 	return result;
 }
 
-bool GJKCollision::check(vec3 PointA, vec3 PointB, vec3 PointC, vec3 shapeOne[], vec3 shapeTwo[])
+bool GJKCollision::check(vec3 PointA, vec3 PointB, vec3 PointC, vector<vec3> shapeOne, vector<vec3> shapeTwo)
 {
 	vec3 ab = PointB - PointA;
 	vec3 ac = PointC - PointA;

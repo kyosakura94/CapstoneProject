@@ -78,6 +78,7 @@
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
+      <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
     <Link>
       <AdditionalLibraryDirectories>C:\GameDev\OpenGL\lib;C:\GameDev\SDL\lib;C:\GameDev\Audio\lib;C:\GameDev\Libraries\json\single_include\nlohmann;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
@@ -175,6 +176,7 @@
     <ClCompile Include="Engine\FX\Partice\ParticleEmitter.cpp" />
     <ClCompile Include="Engine\Rendering\Renderer\OpenGLRenderer.cpp" />
     <ClCompile Include="Engine\Network\Socket.cpp" />
+    <ClCompile Include="Game\Scene\NetworkScene.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Engine\Network\Address.h" />
@@ -207,7 +209,6 @@
     <ClInclude Include="Engine\Math\Randomizer.h" />
     <ClInclude Include="Engine\Math\Ray.h" />
     <ClInclude Include="Engine\Network\Client.h" />
-    <ClInclude Include="Engine\Network\protocol2.h" />
     <ClInclude Include="Engine\Network\Server.h" />
     <ClInclude Include="Engine\Rendering\2D\GuiComponents.h" />
     <ClInclude Include="Engine\Rendering\3D\BaseMesh.h" />
@@ -241,6 +242,7 @@
     <ClInclude Include="Engine\Math\Physics\GJKCollision.h" />
     <ClInclude Include="Engine\Network\Socket.h" />
     <ClInclude Include="Engine\Network\network.h" />
+    <ClInclude Include="Game\Scene\NetworkScene.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Engine\Shaders\ColorFragmentShader.glsl" />

@@ -16,6 +16,9 @@
 #include "../FX/Audio/AudioHandler.h"
 #include "../Rendering/Renderer/Renderer.h"
 #include "../Rendering/Renderer/OpenGLRenderer.h"
+#include "../Network/Server.h"
+#include <thread>
+#include <future>
 
 class CoreEngine
 {
@@ -48,6 +51,7 @@ public:
 	Renderer* getRenderer() { return renderer; }
 	RendererType getRendererType() { return rendererType; }
 	Window* getWindow() { return window; };
+
 
 	void Exit();
 private:

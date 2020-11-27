@@ -8,7 +8,9 @@ Socket::Socket(uint16_t port, SocketType type)
 
     // create socket
 
-    m_socket = socket((type == SOCKET_TYPE_IPV6) ? AF_INET6 : AF_INET, SOCK_DGRAM, IPPROTO_UDP);
+    //m_socket = socket((type == SOCKET_TYPE_IPV6) ? AF_INET6 : AF_INET, SOCK_DGRAM, IPPROTO_UDP);
+
+    m_socket = socket(AF_INET, SOCK_DGRAM, 0);
 
     if (m_socket <= 0)
     {
@@ -77,6 +79,7 @@ bool Socket::SendPacket(const Address& address, const void* packetData, size_t p
     socket_address.sin_family = AF_INET;
     socket_address.sin_addr.s_addr = address.GetAddress4();
     socket_address.sin_port = htons((unsigned short)address.GetPort());
+
     size_t sent_bytes = sendto(m_socket, (const char*)packetData, (int)packetBytes, 0, (sockaddr*)&socket_address, sizeof(sockaddr_in));
     result = sent_bytes == packetBytes;
 
@@ -89,13 +92,16 @@ int Socket::ReceivePacket(Address& from, void* packetData, int maxPacketSize)
     assert(packetData);
     assert(maxPacketSize > 0);
 
+#if NETWORK2_PLATFORM == NETWORK2_PLATFORM_WINDOWS
     typedef int socklen_t;
+#endif
 
-    const sockaddr_storage sockaddr_from;
+    sockaddr_storage sockaddr_from;
     socklen_t fromLength = sizeof(sockaddr_from);
 
     int result = recvfrom(m_socket, (char*)packetData, maxPacketSize, 0, (sockaddr*)&sockaddr_from, &fromLength);
 
+#if NETWORK2_PLATFORM == NETWORK2_PLATFORM_WINDOWS
     if (result == SOCKET_ERROR)
     {
         int error = WSAGetLastError();
@@ -107,8 +113,19 @@ int Socket::ReceivePacket(Address& from, void* packetData, int maxPacketSize)
 
         return 0;
     }
+#else // #if NETWORK2_PLATFORM == NETWORK2_PLATFORM_WINDOWS
+    if (result <= 0)
+    {
+        if (errno == EAGAIN)
+            return 0;
 
-    //from = Address(sockaddr_from);
+        printf("recvfrom failed: %s\n", strerror(errno));
+
+        return 0;
+    }
+#endif // #if NETWORK2_PLATFORM == NETWORK2_PLATFORM_WINDOWS
+
+    from = Address(sockaddr_from);
 
     assert(result >= 0);
 

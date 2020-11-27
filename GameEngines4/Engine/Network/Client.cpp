@@ -1,3 +1,4 @@
+#include "Client.h"
 //#include "Client.h"
 //
 ////
@@ -142,3 +143,17 @@
 //
 //	return true;
 //}
+std::unique_ptr<Client> Client::ClientInstance = nullptr;
+Client* Client::getInstance()
+{
+	if (ClientInstance.get() == nullptr)
+	{
+		ClientInstance.reset(new Client());
+	}
+
+	return ClientInstance.get();
+}
+
+Client::Client()
+{
+}

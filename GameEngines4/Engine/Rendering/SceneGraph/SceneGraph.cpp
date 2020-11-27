@@ -18,7 +18,7 @@ SceneGraph::~SceneGraph()
 	OnDestroy();
 }
 
-SceneGraph * SceneGraph::GetInstance()
+SceneGraph* SceneGraph::GetInstance()
 {
 	if (sceneGraphInstance.get() == nullptr)
 	{
@@ -28,7 +28,7 @@ SceneGraph * SceneGraph::GetInstance()
 	return sceneGraphInstance.get();
 }
 
-void SceneGraph::AddModel(Model * model_)
+void SceneGraph::AddModel(Model* model_)
 {
 	if (sceneModels.find(model_->getShaderProgram()) == sceneModels.end())
 	{
@@ -43,7 +43,38 @@ void SceneGraph::AddModel(Model * model_)
 	}
 }
 
-void SceneGraph::AddGameObject(GameObject * go_, string tag_)
+void SceneGraph::AddModel(Model* model_, string name_)
+{
+	model_->setModelName(name_);
+
+	if (sceneModels.find(model_->getShaderProgram()) == sceneModels.end())
+	{
+		vector<Model*> tmp = vector<Model*>();
+		tmp.reserve(10);
+		tmp.push_back(model_);
+		sceneModels.insert(pair<GLuint, vector<Model*>>(model_->getShaderProgram(), tmp));
+	}
+	else
+	{
+		sceneModels[model_->getShaderProgram()].push_back(model_);
+	}
+}
+
+Model* SceneGraph::getModel(string modelName_)
+{
+	vector<Model*> tmp = sceneModels[ShaderHandler::getInstance()->GetShader("basicShader")];
+	for (size_t i = 0; i < tmp.size(); i++)
+	{
+		if (tmp[i]->getModelName() == modelName_)
+		{
+			return tmp[i];
+		}
+	}
+
+	return nullptr;
+}
+
+void SceneGraph::AddGameObject(GameObject* go_, string tag_)
 {
 	testTag = tag_;
 	if (tag_ == "")
@@ -52,17 +83,17 @@ void SceneGraph::AddGameObject(GameObject * go_, string tag_)
 		go_->SetTag(newTag);
 		sceneGameObjects[newTag] = go_;
 	}
-	else if(sceneGameObjects.find(tag_) == sceneGameObjects.end())
+	else if (sceneGameObjects.find(tag_) == sceneGameObjects.end())
 	{
 		go_->SetTag(tag_);
 		sceneGameObjects[tag_] = go_;
 	}
-	else 
+	else
 	{
 		Debug::Error("Try to add gameObject with tag: '" + tag_ + "' that already exits", "SceneGraph", __LINE__);
 		string newTag = "GameObject" + to_string(sceneGameObjects.size() + 1);
 		go_->SetTag(newTag);
-		sceneGameObjects[newTag] = go_;		
+		sceneGameObjects[newTag] = go_;
 	}
 
 	CollisionHandler::GetInstance()->AddGameObject(go_);
@@ -122,11 +153,24 @@ void SceneGraph::Update(const float deltatime_)
 
 		if (go.first == "apple")
 		{
+			
 			//go.second->Update(seek->getSteering(), deltatime_);
 			go.second->Update(avoidance->getSteering(), deltatime_);
 		}
 		else
 		{
+
+			//vec3 targetPosition(5, 0, -10);
+
+			//vec3 diff = targetPosition - go.second->GetPosition();
+			//float distance = sqrtf(dot(diff, diff));
+
+			//if (distance > 1.0f)
+			//{
+			//	vec3 moveDir = normalize(diff);
+			//	vec3 pos = go.second->GetPosition() + moveDir * 2.0f * deltatime_;
+			//	go.second->SetPosition(pos);
+			//}
 			//go.second->Update(deltatime_);
 			//if (go.first == "DICE")
 			//{
@@ -138,21 +182,20 @@ void SceneGraph::Update(const float deltatime_)
 			//	
 			//}
 		}
-	
+
 		//go.second->Update(deltatime_);
 	}
 }
 
 void SceneGraph::UpdateClick(const float deltatime_, Graph<Node> grid, SDL_Event e_)
 {
-	AStarPathFinding* path = new AStarPathFinding(grid);
-
 	for (auto go : sceneGameObjects)
 	{
 		if (go.second->GetDelayUpdate() != true)
 		{
 			if (go.second->GetHit() == true)
 			{
+				StopMoving();
 				cout << glm::to_string(go.second->GetPosition()) << std::endl << endl;
 				movingPath = path->FindPath(character, go.second);
 
@@ -168,10 +211,10 @@ void SceneGraph::UpdateClick(const float deltatime_, Graph<Node> grid, SDL_Event
 	{
 		vec3 targetPosition = movingPath[currentPathIndex];
 
-		vec3 diff = targetPosition - character->GetPosition(); 
+		vec3 diff = targetPosition - character->GetPosition();
 		float distance = sqrtf(dot(diff, diff));
 
-		if (distance > 1.0f)
+		if (distance > 0.1f)
 		{
 			vec3 moveDir = normalize(diff);
 			vec3 pos = character->GetPosition() + moveDir * 2.0f * deltatime_;
@@ -190,7 +233,7 @@ void SceneGraph::UpdateClick(const float deltatime_, Graph<Node> grid, SDL_Event
 
 void SceneGraph::StopMoving()
 {
-	//currentPathIndex = 0;
+	currentPathIndex = 0;
 	movingPath.clear();
 }
 void SceneGraph::DelayedRender(const float deltatime_)
@@ -204,7 +247,7 @@ void SceneGraph::DelayedRender(const float deltatime_)
 	}
 
 }
-void SceneGraph::Render(Camera * camera_)
+void SceneGraph::Render(Camera* camera_)
 {
 	for (auto entry : sceneModels)
 	{
@@ -244,8 +287,8 @@ void SceneGraph::OnDestroy()
 			go.second = nullptr;
 		}
 		sceneGameObjects.clear();
-	}	
-	
+	}
+
 	if (sceneGuiObjects.size() > 0)
 	{
 		for (auto go : sceneGuiObjects)
@@ -310,4 +353,49 @@ void SceneGraph::setupCollisionAvoidance()
 	avoidance = new CollisionAvoidance(character, target, targetList);
 	avoidance->setmaxAcceleration(1.0f);
 	avoidance->setRadius(3.0f);
+}
+
+void SceneGraph::PlayerMoving(string tagName, vec3 pos_)
+{
+	for (auto go : sceneGameObjects)
+	{
+		if (go.first == tagName)
+		{
+			go.second->SetPosition(pos_);
+		}
+	}
+
+}
+
+void SceneGraph::RPGPlayerMoving(const float deltatime_)
+{
+	for (auto go : sceneGameObjects)
+	{
+		if (go.first == "Player1")
+		{
+			if (go.second->GetHit() == true)
+			{
+				vec3 targetPosition(5, 0, -10);
+				vec3 diff = targetPosition - go.second->GetPosition();
+				float distance = sqrtf(dot(diff, diff));
+
+				if (distance > 1.0f)
+				{
+					vec3 moveDir = normalize(diff);
+					vec3 pos = go.second->GetPosition() + moveDir * 2.0f * deltatime_;
+
+					UpdatePosition* packet = (UpdatePosition*)Client::getInstance()->getPacketFactory()->CreatePacket(PACKET_UPDATE_POSITION);
+					packet->setUpData(go.first, pos);
+
+					Client::getInstance()->SendPackets(packet);
+				}
+			}
+		}
+	}
+
+}
+
+void SceneGraph::setGrid(Graph<Node> gird)
+{
+	path = new AStarPathFinding(gird);
 }

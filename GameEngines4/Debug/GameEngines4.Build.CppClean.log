@@ -27,6 +27,7 @@ d:\capstoneproject\gameengines4\debug\openglmesh.obj
 d:\capstoneproject\gameengines4\debug\startscene.obj
 d:\capstoneproject\gameengines4\debug\timer.obj
 d:\capstoneproject\gameengines4\debug\window.obj
+d:\capstoneproject\gameengines4\debug\main.obj
 d:\capstoneproject\gameengines4\debug\gjkcollision.obj
 d:\capstoneproject\gameengines4\debug\guiimagecomponent.obj
 d:\capstoneproject\gameengines4\debug\guiobject.obj
@@ -38,6 +39,8 @@ d:\capstoneproject\gameengines4\debug\gamescene.obj
 d:\capstoneproject\gameengines4\debug\renderer.obj
 d:\capstoneproject\gameengines4\debug\eventlistener.obj
 d:\capstoneproject\gameengines4\debug\gameobject.obj
+d:\capstoneproject\gameengines4\debug\server.obj
+d:\capstoneproject\gameengines4\debug\networkscene.obj
 d:\capstoneproject\gameengines4\debug\socket.obj
 d:\capstoneproject\gameengines4\debug\openglrenderer.obj
 d:\capstoneproject\gameengines4\debug\particleemitter.obj
@@ -51,6 +54,12 @@ d:\capstoneproject\gameengines4\debug\materialloader.obj
 d:\capstoneproject\gameengines4\debug\materialhandler.obj
 d:\capstoneproject\gameengines4\debug\scenegraph.obj
 d:\capstoneproject\gameengines4\debug\mouseeventlistener.obj
+d:\capstoneproject\debug\gameengines4.ilk
+d:\capstoneproject\debug\gameengines4.exe
+d:\capstoneproject\debug\gameengines4.pdb
 d:\capstoneproject\gameengines4\debug\gameengines4.tlog\cl.command.1.tlog
 d:\capstoneproject\gameengines4\debug\gameengines4.tlog\cl.read.1.tlog
 d:\capstoneproject\gameengines4\debug\gameengines4.tlog\cl.write.1.tlog
+d:\capstoneproject\gameengines4\debug\gameengines4.tlog\link.command.1.tlog
+d:\capstoneproject\gameengines4\debug\gameengines4.tlog\link.read.1.tlog
+d:\capstoneproject\gameengines4\debug\gameengines4.tlog\link.write.1.tlog

@@ -115,6 +115,10 @@ void LoadOBJModel::LoadModel(const std::string & objFilePath)
 			}
 			LoadMaterial(line.substr(7));
 		}
+		else if (line.substr(0, 7) == "mtllib " )
+		{
+			modelName = line.substr(7);
+		}
 	}
 	PostProcessing();
 	
