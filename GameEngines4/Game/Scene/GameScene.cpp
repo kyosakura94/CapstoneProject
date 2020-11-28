@@ -200,6 +200,7 @@ bool GameScene::OnCreate()
 
 	}
 
+	CollisionResponse* collidie = new CollisionResponse();
 	SceneGraph::GetInstance()->setGrid(grid);
 	return true;
 }
@@ -219,11 +220,11 @@ void GameScene::Update(const float deltaTime_)
 
 	if (result == true)
 	{
-		std::cout << "Collided" << std::endl;
+		//std::cout << "Collided" << std::endl;
 	}
 	else
 	{
-		std::cout << "Not Collided" << std::endl;
+		//std::cout << "Not Collided" << std::endl;
 	}
 
 	if (SceneGraph::GetInstance()->getGuiObject("sunGUI")->isInside(MouseEventListener::GetMousePosition()))

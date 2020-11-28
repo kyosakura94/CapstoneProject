@@ -71,16 +71,10 @@ void CoreEngine::Run()
 	while (isRunning)
 	{
 		timer.UpdateFrameTicks();
-		//EventListener::Update();
-
-
-		Server::getInstance()->ReceivePackets(timer.GetDeltaTime());
-		//Server::getInstance()->SendPackets(timer.GetDeltaTime());
-		Server::getInstance()->CheckForTimeOut(timer.GetDeltaTime());
-
-		//Update(timer.GetDeltaTime());
-		//Render();
-		//SDL_Delay(timer.GetSleepTime(fps));
+		EventListener::Update();
+		Update(timer.GetDeltaTime());
+		Render();
+		SDL_Delay(timer.GetSleepTime(fps));
 	}
 
 	if (!isRunning)

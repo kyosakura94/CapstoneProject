@@ -54,8 +54,9 @@ d:\capstoneproject\gameengines4\debug\materialloader.obj
 d:\capstoneproject\gameengines4\debug\materialhandler.obj
 d:\capstoneproject\gameengines4\debug\scenegraph.obj
 d:\capstoneproject\gameengines4\debug\mouseeventlistener.obj
-d:\capstoneproject\debug\gameengines4.ilk
+d:\capstoneproject\gameengines4\debug\collisionresponse.obj
 d:\capstoneproject\debug\gameengines4.exe
+d:\capstoneproject\debug\gameengines4.ilk
 d:\capstoneproject\debug\gameengines4.pdb
 d:\capstoneproject\gameengines4\debug\gameengines4.tlog\cl.command.1.tlog
 d:\capstoneproject\gameengines4\debug\gameengines4.tlog\cl.read.1.tlog

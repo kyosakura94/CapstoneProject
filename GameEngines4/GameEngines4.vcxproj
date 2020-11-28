@@ -123,6 +123,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Engine\Math\Physics\CollisionResponse.cpp" />
     <ClCompile Include="Engine\Network\Address.cpp" />
     <ClCompile Include="Engine\Math\AI\AStarPathFinding.cpp" />
     <ClCompile Include="Engine\FX\Audio\AudioHandler.cpp" />
@@ -179,6 +180,7 @@
     <ClCompile Include="Game\Scene\NetworkScene.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Engine\Math\Physics\CollisionResponse.h" />
     <ClInclude Include="Engine\Network\Address.h" />
     <ClInclude Include="Engine\Math\AI\AStarPathFinding.h" />
     <ClInclude Include="Engine\FX\Audio\AudioHandler.h" />

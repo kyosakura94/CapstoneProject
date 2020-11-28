@@ -42,11 +42,6 @@ bool NetworkScene::OnCreate()
 void NetworkScene::Update(const float deltaTime_)
 {
 
-	//SceneGraph::GetInstance()->RPGPlayerMoving(deltaTime_);
-	//Server::getInstance()->ReceivePackets(deltaTime_);
-	//Server::getInstance()->SendPackets(deltaTime_);
-
-	
 }
 
 void NetworkScene::Render()
