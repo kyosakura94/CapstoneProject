@@ -96,6 +96,14 @@ void MouseEventListener::NotifyOfMouseScroll(int y_)
 	}
 }
 
+void MouseEventListener::NotifyOfKeyPress(SDL_KeyboardEvent* key)
+{
+	if (engineInstance)
+	{
+		engineInstance->NotifyOfKeyPress();
+	}
+}
+
 bool MouseEventListener::ClickButton()
 {
 	return false;

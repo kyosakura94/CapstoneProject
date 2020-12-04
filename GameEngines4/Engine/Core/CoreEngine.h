@@ -48,6 +48,9 @@ public:
 	void NotifyOfMouseReleased(vec2 mouse_, int buttonType_);
 	void NotifyOfMouseMove(vec2 mouse_);
 	void NotifyOfMouseScroll(int y_);
+	void NotifyOfKeyPress();
+
+
 	Renderer* getRenderer() { return renderer; }
 	RendererType getRendererType() { return rendererType; }
 	Window* getWindow() { return window; };

@@ -87,16 +87,16 @@ void GameTest::BuildScene()
 	currentSceneNum = CoreEngine::GetInstance()->GetCurrentScene();
 
 	//this will send a packet to a server said that I want to create a player -> could server do it for me?
-	//if (Client::getInstance()->IsConnected())
-	//{
-	//	//Send packet to Server
-	//	Client::getInstance()->SendPackets();
+	if (Client::getInstance()->IsConnected())
+	{
+		//Send packet to Server
+		Client::getInstance()->SendPackets();
 
-	//	//Server get data and echo back to client
-	//	
-	//	Server::getInstance()->ReceivePackets(Timer::Timer().GetDeltaTime());
-	//	
-	//}
+		//Server get data and echo back to client
+		
+		//Server::getInstance()->ReceivePackets(Timer::Timer().GetDeltaTime());
+		
+	}
 
 	//Packet* packet = Client::getInstance()->ReceivePackets();
 

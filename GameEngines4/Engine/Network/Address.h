@@ -99,7 +99,7 @@ namespace network1
     {
     public:
 
-        Socket(uint16_t port, SocketType type = SOCKET_TYPE_IPV4);
+        Socket(uint16_t port, bool isClient = false, SocketType type = SOCKET_TYPE_IPV4);
 
         ~Socket();
 
@@ -114,6 +114,7 @@ namespace network1
         int getSocket() { return m_socket; }
     private:
 
+        bool isClient;
         int m_error;
         uint16_t m_port;
         SocketHandle m_socket;

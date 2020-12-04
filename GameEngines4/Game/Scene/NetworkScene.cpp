@@ -35,13 +35,76 @@ bool NetworkScene::OnCreate()
 	//GameObject* BlueDiceObj = new GameObject(BlueDiceModel, vec3(2.0f, 0.0f, -5.0f));
 
 	//SceneGraph::GetInstance()->AddGameObject(BlueDiceObj, "DICE");
+	for (size_t i = 0; i < 4; i++)
+	{
+		input[i] = false;
+	}
 
 	return true;
 }
 
 void NetworkScene::Update(const float deltaTime_)
 {
+	if (Client::getInstance()->IsConnected())
+	{
+		//Client::getInstance()->SendPackets();
+	}
 
+	if (KeyEventListener::GetKeyState("W"))
+	{
+		input[0] = true;
+	}
+	if (KeyEventListener::GetKeyState("A"))
+	{
+		input[1] = true;
+	}	
+	if (KeyEventListener::GetKeyState("S"))
+	{
+		input[2] = true;
+	}	
+	if (KeyEventListener::GetKeyState("D"))
+	{
+		input[3] = true;
+	}
+
+
+	//SceneGraph::GetInstance()->RPGPlayerMoving(deltaTime_);
+
+	//SceneGraph::GetInstance()->RPGPlayerMove(deltaTime_, "Player1", input);
+
+	if (Client::getInstance()->IsConnected())
+	{
+		Packet* packet = Client::getInstance()->ReceiveAPacket(deltaTime_);
+
+		if (packet != nullptr)
+		{
+			switch (packet->GetType())
+			{
+			case PACKET_UPDATE_POSITION:
+
+				const UpdatePosition* data;
+				data = (UpdatePosition*)packet;
+
+				SceneGraph::GetInstance()->PlayerMoving((char*)data->tagName, data->position);
+				break;
+
+			case TEST_PACKET_CREATEPLAYER:
+
+				const TestPacket* tmp;
+				tmp = (TestPacket*)packet;
+				//CreatePlayer(tmp->position, (char*)tmp->modelName, (char*)tmp->tagName);
+
+				//createCheck = false;
+				break;
+			}
+		}
+	}
+
+
+	for (size_t i = 0; i < 4; i++)
+	{
+		input[i] = false;
+	}
 }
 
 void NetworkScene::Render()
@@ -55,8 +118,11 @@ void NetworkScene::Draw()
 
 void NetworkScene::CreatePlayer(vec3 pos, string modelName, string tag)
 {
-	GameObject* BlueDiceObj = new GameObject(SceneGraph::GetInstance()->getModel(modelName), pos);
-	SceneGraph::GetInstance()->AddGameObject(BlueDiceObj, tag);
+	if (SceneGraph::GetInstance()->getGameObject(tag) == nullptr)
+	{
+		GameObject* BlueDiceObj = new GameObject(SceneGraph::GetInstance()->getModel(modelName), pos);
+		SceneGraph::GetInstance()->AddGameObject(BlueDiceObj, tag);
+	}
 }
 
 void NetworkScene::CreatePlayer(string j)

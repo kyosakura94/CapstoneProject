@@ -66,7 +66,6 @@ void test(std::promise<PacketFactory>& m_packetFactory)
 void CoreEngine::Run()
 {
 	isRunning = true;
-	printf("\Accept packets\n\n");
 
 	while (isRunning)
 	{
@@ -153,6 +152,11 @@ void CoreEngine::NotifyOfMouseScroll(int y_)
 	{
 		camera->ProcessMoouseScroll(y_);
 	}
+}
+
+void CoreEngine::NotifyOfKeyPress()
+{
+
 }
 
 void CoreEngine::Exit()

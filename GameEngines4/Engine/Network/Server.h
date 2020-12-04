@@ -29,6 +29,9 @@ using namespace network1;
 #define DEFAULT_BUFLEN 512
 #define DEFAULT_PORT "27016"
 
+
+
+
 class Server
 {
     Socket* m_socket;                                                  // socket for sending and receiving packets.
@@ -53,6 +56,8 @@ class Server
 
     static std::unique_ptr<Server> ServerInstance;
     friend std::default_delete<Server>;
+
+    vector<NetworkobjectsData> networkObjects;
 
 public:
     Server(const Server&) = delete;
@@ -496,13 +501,52 @@ protected:
     
     void ProcessConnectionCreatePlayer(const TestPacket& packet, double time)
     {
+        //List of player
+
+        NetworkobjectsData tmp;
+        tmp.modelName = (char*)packet.modelName;
+        tmp.tagName = (char*)packet.tagName;
+        tmp.position = packet.position;
+        //Add these infor into a map 
+
+        networkObjects.push_back(tmp);
+        //if (std::find(networkObjects.begin(), networkObjects.end(), tmp) != networkObjects.end())
+        //    std::cout << "Element found";
+        //else
+        //    networkObjects.push_back(tmp);
+
+        //Use this list as a packect to send back to client
+
+
+        //client will use this list create all player 
+
+        //for (size_t i = 0; i < m_numConnectedClients; i++)
+        //{
+        //    for (size_t i = 0; i < networkObjects.size(); i++)
+        //    {
+        //        TestPacket* test = (TestPacket*)m_packetFactory->CreatePacket(TEST_PACKET_CREATEPLAYER);
+
+        //        //test->setUpData((char*)packet.modelName, (char*)packet.tagName, packet.position);
+        //        test->setUpData(networkObjects[i].modelName, networkObjects[i].tagName, networkObjects[i].position);
+
+        //        SendPacketToConnectedClient(i, test, time);
+        //    }
+        //}
+
         for (size_t i = 0; i < m_numConnectedClients; i++)
         {
             TestPacket* test = (TestPacket*)m_packetFactory->CreatePacket(TEST_PACKET_CREATEPLAYER);
 
-            test->setUpData((char*)packet.modelName, (char*)packet.tagName, packet.position);
+            
+            //test->setUpData((char*)packet.modelName, (char*)packet.tagName, packet.position);
 
+            for (size_t i = 0; i < networkObjects.size(); i++)
+            {
+                test->setupdata(networkObjects[i].modelName, networkObjects[i].tagName, networkObjects[i].position);
+            }
+            
             SendPacketToConnectedClient(i, test, time);
+
         }
     }    
     

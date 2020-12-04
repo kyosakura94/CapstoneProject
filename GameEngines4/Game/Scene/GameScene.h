@@ -14,6 +14,7 @@
 #include "../../Engine/FX/Partice/ParticleEmitter.h"
 #include "../../Engine/Math/Physics/GJKCollision.h"
 #include "../../Engine/Math/Physics/CollisionResponse.h"
+#include "../../Engine/Math/AI/StateMachine.h"
 
 class GameScene : public Scene
 {
@@ -34,6 +35,7 @@ private:
 	ParticleEmitter* emmitter;
 	float deltaTime;
 	GJKCollision* GJKCheck;
+	bool check;
 	
 };
 #endif

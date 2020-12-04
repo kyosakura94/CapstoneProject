@@ -2,6 +2,8 @@
 #define EVENTLISTENER_H
 
 #include "MouseEventListener.h"
+#include "KeyEventListener.h"
+
 class EventListener
 {
 public:
@@ -13,6 +15,8 @@ public:
 	EventListener() = delete;;
 	~EventListener();
 	static void Update();
+
+	static void PrintKeyInfo(SDL_KeyboardEvent* key);
 };
 
 #endif // !EVENTLISTENER

@@ -26,12 +26,14 @@ public:
 	static void NotifyOfMouseReleased(int butoonType_);
 	static void NotifyOfMouseMove();
 	static void NotifyOfMouseScroll(int y_);
+	static void NotifyOfKeyPress(SDL_KeyboardEvent* key);
 
 	static bool ClickButton();
 
 	static vec2 GetMousePosition();
 	static vec2 GetPreviousMousePosition();
 	static vec2 GetMouseOffset();
+
 private:
 	static CoreEngine* engineInstance;
 	static vec2 curMouse, preMouse;

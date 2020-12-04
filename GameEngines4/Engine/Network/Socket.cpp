@@ -2,7 +2,7 @@
 
 using namespace network1;
 
-Socket::Socket(uint16_t port, SocketType type)
+Socket::Socket(uint16_t port, bool isClient, SocketType type)
 {
     m_error = SOCKET_ERROR_NONE;
 
@@ -25,11 +25,15 @@ Socket::Socket(uint16_t port, SocketType type)
     sock_address.sin_addr.s_addr = INADDR_ANY;
     sock_address.sin_port = htons(port);
 
-    if (::bind(m_socket, (const sockaddr*)&sock_address, sizeof(sock_address)) < 0)
+    if (isClient != true)
     {
-        m_error = SOCKET_ERROR_BIND_IPV4_FAILED;
-        return;
+        if (::bind(m_socket, (const sockaddr*)&sock_address, sizeof(sock_address)) < 0)
+        {
+            m_error = SOCKET_ERROR_BIND_IPV4_FAILED;
+            return;
+        }
     }
+
 
     // if bound to port 0 find the actual port we got
 

@@ -1,6 +1,6 @@
 #include "GameScene.h"
 
-GameScene::GameScene() : Scene()
+GameScene::GameScene() : check(false), Scene()
 {
 
 }
@@ -29,7 +29,7 @@ bool GameScene::OnCreate()
 	CollisionHandler::GetInstance()->OnCreate(100.f);
 
 	
-
+	
 	grid.OnCreate(6,6,10,vec3(0,0,0));
 
 	//grid->GetGridObject(1, 0);
@@ -65,7 +65,7 @@ bool GameScene::OnCreate()
 	
 	for (auto m : test->getModel()->getvertercies(test->getModelIntances()))
 	{
-		cout << "Vertecies" << to_string(m) << endl;
+		//cout << "Vertecies" << to_string(m) << endl;
 	}
 
 	SceneGraph::GetInstance()->setTarget(test);
@@ -129,9 +129,11 @@ bool GameScene::OnCreate()
 
 	apple->SetScale(glm::vec3(0.2f));
 
-	apple->AddComponent<TestClassA>("test");
-	apple->GetComponent<TestClassA>();
-	apple->RemoveComponent<TestClassA>();
+	//apple->AddComponent<TestClassA>("test");
+	//apple->GetComponent<TestClassA>();
+	//apple->RemoveComponent<TestClassA>();
+
+	apple->AddComponent<StateMachine>();
 
 	apple->AddComponent<ParticleEmitter>(10, "particleShader");
 
@@ -160,47 +162,47 @@ bool GameScene::OnCreate()
 	//backroundSound->playSound();
 
 
-	{
-	//get from mesh annd obj loader
-	/*cout << "Min Vert: " << to_string(model3->GetBoundingBox().minVert) << endl;
-	cout << "Max Vert: " << to_string(model3->GetBoundingBox().maxVert) << endl;*/
-	
-	//cout << "Min Vert: " << to_string(model2->GetBoundingBox().minVert) << endl;
-	//cout << "Max Vert: " << to_string(model2->GetBoundingBox().maxVert) << endl;
-	
-	cout << "PLANE LEFT: " << to_string(vec4( CoreEngine::GetInstance()->GetCamera()->GetPlane()[0]->x, 
-											CoreEngine::GetInstance()->GetCamera()->GetPlane()[0]->y,
-											CoreEngine::GetInstance()->GetCamera()->GetPlane()[0]->z,
-											CoreEngine::GetInstance()->GetCamera()->GetPlane()[0]->d)) << endl;
+	//{
+	////get from mesh annd obj loader
+	///*cout << "Min Vert: " << to_string(model3->GetBoundingBox().minVert) << endl;
+	//cout << "Max Vert: " << to_string(model3->GetBoundingBox().maxVert) << endl;*/
+	//
+	////cout << "Min Vert: " << to_string(model2->GetBoundingBox().minVert) << endl;
+	////cout << "Max Vert: " << to_string(model2->GetBoundingBox().maxVert) << endl;
+	//
+	//cout << "PLANE LEFT: " << to_string(vec4( CoreEngine::GetInstance()->GetCamera()->GetPlane()[0]->x, 
+	//										CoreEngine::GetInstance()->GetCamera()->GetPlane()[0]->y,
+	//										CoreEngine::GetInstance()->GetCamera()->GetPlane()[0]->z,
+	//										CoreEngine::GetInstance()->GetCamera()->GetPlane()[0]->d)) << endl;
 
-	cout << "PLANE RIGHT: " << to_string(vec4( CoreEngine::GetInstance()->GetCamera()->GetPlane()[1]->x, 
-											CoreEngine::GetInstance()->GetCamera()->GetPlane()[1]->y,
-											CoreEngine::GetInstance()->GetCamera()->GetPlane()[1]->z,
-											CoreEngine::GetInstance()->GetCamera()->GetPlane()[1]->d)) << endl;
+	//cout << "PLANE RIGHT: " << to_string(vec4( CoreEngine::GetInstance()->GetCamera()->GetPlane()[1]->x, 
+	//										CoreEngine::GetInstance()->GetCamera()->GetPlane()[1]->y,
+	//										CoreEngine::GetInstance()->GetCamera()->GetPlane()[1]->z,
+	//										CoreEngine::GetInstance()->GetCamera()->GetPlane()[1]->d)) << endl;
 
-	cout << "PLANE TOP: " << to_string(vec4( CoreEngine::GetInstance()->GetCamera()->GetPlane()[2]->x, 
-											CoreEngine::GetInstance()->GetCamera()->GetPlane()[2]->y,
-											CoreEngine::GetInstance()->GetCamera()->GetPlane()[2]->z,
-											CoreEngine::GetInstance()->GetCamera()->GetPlane()[2]->d)) << endl;
+	//cout << "PLANE TOP: " << to_string(vec4( CoreEngine::GetInstance()->GetCamera()->GetPlane()[2]->x, 
+	//										CoreEngine::GetInstance()->GetCamera()->GetPlane()[2]->y,
+	//										CoreEngine::GetInstance()->GetCamera()->GetPlane()[2]->z,
+	//										CoreEngine::GetInstance()->GetCamera()->GetPlane()[2]->d)) << endl;
 
-	cout << "PLANE BOTTOM: " << to_string(vec4( CoreEngine::GetInstance()->GetCamera()->GetPlane()[3]->x, 
-											CoreEngine::GetInstance()->GetCamera()->GetPlane()[3]->y,
-											CoreEngine::GetInstance()->GetCamera()->GetPlane()[3]->z,
-											CoreEngine::GetInstance()->GetCamera()->GetPlane()[3]->d)) << endl;	
-	
-	cout << "PLANE NEAR: " << to_string(vec4( CoreEngine::GetInstance()->GetCamera()->GetPlane()[4]->x, 
-											CoreEngine::GetInstance()->GetCamera()->GetPlane()[4]->y,
-											CoreEngine::GetInstance()->GetCamera()->GetPlane()[4]->z,
-											CoreEngine::GetInstance()->GetCamera()->GetPlane()[4]->d)) << endl;
-	
-	cout << "PLANE FAR: " << to_string(vec4( CoreEngine::GetInstance()->GetCamera()->GetPlane()[5]->x, 
-											CoreEngine::GetInstance()->GetCamera()->GetPlane()[5]->y,
-											CoreEngine::GetInstance()->GetCamera()->GetPlane()[5]->z,
-											CoreEngine::GetInstance()->GetCamera()->GetPlane()[5]->d)) << endl;
+	//cout << "PLANE BOTTOM: " << to_string(vec4( CoreEngine::GetInstance()->GetCamera()->GetPlane()[3]->x, 
+	//										CoreEngine::GetInstance()->GetCamera()->GetPlane()[3]->y,
+	//										CoreEngine::GetInstance()->GetCamera()->GetPlane()[3]->z,
+	//										CoreEngine::GetInstance()->GetCamera()->GetPlane()[3]->d)) << endl;	
+	//
+	//cout << "PLANE NEAR: " << to_string(vec4( CoreEngine::GetInstance()->GetCamera()->GetPlane()[4]->x, 
+	//										CoreEngine::GetInstance()->GetCamera()->GetPlane()[4]->y,
+	//										CoreEngine::GetInstance()->GetCamera()->GetPlane()[4]->z,
+	//										CoreEngine::GetInstance()->GetCamera()->GetPlane()[4]->d)) << endl;
+	//
+	//cout << "PLANE FAR: " << to_string(vec4( CoreEngine::GetInstance()->GetCamera()->GetPlane()[5]->x, 
+	//										CoreEngine::GetInstance()->GetCamera()->GetPlane()[5]->y,
+	//										CoreEngine::GetInstance()->GetCamera()->GetPlane()[5]->z,
+	//										CoreEngine::GetInstance()->GetCamera()->GetPlane()[5]->d)) << endl;
 
-	}
+	//}
 
-	CollisionResponse* collidie = new CollisionResponse();
+	//CollisionResponse* collidie = new CollisionResponse();
 	SceneGraph::GetInstance()->setGrid(grid);
 	return true;
 }
@@ -209,23 +211,32 @@ void GameScene::Update(const float deltaTime_)
 {
 	//std::cout << deltaTime_ << std::endl;
 	//shape->Update(deltaTime_);
-	//SceneGraph::GetInstance()->Update(deltaTime_);
+	
+	SceneGraph::GetInstance()->Update(deltaTime_);
 
 	deltaTime = deltaTime_;
-	SceneGraph::GetInstance()->UpdateClick(deltaTime_, grid, e_);
+	//SceneGraph::GetInstance()->UpdateClick(deltaTime_, grid, e_);
 
 
-	SceneGraph::GetInstance()->getGameObject("DICE");
+	//SceneGraph::GetInstance()->getGameObject("DICE");
+
 	bool result = GJKCheck->CollisonCheck(SceneGraph::GetInstance()->getGameObject("DICE"), SceneGraph::GetInstance()->getGameObject("apple"));
+	
+	Condition::GetInstance()->setCheck(result);
 
-	if (result == true)
-	{
-		//std::cout << "Collided" << std::endl;
-	}
-	else
-	{
-		//std::cout << "Not Collided" << std::endl;
-	}
+
+	//if (result == true)
+	//{
+	//	Condition::GetInstance()->setInside(true);
+	//	Condition::GetInstance()->setOutside(false);
+	//}
+	//else
+	//{
+	//	Condition::GetInstance()->setOutside(true);
+	//	Condition::GetInstance()->setInside(true);
+	//}
+
+
 
 	if (SceneGraph::GetInstance()->getGuiObject("sunGUI")->isInside(MouseEventListener::GetMousePosition()))
 	{

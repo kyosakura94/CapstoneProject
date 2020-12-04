@@ -15,6 +15,8 @@
 #include "../../Engine/Math/Physics/GJKCollision.h"
 #include "../../Engine/Network/Client.h"
 #include "../../Engine/Network/Server.h"
+#include "../../Engine/Event/KeyEventListener.h"
+
 #include <json.hpp>
 
 using json = nlohmann::json;
@@ -34,7 +36,7 @@ public:
 	virtual void CreatePlayer(string json_);
 
 private:
-
+	bool input[4];
 };
 
 #endif // !NETWORSCENE_H

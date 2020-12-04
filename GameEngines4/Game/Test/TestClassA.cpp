@@ -2,7 +2,7 @@
 
 TestClassA::TestClassA(std::string test_) : Component()
 {
-	std::cout << test_ << std::endl;
+	//std::cout << test_ << std::endl;
 }
 
 TestClassA::~TestClassA()

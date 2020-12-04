@@ -148,7 +148,7 @@ void SceneGraph::Update(const float deltatime_)
 	{
 		if (go.second->GetHit() == true)
 		{
-			cout << glm::to_string(go.second->GetPosition()) << std::endl << endl;
+			//cout << glm::to_string(go.second->GetPosition()) << std::endl << endl;
 		}
 
 		if (go.first == "apple")
@@ -364,35 +364,96 @@ void SceneGraph::PlayerMoving(string tagName, vec3 pos_)
 			go.second->SetPosition(pos_);
 		}
 	}
-
 }
 
 void SceneGraph::RPGPlayerMoving(const float deltatime_)
 {
+	//for (auto go : sceneGameObjects)
+	//{
+	//	if (go.first == "Player1")
+	//	{
+	//		if (go.second->GetHit() == true)
+	//		{
+	//			vec3 targetPosition(5, 0, -10);
+	//			vec3 diff = targetPosition - go.second->GetPosition();
+	//			float distance = sqrtf(dot(diff, diff));
+
+	//			if (distance > 1.0f)
+	//			{
+	//				vec3 moveDir = normalize(diff);
+	//				vec3 pos = go.second->GetPosition() + moveDir * 2.0f * deltatime_;
+
+	//				UpdatePosition* packet = (UpdatePosition*)Client::getInstance()->getPacketFactory()->CreatePacket(PACKET_UPDATE_POSITION);
+	//				packet->setUpData(go.first, pos);
+
+	//				Client::getInstance()->SendPackets(packet);
+	//			}
+	//		}
+	//	}
+	//}
+
 	for (auto go : sceneGameObjects)
 	{
 		if (go.first == "Player1")
 		{
-			if (go.second->GetHit() == true)
+			vec3 pos;
+			vec3 targetPosition(5, 0, -10);
+			vec3 diff = targetPosition - go.second->GetPosition();
+			float distance = sqrtf(dot(diff, diff));
+
+			if (distance > 0.1f)
 			{
-				vec3 targetPosition(5, 0, -10);
-				vec3 diff = targetPosition - go.second->GetPosition();
-				float distance = sqrtf(dot(diff, diff));
-
-				if (distance > 1.0f)
-				{
-					vec3 moveDir = normalize(diff);
-					vec3 pos = go.second->GetPosition() + moveDir * 2.0f * deltatime_;
-
-					UpdatePosition* packet = (UpdatePosition*)Client::getInstance()->getPacketFactory()->CreatePacket(PACKET_UPDATE_POSITION);
-					packet->setUpData(go.first, pos);
-
-					Client::getInstance()->SendPackets(packet);
-				}
+				vec3 moveDir = normalize(diff);
+				pos = go.second->GetPosition() + moveDir * 2.0f * deltatime_;
+				go.second->SetPosition(go.second->GetPosition() + moveDir * 2.0f * deltatime_);
 			}
+
+			UpdatePosition* packet = (UpdatePosition*)Client::getInstance()->getPacketFactory()->CreatePacket(PACKET_UPDATE_POSITION);
+			packet->setUpData(go.first, go.second->GetPosition());
+			Client::getInstance()->SendPackets(packet);
 		}
 	}
+}
 
+void SceneGraph::RPGPlayerMove(const float deltatime_, string tag_, bool inputs[4])
+{
+	GameObject * player_ = getGameObject(tag_);
+	vec3 _inputDirection = vec3(0);
+
+	if (inputs[0])
+	{
+		_inputDirection.z -= 0.1f;
+	}
+	if (inputs[1])
+	{
+		_inputDirection.x -= 0.1f;
+	}
+	if (inputs[2])
+	{
+		_inputDirection.z += 0.1f;
+		
+	}
+	if (inputs[3])
+	{
+		_inputDirection.x += 0.1f;
+	}
+
+	if (player_ != nullptr)
+	{
+		Move(player_, _inputDirection);
+	}
+}
+
+void SceneGraph::Move(GameObject * player_, vec3 _inputDirection)
+{
+	vec3 pos = player_->GetPosition() + _inputDirection;
+
+	//player_->SetPosition(pos);
+
+	UpdatePosition* packet = (UpdatePosition*)Client::getInstance()->getPacketFactory()->CreatePacket(PACKET_UPDATE_POSITION);
+	packet->setUpData(player_->GetTag(), pos);
+
+	Client::getInstance()->SendPackets(packet);
 }
 
 void SceneGraph::setGrid(Graph<Node> gird)

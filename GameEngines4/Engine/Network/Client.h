@@ -153,6 +153,10 @@ struct TestPacket : public Packet
 	uint8_t  modelName[256];
 
 
+	vector<char*> tagnameList;
+	vector<char*> modelnameList;
+	vector<vec3> positionList;
+
 	uint64_t client_salt;
 	uint64_t challenge_salt;
 
@@ -162,8 +166,13 @@ struct TestPacket : public Packet
 		challenge_salt = 0;
 	}
 
-	void setUpData(std::string modelName_, std::string tagName_, vec3 position_)
+	void setupdata(std::string modelName_, std::string tagName_, vec3 position_)
 	{
+		position = position_;
+		strcpy((char*)tagName, tagName_.c_str());
+		strcpy((char*)modelName, modelName_.c_str());
+
+
 		//std::string::size_type sz;
 
 		//strcpy(modelName, modelName_.c_str());
@@ -171,7 +180,7 @@ struct TestPacket : public Packet
 		//memset(tagName, std::stoi(modelName_, &sz),256);
 		//memset(modelName, std::stoi(tagName_, &sz),256);
 
-		position = position_;
+		
 
 		//char* modelNametmp;
 		//char* tagNametmp;
@@ -185,16 +194,28 @@ struct TestPacket : public Packet
 		//modelName = (uint8_t*)atoi(modelNametmp);
 
 
-		strcpy((char*)tagName, tagName_.c_str());
-		strcpy((char*)modelName, modelName_.c_str());
+		
 
 		//memset(tagName, 0, sizeof(tagName));
 		//memset(modelName, 0, sizeof(modelName));
 
 	}
 
+	//void setupdata(std::string modelName_, std::string tagName_, vec3 position_)
+	//{
+	//	positionList.push_back(position_);
+	//	char tagNametmp[256];
+	//	char modelNametmp[256];
+	//	tagnameList.push_back(strcpy(tagNametmp, tagName_.c_str()));
+	//	modelnameList.push_back(strcpy(modelNametmp, modelName_.c_str()));
+	//
+	//}
+
+
+
 	template <typename Stream> bool Serialize(Stream& stream)
 	{
+	
 		serialize_float(stream, position.x);
 		serialize_float(stream, position.y);
 		serialize_float(stream, position.z);
@@ -202,12 +223,11 @@ struct TestPacket : public Packet
 		serialize_uint64(stream, client_salt);
 		serialize_uint64(stream, challenge_salt);
 
-		//serialize_string_internal(stream, modelName, 256);
-		//serialize_string_internal(stream, tagName, 256);
 
 		if (Stream::IsReading && stream.GetBitsRemaining() < 256 * 8)
 			return false;
 
+		
 		serialize_bytes(stream, tagName, 256);
 		serialize_bytes(stream, modelName, 256);
 
@@ -339,6 +359,13 @@ struct ServerChallengeHash
 	ServerChallengeHash() { memset(this, 0, sizeof(ServerChallengeHash)); }
 };
 
+struct NetworkobjectsData
+{
+	vec3 position;
+	string tagName;
+	string modelName;
+};
+
 struct ClientServerPacketFactory : public PacketFactory
 {
 	ClientServerPacketFactory() : PacketFactory(CLIENT_SERVER_NUM_PACKETS) {}
@@ -347,17 +374,17 @@ struct ClientServerPacketFactory : public PacketFactory
 	{
 		switch (type)
 		{
-			case PACKET_CONNECTION_REQUEST:         return new ConnectionRequestPacket();
-			case PACKET_CONNECTION_DENIED:          return new ConnectionDeniedPacket();
-			case PACKET_CONNECTION_CHALLENGE:       return new ConnectionChallengePacket();
-			case PACKET_CONNECTION_RESPONSE:        return new ConnectionResponsePacket();
-			case PACKET_CONNECTION_KEEP_ALIVE:      return new ConnectionKeepAlivePacket();
-			case PACKET_CONNECTION_DISCONNECT:      return new ConnectionDisconnectPacket();
-			case TEST_PACKET_CREATEPLAYER:			return new TestPacket();
-			case PACKET_UPDATE_POSITION:			return new UpdatePosition();
-			case PACKET_JSON:						return new JsonPacket();
-			default:
-				return NULL;
+		case PACKET_CONNECTION_REQUEST:         return new ConnectionRequestPacket();
+		case PACKET_CONNECTION_DENIED:          return new ConnectionDeniedPacket();
+		case PACKET_CONNECTION_CHALLENGE:       return new ConnectionChallengePacket();
+		case PACKET_CONNECTION_RESPONSE:        return new ConnectionResponsePacket();
+		case PACKET_CONNECTION_KEEP_ALIVE:      return new ConnectionKeepAlivePacket();
+		case PACKET_CONNECTION_DISCONNECT:      return new ConnectionDisconnectPacket();
+		case TEST_PACKET_CREATEPLAYER:			return new TestPacket();
+		case PACKET_UPDATE_POSITION:			return new UpdatePosition();
+		case PACKET_JSON:						return new JsonPacket();
+		default:
+			return NULL;
 		}
 	}
 
@@ -572,27 +599,27 @@ public:
 		{
 		case CLIENT_STATE_CONNECTED:
 		{
-			//TestPacket* packet = (TestPacket*)m_packetFactory->CreatePacket(TEST_PACKET_CREATEPLAYER);
-			//packet->setUpData("redDice", "Player1", vec3(2.0f, 0.0f, -5.0f));
+			TestPacket* packet = (TestPacket*)m_packetFactory->CreatePacket(TEST_PACKET_CREATEPLAYER);
+			packet->setupdata("redDice", "Player1", vec3(2.0f, 0.0f, -5.0f));
 
-			//SendPacketToServer(packet, Timer::Timer().GetDeltaTime());
+			SendPacketToServer(packet, Timer::Timer().GetDeltaTime());
 
-			json j;
+			/*json j;
 
 			j["modelName"] = "redDice";
 			j["tag"] = "Player1";
 			j["position"] = { 2, 0, -5 };
 
-			std::string s = j.dump(); 
+			std::string s = j.dump();
 
 			std::cout << "Json Send: " << s << std::endl;
 			JsonPacket* packet = (JsonPacket*)m_packetFactory->CreatePacket(PACKET_JSON);
 
-			packet->setUpData(s);
+			packet->setUpData(s);*/
 
-			SendPacketToServer(packet, Timer::Timer().GetDeltaTime());
+			//SendPacketToServer(packet, Timer::Timer().GetDeltaTime());
 		}
-	
+
 		break;
 
 		default:
@@ -645,6 +672,10 @@ public:
 		case TEST_PACKET_CREATEPLAYER:
 			return packet;
 			break;
+
+		case PACKET_UPDATE_POSITION:
+			return packet;
+			break;
 		case PACKET_JSON:
 			return packet;
 			break;
@@ -660,8 +691,9 @@ public:
 	{
 		Address address;
 		Packet* packet = ReceivePacket(m_socket, m_packetFactory, address);
-		//if (!packet)
-		//	break;
+
+		if (!packet)
+			return;
 
 		switch (packet->GetType())
 		{
@@ -683,14 +715,14 @@ public:
 
 		case TEST_PACKET_CREATEPLAYER:
 			receviedPacket = packet;
-			break;		
-		
+			break;
+
 		case PACKET_UPDATE_POSITION:
 			receviedPacket = packet;
-			break;		
-		
+			break;
+
 		case PACKET_JSON:
-			
+
 			receviedPacket = packet;
 			break;
 

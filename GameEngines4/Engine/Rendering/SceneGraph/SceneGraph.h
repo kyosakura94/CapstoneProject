@@ -51,9 +51,14 @@ public:
 	//set up all needed information for avoidance
 	void setupCollisionAvoidance();
 	void PlayerMoving(string tagName, vec3 pos_);
+
 	void RPGPlayerMoving(const float deltatime_);
+	void RPGPlayerMove(const float deltatime_, string tag_, bool inputs[4]);
+
 	void setGrid(Graph<Node> gird);
 private:
+
+	void Move(GameObject* player_, vec3 _inputDirection);
 	Seek* seek;
 	Arrive* arrivetest;
 	//create point to avoidance clas

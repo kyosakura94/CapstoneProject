@@ -10,15 +10,15 @@ CollisionResponse::CollisionResponse()
 
 	vec3 w_ship = vec3(0,0,0);
 
-	vec3 r_ship = vec3(8, -1, 0);
+	vec3 r_ship = vec3(-8, 1, 0);
 	vec3 r_rock = vec3(-2, 1, 0);
 
 	mat3 I_ship = mat3(20, 0, 0, 0, 40, 0, 0, 0, 20);
-	mat3 I_rock = mat3(0.1f, 0, 0, 0, 0.1f, 0, 0, 0, 0.1f);
+	mat3 I_rock = mat3(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1);
 
 	float e = 0.5f;
 
-	vec3 n = vec3(0.6666f,  0.3333f , 0.6666f);
+	vec3 n = vec3(0.66666666f,  0.333333333f , 0.666666666f);
 
 	vec3 vr = v_rock - v_ship;
 
@@ -35,8 +35,15 @@ CollisionResponse::CollisionResponse()
 	float d1 = 1 / m_rock;
 	float d2 = 1 / m_ship;
 
-	float d3 = dot((I1_Rock * cross(cross(r_rock,n), r_rock)), n);
-	float d4 = dot((I2_ship * cross(cross(r_ship,n), r_ship)), n);
+	vec3 t1 = cross(r_ship, n);
+	vec3 t3 = (I2_ship * t1);
+
+	vec3 t2 = cross(t3, r_ship);
+
+	float d4 = dot(t2, n);
+	float d3 = dot((I1_Rock * cross(cross(r_rock, n), r_rock)), n);
+
+
 
 	float j = top / (d1 + d2 + d3 + d4);
 
