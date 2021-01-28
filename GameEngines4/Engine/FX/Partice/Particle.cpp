@@ -10,7 +10,7 @@ Particle::Particle(GLuint shaderProgram_, GLuint textureID_, vec3 colour_)
 	GenerateBuffers();
 }
 
-Particle::Particle(GLuint shaderProgram_, vec3 position_) : Position(vec3(2,1,0)), colour(vec3(1,0,0)), Velocity(vec3(0.05f, 0.05f, 0.0f)), lifeTime(10.0f)
+Particle::Particle(GLuint shaderProgram_, vec3 position_) : Position(vec3(2,1,0)), colour(vec3(1,0,0)), Velocity(vec3(0.05f, 0.05f, 0.0f)), lifeTime(200.f)
 {
 	Position = position_;
 	shaderProgram = shaderProgram_;

@@ -30,7 +30,7 @@ public:
 	Model* getModel(string  modelName_);
 	void AddGameObject(GameObject* go_, string tag_ = "");
 	void AddGuiObject(GuiObject* go_, string tag_ = "");
-
+	bool isExist(string tag);
 	GameObject* getGameObject(string tag_);
 	GuiObject* getGuiObject(string tag_);
 

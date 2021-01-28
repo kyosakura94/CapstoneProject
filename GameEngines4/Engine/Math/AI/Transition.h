@@ -21,7 +21,7 @@ public:
 	bool isTriggered();
 	State* getTargetState();
 	Condition* getTransitionCondition() { return condition; };
-	Actions	getAction();
+	Actions	* getAction();
 
 	void setTargetState(State* target_) { targetState = target_; };
 	void setTransitionCondition(Condition* condition_) { condition = condition_; };
@@ -30,7 +30,7 @@ public:
 	//vector<Actions*> getActions();
 private:
 	State * targetState;
-	Actions action;
+	Actions * action;
 	Condition * condition;
 
 	//vector<Actions*> actions;

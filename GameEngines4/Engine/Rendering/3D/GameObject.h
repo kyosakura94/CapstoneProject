@@ -132,7 +132,7 @@ private:
 	glm::vec3 velocity;
 	glm::vec3 orientation;
 	glm::vec3 accel;
-
+	glm::fquat quaternion;
 	Quaternion q;
 	vec3 angVel;
 	BoundingBox box;

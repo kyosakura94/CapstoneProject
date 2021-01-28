@@ -7,6 +7,7 @@ GameObject::GameObject(Model *model_, vec3 position_) : model(nullptr)
 	rotation = vec3(0.0f, 1.0f, 0.0f);
 	scale = vec3(1.0f);
 	angle = 0.0f;
+
 	hit = false;
 	if (model)
 	{
@@ -217,15 +218,25 @@ void GameObject::Move(SteeringOutput steering, const float deltaTime_)
 
 void GameObject::MoveTest(const float deltaTime_)
 {
-	//vec3 upvector(0.0f, 1.0f, 0.0f);
+	//SetAccel(vec3(0.2f,-0.35f,0.2f));
+	//Physics::SimpleNewtonMotion(*this, deltaTime_);
+	vec3 pos;
+	
+	vec3 targetPosition(8, 0, -5);
+	vec3 diff = targetPosition - this->GetPosition();
 
-	//angVel = cross(velocity, upvector);
-	//angVel = normalize(angVel);
+	float distance = sqrtf(dot(diff, diff));
 
-	//angVel = angVel * (velocity.length() / radius);
-
-	SetAccel(vec3(0.2f,-0.35f,0.2f));
-	Physics::SimpleNewtonMotion(*this, deltaTime_);
+	if (distance > 0.1f)
+	{
+		vec3 moveDir = normalize(diff);
+		pos = this->GetPosition() + moveDir * 2.0f * deltaTime_;
+		this->SetPosition(this->GetPosition() + moveDir * 2.0f * deltaTime_);
+	}
+	else
+	{
+		this->SetPosition(targetPosition);
+	}
 
 	if (model)
 	{

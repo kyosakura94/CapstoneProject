@@ -18,7 +18,7 @@
 
 #include "Client.h"
 #include <sstream>
-
+#include <algorithm>
 
 using namespace protocol2;
 using namespace network1;
@@ -28,7 +28,6 @@ using namespace network1;
 
 #define DEFAULT_BUFLEN 512
 #define DEFAULT_PORT "27016"
-
 
 
 
@@ -57,7 +56,8 @@ class Server
     static std::unique_ptr<Server> ServerInstance;
     friend std::default_delete<Server>;
 
-    vector<NetworkobjectsData> networkObjects;
+    std::vector<NetworkobjectsData> networkObjects;
+
 
 public:
     Server(const Server&) = delete;
@@ -84,6 +84,7 @@ public:
         m_packetFactory = NULL;
         m_socket = NULL;
     }
+
 
 
     void setServerSocket(Socket& socket, PacketFactory& packetFactory)
@@ -503,13 +504,13 @@ protected:
     {
         //List of player
 
-        NetworkobjectsData tmp;
-        tmp.modelName = (char*)packet.modelName;
-        tmp.tagName = (char*)packet.tagName;
-        tmp.position = packet.position;
-        //Add these infor into a map 
+        //NetworkobjectsData tmp;
+        //tmp.modelName = (char*)packet.modelName;
+        //tmp.tagName = (char*)packet.tagName;
+        //tmp.position = packet.position;
+        ////Add these infor into a map 
 
-        networkObjects.push_back(tmp);
+        //networkObjects.push_back(tmp);
         //if (std::find(networkObjects.begin(), networkObjects.end(), tmp) != networkObjects.end())
         //    std::cout << "Element found";
         //else
@@ -533,21 +534,21 @@ protected:
         //    }
         //}
 
-        for (size_t i = 0; i < m_numConnectedClients; i++)
-        {
-            TestPacket* test = (TestPacket*)m_packetFactory->CreatePacket(TEST_PACKET_CREATEPLAYER);
+        //for (size_t i = 0; i < m_numConnectedClients; i++)
+        //{
+        //    TestPacket* test = (TestPacket*)m_packetFactory->CreatePacket(TEST_PACKET_CREATEPLAYER);
 
-            
-            //test->setUpData((char*)packet.modelName, (char*)packet.tagName, packet.position);
+        //    
+        //    //test->setUpData((char*)packet.modelName, (char*)packet.tagName, packet.position);
 
-            for (size_t i = 0; i < networkObjects.size(); i++)
-            {
-                test->setupdata(networkObjects[i].modelName, networkObjects[i].tagName, networkObjects[i].position);
-            }
-            
-            SendPacketToConnectedClient(i, test, time);
+        //    for (size_t i = 0; i < networkObjects.size(); i++)
+        //    {
+        //        test->setupdata(networkObjects[i].modelName, networkObjects[i].tagName, networkObjects[i].position);
+        //    }
+        //    
+        //    SendPacketToConnectedClient(i, test, time);
 
-        }
+        //}
     }    
     
     void ProcessUpdatePosition(const UpdatePosition & packet, double time)
@@ -564,13 +565,52 @@ protected:
     
     void ProcessPacketJson(const JsonPacket& packet, double time)
     {
+        json j;
+        auto j3 = json::parse(packet.jsonString);
+
+        NetworkobjectsData tmp;
+
+        tmp.tagName = j3["tag"];
+        tmp.modelName = j3["modelName"];
+
+        std::vector<float> position;
+        for (auto& elem : j3["position"])
+        {
+            position.push_back(elem);
+        }
+
+        if (position.size() != 0)
+        {
+            tmp.position = vec3(position[0], position[1], position[2]);
+        }
+
+
+        if (std::find(networkObjects.begin(), networkObjects.end(), tmp) != networkObjects.end())
+            std::cout << "Element found";
+        else 
+            networkObjects.push_back(tmp);
+
+        j["playerInfo"] = json::array();
+
+        //MAKE it become a string again
+        for (auto init : networkObjects )
+        {
+            j["playerInfo"].push_back({ {"tag", init.tagName}, {"modelName", init.modelName }, {"position", {init.position.x,init.position.y,init.position.z}} });
+           //j["playerInfo"] = { {"tag", init.tagName}, {"modelName", init.modelName }, {"position", {init.position.x,init.position.y,init.position.z}} };
+        }
+
+        std::cout << "Json Send: " << j << std::endl;
+
+        //MAKE json into string
+        std::string s = j.dump();
+
         for (size_t i = 0; i < m_numConnectedClients; i++)
         {
             JsonPacket* test = (JsonPacket*)m_packetFactory->CreatePacket(PACKET_JSON);
-
-            test->setUpData((char*)packet.jsonString);
-
+            //setup packet Using string
+            test->setUpData(s);
             SendPacketToConnectedClient(i, test, time);
+
         }
     }
 

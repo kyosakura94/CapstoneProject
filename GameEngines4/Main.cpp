@@ -16,10 +16,11 @@ void task1()
 
 	while (isRunning)
 	{
-		//printf("\Accept packets\n\n");
+
 		timer.UpdateFrameTicks();
 		Server::getInstance()->ReceivePackets(timer.GetDeltaTime());
-		Server::getInstance()->SendPackets(timer.GetDeltaTime());
+		//Server::getInstance()->SendPackets(timer.GetDeltaTime());
+		printf("\Accept packets\n\n");
 	}
 
 	ShutdownNetwork();

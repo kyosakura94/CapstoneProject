@@ -2,24 +2,7 @@
 
 StateMachine::StateMachine()
 {
-	State* idleState = new State(1);
-	State* attackState = new State(2);
 
-	Transition* idleTransition = new Transition();
-	idleTransition->setTargetState(attackState);	
-	//idleTransition->setTransitionCondition(new Condition());
-
-	Transition* attackTransition = new Transition();
-	attackTransition->setTargetState(idleState);
-	//attackTransition->setTransitionCondition(new TestCondition());
-
-	
-	idleState->setTransitions(idleTransition);
-	attackState->setTransitions(attackTransition);
-
-	initialState = idleState;
-
-	currentState = initialState;
 }
 
 StateMachine::~StateMachine()
@@ -29,6 +12,37 @@ StateMachine::~StateMachine()
 bool StateMachine::OnCreate(GameObject* parent)
 {
 	gameObject = parent;
+
+	State* idleState = new State(1);
+	State* attackState = new State(2);
+
+	Transition* idleTransition = new Transition();
+	idleTransition->setTargetState(attackState);
+	FloatCondition* idleCondition = new FloatCondition("floatIdle");
+	idleTransition->setTransitionCondition(idleCondition);
+
+	Transition* attackTransition = new Transition();
+	attackTransition->setTargetState(idleState);
+	FloatCondition* attackCondition = new FloatCondition("floatAttack");
+	attackTransition->setTransitionCondition(attackCondition);
+
+	ConditionManager::GetInstance()->addCondition(idleCondition);
+	ConditionManager::GetInstance()->addCondition(attackCondition);
+
+	idleState->setTransitions(idleTransition);
+	attackState->setTransitions(attackTransition);
+
+	initialState = idleState;
+
+	currentState = initialState;
+
+	idleState->setAction(new MovebackActions(gameObject), 1);
+	idleState->setAction(new DoNothingActions(gameObject), 2);
+
+
+	attackState->setAction(new SteeringActions(gameObject), 1);
+	attackState->setAction(new DoNothingActions(gameObject), 2);
+
 	return true;
 }
 
@@ -55,19 +69,21 @@ void StateMachine::Update(float deltaTime)
 	{
 		State* targetState = trigger->getTargetState();
 
-		Actions actions = currentState->getExitActions();
+		currentState->getExitActions()->DoSomething(deltaTime);
 
-		Actions entryAction = targetState->getEntryActions();
+		//Actions entryAction = targetState->getEntryActions();
 
-		Actions transitionAction = trigger->getAction();;
+		//Actions transitionAction = trigger->getAction();
 
-		actions += transitionAction;
+		//actions += transitionAction;
 
-		actions += entryAction;
+		//actions += entryAction;
+
 		currentState = targetState;
-		currentState->getActions();
+
+		currentState->getActions()->DoSomething(deltaTime);
 	}
 	else
-		currentState->getActions();
+		currentState->getActions()->DoSomething(deltaTime);
 
 }

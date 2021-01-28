@@ -123,6 +123,21 @@ void SceneGraph::AddGuiObject(GuiObject* go_, string tag_)
 
 }
 
+bool SceneGraph::isExist(string tag)
+{
+	for (auto obj : sceneGameObjects)
+	{
+		if (obj.first == tag)
+		{
+			return true;
+		}
+		else
+		{
+			return false; 
+		}
+	}
+}
+
 GameObject* SceneGraph::getGameObject(string tag_)
 {
 	if (sceneGameObjects.find(tag_) != sceneGameObjects.end())
@@ -146,44 +161,49 @@ void SceneGraph::Update(const float deltatime_)
 {
 	for (auto go : sceneGameObjects)
 	{
-		if (go.second->GetHit() == true)
-		{
-			//cout << glm::to_string(go.second->GetPosition()) << std::endl << endl;
-		}
+		//if (go.second->GetHit() == true)
+		//{
+		//	//cout << glm::to_string(go.second->GetPosition()) << std::endl << endl;
+		//}
 
-		if (go.first == "apple")
-		{
-			
-			//go.second->Update(seek->getSteering(), deltatime_);
-			go.second->Update(avoidance->getSteering(), deltatime_);
-		}
-		else
-		{
+		//if (go.first == "apple")
+		//{
+		//	
+		//	//go.second->Update(seek->getSteering(), deltatime_);
+		//go.second->Update(avoidance->getSteering(), deltatime_);
+		//}
+		//else
+		//{
 
-			//vec3 targetPosition(5, 0, -10);
+		//	//vec3 targetPosition(5, 0, -10);
 
-			//vec3 diff = targetPosition - go.second->GetPosition();
-			//float distance = sqrtf(dot(diff, diff));
+		//	//vec3 diff = targetPosition - go.second->GetPosition();
+		//	//float distance = sqrtf(dot(diff, diff));
 
-			//if (distance > 1.0f)
-			//{
-			//	vec3 moveDir = normalize(diff);
-			//	vec3 pos = go.second->GetPosition() + moveDir * 2.0f * deltatime_;
-			//	go.second->SetPosition(pos);
-			//}
-			//go.second->Update(deltatime_);
-			//if (go.first == "DICE")
-			//{
-			//	go.second->Update(deltatime_);
-			//	//go.second->Update(arrivetest->getSteering(), deltatime_);
-			//}
-			//else
-			//{
-			//	
-			//}
-		}
+		//	//if (distance > 1.0f)
+		//	//{
+		//	//	vec3 moveDir = normalize(diff);
+		//	//	vec3 pos = go.second->GetPosition() + moveDir * 2.0f * deltatime_;
+		//	//	go.second->SetPosition(pos);
+		//	//}
+		//	//go.second->Update(deltatime_);
+		//	//if (go.first == "DICE")
+		//	//{
+		//	//	go.second->Update(deltatime_);
+		//	//	//go.second->Update(arrivetest->getSteering(), deltatime_);
+		//	//}
+		//	//else
+		//	//{
+		//	//	
+		//	//}
+		//}
 
-		//go.second->Update(deltatime_);
+
+		//if (go.first == "apple")
+		//{
+		//	cout << "Check" << endl;
+		//}
+		go.second->Update(deltatime_);
 	}
 }
 
@@ -422,23 +442,23 @@ void SceneGraph::RPGPlayerMove(const float deltatime_, string tag_, bool inputs[
 
 	if (inputs[0])
 	{
-		_inputDirection.z -= 0.1f;
+		_inputDirection.z -= 0.5f;
 	}
 	if (inputs[1])
 	{
-		_inputDirection.x -= 0.1f;
+		_inputDirection.x -= 0.5f;
 	}
 	if (inputs[2])
 	{
-		_inputDirection.z += 0.1f;
+		_inputDirection.z += 0.5f;
 		
 	}
 	if (inputs[3])
 	{
-		_inputDirection.x += 0.1f;
+		_inputDirection.x += 0.5f;
 	}
 
-	if (player_ != nullptr)
+	if (player_ != nullptr && _inputDirection != vec3(0))
 	{
 		Move(player_, _inputDirection);
 	}
@@ -448,12 +468,14 @@ void SceneGraph::Move(GameObject * player_, vec3 _inputDirection)
 {
 	vec3 pos = player_->GetPosition() + _inputDirection;
 
-	//player_->SetPosition(pos);
+	player_->SetPosition(pos);
 
-	UpdatePosition* packet = (UpdatePosition*)Client::getInstance()->getPacketFactory()->CreatePacket(PACKET_UPDATE_POSITION);
-	packet->setUpData(player_->GetTag(), pos);
 
-	Client::getInstance()->SendPackets(packet);
+	//For update to server
+	//UpdatePosition* packet = (UpdatePosition*)Client::getInstance()->getPacketFactory()->CreatePacket(PACKET_UPDATE_POSITION);
+	//packet->setUpData(player_->GetTag(), pos);
+
+	//Client::getInstance()->SendPackets(packet);
 }
 
 void SceneGraph::setGrid(Graph<Node> gird)

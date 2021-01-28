@@ -16,6 +16,10 @@ using namespace protocol2;
 using namespace glm;
 using namespace std;
 using json = nlohmann::json;
+
+//void to_json(json& j, const NetworkobjectsData& p) {
+//	j = json{ {"tagName", p.tagName}, {"modelName", p.modelName}, {"position", {p.position.x,p.position.y,p.position.z }} };
+//}
 enum PacketTypes
 {
 	PACKET_CONNECTION_REQUEST,                      // client requests a connection.
@@ -364,6 +368,10 @@ struct NetworkobjectsData
 	vec3 position;
 	string tagName;
 	string modelName;
+	bool operator == (const NetworkobjectsData& other)
+	{
+		return position == other.position && tagName == other.tagName && modelName == other.modelName;
+	}
 };
 
 struct ClientServerPacketFactory : public PacketFactory
@@ -599,12 +607,27 @@ public:
 		{
 		case CLIENT_STATE_CONNECTED:
 		{
-			TestPacket* packet = (TestPacket*)m_packetFactory->CreatePacket(TEST_PACKET_CREATEPLAYER);
-			packet->setupdata("redDice", "Player1", vec3(2.0f, 0.0f, -5.0f));
+			//TestPacket* packet = (TestPacket*)m_packetFactory->CreatePacket(TEST_PACKET_CREATEPLAYER);
+			//packet->setupdata("redDice", "Player1", vec3(2.0f, 0.0f, -5.0f));
 
-			SendPacketToServer(packet, Timer::Timer().GetDeltaTime());
+			//SendPacketToServer(packet, Timer::Timer().GetDeltaTime());
 
-			/*json j;
+			//json j;
+			//
+			//j["modelName"] = "redDice";
+			//j["tag"] = "Player1";
+			//j["position"] = { 2, 0, -5 };
+
+			//std::string s = j.dump();
+
+			//std::cout << "Json Send: " << s << std::endl;
+			//JsonPacket* packet = (JsonPacket*)m_packetFactory->CreatePacket(PACKET_JSON);
+
+			//packet->setUpData(s);
+
+			//SendPacketToServer(packet, Timer::Timer().GetDeltaTime());
+
+			json j;
 
 			j["modelName"] = "redDice";
 			j["tag"] = "Player1";
@@ -615,12 +638,13 @@ public:
 			std::cout << "Json Send: " << s << std::endl;
 			JsonPacket* packet = (JsonPacket*)m_packetFactory->CreatePacket(PACKET_JSON);
 
-			packet->setUpData(s);*/
+			packet->setUpData(s);
 
-			//SendPacketToServer(packet, Timer::Timer().GetDeltaTime());
+			SendPacketToServer(packet, Timer::Timer().GetDeltaTime());
 		}
 
 		break;
+
 
 		default:
 			break;
@@ -912,6 +936,9 @@ protected:
 			printf("client is now connected to server: %s\n", addressString);
 			m_clientState = CLIENT_STATE_CONNECTED;
 		}
+
+		//ConnectionKeepAlivePacket* packet = (ConnectionKeepAlivePacket*)Client::getInstance()->getPacketFactory()->CreatePacket(PACKET_CONNECTION_KEEP_ALIVE);
+		//Client::getInstance()->SendPackets(packet);
 
 		m_lastPacketReceiveTime = time;
 	}

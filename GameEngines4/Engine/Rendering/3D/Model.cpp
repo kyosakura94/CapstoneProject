@@ -267,9 +267,15 @@ vector<vec3> Model::getvertercies(int index_)
 glm::mat4 Model::GetTransform(vec3 position_, float angle_, vec3 rotation_, vec3 scale_) const
 {
 	glm::mat4 model;
+	//glm::fquat qual;
+
+	//glm::mat4 RotationMatrix = glm::toMat4(qual);
 
 	model = translate(model, position_);
 	model = rotate(model, angle_, rotation_);
+
+	//model = model * RotationMatrix;
+
 	model = scale(model, scale_);
 
 	return model;

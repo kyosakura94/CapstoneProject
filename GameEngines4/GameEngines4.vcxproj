@@ -123,6 +123,8 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Engine\Math\AI\DoNothingActions.cpp" />
+    <ClCompile Include="Engine\Math\AI\ConditionManager.cpp" />
     <ClCompile Include="Engine\Math\AI\Actions.cpp" />
     <ClCompile Include="Engine\Math\AI\Condition.cpp" />
     <ClCompile Include="Engine\Math\Physics\CollisionResponse.cpp" />
@@ -150,6 +152,7 @@
     <ClCompile Include="Engine\Rendering\3D\GameObject.cpp" />
     <ClCompile Include="Engine\Event\EventListener.cpp" />
     <ClCompile Include="Engine\Rendering\Renderer\Renderer.cpp" />
+    <ClCompile Include="Engine\Math\AI\FloatCondition.cpp" />
     <ClCompile Include="Game\Scene\GameScene.cpp" />
     <ClCompile Include="Game\GameTest.cpp" />
     <ClCompile Include="Engine\FX\LightSource.cpp" />
@@ -184,8 +187,12 @@
     <ClCompile Include="Engine\Math\AI\State.cpp" />
     <ClCompile Include="Engine\Math\AI\StateMachine.cpp" />
     <ClCompile Include="Engine\Math\AI\Transition.cpp" />
+    <ClCompile Include="Engine\Math\AI\MovebackActions.cpp" />
+    <ClCompile Include="Engine\Math\AI\SteeringActions.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Engine\Math\AI\DoNothingActions.h" />
+    <ClInclude Include="Engine\Math\AI\ConditionManager.h" />
     <ClInclude Include="Engine\Math\AI\Actions.h" />
     <ClInclude Include="Engine\Math\AI\Condition.h" />
     <ClInclude Include="Engine\Math\Physics\CollisionResponse.h" />
@@ -226,6 +233,7 @@
     <ClInclude Include="Engine\Rendering\3D\GameObject.h" />
     <ClInclude Include="Engine\Event\EventListener.h" />
     <ClInclude Include="Engine\Rendering\Renderer\Renderer.h" />
+    <ClInclude Include="Engine\Math\AI\FloatCondition.h" />
     <ClInclude Include="Game\Scene\GameScene.h" />
     <ClInclude Include="Game\GameTest.h" />
     <ClInclude Include="Game\Scene\StartScene.h" />
@@ -257,6 +265,8 @@
     <ClInclude Include="Engine\Math\AI\StateMachine.h" />
     <ClInclude Include="Engine\Math\AI\Transition.h" />
     <ClInclude Include="Engine\Event\KeyEventListener.h" />
+    <ClInclude Include="Engine\Math\AI\MovebackActions.h" />
+    <ClInclude Include="Engine\Math\AI\SteeringActions.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Engine\Shaders\ColorFragmentShader.glsl" />

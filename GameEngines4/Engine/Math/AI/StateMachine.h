@@ -2,7 +2,13 @@
 #define STATEMACHINE_H
 
 #include "State.h"
+#include "FloatCondition.h"
 #include "../../Rendering/3D/Component.h"
+#include "ConditionManager.h"
+
+#include "DoNothingActions.h"
+#include "MovebackActions.h"
+#include "SteeringActions.h"
 
 class GameObject;
 class StateMachine : public Component

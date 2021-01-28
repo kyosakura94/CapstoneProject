@@ -1,2 +1,32 @@
-﻿  StateMachine.cpp
+﻿  GameScene.cpp
+D:\CapstoneProject\GameEngines4\Engine\Math\Randomizer.h(56,20): warning C4244: 'return': conversion from 'double' to 'float', possible loss of data
+D:\CapstoneProject\GameEngines4\Engine\Rendering\3D\Model.h(17): warning C4091: 'static ': ignored on left of 'Model::<unnamed-enum-OUTSIDE>' when no variable is declared
+D:\CapstoneProject\GameEngines4\Engine\Math\AI\Arrive.h(31,26): warning C4305: 'initializing': truncation from 'double' to 'float'
+D:\CapstoneProject\GameEngines4\Engine\Math\AI\AStarPathFinding.h(4,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+D:\CapstoneProject\GameEngines4\Engine\Network\Client.h(6,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+D:\CapstoneProject\GameEngines4\Engine\Network\Address.h(114,34): warning C4244: 'return': conversion from 'network1::SocketHandle' to 'int', possible loss of data
+D:\CapstoneProject\GameEngines4\Engine\Network\Address.h(130,1): warning C4005: '_CRT_SECURE_NO_WARNINGS': macro redefinition
+D:\CapstoneProject\GameEngines4\Game\Scene\GameScene.cpp : message : see previous definition of '_CRT_SECURE_NO_WARNINGS'
+D:\CapstoneProject\GameEngines4\Engine\Network\Server.h(556,30): warning C4018: '<': signed/unsigned mismatch
+D:\CapstoneProject\GameEngines4\Engine\Network\Server.h(607,30): warning C4018: '<': signed/unsigned mismatch
+D:\CapstoneProject\GameEngines4\Game\Scene\GameScene.cpp(76,23): warning C4018: '<': signed/unsigned mismatch
+D:\CapstoneProject\GameEngines4\Game\Scene\GameScene.cpp(80,24): warning C4018: '<': signed/unsigned mismatch
+D:\CapstoneProject\GameEngines4\Game\Scene\GameScene.cpp(86,10): warning C4018: '<': signed/unsigned mismatch
+D:\CapstoneProject\GameEngines4\Engine\Rendering\2D\GuiObject.h(53,23): warning C4018: '<': signed/unsigned mismatch
+D:\CapstoneProject\GameEngines4\Game\Scene\GameScene.cpp(156): message : see reference to function template instantiation 'T *GuiObject::GetComponent<GuiImageComponent>(void)' being compiled
+          with
+          [
+              T=GuiImageComponent
+          ]
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.24.28314\include\chrono(632): message : see reference to class template instantiation 'std::chrono::duration<double,std::ratio<1,1>>' being compiled
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.24.28314\include\chrono(178): message : see reference to class template instantiation 'std::chrono::duration<__int64,std::nano>' being compiled
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.24.28314\include\chrono(610): message : see reference to class template instantiation 'std::chrono::time_point<std::chrono::steady_clock,std::chrono::nanoseconds>' being compiled
+D:\CapstoneProject\GameEngines4\Engine\Rendering\3D\GameObject.h(95,23): warning C4018: '<': signed/unsigned mismatch
+D:\CapstoneProject\GameEngines4\Engine\Rendering\3D\GameObject.h(54): message : see reference to function template instantiation 'T *GameObject::GetComponent<T>(void)' being compiled
+          with
+          [
+              T=AudioSource
+          ]
+D:\CapstoneProject\GameEngines4\Game\Scene\GameScene.cpp(74): message : see reference to function template instantiation 'void GameObject::AddComponent<AudioSource,const char(&)[15],bool>(const char (&)[15],bool &&)' being compiled
+D:\CapstoneProject\GameEngines4\Engine\Rendering\2D\GuiObject.h(65): warning C4715: 'GuiObject::GetComponent<GuiImageComponent>': not all control paths return a value
   GameEngines4.vcxproj -> D:\CapstoneProject\Debug\GameEngines4.exe

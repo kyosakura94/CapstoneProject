@@ -23,20 +23,20 @@ State::~State()
 {
 }
 
-Actions State::getActions()
+Actions * State::getActions()
 {
-	return Actions(2);
+	return mainAction;
 }
 
-Actions State::getEntryActions()
+Actions * State::getEntryActions()
 {
-	return Actions(0);
+	return entryAction;
 }
 
 
-Actions State::getExitActions()
+Actions * State::getExitActions()
 {
-	return Actions(1);
+	return exitAction;
 }
 
 void State::setTransitions(Transition* transition_)
@@ -45,5 +45,29 @@ void State::setTransitions(Transition* transition_)
 	{
 		transitions.push_back(transition_);
 	}
+}
+
+void State::setGameObject(GameObject* gameObject_)
+{
+	gameObject = gameObject_;
+}
+
+void State::setAction(Actions* action_, int i)
+{
+	switch (i)
+	{
+	case 0:
+		entryAction = action_;
+		break;
+	case 1:
+		mainAction = action_;
+		break;
+	case 2:
+		exitAction = action_;
+		break;
+	default:
+		break;
+	}
+	
 }
 

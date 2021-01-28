@@ -1,6 +1,6 @@
 #include "GameScene.h"
 
-GameScene::GameScene() : check(false), Scene()
+GameScene::GameScene() : check(true), infoDistance(6), Scene()
 {
 
 }
@@ -57,6 +57,7 @@ bool GameScene::OnCreate()
 
 	SceneGraph::GetInstance()->AddModel(model1);
 	SceneGraph::GetInstance()->AddModel(model3);
+
 
 	GameObject* test = new GameObject(model1, vec3(2.0f, 0.0f, -5.0f));
 
@@ -125,9 +126,9 @@ bool GameScene::OnCreate()
 
 	SceneGraph::GetInstance()->AddModel(model2);
 
-	GameObject* apple = new GameObject(model2, vec3(1.0f, 0.0f, 2.0f));
+	GameObject* apple = new GameObject(model2, vec3(8, 0, -5));
 
-	apple->SetScale(glm::vec3(0.2f));
+	apple->SetScale(glm::vec3(0.4f));
 
 	//apple->AddComponent<TestClassA>("test");
 	//apple->GetComponent<TestClassA>();
@@ -209,20 +210,41 @@ bool GameScene::OnCreate()
 
 void GameScene::Update(const float deltaTime_)
 {
-	//std::cout << deltaTime_ << std::endl;
-	//shape->Update(deltaTime_);
-	
-	SceneGraph::GetInstance()->Update(deltaTime_);
+	if (KeyEventListener::GetKeyState("W"))
+	{
+		input[0] = true;
+	}
+	if (KeyEventListener::GetKeyState("A"))
+	{
+		input[1] = true;
+	}
+	if (KeyEventListener::GetKeyState("S"))
+	{
+		input[2] = true;
+	}
+	if (KeyEventListener::GetKeyState("D"))
+	{
+		input[3] = true;
+	}
+
+	SceneGraph::GetInstance()->RPGPlayerMove(deltaTime_, "DICE", input);
 
 	deltaTime = deltaTime_;
-	//SceneGraph::GetInstance()->UpdateClick(deltaTime_, grid, e_);
 
+	vec3 targetPosition(SceneGraph::GetInstance()->getGameObject("DICE")->GetPosition());
+	vec3 diff = targetPosition - SceneGraph::GetInstance()->getGameObject("apple")->GetPosition();
 
-	//SceneGraph::GetInstance()->getGameObject("DICE");
+	float distance = sqrtf(dot(diff, diff));
 
+	ConditionManager::GetInstance()->getConditon("floatIdle")->setResult(ConditionManager::GetInstance()->getDistance(), distance);
 	bool result = GJKCheck->CollisonCheck(SceneGraph::GetInstance()->getGameObject("DICE"), SceneGraph::GetInstance()->getGameObject("apple"));
 	
-	Condition::GetInstance()->setCheck(result);
+	if (result == true && check == true)
+	{
+		ConditionManager::GetInstance()->getConditon("floatAttack")->setResult(6, 5);
+		ConditionManager::GetInstance()->setDistance(0);
+		//check = false;
+	}
 
 
 	//if (result == true)
@@ -236,11 +258,21 @@ void GameScene::Update(const float deltaTime_)
 	//	Condition::GetInstance()->setInside(true);
 	//}
 
+	//normal update of all gameobject in the scene
+	SceneGraph::GetInstance()->Update(deltaTime_);
+
+	//update for the A* algrothim
+	//SceneGraph::GetInstance()->UpdateClick(deltaTime_, grid, e_);
 
 
 	if (SceneGraph::GetInstance()->getGuiObject("sunGUI")->isInside(MouseEventListener::GetMousePosition()))
 	{
 		std::cout << "inside GUI" << std::endl;
+	}
+
+	for (size_t i = 0; i < 4; i++)
+	{
+		input[i] = false;
 	}
 }
 

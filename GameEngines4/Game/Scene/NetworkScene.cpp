@@ -45,11 +45,6 @@ bool NetworkScene::OnCreate()
 
 void NetworkScene::Update(const float deltaTime_)
 {
-	if (Client::getInstance()->IsConnected())
-	{
-		//Client::getInstance()->SendPackets();
-	}
-
 	if (KeyEventListener::GetKeyState("W"))
 	{
 		input[0] = true;
@@ -69,8 +64,8 @@ void NetworkScene::Update(const float deltaTime_)
 
 
 	//SceneGraph::GetInstance()->RPGPlayerMoving(deltaTime_);
+	SceneGraph::GetInstance()->RPGPlayerMove(deltaTime_, "Player1", input);
 
-	//SceneGraph::GetInstance()->RPGPlayerMove(deltaTime_, "Player1", input);
 
 	if (Client::getInstance()->IsConnected())
 	{
@@ -92,9 +87,21 @@ void NetworkScene::Update(const float deltaTime_)
 
 				const TestPacket* tmp;
 				tmp = (TestPacket*)packet;
+				CreatePlayer("");
 				//CreatePlayer(tmp->position, (char*)tmp->modelName, (char*)tmp->tagName);
 
 				//createCheck = false;
+				break;
+
+			case PACKET_JSON:
+				const JsonPacket* jsonPacket;
+				jsonPacket = (JsonPacket*)packet;
+
+				CreatePlayer((char*)jsonPacket->jsonString);
+
+				ConnectionKeepAlivePacket* packet = (ConnectionKeepAlivePacket*)Client::getInstance()->getPacketFactory()->CreatePacket(PACKET_CONNECTION_KEEP_ALIVE);
+				Client::getInstance()->SendPackets(packet);
+
 				break;
 			}
 		}
@@ -105,6 +112,7 @@ void NetworkScene::Update(const float deltaTime_)
 	{
 		input[i] = false;
 	}
+
 }
 
 void NetworkScene::Render()
@@ -129,16 +137,21 @@ void NetworkScene::CreatePlayer(string j)
 {
 	std::cout << "Json Received: " << j << std::endl;
 
-	auto j3 = json::parse(j);
+	json j3 = json::parse(j);
 
-	std::string tag = j3["tag"].get<std::string>();
-	std::string modelName = j3["modelName"].get<std::string>();
+	for (auto &info : j3["playerInfo"])
+	{
+		std::string tag = info["tag"].get<std::string>();
+		std::string modelName = info["modelName"].get<std::string>();
 
-	std::vector<float> position;
-	for (auto& elem : j3["position"]) position.push_back(elem);
+		std::vector<float> position;
+		for (auto& elem : info["position"]) position.push_back(elem);
 
-
-	GameObject* BlueDiceObj = new GameObject(SceneGraph::GetInstance()->getModel(modelName), vec3(position[0], position[1], position[2]));
-	SceneGraph::GetInstance()->AddGameObject(BlueDiceObj, tag);
+		if (SceneGraph::GetInstance()->isExist(tag) != true)
+		{
+			GameObject* BlueDiceObj = new GameObject(SceneGraph::GetInstance()->getModel(modelName), vec3(position[0], position[1], position[2]));
+			SceneGraph::GetInstance()->AddGameObject(BlueDiceObj, tag);
+		}
+	}
 }
 

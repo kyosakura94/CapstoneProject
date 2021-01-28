@@ -26,12 +26,12 @@ Transition::~Transition()
 
 bool Transition::isTriggered()
 {
-	return Condition::GetInstance()->Test();
+	return condition->Test();
 }
 
-Actions Transition::getAction()
+Actions * Transition::getAction()
 {
-	action = Actions(3);
+	//action = Actions(3);
 	return action;
 }
 

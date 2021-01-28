@@ -36,6 +36,7 @@ private:
 	float deltaTime;
 	GJKCollision* GJKCheck;
 	bool check;
-	
+	float infoDistance;
+	bool input[4];
 };
 #endif

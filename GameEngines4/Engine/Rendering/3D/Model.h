@@ -7,6 +7,8 @@
 #include "LoadOBJModel.h"
 #include "../Renderer/Renderer.h"
 #include <glm/gtx/string_cast.hpp>
+#include <glm/gtx/quaternion.hpp>
+
 using namespace std;
 using namespace glm;
 class Model

@@ -143,6 +143,7 @@
 //
 //	return true;
 //}
+
 std::unique_ptr<Client> Client::ClientInstance = nullptr;
 Client* Client::getInstance()
 {
