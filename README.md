@@ -47,14 +47,17 @@ From here, simply use the concrete implementation of the GameInterface to list a
 
 ## Expanded Credits
 
-Aidan Zizys - Engine, Graphics, Animator, Systems programmer
+Nghia Tran - Engine, Graphics, Animator, Systems programmer
   * [Website](http://kyosakura94.com) | [Github](https://github.com/kyosakura94) | [LinkedIn](https://www.linkedin.com/in/nghiatran-0494/)
 
 ## Special Thanks
 
-Thuy Minh - 2D Artist for cube textures  [ArtStation](http://kyosakura94.com)
-Duc Huy - 3D Animator for character's animation [ArtStation](http://kyosakura94.com/)
-Do Quang - 2D Artist for background image [ArtStation](https://www.artstation.com/artwork/B1Wv8m)
+Thuy Minh - 2D Artist for cube textures  
+*[ArtStation](http://kyosakura94.com)
+Duc Huy - 3D Animator for character's animation 
+*[ArtStation](http://kyosakura94.com/)
+Do Quang - 2D Artist for background image 
+*[ArtStation](https://www.artstation.com/artwork/B1Wv8m)
 
 ## Copyrights
 
