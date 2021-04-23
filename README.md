@@ -8,7 +8,7 @@ Feel free to check out my [engine code](NoRoEngine/NoRoEngine/Engine/) or the [g
 <br></br>
 <br></br>
 <p align="center">Check out a trailer of my game below!</p>
-<p align="center"><a href="https://youtu.be/c22WljzI1EA"><img src="https://img.youtube.com/vi/PAHP0r7vL6A/0.jpg"></a></p>
+<p align="center"><a href="https://youtu.be/c22WljzI1EA"><img src="http://i3.ytimg.com/vi/c22WljzI1EA/maxresdefault.jpg"></a></p>
 
 ## NoRoGameEngine Features
 
@@ -22,7 +22,7 @@ The game features an opening menu that allows the player to start the game
 
 ## Using our engine
 
-In order to use our engine to make a game, create an instance of OdeumEngine, and initialize it with an instance of a GameInterface in your entry point.
+In order to use our engine to make a game, create an instance of NoRoGameEngine, and initialize it with an instance of a GameInterface in the entry point.
 
 ```C++
 int main(int argc, char* argv[]) 
@@ -47,23 +47,17 @@ From here, simply use the concrete implementation of the GameInterface to list a
 
 ## Expanded Credits
 
-Aidan Zizys - Engine, Graphics, Systems programmer
-  * [Website](https://aidanzizysgamedev.com) | [Github](https://github.com/azgame) | [LinkedIn](https://www.linkedin.com/in/aidan-zizys/)
+Aidan Zizys - Engine, Graphics, Animator, Systems programmer
+  * [Website](http://kyosakura94.com) | [Github](https://github.com/kyosakura94) | [LinkedIn](https://www.linkedin.com/in/nghiatran-0494/)
 
-Benjamin Sayliss - Engine, Physics programmer
-  * [Website](https://benjaminsaylissgamedev.com) | [Github](https://github.com/BenSayliss) | [LinkedIn](https://www.linkedin.com/in/benjamin-sayliss-407311177/)
+## Special Thanks
 
-Robert Ward - Gameplay programmer
-  * [Website](https://robertwardgamedev.com) | [Github](https://github.com/docdodo) | [LinkedIn](https://www.linkedin.com/in/robert-ward-710234175/)
-
-Ryan Thorne - Generalist programmer
-  * [Website](https://www.ryanthornegamedev.com) | [Github](https://github.com/mongoose9304) | [LinkedIn](https://www.linkedin.com/in/ryan-thorne-250366175/)
-
-Diego Gregori - Generalist programmer
-  * [Website](https://www.diegogregorigamedev.com) | [Github](https://github.com/dgmode21) | [LinkedIn](https://www.linkedin.com/in/diego-gregori/)
+Thuy Minh - 2D Artist for cube textures  [ArtStation](http://kyosakura94.com)
+Duc Huy - 3D Animator for character's animation [ArtStation](http://kyosakura94.com/)
+Do Quang - 2D Artist for background image [ArtStation](https://www.artstation.com/artwork/B1Wv8m)
 
 ## Copyrights
 
-We've included copyright notices for all of the assets (models, textures, sound, etc.) we used in our game. They can be found in the copyright pdf in this folder.
+I've also included copyright notices for all of the assets include background imgage, textures, sound, etc. that I used in the game. They can be found in the copyright pdf in this folder.
 
-We used a few C++ libraries to help build our engine, including FMOD, ImGui, Nlohmann's JSON library, AssImp, and we used a number of files from Microsoft's Mini Engine sample set for developing our renderer. These files include their original licenses.
+I used a few C++ libraries to help build our engine, including FMOD, Nlohmann's JSON library, AssImp, Network Protocols and I used a number of files from OpenGL Tutorial samples for developing shadows. These files include their original licenses.
