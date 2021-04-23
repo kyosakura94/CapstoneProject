@@ -20,9 +20,9 @@ Last Accident Tower is a 3D puzzle game. During the game, the main mission is to
 
 The game features an opening menu that allows the player to start the game, and move between scenes.
 
-## Using our engine
+## Using my engine
 
-In order to use our engine to make a game, create an instance of NoRoGameEngine, and initialize it with an instance of a GameInterface in the entry point.
+In order to use my engine to make a game, first make sure that all the libraries reference have been linked properly. Second try an create an instance of NoRoGameEngine, and initialize it with an instance of a GameInterface in the entry point.
 
 ```C++
 int main(int argc, char* argv[]) 
