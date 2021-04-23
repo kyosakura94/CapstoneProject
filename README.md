@@ -2,7 +2,7 @@
 
 The repository is meant for Game Programming capstone project at Humber College, developed by [Nghia Tran](http://kyosakura94.com/). 
 
-For our this capstone project, I built a OPENGL based game engine entirely in C/C++, which we started writing in late August, 2020. In order to show off these features, we built a Mario-party style game entirely using our engine, which we started working on in January, 2021.
+For our this capstone project, I built a OPENGL-based game engine using entirely in C/C++, which I have been started writing in late August, 2020. In order to show off these features, I built a 3D Puzzle style game using my engine.
 
 Feel free to check out my [engine code](NoRoEngine/NoRoEngine/Engine/) or the [game protype](NoRoEngine/NoRoEngine/Game/) that I made. You can also find more media, such as our technical design document or the game engine architecture in [media folder](media).
 <br></br>
@@ -16,24 +16,31 @@ NoRoGameEngine features an advanced renderer, fully supported object and materia
 
 ## Last Accient Tower - Game prototype
 
-Players move around a small board game. Each space has a different function (play a minigame, gain gold, lose gold etc.). Players compete in minigames, with the winner gaining gold. The player with the most gold at the end of the last round will win the game. A mix of both luck and skill is required!
+Last Accient Tower is a 3D puzzle game. During the game, the main missison is collect the item and bring it to disgned destination in order to complete the game. The player need to controller the character and make it move back-and-forth by using WSAD key while carefully avoid obstacle in the level. 
 
-The game features an opening menu that allows the player to play the game normally, or pick from a list of hand-crafted minigames. 
+The game features an opening menu that allows the player to start the game 
 
 ## Using our engine
 
 In order to use our engine to make a game, create an instance of OdeumEngine, and initialize it with an instance of a GameInterface in your entry point.
 
 ```C++
-  OdeumEngine* app;
-  app = new OdeumEngine();
-  app->SetGameInterface(new Game1);
-  ASSERT(app != nullptr, "App is null!");
+int main(int argc, char* argv[]) 
+{
+	CoreEngine::GetInstance()->SetGameInterface(new GameTest);
 
-  if (app->Initialize())
-	  app->Run();
+	if (!CoreEngine::GetInstance()->OnCreate("NoRoEngine", 1080, 720))
+	{
+		return 0;
+	}
 
-  SAFE_DELETE(app);
+	//Core game loop
+	CoreEngine::GetInstance()->Run();
+
+	printf("\n");
+
+	return 0;
+}
 ```
 
 From here, simply use the concrete implementation of the GameInterface to list and determine which concretely implemented scenes to load, given a new scene index. Scenes (read: levels) represent the sections of gameplay that the player will experience.
