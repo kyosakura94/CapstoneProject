@@ -18,6 +18,19 @@ public:
 	bool isInside(vec2 mousePosition_);
 	string GetTag() const;
 	void SetTag(string tag_);
+	bool getHit() { return hit; }
+	void setHit(bool hit_) { hit = hit_; }
+	void Destroy()
+	{
+		for (size_t i = 0; i < GuiComponentContainer.size(); i++)
+		{
+			if (GuiComponentContainer[i])
+			{
+				delete GuiComponentContainer[i];
+				GuiComponentContainer[i] = nullptr;
+			}
+		}
+	}
 	template<typename T, typename ... Args>
 	void AddComponent(Args&& ... args_)
 	{
@@ -81,6 +94,8 @@ public:
 	}
 
 private:
+
+	bool hit;
 	string tag;
 	vec2 position;
 	std::vector<GuiComponents*> GuiComponentContainer;

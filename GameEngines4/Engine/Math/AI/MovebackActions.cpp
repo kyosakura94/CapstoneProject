@@ -22,13 +22,12 @@ void MovebackActions::DoSomething(const float deltaTime_)
 		if (gameObject->GetPosition() == vec3(8, 0, -5))
 		{
 			ConditionManager::GetInstance()->setDistance(4);
-			cout << "is the same position" << endl;
 		}
 		else
 		{
 			//ConditionManager::GetInstance()->getConditon("floatIdle")->setResult(6, 7);
 			//ConditionManager::GetInstance()->getConditon("floatAttack")->setResult(6, 7);
-			gameObject->MoveTest(deltaTime_);
+			//gameObject->MoveTest(deltaTime_);
 		}
 		
 	}

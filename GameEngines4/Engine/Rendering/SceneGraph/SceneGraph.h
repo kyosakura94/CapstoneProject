@@ -15,6 +15,7 @@
 #include "../../Math/AI/Graph.h"
 #include "../../Math/AI/node.h"
 #include "../../Math/AI/AStarPathFinding.h"
+#include "../../Animation/animatedModel/AnimatedModel.h"
 
 class SceneGraph
 {
@@ -28,6 +29,7 @@ public:
 	void AddModel(Model* model_);
 	void AddModel(Model* model_, string name_);
 	Model* getModel(string  modelName_);
+	AnimatedModel* getAniModel(string  modelName_);
 	void AddGameObject(GameObject* go_, string tag_ = "");
 	void AddGuiObject(GuiObject* go_, string tag_ = "");
 	bool isExist(string tag);
@@ -39,6 +41,7 @@ public:
 	void UpdateClick(const float deltatime_, Graph<Node> grid, SDL_Event e_);
 
 	void Render(Camera* camera_);
+	void Render(Camera* camera_, unsigned int  FBO_, unsigned int depthMap);
 	void Draw(Camera* camera_);
 	void OnDestroy();
 	void setCharacter(GameObject* character_);
@@ -48,17 +51,21 @@ public:
 	void setupArrive();
 	void StopMoving();
 	void DelayedRender(const float deltatime_);
+	void Remove(string tag);
+	void RemoveObj(string tag);
+	void RemoveGUI(string tag);
 	//set up all needed information for avoidance
 	void setupCollisionAvoidance();
 	void PlayerMoving(string tagName, vec3 pos_);
 
 	void RPGPlayerMoving(const float deltatime_);
 	void RPGPlayerMove(const float deltatime_, string tag_, bool inputs[4]);
-
+	void RenderQuad();
 	void setGrid(Graph<Node> gird);
+
 private:
 
-	void Move(GameObject* player_, vec3 _inputDirection);
+	void Move(GameObject* player_, vec3 _inputDirection,vec3 angularVelocity, const float time_);
 	Seek* seek;
 	Arrive* arrivetest;
 	//create point to avoidance clas
@@ -78,7 +85,10 @@ private:
 	friend default_delete<SceneGraph>;
 	static map<GLuint, vector<Model*>> sceneModels;
 	static map<string, GameObject*> sceneGameObjects;
+	std::map<string, GameObject*>::iterator it;
+	std::map<string, GuiObject*>::iterator guiit;
 	static map<string, GuiObject*> sceneGuiObjects;
+
 	int currentPathIndex;
 	std::vector<vec3> movingPath;
 	AStarPathFinding* path;

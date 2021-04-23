@@ -3,7 +3,7 @@
 
 #include "../../Engine/Core/CoreEngine.h"
 #include <glm/gtx/string_cast.hpp>
-#include "../../Game/Test/TestClassA.h"
+#include "../../Game/Player/TestClassA.h"
 #include "../../Engine/Rendering/2D/GuiImageComponent.h"
 #include "../../Engine/Math/Quaternion.h"
 #include "../../Engine/FX/Audio/AudioHandler.h"

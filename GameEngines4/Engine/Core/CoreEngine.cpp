@@ -2,7 +2,7 @@
 
 std::unique_ptr<CoreEngine> CoreEngine::engineInstance = nullptr;
 
-CoreEngine::CoreEngine() : window(nullptr), isRunning(false), fps(120),
+CoreEngine::CoreEngine() : window(nullptr), isRunning(false), fps(120), runAgain(false),
 renderer(nullptr), gameInterface(nullptr), currentSceneNum(0), camera(nullptr), rendererType(RendererType::OPENGL)
 {
 
@@ -34,6 +34,7 @@ bool CoreEngine::OnCreate(std::string name_, int width_, int height_)
 		SDL_WarpMouseInWindow(window->GetWindow(), window->GetWidth() / 2, window->GetHeight() / 2);
 
 		MouseEventListener::RegisterEngineObject(this);
+		runAgain = false;
 
 		//ShaderHandler::getInstance()->CreateProgram("colorShader", "Engine/Shaders/ColorVertexShader.glsl", "Engine/Shaders/ColorFragmentShader.glsl");
 
@@ -104,7 +105,17 @@ void CoreEngine::SetGameInterface(GameInterface* gameInterface_, RendererType re
 
 void CoreEngine::SetCurrentScene(int sceneNum_)
 {
+	if (currentSceneNum != sceneNum_)
+	{
+		SceneGraph::GetInstance()->OnDestroy();
+	}
+	
 	currentSceneNum = sceneNum_;
+}
+
+void CoreEngine::SetRunAgain(bool r_)
+{
+	runAgain = r_;
 }
 
 int CoreEngine::GetCurrentScene()
@@ -134,7 +145,6 @@ void CoreEngine::NotifyOfMousePressed(vec2 mouse_)
 
 void CoreEngine::NotifyOfMouseReleased(vec2 mouse_, int buttonType_)
 {
-
 	CollisionHandler::GetInstance()->MouseUpdate(mouse_, buttonType_);
 }
 

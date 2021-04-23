@@ -38,7 +38,9 @@ public:
 	void SetGameInterface(GameInterface * gameInterface_, RendererType rendererType_ = RendererType::OPENGL);
 
 	void SetCurrentScene(int sceneNum_);
+	void SetRunAgain(bool r_);
 	int GetCurrentScene();
+	bool GetRunAgain() { return runAgain;};
 	glm::vec2 GetWindowSize() const;
 
 	void SetCamera(Camera* camera_);
@@ -69,6 +71,7 @@ private:
 
 	Window *window; 
 	bool isRunning;
+	bool runAgain = false;
 
 	Timer timer;
 	unsigned int fps;

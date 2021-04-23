@@ -3,6 +3,7 @@
 
 unique_ptr<CollisionHandler> CollisionHandler::collisionInstance = nullptr;
 vector<GameObject*> CollisionHandler::prevCollisions = vector<GameObject*>();
+vector<GuiObject*> CollisionHandler::prevGuiCollisions = vector<GuiObject*>();
 OctSpatialPartition * CollisionHandler::scenePartition  = nullptr;
 
 
@@ -62,21 +63,6 @@ void CollisionHandler::AddGameObject(GameObject * go_)
 void CollisionHandler::MouseUpdate(vec2 mousePosition_, int buttonType_)
 {
 	Ray mouseRay = CollisionDetection::ScreenPosToWorldRay(mousePosition_, CoreEngine::GetInstance()->GetWindowSize(), CoreEngine::GetInstance()->GetCamera());
-
-	/*GameObject * hitResult = nullptr;
-	float shortestDist = FLT_MAX;
-
-	for (auto go : colliders)
-	{
-		if (mouseRay.isColliding(&go->GetBoundingBox()))
-		{
-			if (mouseRay.intersectionDist < shortestDist)
-			{
-				hitResult = go;
-				shortestDist = mouseRay.intersectionDist;
-			}
-		}
-	}*/
 	if (scenePartition != nullptr)
 	{
 		GameObject * hitResult = scenePartition->GetCollision(mouseRay);
@@ -96,6 +82,7 @@ void CollisionHandler::MouseUpdate(vec2 mousePosition_, int buttonType_)
 		}
 
 		prevCollisions.clear();
+
 		if (hitResult)
 		{
 			prevCollisions.push_back(hitResult);
@@ -103,3 +90,18 @@ void CollisionHandler::MouseUpdate(vec2 mousePosition_, int buttonType_)
 	}
 	
 }
+
+/*GameObject * hitResult = nullptr;
+float shortestDist = FLT_MAX;
+
+for (auto go : colliders)
+{
+	if (mouseRay.isColliding(&go->GetBoundingBox()))
+	{
+		if (mouseRay.intersectionDist < shortestDist)
+		{
+			hitResult = go;
+			shortestDist = mouseRay.intersectionDist;
+		}
+	}
+}*/

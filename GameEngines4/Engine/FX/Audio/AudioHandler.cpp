@@ -120,6 +120,30 @@ int AudioHandler::playSound(string name_, vec3 position_, vec3 velocity_, float 
 	return channelID;
 }
 
+int AudioHandler::stopSound(string name_)
+{
+	int channelID = -1;
+
+	if (getSound(name_) == nullptr)
+	{
+		return channelID;
+	}
+
+	FMOD::Channel* channel;
+
+	if (systemobject->playSound(getSound(name_), nullptr, true, &channel) == FMOD_OK)
+	{
+		channel->setPaused(true);
+
+		channelID = channelCount;
+		channelCount++;
+	}
+
+	soundChannels[channelID] = channel;
+
+	return channelID;
+}
+
 void AudioHandler::UpdateVelocityAndPossition(int channelID_, vec3 position_, vec3 vel_)
 {
 	if (soundChannels[channelID_] != nullptr)

@@ -7,6 +7,7 @@ StateMachine::StateMachine()
 
 StateMachine::~StateMachine()
 {
+
 }
 
 bool StateMachine::OnCreate(GameObject* parent)

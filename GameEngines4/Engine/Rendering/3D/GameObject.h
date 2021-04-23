@@ -7,14 +7,21 @@
 #include "../../Math/Quaternion.h"
 #include "../../Math/Physics/Physics.h"
 #include "../../FX/Audio/AudioSource.h"
+#include "../../Animation/animatedModel/AnimatedModel.h"
+#include <glm/gtc/matrix_transform.hpp>
+#include <glm/gtx/string_cast.hpp>
+#include <glm/gtx/quaternion.hpp>
 
 using namespace glm;
 using namespace std;
 class GameObject
 {
 public:
+	GameObject(AnimatedModel* model_, glm::vec3 position_ = vec3(), glm::quat quaternion_ = quat());
+	GameObject(Model* model_, glm::vec3 position_ = vec3(), glm::quat quaternion_ = quat());
 	GameObject(Model* model_, glm::vec3 position_ = vec3());
 	~GameObject();
+	void Destroy();
 	void Render(Camera* camera_);
 	void Update(const float deltaTime_);
 	void Update(SteeringOutput steering, const float deltaTime_);
@@ -29,9 +36,10 @@ public:
 	float GetAngle() const;
 	vec3 GetAccel();
 	vec3 GetAngVel();
-	Quaternion getQuaternion();
+	quat getQuaternion();
 	int getModelIntances() { return modelInstance; };
 	void SetPosition(glm::vec3 position_);
+	void SetLifeTime(float life_);
 	void SetRotation(glm::vec3 rotation_);
 	void SetScale(glm::vec3 scale_);
 	void SetVelocity(glm::vec3 Velocity_);
@@ -44,10 +52,14 @@ public:
 	void SetDelay(bool delay_);
 	void SetAccel(vec3 accel_);
 	void SetAngVel(vec3 angVel_);
-	void SetQuaternion(Quaternion q_);
+	void SetQuaternion(quat q_);
 	void DelayRender(const float deltaTime_);
-
+	void setBoxTransform();
+	void increaseBB(vec3 rate);
+	void increaseBBZ(vec3 rate);
 	BoundingBox GetBoundingBox() const;
+	BoundingBox GetCollideBoundingBox() const;
+
 	Model* getModel() { return model; }
 	template<typename T, typename ... Args>
 	void AddComponent(Args&& ... args_)
@@ -90,16 +102,42 @@ public:
 	template<typename T>
 	T* GetComponent() 
 	{
-		if (componentContainer.size() != 0)
+		if (delayComponent.size() != 0)
 		{
-			for (auto i = 0; i < componentContainer.size(); i++)
+			for (auto i = 0; i < delayComponent.size(); i++)
 			{
-				if (T* d = dynamic_cast<T*>(componentContainer[i]))
+				if (T* d = dynamic_cast<T*>(delayComponent[i]))
 				{
 					return d;
 				}
 			}
+
+			if (componentContainer.size() != 0)
+			{
+				for (auto i = 0; i < componentContainer.size(); i++)
+				{
+					if (T* d = dynamic_cast<T*>(componentContainer[i]))
+					{
+						return d;
+					}
+				}
+			}
 		}
+		else
+		{
+			if (componentContainer.size() != 0)
+			{
+				for (auto i = 0; i < componentContainer.size(); i++)
+				{
+					if (T* d = dynamic_cast<T*>(componentContainer[i]))
+					{
+						return d;
+					}
+				}
+			}
+		}
+		
+
 
 		return nullptr;
 	}
@@ -118,11 +156,15 @@ public:
 			}
 		}
 	}
+
+	float getLifetime() { return lifeTime; }
 	
 private:
+	
+
 	Model *model;
 	int modelInstance;
-
+	float lifeTime;
 	glm::vec3 position;
 	float angle;
 	float targetSpeed;
@@ -132,10 +174,11 @@ private:
 	glm::vec3 velocity;
 	glm::vec3 orientation;
 	glm::vec3 accel;
-	glm::fquat quaternion;
-	Quaternion q;
+	glm::quat quaternion;
+	quat q;
 	vec3 angVel;
 	BoundingBox box;
+	BoundingBox collidebox;
 	string tag;
 
 

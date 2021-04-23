@@ -6,6 +6,7 @@
 #include "Scene/StartScene.h"
 #include "Scene/GameScene.h"
 #include "Scene/NetworkScene.h"
+#include "Scene/MainMenu.h"
 
 class GameTest : public GameInterface
 {

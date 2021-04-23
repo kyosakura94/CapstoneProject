@@ -30,8 +30,8 @@ Ray CollisionDetection::ScreenPosToWorldRay(vec2 mouseCoords_, vec2 screenSize_,
 
 bool CollisionDetection::RayObbIntersection(Ray * ray_, BoundingBox * box_)
 {
-	float tMin = CoreEngine::GetInstance()->GetCamera()->GetClippingPlanes().x;
-	float tMax = CoreEngine::GetInstance()->GetCamera()->GetClippingPlanes().y;
+	double tMin = CoreEngine::GetInstance()->GetCamera()->GetClippingPlanes().x;
+	double tMax = CoreEngine::GetInstance()->GetCamera()->GetClippingPlanes().y;
 
 	vec3 obbPosition_World(box_->transform[3].x, box_->transform[3].y, box_->transform[3].z);
 
@@ -40,17 +40,17 @@ bool CollisionDetection::RayObbIntersection(Ray * ray_, BoundingBox * box_)
 	{
 	vec3 xAxis(box_->transform[0].x, box_->transform[0].y, box_->transform[0].z);
 
-	float e = dot(xAxis, delta);
-	float f = dot(ray_->direction, xAxis);
+	double e = dot(xAxis, delta);
+	double f = dot(ray_->direction, xAxis);
 
-	if (fabs(f) > 0.001f)
+	if (fabs(f) > 0.000000001f)
 	{
-		float t1 = (e + box_->minVert.x) / f;
-		float t2 = (e + box_->maxVert.x) / f;
+		double t1 = (e + box_->minVert.x) / f;
+		double t2 = (e + box_->maxVert.x) / f;
 
 		if (t1 > t2)
 		{
-			float w = t1;
+			double w = t1;
 			t1 = t2;
 			t2 = w;
 		}
@@ -79,17 +79,17 @@ bool CollisionDetection::RayObbIntersection(Ray * ray_, BoundingBox * box_)
 	//Y axis
 	{
 		vec3 yAxis(box_->transform[1].x, box_->transform[1].y, box_->transform[1].z);
-		float e = dot(yAxis, delta);
-		float f = dot(ray_->direction, yAxis);
+		double e = dot(yAxis, delta);
+		double f = dot(ray_->direction, yAxis);
 
-		if (fabs(f) > 0.001f)
+		if (fabs(f) > 0.000000001f)
 		{
-			float t1 = (e + box_->minVert.y) / f;
-			float t2 = (e + box_->maxVert.y) / f;
+			double t1 = (e + box_->minVert.y) / f;
+			double t2 = (e + box_->maxVert.y) / f;
 
 			if (t1 > t2)
 			{
-				float w = t1;
+				double w = t1;
 				t1 = t2;
 				t2 = w;
 			}
@@ -118,13 +118,13 @@ bool CollisionDetection::RayObbIntersection(Ray * ray_, BoundingBox * box_)
 	//////Z axis
 	{
 		vec3 zAxis(box_->transform[2].x, box_->transform[2].y, box_->transform[2].z);
-		float e = dot(zAxis, delta);
-		float f = dot(ray_->direction, zAxis);
+		double e = dot(zAxis, delta);
+		double f = dot(ray_->direction, zAxis);
 
-		if (fabs(f) > 0.001f)
+		if (fabs(f) > 0.000000001f)
 		{
-			float t1 = (e + box_->minVert.z) / f;
-			float t2 = (e + box_->maxVert.z) / f;
+			double t1 = (e + box_->minVert.z) / f;
+			double t2 = (e + box_->maxVert.z) / f;
 
 			if (t1 > t2)
 			{

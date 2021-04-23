@@ -37,6 +37,7 @@ bool GuiObject::isInside(vec2 mousePosition_)
 		{
 			if (GuiComponentContainer[i]->FindContainingPoint(mousePosition_, position))
 			{
+				cout << "inside" << endl;
 				return true;
 			}
 		}

@@ -1,10 +1,13 @@
 #include "Model.h"
 
+Model::Model()
+{
+}
+
 Model::Model(const string& objFilepath_, const string& matFilepath_, GLuint shaderProgram_, RendererType rendererType_): subMesh(std::vector<OpenGLMesh*>()), shaderProgram(0),
 modelInstances(vector<mat4>()), obj(nullptr)
 {
 	subMesh.reserve(10);
-	modelInstances.reserve(5);
 	modelInstances.reserve(5);
 	shaderProgram = shaderProgram_;
 	rendererType = rendererType_;
@@ -20,6 +23,7 @@ modelInstances(vector<mat4>()), obj(nullptr)
 
 	this->LoadModel();
 }
+
 
 Model::~Model()
 {
@@ -37,25 +41,59 @@ Model::~Model()
 
 void Model::Render(Camera *camera_, string tag)
 {
-	//TEST VIEW FRUSTUM
-	/*int result = AABBandFrustum(camera_);
-
-	if (result == OUTSIDE)
+	for (auto m : subMesh)
 	{
-		cout << tag << " is outside of the Frustum Culling " << endl;
-	}
-	else if (result == INTERSECT || result == INSIDE)
-	{
-		for (auto m : subMesh)
+		if (this->getJointCount() != 0)
+		{
+			m->AnimatedRender(camera_, modelInstances, this->getJointCount(), getCurrentPose());
+		}
+		else
 		{
 			m->Render(camera_, modelInstances);
 		}
-	}*/
+	}
+}
 
+
+
+void Model::Render(Camera* camera_, string tag, GLuint shadeUsing_, unsigned int depthMap, mat4 lightmatrix)
+{
 	for (auto m : subMesh)
 	{
+		m->shadowGenerateBuffers(shadeUsing_);
 
-		m->Render(camera_, modelInstances);
+		if (this->getJointCount() != 0)
+		{
+			m->AnimatedRender(camera_, modelInstances, this->getJointCount(), getCurrentPose(), depthMap, lightmatrix);
+		}
+		else
+		{
+			m->Render(camera_, modelInstances, depthMap, lightmatrix);
+		}
+	}
+}
+
+void Model::ShadowRender(Camera* camera_, GLuint shaderProgram_)
+{
+	for (auto m : subMesh)
+	{
+		m->shadowGenerateBuffers(shaderProgram_);
+		m->ShadowRender(camera_, modelInstances);
+	}
+}
+
+void Model::Render(Camera* camera_, GLuint shaderProgram_)
+{
+	for (auto m : subMesh)
+	{
+		if (this->getJointCount() != 0)
+		{
+			m->AnimatedRender(camera_, modelInstances, this->getJointCount(), getCurrentPose());
+		}
+		else
+		{
+			m->Render(camera_, modelInstances);
+		}
 	}
 }
 
@@ -65,16 +103,39 @@ void Model::AddMesh(OpenGLMesh* mesh_)
 
 }
 
-int Model::CreateInstance(vec3 position_, float angle_, vec3 rotation_, vec3 scale_)
+int Model::CreateInstance(vec3 position_, float angle_, vec3 rotation_, vec3 scale_, quat rotationquaternion_)
 {
-	modelInstances.push_back(GetTransform(position_, angle_, rotation_, scale_));
+	modelInstances.push_back(GetTransform(position_, angle_, rotation_, scale_, rotationquaternion_));
 
 	return modelInstances.size() - 1;
 }
 
-void Model::UpdateInstance(int index_, vec3 position_, float angle_, vec3 rotation_, vec3 scale_)
+void Model::UpdateInstance(int index_, vec3 position_, float angle_, vec3 rotation_, vec3 scale_, quat quaternionRotation_)
 {
-	modelInstances[index_] = GetTransform(position_, angle_, rotation_, scale_);
+	modelInstances[index_] = GetTransform(position_, angle_, rotation_, scale_, quaternionRotation_);
+
+}
+
+void Model::RemoveInstance(int index_)
+{
+	if (modelInstances.size() <= 1)
+	{
+		modelInstances.erase(modelInstances.begin() + index_);
+	}
+	else
+	{
+		quat quaternionRotation_;
+		modelInstances[index_] = GetTransform(vec3(0), 0, vec3(0), vec3(0), quaternionRotation_);
+	}
+	
+}
+
+void Model::ChangeProgram(GLuint program_)
+{
+	for (auto m : subMesh)
+	{
+		m->useProgram(program_);
+	}
 }
 
 BoundingBox Model::GetBoundingBox()
@@ -89,6 +150,7 @@ GLuint Model::getShaderProgram()
 
 mat4 Model::GetTransform(int index_) const
 {
+
 	return modelInstances[index_];
 }
 
@@ -247,10 +309,10 @@ int Model::AABBandFrustum(Camera * camera)
 
 }
 
-LoadOBJModel* Model::getLoadOBJModel()
-{
-	return obj;
-}
+//LoadOBJModel* Model::getLoadOBJModel()
+//{
+//	return obj;
+//}
 
 vector<vec3> Model::getvertercies(int index_)
 {
@@ -264,21 +326,30 @@ vector<vec3> Model::getvertercies(int index_)
 	return worldVertecies;
 }
 
-glm::mat4 Model::GetTransform(vec3 position_, float angle_, vec3 rotation_, vec3 scale_) const
+glm::mat4 Model::GetTransform(vec3 position_, float angle_, vec3 rotation_, vec3 scale_, quat quaternionRotation_) const
 {
+	//float elapsedTime = (float)SDL_GetTicks() / 1000;
+	//quat rotateQuat;
+
+	//vec3 EulerAngles(0, -elapsedTime * 3.0f, 0);
+	//rotateQuat = quat(EulerAngles);
+
 	glm::mat4 model;
-	//glm::fquat qual;
 
-	//glm::mat4 RotationMatrix = glm::toMat4(qual);
+	mat4 translationMatrix = translate(model, position_);
+	mat4 rotationmatrix = toMat4(quaternionRotation_);
+	//mat4 rotationmatrix = rotate(model, angle_, rotation_);
 
-	model = translate(model, position_);
-	model = rotate(model, angle_, rotation_);
+	mat4 scaleMatrix = scale(model, scale_);
+	mat4 finalmodel = translationMatrix * rotationmatrix * scaleMatrix;
 
-	//model = model * RotationMatrix;
+	//model = translate(model, position_);
+	//model = rotate(model, angle_, rotation_);
+	//model = scale(model, scale_);
 
-	model = scale(model, scale_);
 
-	return model;
+	return finalmodel;
+	//return model;
 }
 
 void Model::LoadModel()
@@ -286,6 +357,7 @@ void Model::LoadModel()
 	switch (rendererType)
 	{
 	case RendererType::OPENGL:
+
 		for (int i = 0; i < obj->GetSubMeshes().size(); i++)
 		{
 			subMesh.push_back(new OpenGLMesh(obj->GetSubMeshes()[i], shaderProgram));
@@ -302,8 +374,8 @@ void Model::LoadModel()
 
 	box = obj->GetBoundingBox();
 
-	delete obj;
-	obj = nullptr;
+	//delete obj;
+	//obj = nullptr;
 }
 
 

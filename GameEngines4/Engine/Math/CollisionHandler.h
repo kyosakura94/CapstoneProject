@@ -3,6 +3,7 @@
 
 #include "Ray.h"
 #include "../Rendering/3D/GameObject.h"
+#include "../Rendering/2D/GuiObject.h"
 #include "../Core/OctSpatialPartition.h"
 
 using namespace std;
@@ -31,6 +32,7 @@ private:
 
 	//static vector<GameObject*> colliders;
 	static vector<GameObject*> prevCollisions;
+	static vector<GuiObject*> prevGuiCollisions;
 	static OctSpatialPartition * scenePartition;
 
 };

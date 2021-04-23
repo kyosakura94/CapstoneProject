@@ -5,6 +5,7 @@ CoreEngine* MouseEventListener::engineInstance = nullptr;
 vec2 MouseEventListener::curMouse = vec2();
 vec2 MouseEventListener::preMouse = vec2();
 bool MouseEventListener::firstUpdate = true;
+bool MouseEventListener::mouseClick = false;
 
 void MouseEventListener::RegisterEngineObject(CoreEngine * engine_)
 {
@@ -38,11 +39,13 @@ void MouseEventListener::Update(SDL_Event e_, const Uint8* keystate)
 {
 	if (e_.type == SDL_MOUSEBUTTONDOWN)
 	{
+		MouseEventListener::setMouseClick(true);
 		UpdateMousePosition();
 		NotifyOfMousePressed(e_.button.button);
 	}
 	else if (e_.type == SDL_MOUSEBUTTONUP)
 	{
+		MouseEventListener::setMouseClick(false);
 		UpdateMousePosition();
 		NotifyOfMouseReleased(e_.button.button);
 	}
@@ -106,7 +109,7 @@ void MouseEventListener::NotifyOfKeyPress(SDL_KeyboardEvent* key)
 
 bool MouseEventListener::ClickButton()
 {
-	return false;
+	return mouseClick;
 }
 
 vec2 MouseEventListener::GetMousePosition()

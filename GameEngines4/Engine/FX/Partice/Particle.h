@@ -24,6 +24,7 @@ public:
 	void setVelocity(vec3 vel_) { Velocity = vel_; };
 	void setSize(float size_) { size = size_; };
 	void setColor(vec3 color_) { colour = color_; };
+	void setLifeTime(float lifeTime_) { lifeTime = lifeTime_; };
 
 private:
 	void GenerateBuffers();

@@ -157,7 +157,7 @@ int main(int argc, char* argv[])
 
 	CoreEngine::GetInstance()->SetGameInterface(new GameTest);
 
-	if (!CoreEngine::GetInstance()->OnCreate("GameEngine", 800, 600))
+	if (!CoreEngine::GetInstance()->OnCreate("GameEngine", 1080, 720))
 	{
 		return 0;
 	}

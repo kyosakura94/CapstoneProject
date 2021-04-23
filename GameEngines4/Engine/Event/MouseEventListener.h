@@ -29,10 +29,12 @@ public:
 	static void NotifyOfKeyPress(SDL_KeyboardEvent* key);
 
 	static bool ClickButton();
+	static void setMouseClick(bool state_) { mouseClick = state_; };
 
 	static vec2 GetMousePosition();
 	static vec2 GetPreviousMousePosition();
 	static vec2 GetMouseOffset();
+
 
 private:
 	static CoreEngine* engineInstance;

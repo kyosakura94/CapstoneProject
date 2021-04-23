@@ -13,7 +13,7 @@
 struct  Vertex2D
 {
 	vec2 position;
-	vec2 texCoords;
+	vec2 uv;
 };
 struct SubSprite 
 {

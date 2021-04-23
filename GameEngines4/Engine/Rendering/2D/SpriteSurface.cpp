@@ -8,22 +8,22 @@ SpriteSurface::SpriteSurface(string nametexture_, float scale_, float angle_, ve
 
 	Vertex2D vertA;
 	vertA.position = vec2(-0.5f, 0.5f);
-	vertA.texCoords = vec2(0.0f, 0.0f);
+	vertA.uv = vec2(0.0f, 0.0f);
 	vertexList.push_back(vertA);
 
 	Vertex2D vertB;
 	vertB.position = vec2(0.5f, 0.5f);
-	vertB.texCoords = vec2(1.0f, 0.0f);
+	vertB.uv = vec2(1.0f, 0.0f);
 	vertexList.push_back(vertB);
 	
 	Vertex2D vertC;
 	vertC.position = vec2(-0.5f, -0.5f);
-	vertC.texCoords = vec2(0.0f, 1.0f);
+	vertC.uv = vec2(0.0f, 1.0f);
 	vertexList.push_back(vertC);
 
 	Vertex2D vertD;
 	vertD.position = vec2(0.5f, -0.5f);
-	vertD.texCoords = vec2(1.0f, 1.0f);
+	vertD.uv = vec2(1.0f, 1.0f);
 	vertexList.push_back(vertD);
 
 	scale = vec2(scale_);
@@ -103,7 +103,7 @@ void SpriteSurface::GenerateBuffers()
 
 	//TEXTURECORDINATE
 	glEnableVertexAttribArray(1);
-	glVertexAttribPointer(1, 2, GL_FLOAT, GL_FALSE, sizeof(Vertex2D), (GLvoid*)offsetof(Vertex2D, texCoords));
+	glVertexAttribPointer(1, 2, GL_FLOAT, GL_FALSE, sizeof(Vertex2D), (GLvoid*)offsetof(Vertex2D, uv));
 
 	glBindVertexArray(0);
 	glBindBuffer(GL_ARRAY_BUFFER, 0);

@@ -18,19 +18,43 @@ void EventListener::Update()
 		}
 		switch (sdlEvent.type)
 		{
-		case SDL_MOUSEBUTTONDOWN:
-		case SDL_MOUSEBUTTONUP:
-		case SDL_MOUSEMOTION:
-		case SDL_MOUSEWHEEL:
-			MouseEventListener::Update(sdlEvent, keystate);
-			break;
-		case SDL_KEYUP:
-			KeyEventListener::SetKeyState(&sdlEvent.key);
-			PrintKeyInfo(&sdlEvent.key);
-			break;
-		default:
+			case SDL_MOUSEBUTTONDOWN:
+				//printf("Mouse pressed \n");
+				//MouseEventListener::setMouseClick(true);
+				//break;
 
-			break;
+			case SDL_MOUSEBUTTONUP:	
+				//printf("Mouse up \n");
+				//MouseEventListener::setMouseClick(false);
+				//break;
+
+			case SDL_MOUSEMOTION:
+
+			case SDL_MOUSEWHEEL:
+				MouseEventListener::Update(sdlEvent, keystate);
+				break;
+
+			case SDL_KEYUP:
+
+				KeyEventListener::SetKeyState(&sdlEvent.key);
+				//PrintKeyInfo(&sdlEvent.key);
+				//printf("Name: %s \n", SDL_GetKeyName(sdlEvent.key.keysym.sym));
+				//printf("Released ", &sdlEvent.key.keysym.scancode);
+			
+				break;			
+			
+			case SDL_KEYDOWN:
+
+				KeyEventListener::SetKeyState(&sdlEvent.key);
+				//PrintKeyInfo(&sdlEvent.key);
+
+				//printf("Name: %s \n", SDL_GetKeyName(sdlEvent.key.keysym.sym));
+				//printf("Pressed %d", &sdlEvent.key.keysym.scancode);
+				break;
+
+			default:
+
+				break;
 		}
 	}
 }

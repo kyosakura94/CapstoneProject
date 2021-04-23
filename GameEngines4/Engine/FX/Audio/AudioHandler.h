@@ -48,6 +48,7 @@ private:
 
 	FMOD::Sound * getSound(string name_);
 	int  playSound(string name_, vec3 position_, vec3 velocity_ = vec3(0), float volume = 1.0f);
+	int  stopSound(string name_);
 	void UpdateVelocityAndPossition(int channelID_, vec3 position_, vec3 vel_ = vec3(0));
 	bool isPlaying(int channelID_);
 	bool isLoop, is3D, playmode;

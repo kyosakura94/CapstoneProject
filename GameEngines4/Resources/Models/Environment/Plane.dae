@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="utf-8"?>
+<COLLADA xmlns="http://www.collada.org/2005/11/COLLADASchema" version="1.4.1">
+  <asset><contributor><author></author><authoring_tool>FBX COLLADA exporter</authoring_tool><comments></comments></contributor><created>2021-03-18T04:55:00Z</created><keywords></keywords><modified>2021-03-18T04:55:00Z</modified><revision></revision><subject></subject><title></title><unit meter="0.010000" name="centimeter"></unit><up_axis>Z_UP</up_axis></asset>
+  <library_images>
+    <image id="lambert2SG1F-image" name="lambert2SG1F"><init_from>file://C:/Users/Master/Desktop/ice 2/Plane.jpg</init_from></image>
+  </library_images>
+  <library_materials>
+    <material id="lambert2SG1" name="lambert2SG1">
+      <instance_effect url="#lambert2SG1-fx"/>
+    </material>
+  </library_materials>
+  <library_effects>
+    <effect id="lambert2SG1-fx" name="lambert2SG1">
+      <profile_COMMON>
+        <technique sid="standard">
+          <lambert>
+            <emission>
+              <color sid="emission">0.000000  0.000000 0.000000 1.000000</color>
+            </emission>
+            <ambient>
+              <color sid="ambient">0.000000  0.000000 0.000000 1.000000</color>
+            </ambient>
+            <diffuse>
+              <texture texture="lambert2SG1F-image" texcoord="CHANNEL0">
+                <extra>
+                  <technique profile="MAYA">
+                    <wrapU sid="wrapU0">TRUE</wrapU>
+                    <wrapV sid="wrapV0">TRUE</wrapV>
+                    <blend_mode>NONE</blend_mode>
+                  </technique>
+                </extra>
+              </texture>
+            </diffuse>
+            <transparent opaque="RGB_ZERO">
+              <color sid="transparent">0.000000  0.000000 0.000000 1.000000</color>
+            </transparent>
+            <transparency>
+              <float sid="transparency">1.000000</float>
+            </transparency>
+          </lambert>
+        </technique>
+      </profile_COMMON>
+    </effect>
+  </library_effects>
+  <library_geometries>
+    <geometry id="Mesh-lib" name="MeshMesh">
+      <mesh>
+        <source id="Mesh-POSITION">
+          <float_array id="Mesh-POSITION-array" count="24">
+-2.000000 -0.005000 2.000000
+2.000000 -0.005000 2.000000
+-2.000000 0.005000 2.000000
+2.000000 0.005000 2.000000
+-2.000000 0.005000 -2.000000
+2.000000 0.005000 -2.000000
+-2.000000 -0.005000 -2.000000
+2.000000 -0.005000 -2.000000
+</float_array>
+          <technique_common>
+            <accessor source="#Mesh-POSITION-array" count="8" stride="3">
+              <param name="X" type="float"/>
+              <param name="Y" type="float"/>
+              <param name="Z" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="Mesh-Normal0">
+          <float_array id="Mesh-Normal0-array" count="108">
+0.000000 0.000000 1.000000
+0.000000 0.000000 1.000000
+0.000000 0.000000 1.000000
+0.000000 0.000000 1.000000
+0.000000 0.000000 1.000000
+0.000000 0.000000 1.000000
+0.000000 1.000000 0.000000
+0.000000 1.000000 0.000000
+0.000000 1.000000 0.000000
+0.000000 1.000000 0.000000
+0.000000 1.000000 0.000000
+0.000000 1.000000 0.000000
+0.000000 0.000000 -1.000000
+0.000000 0.000000 -1.000000
+0.000000 0.000000 -1.000000
+0.000000 0.000000 -1.000000
+0.000000 0.000000 -1.000000
+0.000000 0.000000 -1.000000
+0.000000 -1.000000 0.000000
+0.000000 -1.000000 0.000000
+0.000000 -1.000000 0.000000
+0.000000 -1.000000 0.000000
+0.000000 -1.000000 0.000000
+0.000000 -1.000000 0.000000
+1.000000 0.000000 0.000000
+1.000000 0.000000 0.000000
+1.000000 0.000000 0.000000
+1.000000 0.000000 0.000000
+1.000000 0.000000 0.000000
+1.000000 0.000000 0.000000
+-1.000000 0.000000 0.000000
+-1.000000 0.000000 0.000000
+-1.000000 0.000000 0.000000
+-1.000000 0.000000 0.000000
+-1.000000 0.000000 0.000000
+-1.000000 0.000000 0.000000
+</float_array>
+          <technique_common>
+            <accessor source="#Mesh-Normal0-array" count="36" stride="3">
+              <param name="X" type="float"/>
+              <param name="Y" type="float"/>
+              <param name="Z" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="Mesh-UV0">
+          <float_array id="Mesh-UV0-array" count="48">
+0.965989 0.329212
+0.971746 0.963868
+0.977179 0.786932
+0.974195 0.171582
+0.020562 0.945011
+0.020844 0.103220
+0.852890 0.111387
+0.852889 0.951022
+0.928463 0.185608
+0.931066 0.792725
+0.916376 0.952872
+0.909364 0.329734
+0.960953 0.102784
+0.967721 0.179454
+0.882423 0.185070
+0.876998 0.107368
+0.879833 0.991562
+0.894345 0.301697
+0.911256 0.142398
+0.908559 0.815245
+0.952449 0.204140
+0.939084 0.978789
+0.940532 0.819809
+0.943719 0.058892
+</float_array>
+          <technique_common>
+            <accessor source="#Mesh-UV0-array" count="24" stride="2">
+              <param name="S" type="float"/>
+              <param name="T" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <vertices id="Mesh-VERTEX">
+          <input semantic="POSITION" source="#Mesh-POSITION"/>
+        </vertices>
+        <triangles count="12" material="lambert2SG1"><input semantic="VERTEX" offset="0" source="#Mesh-VERTEX"/><input semantic="NORMAL" offset="1" source="#Mesh-Normal0"/><input semantic="TEXCOORD" offset="2" set="0" source="#Mesh-UV0"/><p> 3 0 2 2 1 3 0 2 0 3 3 2 0 4 0 1 5 1 3 6 5 5 7 6 2 8 4 2 9 4 5 10 6 4 11 7 7 12 10 6 13 11 4 14 8 7 15 10 4 16 8 5 17 9 1 18 14 0 19 15 6 20 12 1 21 14 6 22 12 7 23 13 5 24 18 3 25 19 1 26 16 1 27 16 7 28 17 5 29 18 2 30 22 6 31 20 0 32 21 6 33 20 2 34 22 4 35 23</p></triangles>
+      </mesh>
+    </geometry>
+  </library_geometries>
+  <library_visual_scenes>
+    <visual_scene id="Plane" name="Plane">
+      <node name="Mesh" id="Mesh" sid="Mesh"><matrix sid="matrix">1.000000 0.000000 0.000000 0.000000 0.000000 0.000000 -1.000000 0.000000 0.000000 1.000000 0.000000 0.000000 0.000000 0.000000 0.000000 1.000000</matrix><instance_geometry url="#Mesh-lib"><bind_material><technique_common><instance_material symbol="lambert2SG1" target="#lambert2SG1"/></technique_common></bind_material></instance_geometry><extra><technique profile="FCOLLADA"><visibility>1.000000</visibility></technique></extra></node>
+      <extra><technique profile="MAX3D"><frame_rate>24.000000</frame_rate></technique><technique profile="FCOLLADA"><start_time>0.041667</start_time><end_time>8.333333</end_time></technique></extra>
+    </visual_scene>
+  </library_visual_scenes>
+  <scene>
+    <instance_visual_scene url="#Plane"></instance_visual_scene>
+  </scene>
+</COLLADA>

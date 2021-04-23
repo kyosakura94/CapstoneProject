@@ -25,7 +25,7 @@ void KeyEventListener::SetKeyState(SDL_KeyboardEvent* key)
 	//if (key->type == SDL_KEYUP)
 	//	keyname = "";
 	//else
-		
+	//	
 	
 }
 

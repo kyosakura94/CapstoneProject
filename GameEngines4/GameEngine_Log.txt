@@ -1,3 +1,8 @@
 [INFO]:Create Start Scene in: StartScene.cpp occur line: 15
-[INFO]:Everything was created fine in: CoreEngine.cpp occur line: 58
-[INFO]:Creating Game Scene in: GameScene.cpp occur line: 20
+[INFO]:Everything was created fine in: CoreEngine.cpp occur line: 59
+[INFO]:Creating Game Scene in: MainMenu.cpp occur line: 19
+[INFO]:Creating Game Scene in: GameScene.cpp occur line: 21
+[ERROR]:Try to add gameObject with tag: 'Rocket1' that already exits in: SceneGraph occur line: 94
+[ERROR]:Try to add gameObject with tag: 'Rocket1' that already exits in: SceneGraph occur line: 94
+[ERROR]:Try to add gameObject with tag: 'Rocket1' that already exits in: SceneGraph occur line: 94
+[ERROR]:Try to add gameObject with tag: 'Rocket2' that already exits in: SceneGraph occur line: 94

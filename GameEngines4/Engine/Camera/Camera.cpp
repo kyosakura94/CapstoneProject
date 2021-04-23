@@ -7,8 +7,8 @@ Camera::Camera() : position(vec3())
 	forward = vec3(0.0f, 0.0f, 1.0f);
 	up = vec3(0.0f, 1.0f, 0.0f);
 	worldUp = up;
-	nearPlane = 2.0f;
-	farPlane = 50.0f;
+	nearPlane = 0.10f;
+	farPlane = 100.0f;
 	yaw = -90.0f;
 	pitch = 0.0f;
 	lightSources.reserve(10);
@@ -166,6 +166,7 @@ void Camera::ProcessMoouseScroll(int y_)
 	if (y_ < 0 || y_ > 0)
 	{
 		position += static_cast<float>(y_) * (forward * 2.0f);
+		
 	}
 
 	UpdateCameraVectors();
@@ -182,7 +183,7 @@ void Camera::UpdateCameraVectors()
 	right = normalize(cross(forward, worldUp));
 
 	up = normalize(cross(right, forward));
-
+	cout << yaw << "," << pitch << endl;
 }
 
 void Camera::OnDestroy()

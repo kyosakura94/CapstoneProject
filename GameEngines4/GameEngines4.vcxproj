@@ -70,7 +70,7 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-    <IncludePath>C:\GameDev\SDL\include;C:\GameDev\OpenGL\include;C:\GameDev\Audio\include;C:\GameDev\Libraries\json\single_include\nlohmann;$(IncludePath)</IncludePath>
+    <IncludePath>C:\GameDev\SDL\include;C:\GameDev\OpenGL\include;C:\GameDev\Audio\include;C:\GameDev\Libraries\json\single_include\nlohmann;C:\GameDev\Assimp\include;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -81,8 +81,8 @@
       <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
     <Link>
-      <AdditionalLibraryDirectories>C:\GameDev\OpenGL\lib;C:\GameDev\SDL\lib;C:\GameDev\Audio\lib;C:\GameDev\Libraries\json\single_include\nlohmann;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>SDL2.lib;SDL2_image.lib;SDL2main.lib;SDL2test.lib;glew32.lib;glew32s.lib;opengl32.lib;fmod_vc.lib;fmodL_vc.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>C:\GameDev\Assimp\lib;C:\GameDev\OpenGL\lib;C:\GameDev\SDL\lib;C:\GameDev\Audio\lib;C:\GameDev\Libraries\json\single_include\nlohmann;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>SDL2.lib;SDL2_image.lib;SDL2main.lib;SDL2test.lib;glew32.lib;glew32s.lib;opengl32.lib;fmod_vc.lib;fmodL_vc.lib;assimp-vc141-mtd.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <SubSystem>Console</SubSystem>
     </Link>
   </ItemDefinitionGroup>
@@ -123,6 +123,9 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Engine\Animation\animation_sub\Animation.cpp" />
+    <ClCompile Include="Engine\Animation\animation_sub\Animator.cpp" />
+    <ClCompile Include="Engine\Animation\animatedModel\AnimatedModel.cpp" />
     <ClCompile Include="Engine\Math\AI\DoNothingActions.cpp" />
     <ClCompile Include="Engine\Math\AI\ConditionManager.cpp" />
     <ClCompile Include="Engine\Math\AI\Actions.cpp" />
@@ -162,6 +165,9 @@
     <ClCompile Include="Engine\Rendering\2D\GuiImageComponent.cpp" />
     <ClCompile Include="Engine\Math\Physics\GJKCollision.cpp" />
     <ClCompile Include="Engine\Event\KeyEventListener.cpp" />
+    <ClCompile Include="Engine\Animation\animatedModel\Joint.cpp" />
+    <ClCompile Include="Engine\Animation\animation_sub\JointTransform.cpp" />
+    <ClCompile Include="Engine\Animation\animation_sub\KeyFrame.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="Engine\Core\Window.cpp" />
     <ClCompile Include="Engine\Core\Timer.cpp" />
@@ -175,7 +181,7 @@
     <ClCompile Include="Engine\Graphics\MaterialHandler.cpp" />
     <ClCompile Include="Engine\FX\MaterialLoader.cpp" />
     <ClCompile Include="Engine\Core\OctSpatialPartition.cpp" />
-    <ClCompile Include="Game\Test\TestClassA.cpp" />
+    <ClCompile Include="Game\Player\TestClassA.cpp" />
     <ClCompile Include="Engine\Math\AI\Seek.cpp" />
     <ClCompile Include="Engine\Math\AI\SteeringOutput.cpp" />
     <ClCompile Include="Engine\Rendering\2D\SpriteSurface.cpp" />
@@ -189,8 +195,18 @@
     <ClCompile Include="Engine\Math\AI\Transition.cpp" />
     <ClCompile Include="Engine\Math\AI\MovebackActions.cpp" />
     <ClCompile Include="Engine\Math\AI\SteeringActions.cpp" />
+    <ClCompile Include="Game\Scene\MainMenu.cpp" />
+    <ClCompile Include="Game\Player\PlayerMovement.cpp" />
+    <ClCompile Include="Game\Player\Spin.cpp" />
+    <ClCompile Include="Game\Player\Player.cpp" />
+    <ClCompile Include="Game\Gun\Shoot.cpp" />
+    <ClCompile Include="Game\Gun\Rocket.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Engine\Animation\animation_sub\Animation.h" />
+    <ClInclude Include="Engine\Animation\animation_sub\Animator.h" />
+    <ClInclude Include="Engine\Animation\animatedModel\AnimatedModel.h" />
+    <ClInclude Include="Engine\Animation\utils.h" />
     <ClInclude Include="Engine\Math\AI\DoNothingActions.h" />
     <ClInclude Include="Engine\Math\AI\ConditionManager.h" />
     <ClInclude Include="Engine\Math\AI\Actions.h" />
@@ -247,7 +263,7 @@
     <ClInclude Include="Engine\Rendering\SceneGraph\SceneGraph.h" />
     <ClInclude Include="Engine\Graphics\MaterialHandler.h" />
     <ClInclude Include="Engine\FX\MaterialLoader.h" />
-    <ClInclude Include="Game\Test\TestClassA.h" />
+    <ClInclude Include="Game\Player\TestClassA.h" />
     <ClInclude Include="Engine\Math\AI\Kinematic.h" />
     <ClInclude Include="Engine\Math\AI\Seek.h" />
     <ClInclude Include="Engine\Math\AI\SteeringOutput.h" />
@@ -267,13 +283,32 @@
     <ClInclude Include="Engine\Event\KeyEventListener.h" />
     <ClInclude Include="Engine\Math\AI\MovebackActions.h" />
     <ClInclude Include="Engine\Math\AI\SteeringActions.h" />
+    <ClInclude Include="Engine\Animation\animatedModel\Joint.h" />
+    <ClInclude Include="Engine\Animation\animation_sub\JointTransform.h" />
+    <ClInclude Include="Engine\Animation\animation_sub\KeyFrame.h" />
+    <ClInclude Include="Game\Scene\MainMenu.h" />
+    <ClInclude Include="Game\Player\PlayerMovement.h" />
+    <ClInclude Include="Game\Player\Spin.h" />
+    <ClInclude Include="Game\Player\Player.h" />
+    <ClInclude Include="Game\Gun\Shoot.h" />
+    <ClInclude Include="Game\Gun\Rocket.h" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Engine\Shaders\AnimatedFragmentShader.glsl" />
+    <None Include="Engine\Shaders\AnimatedVertexShader.glsl" />
     <None Include="Engine\Shaders\ColorFragmentShader.glsl" />
     <None Include="Engine\Shaders\ColorVertexShader.glsl" />
+    <None Include="Engine\Shaders\debugDepthQuadFragmentShader.glsl" />
+    <None Include="Engine\Shaders\debugDepthQuadVertexShader.glsl" />
     <None Include="Engine\Shaders\FragmentShader.glsl" />
+    <None Include="Engine\Shaders\NoAnimatedFragmentShader.glsl" />
+    <None Include="Engine\Shaders\NoAnimatedVertexShader.glsl" />
+    <None Include="Engine\Shaders\NoFragmentShader.glsl" />
+    <None Include="Engine\Shaders\NoVertexShader.glsl" />
     <None Include="Engine\Shaders\ParticleFragmentShader.glsl" />
     <None Include="Engine\Shaders\ParticleVertexShader.glsl" />
+    <None Include="Engine\Shaders\ShadowMapFragmentShader.glsl" />
+    <None Include="Engine\Shaders\ShadowMapVertexShader.glsl" />
     <None Include="Engine\Shaders\SpriteFragShader.glsl" />
     <None Include="Engine\Shaders\SpriteVertShader.glsl" />
     <None Include="Engine\Shaders\VertexShader.glsl" />

@@ -16,13 +16,13 @@ bool NetworkScene::OnCreate()
 	CoreEngine::GetInstance()->GetCamera()->Addlightsources(new LightSource(glm::vec3(0.0f, 0.0f, 2.0f), glm::vec3(1.0f, 1.0f, 1.0f), 0.5f, 0.8f));
 	CollisionHandler::GetInstance()->OnCreate(100.f);
 
-	Model* BlueDiceModel = new Model(
+	AnimatedModel* BlueDiceModel = new AnimatedModel(
 		"./Resources/Models/Dice.obj",
 		"./Resources/Materials/Dice.mtl",
 		ShaderHandler::getInstance()->GetShader("basicShader"),
 		CoreEngine::GetInstance()->getRendererType());
 
-	Model* RedDiceModel = new Model(
+	AnimatedModel* RedDiceModel = new AnimatedModel(
 		"./Resources/Models/Dice1.obj",
 		"./Resources/Materials/Dice1.mtl",
 		ShaderHandler::getInstance()->GetShader("basicShader"),
@@ -128,8 +128,8 @@ void NetworkScene::CreatePlayer(vec3 pos, string modelName, string tag)
 {
 	if (SceneGraph::GetInstance()->getGameObject(tag) == nullptr)
 	{
-		GameObject* BlueDiceObj = new GameObject(SceneGraph::GetInstance()->getModel(modelName), pos);
-		SceneGraph::GetInstance()->AddGameObject(BlueDiceObj, tag);
+		//GameObject* BlueDiceObj = new GameObject(SceneGraph::GetInstance()->getModel(modelName), pos);
+		//SceneGraph::GetInstance()->AddGameObject(BlueDiceObj, tag);
 	}
 }
 
@@ -149,8 +149,8 @@ void NetworkScene::CreatePlayer(string j)
 
 		if (SceneGraph::GetInstance()->isExist(tag) != true)
 		{
-			GameObject* BlueDiceObj = new GameObject(SceneGraph::GetInstance()->getModel(modelName), vec3(position[0], position[1], position[2]));
-			SceneGraph::GetInstance()->AddGameObject(BlueDiceObj, tag);
+			//GameObject* BlueDiceObj = new GameObject(SceneGraph::GetInstance()->getModel(modelName), vec3(position[0], position[1], position[2]));
+			//SceneGraph::GetInstance()->AddGameObject(BlueDiceObj, tag);
 		}
 	}
 }

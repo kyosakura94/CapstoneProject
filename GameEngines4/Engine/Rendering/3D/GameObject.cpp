@@ -1,5 +1,49 @@
 #include "GameObject.h"
 
+GameObject::GameObject(AnimatedModel* model_, glm::vec3 position_, glm::quat quaternion_)
+{
+	model = model_;
+	position = position_;
+	rotation = vec3(0.0f, 1.0f, 0.0f);
+	scale = vec3(1.0f);
+	angle = 0.0f;
+	quaternion = quaternion_;
+	accel = vec3(1, 0, 0);
+	lifeTime = 100.f;
+	hit = false;
+	if (model)
+	{
+		modelInstance = model->CreateInstance(position, angle, rotation, scale, quaternion);
+		box = model->GetBoundingBox();
+		collidebox = model->GetBoundingBox();
+
+		box.transform = model->GetTransform(modelInstance);
+		collidebox.transform = model->GetTransform(modelInstance);
+	}
+}
+
+GameObject::GameObject(Model* model_, glm::vec3 position_, glm::quat quaternion_)
+{
+	model = model_;
+	position = position_;
+	rotation = vec3(0.0f, 1.0f, 0.0f);
+	scale = vec3(1.0f);
+	angle = 0.0f;
+	quaternion = quaternion_;
+	accel = vec3(1, 0, 0);
+	lifeTime = 100.f;
+	hit = false;
+	if (model)
+	{
+		modelInstance = model->CreateInstance(position, angle, rotation, scale, quaternion);
+		box = model->GetBoundingBox();
+		collidebox = model->GetBoundingBox();
+
+		box.transform = model->GetTransform(modelInstance);
+		collidebox.transform = model->GetTransform(modelInstance);
+	}
+}
+
 GameObject::GameObject(Model *model_, vec3 position_) : model(nullptr)
 {
 	model = model_;
@@ -7,15 +51,18 @@ GameObject::GameObject(Model *model_, vec3 position_) : model(nullptr)
 	rotation = vec3(0.0f, 1.0f, 0.0f);
 	scale = vec3(1.0f);
 	angle = 0.0f;
-
+	quaternion = quat(0, 0, 0, 0);
+	accel = vec3(1,0,0);
+	lifeTime = 100.f;
 	hit = false;
 	if (model)
 	{
-		modelInstance = model->CreateInstance(position, angle, rotation, scale);
+		modelInstance = model->CreateInstance(position, angle, rotation, scale, quaternion);
 		box = model->GetBoundingBox();
 		box.transform = model->GetTransform(modelInstance);
 	}
 }
+
 
 GameObject::~GameObject()
 {
@@ -25,6 +72,29 @@ GameObject::~GameObject()
 		{
 			delete componentContainer[i];
 			componentContainer[i] = nullptr;
+		}
+	}
+
+	model = nullptr;
+}
+
+void GameObject::Destroy()
+{
+	for (size_t i = 0; i < componentContainer.size(); i++)
+	{
+		if (componentContainer[i])
+		{
+			delete componentContainer[i];
+			componentContainer[i] = nullptr;
+		}
+	}	
+	
+	for (size_t i = 0; i < delayComponent.size(); i++)
+	{
+		if (delayComponent[i])
+		{
+			delete delayComponent[i];
+			delayComponent[i] = nullptr;
 		}
 	}
 
@@ -42,16 +112,21 @@ void GameObject::Render(Camera *camera_)
 void GameObject::Update(const float deltaTime_)
 {
 	//MoveTest(deltaTime_);
-	//SetAngle(angle + 0.008f);
+	//SetAngle(angle - 0.008f);
+
 
 	for (size_t i = 0; i < componentContainer.size(); i++)
 	{
-		componentContainer[i]->Update(deltaTime_);
+		if (componentContainer[i] != nullptr)
+		{
+			componentContainer[i]->Update(deltaTime_);
+		}
 	}
 }
 
 void GameObject::Update(SteeringOutput steering, const float deltaTime_)
 {
+	
 	SetAngle(angle - 0.008f);
 	Move(steering, deltaTime_);
 
@@ -110,9 +185,9 @@ vec3 GameObject::GetAngVel()
 	return angVel;
 }
 
-Quaternion GameObject::getQuaternion()
+quat GameObject::getQuaternion()
 {
-	return q;
+	return quaternion;
 }
 
 void GameObject::SetPosition(glm::vec3 position_)
@@ -120,9 +195,14 @@ void GameObject::SetPosition(glm::vec3 position_)
 	position = position_;
 	if (model)
 	{
-		model->UpdateInstance(modelInstance, position, angle, rotation, scale);
-		box.transform = model->GetTransform(modelInstance);
+		model->UpdateInstance(modelInstance, position, angle, rotation, scale, quaternion);
+		setBoxTransform();
 	}
+}
+
+void GameObject::SetLifeTime(float life_)
+{
+	lifeTime = life_;
 }
 
 void GameObject::SetRotation(glm::vec3 rotation_)
@@ -130,8 +210,8 @@ void GameObject::SetRotation(glm::vec3 rotation_)
 	rotation = rotation_;
 	if (model)
 	{
-		model->UpdateInstance(modelInstance, position, angle, rotation, scale);
-		box.transform = model->GetTransform(modelInstance);
+		model->UpdateInstance(modelInstance, position, angle, rotation, scale, quaternion);
+		setBoxTransform();
 	}
 }
 
@@ -140,8 +220,10 @@ void GameObject::SetScale(glm::vec3 scale_)
 	scale = scale_;
 	if (model)
 	{
-		model->UpdateInstance(modelInstance, position, angle, rotation, scale);
+		model->UpdateInstance(modelInstance, position, angle, rotation, scale, quaternion);
+
 		box.transform = model->GetTransform(modelInstance);
+		//setBoxTransform();
 		box.minVert *= scale.x > 1.0f ? scale : (scale / 2.0f);
 		box.maxVert *= scale.x > 1.0f ? scale : (scale / 2.0f);
 	}
@@ -157,8 +239,8 @@ void GameObject::SetAngle(float angle_)
 	angle = angle_;
 	if (model)
 	{
-		model->UpdateInstance(modelInstance, position, angle, rotation, scale);
-		box.transform = model->GetTransform(modelInstance);
+		model->UpdateInstance(modelInstance, position, angle, rotation, scale, quaternion);
+		setBoxTransform();
 	}
 }
 
@@ -192,8 +274,8 @@ void GameObject::Move(SteeringOutput steering, const float deltaTime_)
 
 	if (model)
 	{
-		model->UpdateInstance(modelInstance, position, angle, rotation, scale);
-		box.transform = model->GetTransform(modelInstance);
+		model->UpdateInstance(modelInstance, position, angle, rotation, scale, quaternion);
+		setBoxTransform();
 	}
 }
 
@@ -240,8 +322,8 @@ void GameObject::MoveTest(const float deltaTime_)
 
 	if (model)
 	{
-		model->UpdateInstance(modelInstance, position, angle, rotation, scale);
-		box.transform = model->GetTransform(modelInstance);
+		model->UpdateInstance(modelInstance, position, angle, rotation, scale, quaternion);
+		setBoxTransform();
 	}
 }
 
@@ -295,9 +377,14 @@ void GameObject::SetAngVel(vec3 angVel_)
 	angVel = angVel_;
 }
 
-void GameObject::SetQuaternion(Quaternion q_)
+void GameObject::SetQuaternion(quat q_)
 {
-	q = q_;
+	quaternion = q_;
+	if (model)
+	{
+		model->UpdateInstance(modelInstance, position, angle, rotation, scale, quaternion);
+		setBoxTransform();
+	}
 }
 
 void GameObject::DelayRender(const float deltaTime_)
@@ -308,7 +395,67 @@ void GameObject::DelayRender(const float deltaTime_)
 	}
 }
 
+void GameObject::setBoxTransform()
+{
+
+	if (model->getJointCount() > 0)
+	{
+		mat4 correctTransform;
+		box.transform = model->GetTransform(modelInstance) * rotate(correctTransform, -90.0f, vec3(1, 0, 0));
+	}
+	else
+	{
+		box.transform = model->GetTransform(modelInstance);
+	}
+}
+
+void GameObject::increaseBB(vec3 rate)
+{
+	scale = rate;
+
+	if (model)
+	{
+		model->UpdateInstance(modelInstance, position, angle, rotation, scale, quaternion);
+
+		box.transform = model->GetTransform(modelInstance);
+		collidebox.transform = model->GetTransform(modelInstance);
+
+		//setBoxTransform();
+		box.minVert *= scale.x > 1.0f ? scale : (scale / 2.0f);
+		collidebox.minVert *= scale.x > 1.0f ? scale : (scale / 2.0f);
+		box.maxVert *= scale.x > 1.0f ? scale : (scale / 2.0f);
+		collidebox.maxVert *= scale.x > 1.0f ? scale : (scale / 2.0f);
+
+	}
+}
+
+void GameObject::increaseBBZ(vec3 rate)
+{
+	scale = rate;
+
+	if (model)
+	{
+		model->UpdateInstance(modelInstance, position, angle, rotation, scale, quaternion);
+
+		box.transform = model->GetTransform(modelInstance);
+		collidebox.transform = model->GetTransform(modelInstance);
+
+		//setBoxTransform();
+		box.minVert *= scale.z > 1.0f ? scale : (scale / 2.0f);
+		collidebox.minVert *= scale.z > 1.0f ? scale : (scale / 2.0f);
+		box.maxVert *= scale.z > 1.0f ? scale : (scale / 2.0f);
+		collidebox.maxVert *= scale.z > 1.0f ? scale : (scale / 2.0f);
+
+	}
+}
+
+
 BoundingBox GameObject::GetBoundingBox() const
 {
 	return box;
+}
+
+BoundingBox GameObject::GetCollideBoundingBox() const
+{
+	return collidebox;
 }
