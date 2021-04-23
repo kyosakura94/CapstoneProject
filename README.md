@@ -4,7 +4,7 @@ The repository is meant for Game Programming capstone project at Humber College,
 
 For our this capstone project, I built a OPENGL based game engine entirely in C/C++, which we started writing in late August, 2020. In order to show off these features, we built a Mario-party style game entirely using our engine, which we started working on in January, 2021.
 
-Feel free to check out my [engine code](NoRoEngine/NoRoEngine/Engine/) or the [game protype](NoRoEngine/NoRoEngine/Game/). You can also find more media, such as our technical design document or our game engine architecture in our [media folder](media).
+Feel free to check out my [engine code](NoRoEngine/NoRoEngine/Engine/) or the [game protype](NoRoEngine/NoRoEngine/Game/) that I made. You can also find more media, such as our technical design document or the game engine architecture in [media folder](media).
 <br></br>
 <br></br>
 <p align="center">Check out a trailer of my game below!</p>
