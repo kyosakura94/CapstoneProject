@@ -1,20 +1,20 @@
 ![NoRo Logo](/Media/logo.png)
 
-This is the repository for our Game Programming capstone project at Humber College, developed by [Nghia Tran](http://kyosakura94.com/). 
+The repository is meant for Game Programming capstone project at Humber College, developed by [Nghia Tran](http://kyosakura94.com/). 
 
 For our this capstone project, I built a OPENGL based game engine entirely in C/C++, which we started writing in late August, 2020. In order to show off these features, we built a Mario-party style game entirely using our engine, which we started working on in January, 2021.
 
-Feel free to check out our [wiki](https://github.com/azgame/Odeum/wiki), or navigate directly to our [engine code](Odeum/OdeumEngine/OdeumEngine/Engine) or our [game code](Odeum/OdeumEngine/OdeumEngine/Game). You can also find more media, such as our technical design document or our game engine architecture in our [media folder](media).
+Feel free to check out my [engine code](NoRoEngine/NoRoEngine/Engine/) or the [game protype](NoRoEngine/NoRoEngine/Game/). You can also find more media, such as our technical design document or our game engine architecture in our [media folder](media).
 <br></br>
 <br></br>
-<p align="center">Check out a trailer for our engine and our game below!</p>
-<p align="center"><a href="https://www.youtube.com/watch?v=PAHP0r7vL6A"><img src="https://img.youtube.com/vi/PAHP0r7vL6A/0.jpg"></a></p>
+<p align="center">Check out a trailer of my game below!</p>
+<p align="center"><a href="https://youtu.be/c22WljzI1EA"><img src="https://img.youtube.com/vi/PAHP0r7vL6A/0.jpg"></a></p>
 
-## OdeumEngine Features
+## NoRoGameEngine Features
 
-Our engine features an advanced renderer, fully supported object and material loading, custom shaders in HLSL, compute rendering, real-time physics, animations, scene creation and management, an entity-component system, multithreading, custom navigation mesh creation, audio, input, dynamic window sizing and support for any aspect ratio, event handling, UI via ImGui, File I/O, and custom data structures and design patterns. 
+NoRoGameEngine features an advanced renderer, fully supported object and material loading using simple Objloader and Assimp library, custom shaders, compute rendering, real-time physics, animations, scene creation and management, an entity-component system, multithreading, basic AI features as us path findings, steering or state machine, audio, input,  event listener, and custom data structures and design patterns. 
 
-## Game Highlights
+## Last Accient Tower - Game prototype
 
 Players move around a small board game. Each space has a different function (play a minigame, gain gold, lose gold etc.). Players compete in minigames, with the winner gaining gold. The player with the most gold at the end of the last round will win the game. A mix of both luck and skill is required!
 
