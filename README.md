@@ -1,4 +1,4 @@
-![Odeum Logo](/media/odeumlogo.png)
+![NoRo Logo](/media/logo.png)
 
 This is the repository for our Game Programming capstone project at Humber College, developed by [Aidan Zizys](https://aidanzizysgamedev.com), [Benjamin Sayliss](https://benjaminsaylissgamedev.com), [Robert Ward](https://robertwardgamedev.com), [Ryan Thorne](https://www.ryanthornegamedev.com), and [Diego Gregori](https://www.diegogregorigamedev.com). 
 
