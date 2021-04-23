@@ -87,7 +87,6 @@ void NetworkScene::Update(const float deltaTime_)
 
 				const TestPacket* tmp;
 				tmp = (TestPacket*)packet;
-				CreatePlayer("");
 				//CreatePlayer(tmp->position, (char*)tmp->modelName, (char*)tmp->tagName);
 
 				//createCheck = false;
@@ -97,7 +96,7 @@ void NetworkScene::Update(const float deltaTime_)
 				const JsonPacket* jsonPacket;
 				jsonPacket = (JsonPacket*)packet;
 
-				CreatePlayer((char*)jsonPacket->jsonString);
+				//CreatePlayer((char*)jsonPacket->jsonString);
 
 				ConnectionKeepAlivePacket* packet = (ConnectionKeepAlivePacket*)Client::getInstance()->getPacketFactory()->CreatePacket(PACKET_CONNECTION_KEEP_ALIVE);
 				Client::getInstance()->SendPackets(packet);
@@ -124,34 +123,34 @@ void NetworkScene::Draw()
 {
 }
 
-void NetworkScene::CreatePlayer(vec3 pos, string modelName, string tag)
-{
-	if (SceneGraph::GetInstance()->getGameObject(tag) == nullptr)
-	{
-		//GameObject* BlueDiceObj = new GameObject(SceneGraph::GetInstance()->getModel(modelName), pos);
-		//SceneGraph::GetInstance()->AddGameObject(BlueDiceObj, tag);
-	}
-}
-
-void NetworkScene::CreatePlayer(string j)
-{
-	std::cout << "Json Received: " << j << std::endl;
-
-	json j3 = json::parse(j);
-
-	for (auto &info : j3["playerInfo"])
-	{
-		std::string tag = info["tag"].get<std::string>();
-		std::string modelName = info["modelName"].get<std::string>();
-
-		std::vector<float> position;
-		for (auto& elem : info["position"]) position.push_back(elem);
-
-		if (SceneGraph::GetInstance()->isExist(tag) != true)
-		{
-			//GameObject* BlueDiceObj = new GameObject(SceneGraph::GetInstance()->getModel(modelName), vec3(position[0], position[1], position[2]));
-			//SceneGraph::GetInstance()->AddGameObject(BlueDiceObj, tag);
-		}
-	}
-}
+//void NetworkScene::CreatePlayer(vec3 pos, string modelName, string tag)
+//{
+//	if (SceneGraph::GetInstance()->getGameObject(tag) == nullptr)
+//	{
+//		//GameObject* BlueDiceObj = new GameObject(SceneGraph::GetInstance()->getModel(modelName), pos);
+//		//SceneGraph::GetInstance()->AddGameObject(BlueDiceObj, tag);
+//	}
+//}
+//
+//void NetworkScene::CreatePlayer(string j)
+//{
+//	std::cout << "Json Received: " << j << std::endl;
+//
+//	json j3 = json::parse(j);
+//
+//	for (auto &info : j3["playerInfo"])
+//	{
+//		std::string tag = info["tag"].get<std::string>();
+//		std::string modelName = info["modelName"].get<std::string>();
+//
+//		std::vector<float> position;
+//		for (auto& elem : info["position"]) position.push_back(elem);
+//
+//		if (SceneGraph::GetInstance()->isExist(tag) != true)
+//		{
+//			//GameObject* BlueDiceObj = new GameObject(SceneGraph::GetInstance()->getModel(modelName), vec3(position[0], position[1], position[2]));
+//			//SceneGraph::GetInstance()->AddGameObject(BlueDiceObj, tag);
+//		}
+//	}
+//}
 

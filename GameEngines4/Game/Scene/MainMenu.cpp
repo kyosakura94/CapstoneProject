@@ -85,12 +85,3 @@ void MainMenu::Draw()
 {
 	SceneGraph::GetInstance()->Draw(CoreEngine::GetInstance()->GetCamera());
 }
-
-void MainMenu::CreatePlayer(vec3 pos, string modelName, string tag)
-{
-}
-
-void MainMenu::CreatePlayer(string json_)
-{
-
-}

@@ -34,8 +34,6 @@ public:
 	virtual void Update(const float deltaTime_);
 	virtual void Render();
 	virtual void Draw();
-	virtual void CreatePlayer(vec3 pos, string modelName, string tag);
-	virtual void CreatePlayer(string json_);
 
 	void createShadowMap();
 	//SET UP SCENE
@@ -43,6 +41,7 @@ public:
 	void setUpEnvironment();
 	void setUpUI();
 	void setUpSound();
+	void UIHandle();
 
 private:
 	unsigned int depthMapFBO;

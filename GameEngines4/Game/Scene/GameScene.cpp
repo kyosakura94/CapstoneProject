@@ -40,138 +40,15 @@ bool GameScene::OnCreate()
 void GameScene::Update(const float deltaTime_)
 {
 
-
-	//SceneGraph::GetInstance()->RPGPlayerMove(deltaTime_, "animatedObj", input);
-
 	deltaTime = deltaTime_;
-
-	vec3 targetPosition(SceneGraph::GetInstance()->getGameObject("DICE")->GetPosition());
-
-	GameObject* target = SceneGraph::GetInstance()->getGameObject("apple");
-
-	if (target!= nullptr)
-	{
-		vec3 diff = targetPosition - target->GetPosition();
-		float distance = sqrtf(dot(diff, diff));
-		ConditionManager::GetInstance()->getConditon("floatIdle")->setResult(ConditionManager::GetInstance()->getDistance(), distance);
-	}
-
-
-
-	//bool result = GJKCheck->CollisonCheck(SceneGraph::GetInstance()->getGameObject("DICE"), SceneGraph::GetInstance()->getGameObject("apple"));
-	//
-	//if (result == true && check == true)
-	//{
-	//	ConditionManager::GetInstance()->getConditon("floatAttack")->setResult(6, 5);
-	//	ConditionManager::GetInstance()->setDistance(0);
-	//	//check = false;
-	//}
-
-
-	//if (result == true)
-	//{
-	//	Condition::GetInstance()->setInside(true);
-	//	Condition::GetInstance()->setOutside(false);
-	//}
-	//else
-	//{
-	//	Condition::GetInstance()->setOutside(true);
-	//	Condition::GetInstance()->setInside(true);
-	//}
-
-	//normal update of all gameobject in the scene
-
-	//CHECK IF PLAYER IS DEATH OR NOT
-
-
 	SceneGraph::GetInstance()->Update(deltaTime_);
-
-
-
-
-	
-
-	//update for the A* algrothim
-	//SceneGraph::GetInstance()->UpdateClick(deltaTime_, grid, e_);
-
-	//GuiObject *sunObj = SceneGraph::GetInstance()->getGuiObject("sunGUI");
-	//if (sunObj != nullptr && sunObj->isInside(MouseEventListener::GetMousePosition()))
-	//{
-	//	std::cout << "inside GUI" << std::endl;
-	//	
-	//	bool hit = MouseEventListener::ClickButton();
-
-	//	if (hit == true)
-	//	{
-	//		CoreEngine::GetInstance()->SetCurrentScene(3);
-	//	}
-	//}
-
-	//REMOVE ALL THE ROCKET 
-
-	//for (size_t i = 0; i < 4; i++)
-	//{
-	//	input[i] = false;
-	//}
-
-	if (SceneGraph::GetInstance()->getGuiObject("again"))
-	{
-		if (SceneGraph::GetInstance()->getGuiObject("again")->isInside(MouseEventListener::GetMousePosition()))
-		{
-			std::cout << "inside GUI" << std::endl;
-
-			bool hit = MouseEventListener::ClickButton();
-
-			if (hit == true)
-			{
-				CoreEngine::GetInstance()->SetCurrentScene(4);
-				AudioHandler::getInstance()->OnDestroy();
-			}
-		}
-	}	
-	
-	if (SceneGraph::GetInstance()->getGuiObject("setting"))
-	{
-		if (SceneGraph::GetInstance()->getGuiObject("setting")->isInside(MouseEventListener::GetMousePosition()))
-		{
-			std::cout << "inside GUI" << std::endl;
-
-			bool hit = MouseEventListener::ClickButton();
-
-			if (hit == true)
-			{
-				CoreEngine::GetInstance()->SetCurrentScene(3);
-				AudioHandler::getInstance()->OnDestroy();
-			}
-		}
-	}	
-	
-	if (SceneGraph::GetInstance()->getGuiObject("next"))
-	{
-		
-		if (SceneGraph::GetInstance()->getGuiObject("next")->isInside(MouseEventListener::GetMousePosition()))
-		{
-			std::cout << "inside GUI" << std::endl;
-
-			bool hit = MouseEventListener::ClickButton();
-
-			if (hit == true)
-			{
-				CoreEngine::GetInstance()->SetCurrentScene(3);
-				AudioHandler::getInstance()->OnDestroy();
-			}
-		}
-	}
-	
+	UIHandle();
 }
 
 void GameScene::Render()
 {
-	//glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
-	//shape->Render(CoreEngine::GetInstance()->GetCamera());
 	SceneGraph::GetInstance()->Render(CoreEngine::GetInstance()->GetCamera(), depthMapFBO, depthMap);
 	SceneGraph::GetInstance()->DelayedRender(deltaTime);
-	//emmitter->Render(CoreEngine::GetInstance()->GetCamera());
 	Draw();
 }
 
@@ -180,14 +57,6 @@ void GameScene::Draw()
 	SceneGraph::GetInstance()->Draw(CoreEngine::GetInstance()->GetCamera());
 }
 
-void GameScene::CreatePlayer(vec3 pos, string modelName, string tag)
-{
-}
-
-void GameScene::CreatePlayer(string json_)
-{
-
-}
 
 void GameScene::createShadowMap()
 {
@@ -331,23 +200,12 @@ void GameScene::setUpEnvironment()
 	Gun6Obj->SetScale(vec3(1.0f));
 
 
-
-
-	//GunObj->AddComponent<Spin>(360.0f);	
-	
 	//////////////////////////////////////////
-	//CREATE Rocket Objects
+	//CREATE Rocket Model
 	AnimatedModel* RocketModel = new AnimatedModel("./Resources/Models/Environment/Rocket_1.dae", "./Resources/Materials/Rocket_1.mtl", ShaderHandler::getInstance()->GetShader("basicShader"), CoreEngine::GetInstance()->getRendererType());
 	SceneGraph::GetInstance()->AddModel(RocketModel);
 
-	/*GameObject* RocketObj = new GameObject(RocketModel, vec3(8.0f, 1.5f, 4.0f), sdf);
-	SceneGraph::GetInstance()->AddGameObject(RocketObj, "Rocket_1");
-*/
-
-
-	//GunObj->AddComponent<Spin>(360.0f);
-
-
+	
 	//////////////////////////////////////////
 	//CREATE TargetObj
 
@@ -375,15 +233,8 @@ void GameScene::setUpEnvironment()
 
 
 
-	//apple->AddComponent<TestClassA>("test");
-	//apple->GetComponent<TestClassA>();
-	//apple->RemoveComponent<TestClassA>();
-
-
 	//CRETAE GRID TITLE
 	grid.OnCreate(10, 10, 11, vec3(-2, 0, 0));
-
-	//grid->GetGridObject(1, 0);
 
 	for (size_t x = 0; x < grid.GetHeight(); x++)
 	{
@@ -438,8 +289,7 @@ void GameScene::setUpUI()
 
 void GameScene::setUpSound()
 {
-	//////////////////////////////////////////
-	//CREATE SOUND 
+	//CREATE BACKGROUND SOUND 
 
 	backroundSound = new AudioSource("055.wav", true);
 	backroundSound->OnCreate(nullptr);
@@ -447,155 +297,55 @@ void GameScene::setUpSound()
 	backroundSound->playSound();
 }
 
-/*
-
-	//{
-	////get from mesh annd obj loader
-	///*cout << "Min Vert: " << to_string(model3->GetBoundingBox().minVert) << endl;
-	//cout << "Max Vert: " << to_string(model3->GetBoundingBox().maxVert) << endl;
-	//
-	////cout << "Min Vert: " << to_string(model2->GetBoundingBox().minVert) << endl;
-	////cout << "Max Vert: " << to_string(model2->GetBoundingBox().maxVert) << endl;
-	//
-	//cout << "PLANE LEFT: " << to_string(vec4( CoreEngine::GetInstance()->GetCamera()->GetPlane()[0]->x, 
-	//										CoreEngine::GetInstance()->GetCamera()->GetPlane()[0]->y,
-	//										CoreEngine::GetInstance()->GetCamera()->GetPlane()[0]->z,
-	//										CoreEngine::GetInstance()->GetCamera()->GetPlane()[0]->d)) << endl;
-
-	//cout << "PLANE RIGHT: " << to_string(vec4( CoreEngine::GetInstance()->GetCamera()->GetPlane()[1]->x, 
-	//										CoreEngine::GetInstance()->GetCamera()->GetPlane()[1]->y,
-	//										CoreEngine::GetInstance()->GetCamera()->GetPlane()[1]->z,
-	//										CoreEngine::GetInstance()->GetCamera()->GetPlane()[1]->d)) << endl;
-
-	//cout << "PLANE TOP: " << to_string(vec4( CoreEngine::GetInstance()->GetCamera()->GetPlane()[2]->x, 
-	//										CoreEngine::GetInstance()->GetCamera()->GetPlane()[2]->y,
-	//										CoreEngine::GetInstance()->GetCamera()->GetPlane()[2]->z,
-	//										CoreEngine::GetInstance()->GetCamera()->GetPlane()[2]->d)) << endl;
-
-	//cout << "PLANE BOTTOM: " << to_string(vec4( CoreEngine::GetInstance()->GetCamera()->GetPlane()[3]->x, 
-	//										CoreEngine::GetInstance()->GetCamera()->GetPlane()[3]->y,
-	//										CoreEngine::GetInstance()->GetCamera()->GetPlane()[3]->z,
-	//										CoreEngine::GetInstance()->GetCamera()->GetPlane()[3]->d)) << endl;	
-	//
-	//cout << "PLANE NEAR: " << to_string(vec4( CoreEngine::GetInstance()->GetCamera()->GetPlane()[4]->x, 
-	//										CoreEngine::GetInstance()->GetCamera()->GetPlane()[4]->y,
-	//										CoreEngine::GetInstance()->GetCamera()->GetPlane()[4]->z,
-	//										CoreEngine::GetInstance()->GetCamera()->GetPlane()[4]->d)) << endl;
-	//
-	//cout << "PLANE FAR: " << to_string(vec4( CoreEngine::GetInstance()->GetCamera()->GetPlane()[5]->x, 
-	//										CoreEngine::GetInstance()->GetCamera()->GetPlane()[5]->y,
-	//										CoreEngine::GetInstance()->GetCamera()->GetPlane()[5]->z,
-	//										CoreEngine::GetInstance()->GetCamera()->GetPlane()[5]->d)) << endl;
-
-	//} 
-	
-*/
-
-//emmitter = new ParticleEmitter(10, "particleShader");
-//for (size_t i = 0; i < 2 ; i++)
-//{
-//	vec3 pos = vec3(2.0f + i + 2.0f , 0.0f, -5.0f - i - 2.0f );
-//	GameObject* test = new GameObject(model1, pos);
-//	SceneGraph::GetInstance()->AddGameObject(test, "DICE" + i);
-
-//	SceneGraph::GetInstance()->setTargetList(test);
-//}	
-
-/*
-	for (int i = 0; i < 6; i++)
+void GameScene::UIHandle()
+{
+	if (SceneGraph::GetInstance()->getGuiObject("again"))
 	{
-		CoreEngine::GetInstance()->GetCamera()->AddPlane(new Plane());
+		if (SceneGraph::GetInstance()->getGuiObject("again")->isInside(MouseEventListener::GetMousePosition()))
+		{
+			std::cout << "inside GUI" << std::endl;
+
+			bool hit = MouseEventListener::ClickButton();
+
+			if (hit == true)
+			{
+				CoreEngine::GetInstance()->SetCurrentScene(4);
+				AudioHandler::getInstance()->OnDestroy();
+			}
+		}
 	}
 
-	CoreEngine::GetInstance()->GetCamera()->ExtractPlane();
-
-
-	for (auto m : diceObj->getModel()->getvertercies(diceObj->getModelIntances()))
+	if (SceneGraph::GetInstance()->getGuiObject("setting"))
 	{
-		//cout << "Vertecies" << to_string(m) << endl;
-	}
-*/
+		if (SceneGraph::GetInstance()->getGuiObject("setting")->isInside(MouseEventListener::GetMousePosition()))
+		{
+			std::cout << "inside GUI" << std::endl;
 
-/*
-	if (x < (grid.GetHeight() - 1) && y == 1)
+			bool hit = MouseEventListener::ClickButton();
+
+			if (hit == true)
+			{
+				CoreEngine::GetInstance()->SetCurrentScene(3);
+				AudioHandler::getInstance()->OnDestroy();
+			}
+		}
+	}
+
+	if (SceneGraph::GetInstance()->getGuiObject("next"))
 	{
-		GameObject* test = new GameObject(model3, pos);
-		string tag = "DICE";
-		tag.append(std::to_string(x));
-		tag.append(std::to_string(y));
-		SceneGraph::GetInstance()->AddGameObject(test, tag);
 
-		grid.setObj(x, y, test);
-		grid.setWalkable(x, y, false);
+		if (SceneGraph::GetInstance()->getGuiObject("next")->isInside(MouseEventListener::GetMousePosition()))
+		{
+			std::cout << "inside GUI" << std::endl;
+
+			bool hit = MouseEventListener::ClickButton();
+
+			if (hit == true)
+			{
+				CoreEngine::GetInstance()->SetCurrentScene(3);
+				AudioHandler::getInstance()->OnDestroy();
+			}
+		}
 	}
-	else
-	{
-		GameObject* test = new GameObject(model1, pos);
-		string tag = "DICE";
-		tag.append(std::to_string(x));
-		tag.append(std::to_string(y));
-		SceneGraph::GetInstance()->AddGameObject(test, tag);
+}
 
-		grid.setObj(x, y, test);
-		grid.setWalkable(x, y, true);
-	}
-*/
-
-/*
-
-	//SceneGraph::GetInstance()->setCharacter(apple);
-	//SceneGraph::GetInstance()->setupSeek();
-	//SceneGraph::GetInstance()->setupArrive();
-	//SceneGraph::GetInstance()->setupCollisionAvoidance();
-
-	//bool result = GJKCheck->CollisonCheck(apple, diceObj);
-	//emmitter->Init(10, "particleShader");
-
-	//AnimatedModel* redPandaModel = new AnimatedModel(
-	//	"./Resources/Models/Character/Baqir_Idle_2015_28.dae",
-	//	"./Resources/Materials/RedPanda.mtl",
-	//	ShaderHandler::getInstance()->GetShader("animatedShader"),
-	//	CoreEngine::GetInstance()->getRendererType());
-
-	//SceneGraph::GetInstance()->AddModel(redPandaModel);
-
-	//GameObject* redPandaObj = new GameObject(redPandaModel, vec3(3, 0, -5));
-
-	//redPandaObj->SetScale(glm::vec3(0.0005f));
-
-
-	//redPandaObj->AddComponent<Animator>();
-
-	//Animation_B * redPanda_idle = new Animation_B();
-	//redPanda_idle->loadAnimation("./Resources/Models/Character/Baqir_Idle_2015_28.dae");
-
-	//redPandaObj->GetComponent<Animator>()->doAnimation(redPanda_idle);
-
-
-
-	//SceneGraph::GetInstance()->AddGameObject(redPandaObj, "redPandaObj");
-
-	/////////////////////////////////
-	//CREATE UI OBJECTS
-
-	//CollisionResponse* collidie = new CollisionResponse();
-*/
-
-/*
-	if (KeyEventListener::GetKeyState("W"))
-	{
-		input[0] = true;
-	}
-	if (KeyEventListener::GetKeyState("A"))
-	{
-		input[1] = true;
-	}
-	if (KeyEventListener::GetKeyState("S"))
-	{
-		input[2] = true;
-	}
-	if (KeyEventListener::GetKeyState("D"))
-	{
-		input[3] = true;
-	}
-*/

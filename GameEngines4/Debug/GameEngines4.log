@@ -1,4 +1,4 @@
-﻿  AnimatedModel.cpp
+﻿  Camera.cpp
 D:\CapstoneProject\GameEngines4\Engine\Math\Randomizer.h(56,20): warning C4244: 'return': conversion from 'double' to 'float', possible loss of data
 D:\CapstoneProject\GameEngines4\Engine\Animation\animation_sub\Animation.h(64,31): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
 D:\CapstoneProject\GameEngines4\Engine\Animation\animation_sub\Animation.h(68,36): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
@@ -22,8 +22,16 @@ D:\CapstoneProject\GameEngines4\Engine\Animation\animation_sub\Animation.h(87,61
               _Ty=float
           ]
 D:\CapstoneProject\GameEngines4\Engine\Rendering\3D\Model.h(17): warning C4091: 'static ': ignored on left of 'Model::<unnamed-enum-OUTSIDE>' when no variable is declared
-D:\CapstoneProject\GameEngines4\Engine\Animation\animation_sub\Animator.h(102,21): warning C4018: '<': signed/unsigned mismatch
-  Animator.cpp
+D:\CapstoneProject\GameEngines4\Engine\Math\AI\Arrive.h(31,26): warning C4305: 'initializing': truncation from 'double' to 'float'
+D:\CapstoneProject\GameEngines4\Engine\Math\AI\AStarPathFinding.h(4,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+D:\CapstoneProject\GameEngines4\Engine\Network\Client.h(6,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+D:\CapstoneProject\GameEngines4\Engine\Network\Address.h(114,34): warning C4244: 'return': conversion from 'network1::SocketHandle' to 'int', possible loss of data
+D:\CapstoneProject\GameEngines4\Engine\Network\Address.h(130,1): warning C4005: '_CRT_SECURE_NO_WARNINGS': macro redefinition
+D:\CapstoneProject\GameEngines4\Engine\Camera\Camera.cpp : message : see previous definition of '_CRT_SECURE_NO_WARNINGS'
+D:\CapstoneProject\GameEngines4\Engine\Network\Server.h(556,30): warning C4018: '<': signed/unsigned mismatch
+D:\CapstoneProject\GameEngines4\Engine\Network\Server.h(607,30): warning C4018: '<': signed/unsigned mismatch
+  CoreEngine.cpp
+D:\CapstoneProject\GameEngines4\Engine\Math\Randomizer.h(56,20): warning C4244: 'return': conversion from 'double' to 'float', possible loss of data
 D:\CapstoneProject\GameEngines4\Engine\Animation\animation_sub\Animation.h(64,31): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
 D:\CapstoneProject\GameEngines4\Engine\Animation\animation_sub\Animation.h(68,36): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
 D:\CapstoneProject\GameEngines4\Engine\Animation\animation_sub\Animation.h(74,21): warning C4018: '<': signed/unsigned mismatch
@@ -45,9 +53,448 @@ D:\CapstoneProject\GameEngines4\Engine\Animation\animation_sub\Animation.h(87,61
           [
               _Ty=float
           ]
-D:\CapstoneProject\GameEngines4\Engine\Math\Randomizer.h(56,20): warning C4244: 'return': conversion from 'double' to 'float', possible loss of data
 D:\CapstoneProject\GameEngines4\Engine\Rendering\3D\Model.h(17): warning C4091: 'static ': ignored on left of 'Model::<unnamed-enum-OUTSIDE>' when no variable is declared
-D:\CapstoneProject\GameEngines4\Engine\Animation\animation_sub\Animator.h(102,21): warning C4018: '<': signed/unsigned mismatch
+D:\CapstoneProject\GameEngines4\Engine\Math\AI\Arrive.h(31,26): warning C4305: 'initializing': truncation from 'double' to 'float'
+D:\CapstoneProject\GameEngines4\Engine\Math\AI\AStarPathFinding.h(4,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+D:\CapstoneProject\GameEngines4\Engine\Network\Client.h(6,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+D:\CapstoneProject\GameEngines4\Engine\Network\Address.h(114,34): warning C4244: 'return': conversion from 'network1::SocketHandle' to 'int', possible loss of data
+D:\CapstoneProject\GameEngines4\Engine\Network\Address.h(130,1): warning C4005: '_CRT_SECURE_NO_WARNINGS': macro redefinition
+D:\CapstoneProject\GameEngines4\Engine\Core\CoreEngine.cpp : message : see previous definition of '_CRT_SECURE_NO_WARNINGS'
+D:\CapstoneProject\GameEngines4\Engine\Network\Server.h(556,30): warning C4018: '<': signed/unsigned mismatch
+D:\CapstoneProject\GameEngines4\Engine\Network\Server.h(607,30): warning C4018: '<': signed/unsigned mismatch
+  EventListener.cpp
+D:\CapstoneProject\GameEngines4\Engine\Math\Randomizer.h(56,20): warning C4244: 'return': conversion from 'double' to 'float', possible loss of data
+D:\CapstoneProject\GameEngines4\Engine\Animation\animation_sub\Animation.h(64,31): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+D:\CapstoneProject\GameEngines4\Engine\Animation\animation_sub\Animation.h(68,36): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+D:\CapstoneProject\GameEngines4\Engine\Animation\animation_sub\Animation.h(74,21): warning C4018: '<': signed/unsigned mismatch
+D:\CapstoneProject\GameEngines4\Engine\Animation\animation_sub\Animation.h(77,22): warning C4018: '<': signed/unsigned mismatch
+D:\CapstoneProject\GameEngines4\Engine\Animation\animation_sub\Animation.h(78,65): warning C4244: 'argument': conversion from 'double' to 'const _Ty', possible loss of data
+          with
+          [
+              _Ty=float
+          ]
+D:\CapstoneProject\GameEngines4\Engine\Animation\animation_sub\Animation.h(81,22): warning C4018: '<': signed/unsigned mismatch
+D:\CapstoneProject\GameEngines4\Engine\Animation\animation_sub\Animation.h(82,65): warning C4244: 'argument': conversion from 'double' to 'const _Ty', possible loss of data
+          with
+          [
+              _Ty=float
+          ]
+D:\CapstoneProject\GameEngines4\Engine\Animation\animation_sub\Animation.h(86,22): warning C4018: '<': signed/unsigned mismatch
+D:\CapstoneProject\GameEngines4\Engine\Animation\animation_sub\Animation.h(87,61): warning C4244: 'argument': conversion from 'double' to 'const _Ty', possible loss of data
+          with
+          [
+              _Ty=float
+          ]
+D:\CapstoneProject\GameEngines4\Engine\Rendering\3D\Model.h(17): warning C4091: 'static ': ignored on left of 'Model::<unnamed-enum-OUTSIDE>' when no variable is declared
+D:\CapstoneProject\GameEngines4\Engine\Math\AI\Arrive.h(31,26): warning C4305: 'initializing': truncation from 'double' to 'float'
+D:\CapstoneProject\GameEngines4\Engine\Math\AI\AStarPathFinding.h(4,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+D:\CapstoneProject\GameEngines4\Engine\Network\Client.h(6,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+D:\CapstoneProject\GameEngines4\Engine\Network\Address.h(114,34): warning C4244: 'return': conversion from 'network1::SocketHandle' to 'int', possible loss of data
+D:\CapstoneProject\GameEngines4\Engine\Network\Address.h(130,1): warning C4005: '_CRT_SECURE_NO_WARNINGS': macro redefinition
+D:\CapstoneProject\GameEngines4\Engine\Event\EventListener.cpp : message : see previous definition of '_CRT_SECURE_NO_WARNINGS'
+D:\CapstoneProject\GameEngines4\Engine\Network\Server.h(556,30): warning C4018: '<': signed/unsigned mismatch
+D:\CapstoneProject\GameEngines4\Engine\Network\Server.h(607,30): warning C4018: '<': signed/unsigned mismatch
+  MouseEventListener.cpp
+D:\CapstoneProject\GameEngines4\Engine\Math\Randomizer.h(56,20): warning C4244: 'return': conversion from 'double' to 'float', possible loss of data
+D:\CapstoneProject\GameEngines4\Engine\Animation\animation_sub\Animation.h(64,31): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+D:\CapstoneProject\GameEngines4\Engine\Animation\animation_sub\Animation.h(68,36): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+D:\CapstoneProject\GameEngines4\Engine\Animation\animation_sub\Animation.h(74,21): warning C4018: '<': signed/unsigned mismatch
+D:\CapstoneProject\GameEngines4\Engine\Animation\animation_sub\Animation.h(77,22): warning C4018: '<': signed/unsigned mismatch
+D:\CapstoneProject\GameEngines4\Engine\Animation\animation_sub\Animation.h(78,65): warning C4244: 'argument': conversion from 'double' to 'const _Ty', possible loss of data
+          with
+          [
+              _Ty=float
+          ]
+D:\CapstoneProject\GameEngines4\Engine\Animation\animation_sub\Animation.h(81,22): warning C4018: '<': signed/unsigned mismatch
+D:\CapstoneProject\GameEngines4\Engine\Animation\animation_sub\Animation.h(82,65): warning C4244: 'argument': conversion from 'double' to 'const _Ty', possible loss of data
+          with
+          [
+              _Ty=float
+          ]
+D:\CapstoneProject\GameEngines4\Engine\Animation\animation_sub\Animation.h(86,22): warning C4018: '<': signed/unsigned mismatch
+D:\CapstoneProject\GameEngines4\Engine\Animation\animation_sub\Animation.h(87,61): warning C4244: 'argument': conversion from 'double' to 'const _Ty', possible loss of data
+          with
+          [
+              _Ty=float
+          ]
+D:\CapstoneProject\GameEngines4\Engine\Rendering\3D\Model.h(17): warning C4091: 'static ': ignored on left of 'Model::<unnamed-enum-OUTSIDE>' when no variable is declared
+D:\CapstoneProject\GameEngines4\Engine\Math\AI\Arrive.h(31,26): warning C4305: 'initializing': truncation from 'double' to 'float'
+D:\CapstoneProject\GameEngines4\Engine\Math\AI\AStarPathFinding.h(4,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+D:\CapstoneProject\GameEngines4\Engine\Network\Client.h(6,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+D:\CapstoneProject\GameEngines4\Engine\Network\Address.h(114,34): warning C4244: 'return': conversion from 'network1::SocketHandle' to 'int', possible loss of data
+D:\CapstoneProject\GameEngines4\Engine\Network\Address.h(130,1): warning C4005: '_CRT_SECURE_NO_WARNINGS': macro redefinition
+D:\CapstoneProject\GameEngines4\Engine\Event\MouseEventListener.cpp : message : see previous definition of '_CRT_SECURE_NO_WARNINGS'
+D:\CapstoneProject\GameEngines4\Engine\Network\Server.h(556,30): warning C4018: '<': signed/unsigned mismatch
+D:\CapstoneProject\GameEngines4\Engine\Network\Server.h(607,30): warning C4018: '<': signed/unsigned mismatch
+  ParticleEmitter.cpp
+D:\CapstoneProject\GameEngines4\Engine\Math\Randomizer.h(56,20): warning C4244: 'return': conversion from 'double' to 'float', possible loss of data
+D:\CapstoneProject\GameEngines4\Engine\Animation\animation_sub\Animation.h(64,31): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+D:\CapstoneProject\GameEngines4\Engine\Animation\animation_sub\Animation.h(68,36): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+D:\CapstoneProject\GameEngines4\Engine\Animation\animation_sub\Animation.h(74,21): warning C4018: '<': signed/unsigned mismatch
+D:\CapstoneProject\GameEngines4\Engine\Animation\animation_sub\Animation.h(77,22): warning C4018: '<': signed/unsigned mismatch
+D:\CapstoneProject\GameEngines4\Engine\Animation\animation_sub\Animation.h(78,65): warning C4244: 'argument': conversion from 'double' to 'const _Ty', possible loss of data
+          with
+          [
+              _Ty=float
+          ]
+D:\CapstoneProject\GameEngines4\Engine\Animation\animation_sub\Animation.h(81,22): warning C4018: '<': signed/unsigned mismatch
+D:\CapstoneProject\GameEngines4\Engine\Animation\animation_sub\Animation.h(82,65): warning C4244: 'argument': conversion from 'double' to 'const _Ty', possible loss of data
+          with
+          [
+              _Ty=float
+          ]
+D:\CapstoneProject\GameEngines4\Engine\Animation\animation_sub\Animation.h(86,22): warning C4018: '<': signed/unsigned mismatch
+D:\CapstoneProject\GameEngines4\Engine\Animation\animation_sub\Animation.h(87,61): warning C4244: 'argument': conversion from 'double' to 'const _Ty', possible loss of data
+          with
+          [
+              _Ty=float
+          ]
+D:\CapstoneProject\GameEngines4\Engine\Rendering\3D\Model.h(17): warning C4091: 'static ': ignored on left of 'Model::<unnamed-enum-OUTSIDE>' when no variable is declared
+D:\CapstoneProject\GameEngines4\Engine\Math\AI\Arrive.h(31,26): warning C4305: 'initializing': truncation from 'double' to 'float'
+D:\CapstoneProject\GameEngines4\Engine\Math\AI\AStarPathFinding.h(4,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+D:\CapstoneProject\GameEngines4\Engine\Network\Client.h(6,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+D:\CapstoneProject\GameEngines4\Engine\Network\Address.h(114,34): warning C4244: 'return': conversion from 'network1::SocketHandle' to 'int', possible loss of data
+D:\CapstoneProject\GameEngines4\Engine\Network\Address.h(130,1): warning C4005: '_CRT_SECURE_NO_WARNINGS': macro redefinition
+D:\CapstoneProject\GameEngines4\Engine\FX\Partice\ParticleEmitter.cpp : message : see previous definition of '_CRT_SECURE_NO_WARNINGS'
+D:\CapstoneProject\GameEngines4\Engine\Network\Server.h(556,30): warning C4018: '<': signed/unsigned mismatch
+D:\CapstoneProject\GameEngines4\Engine\Network\Server.h(607,30): warning C4018: '<': signed/unsigned mismatch
+D:\CapstoneProject\GameEngines4\Engine\FX\Partice\ParticleEmitter.cpp(29,23): warning C4018: '<': signed/unsigned mismatch
+D:\CapstoneProject\GameEngines4\Engine\FX\Partice\ParticleEmitter.cpp(111,23): warning C4018: '<': signed/unsigned mismatch
+D:\CapstoneProject\GameEngines4\Engine\FX\Partice\ParticleEmitter.cpp(147,21): warning C4018: '<': signed/unsigned mismatch
+D:\CapstoneProject\GameEngines4\Engine\FX\Partice\ParticleEmitter.cpp(193,21): warning C4018: '<': signed/unsigned mismatch
+D:\CapstoneProject\GameEngines4\Engine\FX\Partice\ParticleEmitter.cpp(242,21): warning C4018: '<': signed/unsigned mismatch
+  Actions.cpp
+D:\CapstoneProject\GameEngines4\Engine\Math\Randomizer.h(56,20): warning C4244: 'return': conversion from 'double' to 'float', possible loss of data
+D:\CapstoneProject\GameEngines4\Engine\Animation\animation_sub\Animation.h(64,31): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+D:\CapstoneProject\GameEngines4\Engine\Animation\animation_sub\Animation.h(68,36): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+D:\CapstoneProject\GameEngines4\Engine\Animation\animation_sub\Animation.h(74,21): warning C4018: '<': signed/unsigned mismatch
+D:\CapstoneProject\GameEngines4\Engine\Animation\animation_sub\Animation.h(77,22): warning C4018: '<': signed/unsigned mismatch
+D:\CapstoneProject\GameEngines4\Engine\Animation\animation_sub\Animation.h(78,65): warning C4244: 'argument': conversion from 'double' to 'const _Ty', possible loss of data
+          with
+          [
+              _Ty=float
+          ]
+D:\CapstoneProject\GameEngines4\Engine\Animation\animation_sub\Animation.h(81,22): warning C4018: '<': signed/unsigned mismatch
+D:\CapstoneProject\GameEngines4\Engine\Animation\animation_sub\Animation.h(82,65): warning C4244: 'argument': conversion from 'double' to 'const _Ty', possible loss of data
+          with
+          [
+              _Ty=float
+          ]
+D:\CapstoneProject\GameEngines4\Engine\Animation\animation_sub\Animation.h(86,22): warning C4018: '<': signed/unsigned mismatch
+D:\CapstoneProject\GameEngines4\Engine\Animation\animation_sub\Animation.h(87,61): warning C4244: 'argument': conversion from 'double' to 'const _Ty', possible loss of data
+          with
+          [
+              _Ty=float
+          ]
+D:\CapstoneProject\GameEngines4\Engine\Rendering\3D\Model.h(17): warning C4091: 'static ': ignored on left of 'Model::<unnamed-enum-OUTSIDE>' when no variable is declared
+D:\CapstoneProject\GameEngines4\Engine\Network\Client.h(6,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+D:\CapstoneProject\GameEngines4\Engine\Network\Address.h(114,34): warning C4244: 'return': conversion from 'network1::SocketHandle' to 'int', possible loss of data
+D:\CapstoneProject\GameEngines4\Engine\Network\Address.h(130,1): warning C4005: '_CRT_SECURE_NO_WARNINGS': macro redefinition
+D:\CapstoneProject\GameEngines4\Engine\Math\AI\Actions.cpp : message : see previous definition of '_CRT_SECURE_NO_WARNINGS'
+D:\CapstoneProject\GameEngines4\Engine\Network\Server.h(556,30): warning C4018: '<': signed/unsigned mismatch
+D:\CapstoneProject\GameEngines4\Engine\Network\Server.h(607,30): warning C4018: '<': signed/unsigned mismatch
+D:\CapstoneProject\GameEngines4\Engine\Math\AI\Arrive.h(31,26): warning C4305: 'initializing': truncation from 'double' to 'float'
+D:\CapstoneProject\GameEngines4\Engine\Math\AI\AStarPathFinding.h(4,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+  DoNothingActions.cpp
+D:\CapstoneProject\GameEngines4\Engine\Math\Randomizer.h(56,20): warning C4244: 'return': conversion from 'double' to 'float', possible loss of data
+D:\CapstoneProject\GameEngines4\Engine\Animation\animation_sub\Animation.h(64,31): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+D:\CapstoneProject\GameEngines4\Engine\Animation\animation_sub\Animation.h(68,36): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+D:\CapstoneProject\GameEngines4\Engine\Animation\animation_sub\Animation.h(74,21): warning C4018: '<': signed/unsigned mismatch
+D:\CapstoneProject\GameEngines4\Engine\Animation\animation_sub\Animation.h(77,22): warning C4018: '<': signed/unsigned mismatch
+D:\CapstoneProject\GameEngines4\Engine\Animation\animation_sub\Animation.h(78,65): warning C4244: 'argument': conversion from 'double' to 'const _Ty', possible loss of data
+          with
+          [
+              _Ty=float
+          ]
+D:\CapstoneProject\GameEngines4\Engine\Animation\animation_sub\Animation.h(81,22): warning C4018: '<': signed/unsigned mismatch
+D:\CapstoneProject\GameEngines4\Engine\Animation\animation_sub\Animation.h(82,65): warning C4244: 'argument': conversion from 'double' to 'const _Ty', possible loss of data
+          with
+          [
+              _Ty=float
+          ]
+D:\CapstoneProject\GameEngines4\Engine\Animation\animation_sub\Animation.h(86,22): warning C4018: '<': signed/unsigned mismatch
+D:\CapstoneProject\GameEngines4\Engine\Animation\animation_sub\Animation.h(87,61): warning C4244: 'argument': conversion from 'double' to 'const _Ty', possible loss of data
+          with
+          [
+              _Ty=float
+          ]
+D:\CapstoneProject\GameEngines4\Engine\Rendering\3D\Model.h(17): warning C4091: 'static ': ignored on left of 'Model::<unnamed-enum-OUTSIDE>' when no variable is declared
+D:\CapstoneProject\GameEngines4\Engine\Network\Client.h(6,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+D:\CapstoneProject\GameEngines4\Engine\Network\Address.h(114,34): warning C4244: 'return': conversion from 'network1::SocketHandle' to 'int', possible loss of data
+D:\CapstoneProject\GameEngines4\Engine\Network\Address.h(130,1): warning C4005: '_CRT_SECURE_NO_WARNINGS': macro redefinition
+D:\CapstoneProject\GameEngines4\Engine\Math\AI\DoNothingActions.cpp : message : see previous definition of '_CRT_SECURE_NO_WARNINGS'
+D:\CapstoneProject\GameEngines4\Engine\Network\Server.h(556,30): warning C4018: '<': signed/unsigned mismatch
+D:\CapstoneProject\GameEngines4\Engine\Network\Server.h(607,30): warning C4018: '<': signed/unsigned mismatch
+D:\CapstoneProject\GameEngines4\Engine\Math\AI\Arrive.h(31,26): warning C4305: 'initializing': truncation from 'double' to 'float'
+D:\CapstoneProject\GameEngines4\Engine\Math\AI\AStarPathFinding.h(4,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+  MovebackActions.cpp
+D:\CapstoneProject\GameEngines4\Engine\Math\Randomizer.h(56,20): warning C4244: 'return': conversion from 'double' to 'float', possible loss of data
+D:\CapstoneProject\GameEngines4\Engine\Animation\animation_sub\Animation.h(64,31): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+D:\CapstoneProject\GameEngines4\Engine\Animation\animation_sub\Animation.h(68,36): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+D:\CapstoneProject\GameEngines4\Engine\Animation\animation_sub\Animation.h(74,21): warning C4018: '<': signed/unsigned mismatch
+D:\CapstoneProject\GameEngines4\Engine\Animation\animation_sub\Animation.h(77,22): warning C4018: '<': signed/unsigned mismatch
+D:\CapstoneProject\GameEngines4\Engine\Animation\animation_sub\Animation.h(78,65): warning C4244: 'argument': conversion from 'double' to 'const _Ty', possible loss of data
+          with
+          [
+              _Ty=float
+          ]
+D:\CapstoneProject\GameEngines4\Engine\Animation\animation_sub\Animation.h(81,22): warning C4018: '<': signed/unsigned mismatch
+D:\CapstoneProject\GameEngines4\Engine\Animation\animation_sub\Animation.h(82,65): warning C4244: 'argument': conversion from 'double' to 'const _Ty', possible loss of data
+          with
+          [
+              _Ty=float
+          ]
+D:\CapstoneProject\GameEngines4\Engine\Animation\animation_sub\Animation.h(86,22): warning C4018: '<': signed/unsigned mismatch
+D:\CapstoneProject\GameEngines4\Engine\Animation\animation_sub\Animation.h(87,61): warning C4244: 'argument': conversion from 'double' to 'const _Ty', possible loss of data
+          with
+          [
+              _Ty=float
+          ]
+D:\CapstoneProject\GameEngines4\Engine\Rendering\3D\Model.h(17): warning C4091: 'static ': ignored on left of 'Model::<unnamed-enum-OUTSIDE>' when no variable is declared
+D:\CapstoneProject\GameEngines4\Engine\Network\Client.h(6,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+D:\CapstoneProject\GameEngines4\Engine\Network\Address.h(114,34): warning C4244: 'return': conversion from 'network1::SocketHandle' to 'int', possible loss of data
+D:\CapstoneProject\GameEngines4\Engine\Network\Address.h(130,1): warning C4005: '_CRT_SECURE_NO_WARNINGS': macro redefinition
+D:\CapstoneProject\GameEngines4\Engine\Math\AI\MovebackActions.cpp : message : see previous definition of '_CRT_SECURE_NO_WARNINGS'
+D:\CapstoneProject\GameEngines4\Engine\Network\Server.h(556,30): warning C4018: '<': signed/unsigned mismatch
+D:\CapstoneProject\GameEngines4\Engine\Network\Server.h(607,30): warning C4018: '<': signed/unsigned mismatch
+D:\CapstoneProject\GameEngines4\Engine\Math\AI\Arrive.h(31,26): warning C4305: 'initializing': truncation from 'double' to 'float'
+D:\CapstoneProject\GameEngines4\Engine\Math\AI\AStarPathFinding.h(4,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+  State.cpp
+D:\CapstoneProject\GameEngines4\Engine\Math\Randomizer.h(56,20): warning C4244: 'return': conversion from 'double' to 'float', possible loss of data
+D:\CapstoneProject\GameEngines4\Engine\Animation\animation_sub\Animation.h(64,31): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+D:\CapstoneProject\GameEngines4\Engine\Animation\animation_sub\Animation.h(68,36): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+D:\CapstoneProject\GameEngines4\Engine\Animation\animation_sub\Animation.h(74,21): warning C4018: '<': signed/unsigned mismatch
+D:\CapstoneProject\GameEngines4\Engine\Animation\animation_sub\Animation.h(77,22): warning C4018: '<': signed/unsigned mismatch
+D:\CapstoneProject\GameEngines4\Engine\Animation\animation_sub\Animation.h(78,65): warning C4244: 'argument': conversion from 'double' to 'const _Ty', possible loss of data
+          with
+          [
+              _Ty=float
+          ]
+D:\CapstoneProject\GameEngines4\Engine\Animation\animation_sub\Animation.h(81,22): warning C4018: '<': signed/unsigned mismatch
+D:\CapstoneProject\GameEngines4\Engine\Animation\animation_sub\Animation.h(82,65): warning C4244: 'argument': conversion from 'double' to 'const _Ty', possible loss of data
+          with
+          [
+              _Ty=float
+          ]
+D:\CapstoneProject\GameEngines4\Engine\Animation\animation_sub\Animation.h(86,22): warning C4018: '<': signed/unsigned mismatch
+D:\CapstoneProject\GameEngines4\Engine\Animation\animation_sub\Animation.h(87,61): warning C4244: 'argument': conversion from 'double' to 'const _Ty', possible loss of data
+          with
+          [
+              _Ty=float
+          ]
+D:\CapstoneProject\GameEngines4\Engine\Rendering\3D\Model.h(17): warning C4091: 'static ': ignored on left of 'Model::<unnamed-enum-OUTSIDE>' when no variable is declared
+D:\CapstoneProject\GameEngines4\Engine\Network\Client.h(6,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+D:\CapstoneProject\GameEngines4\Engine\Network\Address.h(114,34): warning C4244: 'return': conversion from 'network1::SocketHandle' to 'int', possible loss of data
+D:\CapstoneProject\GameEngines4\Engine\Network\Address.h(130,1): warning C4005: '_CRT_SECURE_NO_WARNINGS': macro redefinition
+D:\CapstoneProject\GameEngines4\Engine\Math\AI\State.cpp : message : see previous definition of '_CRT_SECURE_NO_WARNINGS'
+D:\CapstoneProject\GameEngines4\Engine\Network\Server.h(556,30): warning C4018: '<': signed/unsigned mismatch
+D:\CapstoneProject\GameEngines4\Engine\Network\Server.h(607,30): warning C4018: '<': signed/unsigned mismatch
+D:\CapstoneProject\GameEngines4\Engine\Math\AI\Arrive.h(31,26): warning C4305: 'initializing': truncation from 'double' to 'float'
+D:\CapstoneProject\GameEngines4\Engine\Math\AI\AStarPathFinding.h(4,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+  StateMachine.cpp
+D:\CapstoneProject\GameEngines4\Engine\Math\Randomizer.h(56,20): warning C4244: 'return': conversion from 'double' to 'float', possible loss of data
+D:\CapstoneProject\GameEngines4\Engine\Animation\animation_sub\Animation.h(64,31): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+D:\CapstoneProject\GameEngines4\Engine\Animation\animation_sub\Animation.h(68,36): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+D:\CapstoneProject\GameEngines4\Engine\Animation\animation_sub\Animation.h(74,21): warning C4018: '<': signed/unsigned mismatch
+D:\CapstoneProject\GameEngines4\Engine\Animation\animation_sub\Animation.h(77,22): warning C4018: '<': signed/unsigned mismatch
+D:\CapstoneProject\GameEngines4\Engine\Animation\animation_sub\Animation.h(78,65): warning C4244: 'argument': conversion from 'double' to 'const _Ty', possible loss of data
+          with
+          [
+              _Ty=float
+          ]
+D:\CapstoneProject\GameEngines4\Engine\Animation\animation_sub\Animation.h(81,22): warning C4018: '<': signed/unsigned mismatch
+D:\CapstoneProject\GameEngines4\Engine\Animation\animation_sub\Animation.h(82,65): warning C4244: 'argument': conversion from 'double' to 'const _Ty', possible loss of data
+          with
+          [
+              _Ty=float
+          ]
+D:\CapstoneProject\GameEngines4\Engine\Animation\animation_sub\Animation.h(86,22): warning C4018: '<': signed/unsigned mismatch
+D:\CapstoneProject\GameEngines4\Engine\Animation\animation_sub\Animation.h(87,61): warning C4244: 'argument': conversion from 'double' to 'const _Ty', possible loss of data
+          with
+          [
+              _Ty=float
+          ]
+D:\CapstoneProject\GameEngines4\Engine\Rendering\3D\Model.h(17): warning C4091: 'static ': ignored on left of 'Model::<unnamed-enum-OUTSIDE>' when no variable is declared
+D:\CapstoneProject\GameEngines4\Engine\Network\Client.h(6,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+D:\CapstoneProject\GameEngines4\Engine\Network\Address.h(114,34): warning C4244: 'return': conversion from 'network1::SocketHandle' to 'int', possible loss of data
+D:\CapstoneProject\GameEngines4\Engine\Network\Address.h(130,1): warning C4005: '_CRT_SECURE_NO_WARNINGS': macro redefinition
+D:\CapstoneProject\GameEngines4\Engine\Math\AI\StateMachine.cpp : message : see previous definition of '_CRT_SECURE_NO_WARNINGS'
+D:\CapstoneProject\GameEngines4\Engine\Network\Server.h(556,30): warning C4018: '<': signed/unsigned mismatch
+D:\CapstoneProject\GameEngines4\Engine\Network\Server.h(607,30): warning C4018: '<': signed/unsigned mismatch
+D:\CapstoneProject\GameEngines4\Engine\Math\AI\Arrive.h(31,26): warning C4305: 'initializing': truncation from 'double' to 'float'
+D:\CapstoneProject\GameEngines4\Engine\Math\AI\AStarPathFinding.h(4,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+  SteeringActions.cpp
+D:\CapstoneProject\GameEngines4\Engine\Math\Randomizer.h(56,20): warning C4244: 'return': conversion from 'double' to 'float', possible loss of data
+D:\CapstoneProject\GameEngines4\Engine\Animation\animation_sub\Animation.h(64,31): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+D:\CapstoneProject\GameEngines4\Engine\Animation\animation_sub\Animation.h(68,36): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+D:\CapstoneProject\GameEngines4\Engine\Animation\animation_sub\Animation.h(74,21): warning C4018: '<': signed/unsigned mismatch
+D:\CapstoneProject\GameEngines4\Engine\Animation\animation_sub\Animation.h(77,22): warning C4018: '<': signed/unsigned mismatch
+D:\CapstoneProject\GameEngines4\Engine\Animation\animation_sub\Animation.h(78,65): warning C4244: 'argument': conversion from 'double' to 'const _Ty', possible loss of data
+          with
+          [
+              _Ty=float
+          ]
+D:\CapstoneProject\GameEngines4\Engine\Animation\animation_sub\Animation.h(81,22): warning C4018: '<': signed/unsigned mismatch
+D:\CapstoneProject\GameEngines4\Engine\Animation\animation_sub\Animation.h(82,65): warning C4244: 'argument': conversion from 'double' to 'const _Ty', possible loss of data
+          with
+          [
+              _Ty=float
+          ]
+D:\CapstoneProject\GameEngines4\Engine\Animation\animation_sub\Animation.h(86,22): warning C4018: '<': signed/unsigned mismatch
+D:\CapstoneProject\GameEngines4\Engine\Animation\animation_sub\Animation.h(87,61): warning C4244: 'argument': conversion from 'double' to 'const _Ty', possible loss of data
+          with
+          [
+              _Ty=float
+          ]
+D:\CapstoneProject\GameEngines4\Engine\Rendering\3D\Model.h(17): warning C4091: 'static ': ignored on left of 'Model::<unnamed-enum-OUTSIDE>' when no variable is declared
+D:\CapstoneProject\GameEngines4\Engine\Network\Client.h(6,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+D:\CapstoneProject\GameEngines4\Engine\Network\Address.h(114,34): warning C4244: 'return': conversion from 'network1::SocketHandle' to 'int', possible loss of data
+D:\CapstoneProject\GameEngines4\Engine\Network\Address.h(130,1): warning C4005: '_CRT_SECURE_NO_WARNINGS': macro redefinition
+D:\CapstoneProject\GameEngines4\Engine\Math\AI\SteeringActions.cpp : message : see previous definition of '_CRT_SECURE_NO_WARNINGS'
+D:\CapstoneProject\GameEngines4\Engine\Network\Server.h(556,30): warning C4018: '<': signed/unsigned mismatch
+D:\CapstoneProject\GameEngines4\Engine\Network\Server.h(607,30): warning C4018: '<': signed/unsigned mismatch
+D:\CapstoneProject\GameEngines4\Engine\Math\AI\Arrive.h(31,26): warning C4305: 'initializing': truncation from 'double' to 'float'
+D:\CapstoneProject\GameEngines4\Engine\Math\AI\AStarPathFinding.h(4,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+  Transition.cpp
+D:\CapstoneProject\GameEngines4\Engine\Math\Randomizer.h(56,20): warning C4244: 'return': conversion from 'double' to 'float', possible loss of data
+D:\CapstoneProject\GameEngines4\Engine\Animation\animation_sub\Animation.h(64,31): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+D:\CapstoneProject\GameEngines4\Engine\Animation\animation_sub\Animation.h(68,36): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+D:\CapstoneProject\GameEngines4\Engine\Animation\animation_sub\Animation.h(74,21): warning C4018: '<': signed/unsigned mismatch
+D:\CapstoneProject\GameEngines4\Engine\Animation\animation_sub\Animation.h(77,22): warning C4018: '<': signed/unsigned mismatch
+D:\CapstoneProject\GameEngines4\Engine\Animation\animation_sub\Animation.h(78,65): warning C4244: 'argument': conversion from 'double' to 'const _Ty', possible loss of data
+          with
+          [
+              _Ty=float
+          ]
+D:\CapstoneProject\GameEngines4\Engine\Animation\animation_sub\Animation.h(81,22): warning C4018: '<': signed/unsigned mismatch
+D:\CapstoneProject\GameEngines4\Engine\Animation\animation_sub\Animation.h(82,65): warning C4244: 'argument': conversion from 'double' to 'const _Ty', possible loss of data
+          with
+          [
+              _Ty=float
+          ]
+D:\CapstoneProject\GameEngines4\Engine\Animation\animation_sub\Animation.h(86,22): warning C4018: '<': signed/unsigned mismatch
+D:\CapstoneProject\GameEngines4\Engine\Animation\animation_sub\Animation.h(87,61): warning C4244: 'argument': conversion from 'double' to 'const _Ty', possible loss of data
+          with
+          [
+              _Ty=float
+          ]
+D:\CapstoneProject\GameEngines4\Engine\Rendering\3D\Model.h(17): warning C4091: 'static ': ignored on left of 'Model::<unnamed-enum-OUTSIDE>' when no variable is declared
+D:\CapstoneProject\GameEngines4\Engine\Network\Client.h(6,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+D:\CapstoneProject\GameEngines4\Engine\Network\Address.h(114,34): warning C4244: 'return': conversion from 'network1::SocketHandle' to 'int', possible loss of data
+D:\CapstoneProject\GameEngines4\Engine\Network\Address.h(130,1): warning C4005: '_CRT_SECURE_NO_WARNINGS': macro redefinition
+D:\CapstoneProject\GameEngines4\Engine\Math\AI\Transition.cpp : message : see previous definition of '_CRT_SECURE_NO_WARNINGS'
+D:\CapstoneProject\GameEngines4\Engine\Network\Server.h(556,30): warning C4018: '<': signed/unsigned mismatch
+D:\CapstoneProject\GameEngines4\Engine\Network\Server.h(607,30): warning C4018: '<': signed/unsigned mismatch
+D:\CapstoneProject\GameEngines4\Engine\Math\AI\Arrive.h(31,26): warning C4305: 'initializing': truncation from 'double' to 'float'
+D:\CapstoneProject\GameEngines4\Engine\Math\AI\AStarPathFinding.h(4,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+  CollisionDetection.cpp
+D:\CapstoneProject\GameEngines4\Engine\Math\Randomizer.h(56,20): warning C4244: 'return': conversion from 'double' to 'float', possible loss of data
+D:\CapstoneProject\GameEngines4\Engine\Animation\animation_sub\Animation.h(64,31): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+D:\CapstoneProject\GameEngines4\Engine\Animation\animation_sub\Animation.h(68,36): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+D:\CapstoneProject\GameEngines4\Engine\Animation\animation_sub\Animation.h(74,21): warning C4018: '<': signed/unsigned mismatch
+D:\CapstoneProject\GameEngines4\Engine\Animation\animation_sub\Animation.h(77,22): warning C4018: '<': signed/unsigned mismatch
+D:\CapstoneProject\GameEngines4\Engine\Animation\animation_sub\Animation.h(78,65): warning C4244: 'argument': conversion from 'double' to 'const _Ty', possible loss of data
+          with
+          [
+              _Ty=float
+          ]
+D:\CapstoneProject\GameEngines4\Engine\Animation\animation_sub\Animation.h(81,22): warning C4018: '<': signed/unsigned mismatch
+D:\CapstoneProject\GameEngines4\Engine\Animation\animation_sub\Animation.h(82,65): warning C4244: 'argument': conversion from 'double' to 'const _Ty', possible loss of data
+          with
+          [
+              _Ty=float
+          ]
+D:\CapstoneProject\GameEngines4\Engine\Animation\animation_sub\Animation.h(86,22): warning C4018: '<': signed/unsigned mismatch
+D:\CapstoneProject\GameEngines4\Engine\Animation\animation_sub\Animation.h(87,61): warning C4244: 'argument': conversion from 'double' to 'const _Ty', possible loss of data
+          with
+          [
+              _Ty=float
+          ]
+D:\CapstoneProject\GameEngines4\Engine\Rendering\3D\Model.h(17): warning C4091: 'static ': ignored on left of 'Model::<unnamed-enum-OUTSIDE>' when no variable is declared
+D:\CapstoneProject\GameEngines4\Engine\Math\AI\Arrive.h(31,26): warning C4305: 'initializing': truncation from 'double' to 'float'
+D:\CapstoneProject\GameEngines4\Engine\Math\AI\AStarPathFinding.h(4,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+D:\CapstoneProject\GameEngines4\Engine\Network\Client.h(6,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+D:\CapstoneProject\GameEngines4\Engine\Network\Address.h(114,34): warning C4244: 'return': conversion from 'network1::SocketHandle' to 'int', possible loss of data
+D:\CapstoneProject\GameEngines4\Engine\Network\Address.h(130,1): warning C4005: '_CRT_SECURE_NO_WARNINGS': macro redefinition
+D:\CapstoneProject\GameEngines4\Engine\Math\CollisionDetection.cpp : message : see previous definition of '_CRT_SECURE_NO_WARNINGS'
+D:\CapstoneProject\GameEngines4\Engine\Network\Server.h(556,30): warning C4018: '<': signed/unsigned mismatch
+D:\CapstoneProject\GameEngines4\Engine\Network\Server.h(607,30): warning C4018: '<': signed/unsigned mismatch
+  CollisionHandler.cpp
+D:\CapstoneProject\GameEngines4\Engine\Math\Randomizer.h(56,20): warning C4244: 'return': conversion from 'double' to 'float', possible loss of data
+D:\CapstoneProject\GameEngines4\Engine\Animation\animation_sub\Animation.h(64,31): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+D:\CapstoneProject\GameEngines4\Engine\Animation\animation_sub\Animation.h(68,36): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+D:\CapstoneProject\GameEngines4\Engine\Animation\animation_sub\Animation.h(74,21): warning C4018: '<': signed/unsigned mismatch
+D:\CapstoneProject\GameEngines4\Engine\Animation\animation_sub\Animation.h(77,22): warning C4018: '<': signed/unsigned mismatch
+D:\CapstoneProject\GameEngines4\Engine\Animation\animation_sub\Animation.h(78,65): warning C4244: 'argument': conversion from 'double' to 'const _Ty', possible loss of data
+          with
+          [
+              _Ty=float
+          ]
+D:\CapstoneProject\GameEngines4\Engine\Animation\animation_sub\Animation.h(81,22): warning C4018: '<': signed/unsigned mismatch
+D:\CapstoneProject\GameEngines4\Engine\Animation\animation_sub\Animation.h(82,65): warning C4244: 'argument': conversion from 'double' to 'const _Ty', possible loss of data
+          with
+          [
+              _Ty=float
+          ]
+D:\CapstoneProject\GameEngines4\Engine\Animation\animation_sub\Animation.h(86,22): warning C4018: '<': signed/unsigned mismatch
+D:\CapstoneProject\GameEngines4\Engine\Animation\animation_sub\Animation.h(87,61): warning C4244: 'argument': conversion from 'double' to 'const _Ty', possible loss of data
+          with
+          [
+              _Ty=float
+          ]
+D:\CapstoneProject\GameEngines4\Engine\Rendering\3D\Model.h(17): warning C4091: 'static ': ignored on left of 'Model::<unnamed-enum-OUTSIDE>' when no variable is declared
+D:\CapstoneProject\GameEngines4\Engine\Math\AI\Arrive.h(31,26): warning C4305: 'initializing': truncation from 'double' to 'float'
+D:\CapstoneProject\GameEngines4\Engine\Math\AI\AStarPathFinding.h(4,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+D:\CapstoneProject\GameEngines4\Engine\Network\Client.h(6,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+D:\CapstoneProject\GameEngines4\Engine\Network\Address.h(114,34): warning C4244: 'return': conversion from 'network1::SocketHandle' to 'int', possible loss of data
+D:\CapstoneProject\GameEngines4\Engine\Network\Address.h(130,1): warning C4005: '_CRT_SECURE_NO_WARNINGS': macro redefinition
+D:\CapstoneProject\GameEngines4\Engine\Math\CollisionHandler.cpp : message : see previous definition of '_CRT_SECURE_NO_WARNINGS'
+D:\CapstoneProject\GameEngines4\Engine\Network\Server.h(556,30): warning C4018: '<': signed/unsigned mismatch
+D:\CapstoneProject\GameEngines4\Engine\Network\Server.h(607,30): warning C4018: '<': signed/unsigned mismatch
+  Client.cpp
+D:\CapstoneProject\GameEngines4\Engine\Network\Client.h(6,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+D:\CapstoneProject\GameEngines4\Engine\Network\Address.h(114,34): warning C4244: 'return': conversion from 'network1::SocketHandle' to 'int', possible loss of data
+D:\CapstoneProject\GameEngines4\Engine\Network\Address.h(130,1): warning C4005: '_CRT_SECURE_NO_WARNINGS': macro redefinition
+D:\CapstoneProject\GameEngines4\Engine\Network\Client.cpp : message : see previous definition of '_CRT_SECURE_NO_WARNINGS'
+  Server.cpp
+D:\CapstoneProject\GameEngines4\Engine\Network\Client.h(6,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+D:\CapstoneProject\GameEngines4\Engine\Network\Address.h(114,34): warning C4244: 'return': conversion from 'network1::SocketHandle' to 'int', possible loss of data
+D:\CapstoneProject\GameEngines4\Engine\Network\Address.h(130,1): warning C4005: '_CRT_SECURE_NO_WARNINGS': macro redefinition
+D:\CapstoneProject\GameEngines4\Engine\Network\Server.cpp : message : see previous definition of '_CRT_SECURE_NO_WARNINGS'
+D:\CapstoneProject\GameEngines4\Engine\Network\Server.h(556,30): warning C4018: '<': signed/unsigned mismatch
+D:\CapstoneProject\GameEngines4\Engine\Network\Server.h(607,30): warning C4018: '<': signed/unsigned mismatch
+  GuiImageComponent.cpp
+D:\CapstoneProject\GameEngines4\Engine\Math\Randomizer.h(56,20): warning C4244: 'return': conversion from 'double' to 'float', possible loss of data
+D:\CapstoneProject\GameEngines4\Engine\Animation\animation_sub\Animation.h(64,31): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+D:\CapstoneProject\GameEngines4\Engine\Animation\animation_sub\Animation.h(68,36): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+D:\CapstoneProject\GameEngines4\Engine\Animation\animation_sub\Animation.h(74,21): warning C4018: '<': signed/unsigned mismatch
+D:\CapstoneProject\GameEngines4\Engine\Animation\animation_sub\Animation.h(77,22): warning C4018: '<': signed/unsigned mismatch
+D:\CapstoneProject\GameEngines4\Engine\Animation\animation_sub\Animation.h(78,65): warning C4244: 'argument': conversion from 'double' to 'const _Ty', possible loss of data
+          with
+          [
+              _Ty=float
+          ]
+D:\CapstoneProject\GameEngines4\Engine\Animation\animation_sub\Animation.h(81,22): warning C4018: '<': signed/unsigned mismatch
+D:\CapstoneProject\GameEngines4\Engine\Animation\animation_sub\Animation.h(82,65): warning C4244: 'argument': conversion from 'double' to 'const _Ty', possible loss of data
+          with
+          [
+              _Ty=float
+          ]
+D:\CapstoneProject\GameEngines4\Engine\Animation\animation_sub\Animation.h(86,22): warning C4018: '<': signed/unsigned mismatch
+D:\CapstoneProject\GameEngines4\Engine\Animation\animation_sub\Animation.h(87,61): warning C4244: 'argument': conversion from 'double' to 'const _Ty', possible loss of data
+          with
+          [
+              _Ty=float
+          ]
+D:\CapstoneProject\GameEngines4\Engine\Rendering\3D\Model.h(17): warning C4091: 'static ': ignored on left of 'Model::<unnamed-enum-OUTSIDE>' when no variable is declared
+D:\CapstoneProject\GameEngines4\Engine\Math\AI\Arrive.h(31,26): warning C4305: 'initializing': truncation from 'double' to 'float'
+D:\CapstoneProject\GameEngines4\Engine\Math\AI\AStarPathFinding.h(4,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+D:\CapstoneProject\GameEngines4\Engine\Network\Client.h(6,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+D:\CapstoneProject\GameEngines4\Engine\Network\Address.h(114,34): warning C4244: 'return': conversion from 'network1::SocketHandle' to 'int', possible loss of data
+D:\CapstoneProject\GameEngines4\Engine\Network\Address.h(130,1): warning C4005: '_CRT_SECURE_NO_WARNINGS': macro redefinition
+D:\CapstoneProject\GameEngines4\Engine\Rendering\2D\GuiImageComponent.cpp : message : see previous definition of '_CRT_SECURE_NO_WARNINGS'
+D:\CapstoneProject\GameEngines4\Engine\Network\Server.h(556,30): warning C4018: '<': signed/unsigned mismatch
+D:\CapstoneProject\GameEngines4\Engine\Network\Server.h(607,30): warning C4018: '<': signed/unsigned mismatch
   SceneGraph.cpp
 D:\CapstoneProject\GameEngines4\Engine\Math\Randomizer.h(56,20): warning C4244: 'return': conversion from 'double' to 'float', possible loss of data
 D:\CapstoneProject\GameEngines4\Engine\Animation\animation_sub\Animation.h(64,31): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
@@ -80,7 +527,7 @@ D:\CapstoneProject\GameEngines4\Engine\Network\Server.h(556,30): warning C4018: 
 D:\CapstoneProject\GameEngines4\Engine\Network\Server.h(607,30): warning C4018: '<': signed/unsigned mismatch
 D:\CapstoneProject\GameEngines4\Engine\Math\AI\Arrive.h(31,26): warning C4305: 'initializing': truncation from 'double' to 'float'
 D:\CapstoneProject\GameEngines4\Engine\Math\AI\AStarPathFinding.h(4,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
-D:\CapstoneProject\GameEngines4\Engine\Animation\animation_sub\Animator.h(102,21): warning C4018: '<': signed/unsigned mismatch
+D:\CapstoneProject\GameEngines4\Engine\Animation\animation_sub\Animator.h(85,21): warning C4018: '<': signed/unsigned mismatch
 D:\CapstoneProject\GameEngines4\Engine\Rendering\SceneGraph\SceneGraph.cpp(286,25): warning C4018: '>=': signed/unsigned mismatch
   GameTest.cpp
 D:\CapstoneProject\GameEngines4\Engine\Math\Randomizer.h(56,20): warning C4244: 'return': conversion from 'double' to 'float', possible loss of data
@@ -114,7 +561,7 @@ D:\CapstoneProject\GameEngines4\Engine\Network\Address.h(130,1): warning C4005: 
 D:\CapstoneProject\GameEngines4\Game\GameTest.cpp : message : see previous definition of '_CRT_SECURE_NO_WARNINGS'
 D:\CapstoneProject\GameEngines4\Engine\Network\Server.h(556,30): warning C4018: '<': signed/unsigned mismatch
 D:\CapstoneProject\GameEngines4\Engine\Network\Server.h(607,30): warning C4018: '<': signed/unsigned mismatch
-D:\CapstoneProject\GameEngines4\Engine\Animation\animation_sub\Animator.h(102,21): warning C4018: '<': signed/unsigned mismatch
+D:\CapstoneProject\GameEngines4\Engine\Animation\animation_sub\Animator.h(85,21): warning C4018: '<': signed/unsigned mismatch
   Rocket.cpp
 D:\CapstoneProject\GameEngines4\Engine\Animation\animation_sub\Animation.h(64,31): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
 D:\CapstoneProject\GameEngines4\Engine\Animation\animation_sub\Animation.h(68,36): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
@@ -139,7 +586,7 @@ D:\CapstoneProject\GameEngines4\Engine\Animation\animation_sub\Animation.h(87,61
           ]
 D:\CapstoneProject\GameEngines4\Engine\Math\Randomizer.h(56,20): warning C4244: 'return': conversion from 'double' to 'float', possible loss of data
 D:\CapstoneProject\GameEngines4\Engine\Rendering\3D\Model.h(17): warning C4091: 'static ': ignored on left of 'Model::<unnamed-enum-OUTSIDE>' when no variable is declared
-D:\CapstoneProject\GameEngines4\Engine\Animation\animation_sub\Animator.h(102,21): warning C4018: '<': signed/unsigned mismatch
+D:\CapstoneProject\GameEngines4\Engine\Animation\animation_sub\Animator.h(85,21): warning C4018: '<': signed/unsigned mismatch
 D:\CapstoneProject\GameEngines4\Engine\Network\Client.h(6,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
 D:\CapstoneProject\GameEngines4\Engine\Network\Address.h(114,34): warning C4244: 'return': conversion from 'network1::SocketHandle' to 'int', possible loss of data
 D:\CapstoneProject\GameEngines4\Engine\Network\Address.h(130,1): warning C4005: '_CRT_SECURE_NO_WARNINGS': macro redefinition
@@ -159,6 +606,9 @@ C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.2
 C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.24.28314\include\chrono(610): message : see reference to class template instantiation 'std::chrono::time_point<std::chrono::steady_clock,std::chrono::nanoseconds>' being compiled
 D:\CapstoneProject\GameEngines4\Engine\Rendering\3D\GameObject.h(117,24): warning C4018: '<': signed/unsigned mismatch
 D:\CapstoneProject\GameEngines4\Engine\Rendering\3D\GameObject.h(130,24): warning C4018: '<': signed/unsigned mismatch
+  Generating Code...
+D:\CapstoneProject\GameEngines4\Engine\Rendering\SceneGraph\SceneGraph.cpp(140): warning C4715: 'SceneGraph::isExist': not all control paths return a value
+  Compiling...
   Shoot.cpp
 D:\CapstoneProject\GameEngines4\Engine\Animation\animation_sub\Animation.h(64,31): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
 D:\CapstoneProject\GameEngines4\Engine\Animation\animation_sub\Animation.h(68,36): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
@@ -183,7 +633,7 @@ D:\CapstoneProject\GameEngines4\Engine\Animation\animation_sub\Animation.h(87,61
           ]
 D:\CapstoneProject\GameEngines4\Engine\Math\Randomizer.h(56,20): warning C4244: 'return': conversion from 'double' to 'float', possible loss of data
 D:\CapstoneProject\GameEngines4\Engine\Rendering\3D\Model.h(17): warning C4091: 'static ': ignored on left of 'Model::<unnamed-enum-OUTSIDE>' when no variable is declared
-D:\CapstoneProject\GameEngines4\Engine\Animation\animation_sub\Animator.h(102,21): warning C4018: '<': signed/unsigned mismatch
+D:\CapstoneProject\GameEngines4\Engine\Animation\animation_sub\Animator.h(85,21): warning C4018: '<': signed/unsigned mismatch
 D:\CapstoneProject\GameEngines4\Engine\Network\Client.h(6,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
 D:\CapstoneProject\GameEngines4\Engine\Network\Address.h(114,34): warning C4244: 'return': conversion from 'network1::SocketHandle' to 'int', possible loss of data
 D:\CapstoneProject\GameEngines4\Engine\Network\Address.h(130,1): warning C4005: '_CRT_SECURE_NO_WARNINGS': macro redefinition
@@ -202,6 +652,56 @@ D:\CapstoneProject\GameEngines4\Game\Gun\Shoot.cpp(28): message : see reference 
 C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.24.28314\include\chrono(632): message : see reference to class template instantiation 'std::chrono::duration<double,std::ratio<1,1>>' being compiled
 C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.24.28314\include\chrono(178): message : see reference to class template instantiation 'std::chrono::duration<__int64,std::nano>' being compiled
 C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.24.28314\include\chrono(610): message : see reference to class template instantiation 'std::chrono::time_point<std::chrono::steady_clock,std::chrono::nanoseconds>' being compiled
+D:\CapstoneProject\GameEngines4\Engine\Rendering\3D\GameObject.h(117,24): warning C4018: '<': signed/unsigned mismatch
+D:\CapstoneProject\GameEngines4\Engine\Rendering\3D\GameObject.h(130,24): warning C4018: '<': signed/unsigned mismatch
+  Player.cpp
+D:\CapstoneProject\GameEngines4\Engine\Math\Randomizer.h(56,20): warning C4244: 'return': conversion from 'double' to 'float', possible loss of data
+D:\CapstoneProject\GameEngines4\Engine\Animation\animation_sub\Animation.h(64,31): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+D:\CapstoneProject\GameEngines4\Engine\Animation\animation_sub\Animation.h(68,36): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+D:\CapstoneProject\GameEngines4\Engine\Animation\animation_sub\Animation.h(74,21): warning C4018: '<': signed/unsigned mismatch
+D:\CapstoneProject\GameEngines4\Engine\Animation\animation_sub\Animation.h(77,22): warning C4018: '<': signed/unsigned mismatch
+D:\CapstoneProject\GameEngines4\Engine\Animation\animation_sub\Animation.h(78,65): warning C4244: 'argument': conversion from 'double' to 'const _Ty', possible loss of data
+          with
+          [
+              _Ty=float
+          ]
+D:\CapstoneProject\GameEngines4\Engine\Animation\animation_sub\Animation.h(81,22): warning C4018: '<': signed/unsigned mismatch
+D:\CapstoneProject\GameEngines4\Engine\Animation\animation_sub\Animation.h(82,65): warning C4244: 'argument': conversion from 'double' to 'const _Ty', possible loss of data
+          with
+          [
+              _Ty=float
+          ]
+D:\CapstoneProject\GameEngines4\Engine\Animation\animation_sub\Animation.h(86,22): warning C4018: '<': signed/unsigned mismatch
+D:\CapstoneProject\GameEngines4\Engine\Animation\animation_sub\Animation.h(87,61): warning C4244: 'argument': conversion from 'double' to 'const _Ty', possible loss of data
+          with
+          [
+              _Ty=float
+          ]
+D:\CapstoneProject\GameEngines4\Engine\Rendering\3D\Model.h(17): warning C4091: 'static ': ignored on left of 'Model::<unnamed-enum-OUTSIDE>' when no variable is declared
+D:\CapstoneProject\GameEngines4\Engine\Network\Client.h(6,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+D:\CapstoneProject\GameEngines4\Engine\Network\Address.h(114,34): warning C4244: 'return': conversion from 'network1::SocketHandle' to 'int', possible loss of data
+D:\CapstoneProject\GameEngines4\Engine\Network\Address.h(130,1): warning C4005: '_CRT_SECURE_NO_WARNINGS': macro redefinition
+D:\CapstoneProject\GameEngines4\Game\Player\Player.cpp : message : see previous definition of '_CRT_SECURE_NO_WARNINGS'
+D:\CapstoneProject\GameEngines4\Engine\Network\Server.h(556,30): warning C4018: '<': signed/unsigned mismatch
+D:\CapstoneProject\GameEngines4\Engine\Network\Server.h(607,30): warning C4018: '<': signed/unsigned mismatch
+D:\CapstoneProject\GameEngines4\Engine\Math\AI\Arrive.h(31,26): warning C4305: 'initializing': truncation from 'double' to 'float'
+D:\CapstoneProject\GameEngines4\Engine\Math\AI\AStarPathFinding.h(4,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+D:\CapstoneProject\GameEngines4\Game\Player\Player.cpp(20,23): warning C4018: '<': signed/unsigned mismatch
+D:\CapstoneProject\GameEngines4\Engine\Rendering\2D\GuiObject.h(66,23): warning C4018: '<': signed/unsigned mismatch
+D:\CapstoneProject\GameEngines4\Game\Player\Player.cpp(26): message : see reference to function template instantiation 'T *GuiObject::GetComponent<GuiImageComponent>(void)' being compiled
+          with
+          [
+              T=GuiImageComponent
+          ]
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.24.28314\include\chrono(632): message : see reference to class template instantiation 'std::chrono::duration<double,std::ratio<1,1>>' being compiled
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.24.28314\include\chrono(178): message : see reference to class template instantiation 'std::chrono::duration<__int64,std::nano>' being compiled
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.24.28314\include\chrono(610): message : see reference to class template instantiation 'std::chrono::time_point<std::chrono::steady_clock,std::chrono::nanoseconds>' being compiled
+D:\CapstoneProject\GameEngines4\Engine\Rendering\3D\GameObject.h(107,23): warning C4018: '<': signed/unsigned mismatch
+D:\CapstoneProject\GameEngines4\Game\Player\Player.cpp(50): message : see reference to function template instantiation 'T *GameObject::GetComponent<AudioSource>(void)' being compiled
+          with
+          [
+              T=AudioSource
+          ]
 D:\CapstoneProject\GameEngines4\Engine\Rendering\3D\GameObject.h(117,24): warning C4018: '<': signed/unsigned mismatch
 D:\CapstoneProject\GameEngines4\Engine\Rendering\3D\GameObject.h(130,24): warning C4018: '<': signed/unsigned mismatch
   PlayerMovement.cpp
@@ -228,7 +728,7 @@ D:\CapstoneProject\GameEngines4\Engine\Animation\animation_sub\Animation.h(87,61
           ]
 D:\CapstoneProject\GameEngines4\Engine\Math\Randomizer.h(56,20): warning C4244: 'return': conversion from 'double' to 'float', possible loss of data
 D:\CapstoneProject\GameEngines4\Engine\Rendering\3D\Model.h(17): warning C4091: 'static ': ignored on left of 'Model::<unnamed-enum-OUTSIDE>' when no variable is declared
-D:\CapstoneProject\GameEngines4\Engine\Animation\animation_sub\Animator.h(102,21): warning C4018: '<': signed/unsigned mismatch
+D:\CapstoneProject\GameEngines4\Engine\Animation\animation_sub\Animator.h(85,21): warning C4018: '<': signed/unsigned mismatch
 D:\CapstoneProject\GameEngines4\Engine\Network\Client.h(6,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
 D:\CapstoneProject\GameEngines4\Engine\Network\Address.h(114,34): warning C4244: 'return': conversion from 'network1::SocketHandle' to 'int', possible loss of data
 D:\CapstoneProject\GameEngines4\Engine\Network\Address.h(130,1): warning C4005: '_CRT_SECURE_NO_WARNINGS': macro redefinition
@@ -248,31 +748,6 @@ C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.2
 C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.24.28314\include\chrono(610): message : see reference to class template instantiation 'std::chrono::time_point<std::chrono::steady_clock,std::chrono::nanoseconds>' being compiled
 D:\CapstoneProject\GameEngines4\Engine\Rendering\3D\GameObject.h(117,24): warning C4018: '<': signed/unsigned mismatch
 D:\CapstoneProject\GameEngines4\Engine\Rendering\3D\GameObject.h(130,24): warning C4018: '<': signed/unsigned mismatch
-  Spin.cpp
-D:\CapstoneProject\GameEngines4\Engine\Math\Randomizer.h(56,20): warning C4244: 'return': conversion from 'double' to 'float', possible loss of data
-D:\CapstoneProject\GameEngines4\Engine\Animation\animation_sub\Animation.h(64,31): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
-D:\CapstoneProject\GameEngines4\Engine\Animation\animation_sub\Animation.h(68,36): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
-D:\CapstoneProject\GameEngines4\Engine\Animation\animation_sub\Animation.h(74,21): warning C4018: '<': signed/unsigned mismatch
-D:\CapstoneProject\GameEngines4\Engine\Animation\animation_sub\Animation.h(77,22): warning C4018: '<': signed/unsigned mismatch
-D:\CapstoneProject\GameEngines4\Engine\Animation\animation_sub\Animation.h(78,65): warning C4244: 'argument': conversion from 'double' to 'const _Ty', possible loss of data
-          with
-          [
-              _Ty=float
-          ]
-D:\CapstoneProject\GameEngines4\Engine\Animation\animation_sub\Animation.h(81,22): warning C4018: '<': signed/unsigned mismatch
-D:\CapstoneProject\GameEngines4\Engine\Animation\animation_sub\Animation.h(82,65): warning C4244: 'argument': conversion from 'double' to 'const _Ty', possible loss of data
-          with
-          [
-              _Ty=float
-          ]
-D:\CapstoneProject\GameEngines4\Engine\Animation\animation_sub\Animation.h(86,22): warning C4018: '<': signed/unsigned mismatch
-D:\CapstoneProject\GameEngines4\Engine\Animation\animation_sub\Animation.h(87,61): warning C4244: 'argument': conversion from 'double' to 'const _Ty', possible loss of data
-          with
-          [
-              _Ty=float
-          ]
-D:\CapstoneProject\GameEngines4\Engine\Rendering\3D\Model.h(17): warning C4091: 'static ': ignored on left of 'Model::<unnamed-enum-OUTSIDE>' when no variable is declared
-D:\CapstoneProject\GameEngines4\Engine\Animation\animation_sub\Animator.h(102,21): warning C4018: '<': signed/unsigned mismatch
   GameScene.cpp
 D:\CapstoneProject\GameEngines4\Engine\Math\Randomizer.h(56,20): warning C4244: 'return': conversion from 'double' to 'float', possible loss of data
 D:\CapstoneProject\GameEngines4\Engine\Animation\animation_sub\Animation.h(64,31): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
@@ -305,12 +780,12 @@ D:\CapstoneProject\GameEngines4\Engine\Network\Address.h(130,1): warning C4005: 
 D:\CapstoneProject\GameEngines4\Game\Scene\GameScene.cpp : message : see previous definition of '_CRT_SECURE_NO_WARNINGS'
 D:\CapstoneProject\GameEngines4\Engine\Network\Server.h(556,30): warning C4018: '<': signed/unsigned mismatch
 D:\CapstoneProject\GameEngines4\Engine\Network\Server.h(607,30): warning C4018: '<': signed/unsigned mismatch
-D:\CapstoneProject\GameEngines4\Engine\Animation\animation_sub\Animator.h(102,21): warning C4018: '<': signed/unsigned mismatch
-D:\CapstoneProject\GameEngines4\Game\Scene\GameScene.cpp(374,63): warning C4305: 'argument': truncation from 'double' to 'float'
-D:\CapstoneProject\GameEngines4\Game\Scene\GameScene.cpp(388,23): warning C4018: '<': signed/unsigned mismatch
-D:\CapstoneProject\GameEngines4\Game\Scene\GameScene.cpp(400,24): warning C4018: '<': signed/unsigned mismatch
+D:\CapstoneProject\GameEngines4\Engine\Animation\animation_sub\Animator.h(85,21): warning C4018: '<': signed/unsigned mismatch
+D:\CapstoneProject\GameEngines4\Game\Scene\GameScene.cpp(232,63): warning C4305: 'argument': truncation from 'double' to 'float'
+D:\CapstoneProject\GameEngines4\Game\Scene\GameScene.cpp(239,23): warning C4018: '<': signed/unsigned mismatch
+D:\CapstoneProject\GameEngines4\Game\Scene\GameScene.cpp(251,24): warning C4018: '<': signed/unsigned mismatch
 D:\CapstoneProject\GameEngines4\Engine\Rendering\3D\GameObject.h(107,23): warning C4018: '<': signed/unsigned mismatch
-D:\CapstoneProject\GameEngines4\Game\Scene\GameScene.cpp(229): message : see reference to function template instantiation 'T *GameObject::GetComponent<AudioSource>(void)' being compiled
+D:\CapstoneProject\GameEngines4\Game\Scene\GameScene.cpp(98): message : see reference to function template instantiation 'T *GameObject::GetComponent<AudioSource>(void)' being compiled
           with
           [
               T=AudioSource
@@ -321,7 +796,7 @@ C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.2
 D:\CapstoneProject\GameEngines4\Engine\Rendering\3D\GameObject.h(117,24): warning C4018: '<': signed/unsigned mismatch
 D:\CapstoneProject\GameEngines4\Engine\Rendering\3D\GameObject.h(130,24): warning C4018: '<': signed/unsigned mismatch
 D:\CapstoneProject\GameEngines4\Engine\Rendering\2D\GuiObject.h(66,23): warning C4018: '<': signed/unsigned mismatch
-D:\CapstoneProject\GameEngines4\Game\Scene\GameScene.cpp(433): message : see reference to function template instantiation 'T *GuiObject::GetComponent<GuiImageComponent>(void)' being compiled
+D:\CapstoneProject\GameEngines4\Game\Scene\GameScene.cpp(284): message : see reference to function template instantiation 'T *GuiObject::GetComponent<GuiImageComponent>(void)' being compiled
           with
           [
               T=GuiImageComponent
@@ -358,7 +833,7 @@ D:\CapstoneProject\GameEngines4\Engine\Network\Address.h(130,1): warning C4005: 
 D:\CapstoneProject\GameEngines4\Game\Scene\MainMenu.cpp : message : see previous definition of '_CRT_SECURE_NO_WARNINGS'
 D:\CapstoneProject\GameEngines4\Engine\Network\Server.h(556,30): warning C4018: '<': signed/unsigned mismatch
 D:\CapstoneProject\GameEngines4\Engine\Network\Server.h(607,30): warning C4018: '<': signed/unsigned mismatch
-D:\CapstoneProject\GameEngines4\Engine\Animation\animation_sub\Animator.h(102,21): warning C4018: '<': signed/unsigned mismatch
+D:\CapstoneProject\GameEngines4\Engine\Animation\animation_sub\Animator.h(85,21): warning C4018: '<': signed/unsigned mismatch
 D:\CapstoneProject\GameEngines4\Engine\Rendering\2D\GuiObject.h(66,23): warning C4018: '<': signed/unsigned mismatch
 D:\CapstoneProject\GameEngines4\Game\Scene\MainMenu.cpp(30): message : see reference to function template instantiation 'T *GuiObject::GetComponent<GuiImageComponent>(void)' being compiled
           with
@@ -368,6 +843,70 @@ D:\CapstoneProject\GameEngines4\Game\Scene\MainMenu.cpp(30): message : see refer
 C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.24.28314\include\chrono(632): message : see reference to class template instantiation 'std::chrono::duration<double,std::ratio<1,1>>' being compiled
 C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.24.28314\include\chrono(178): message : see reference to class template instantiation 'std::chrono::duration<__int64,std::nano>' being compiled
 C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.24.28314\include\chrono(610): message : see reference to class template instantiation 'std::chrono::time_point<std::chrono::steady_clock,std::chrono::nanoseconds>' being compiled
+  NetworkScene.cpp
+D:\CapstoneProject\GameEngines4\Engine\Math\Randomizer.h(56,20): warning C4244: 'return': conversion from 'double' to 'float', possible loss of data
+D:\CapstoneProject\GameEngines4\Engine\Animation\animation_sub\Animation.h(64,31): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+D:\CapstoneProject\GameEngines4\Engine\Animation\animation_sub\Animation.h(68,36): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+D:\CapstoneProject\GameEngines4\Engine\Animation\animation_sub\Animation.h(74,21): warning C4018: '<': signed/unsigned mismatch
+D:\CapstoneProject\GameEngines4\Engine\Animation\animation_sub\Animation.h(77,22): warning C4018: '<': signed/unsigned mismatch
+D:\CapstoneProject\GameEngines4\Engine\Animation\animation_sub\Animation.h(78,65): warning C4244: 'argument': conversion from 'double' to 'const _Ty', possible loss of data
+          with
+          [
+              _Ty=float
+          ]
+D:\CapstoneProject\GameEngines4\Engine\Animation\animation_sub\Animation.h(81,22): warning C4018: '<': signed/unsigned mismatch
+D:\CapstoneProject\GameEngines4\Engine\Animation\animation_sub\Animation.h(82,65): warning C4244: 'argument': conversion from 'double' to 'const _Ty', possible loss of data
+          with
+          [
+              _Ty=float
+          ]
+D:\CapstoneProject\GameEngines4\Engine\Animation\animation_sub\Animation.h(86,22): warning C4018: '<': signed/unsigned mismatch
+D:\CapstoneProject\GameEngines4\Engine\Animation\animation_sub\Animation.h(87,61): warning C4244: 'argument': conversion from 'double' to 'const _Ty', possible loss of data
+          with
+          [
+              _Ty=float
+          ]
+D:\CapstoneProject\GameEngines4\Engine\Rendering\3D\Model.h(17): warning C4091: 'static ': ignored on left of 'Model::<unnamed-enum-OUTSIDE>' when no variable is declared
+D:\CapstoneProject\GameEngines4\Engine\Math\AI\Arrive.h(31,26): warning C4305: 'initializing': truncation from 'double' to 'float'
+D:\CapstoneProject\GameEngines4\Engine\Math\AI\AStarPathFinding.h(4,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+D:\CapstoneProject\GameEngines4\Engine\Network\Client.h(6,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+D:\CapstoneProject\GameEngines4\Engine\Network\Address.h(114,34): warning C4244: 'return': conversion from 'network1::SocketHandle' to 'int', possible loss of data
+D:\CapstoneProject\GameEngines4\Engine\Network\Address.h(130,1): warning C4005: '_CRT_SECURE_NO_WARNINGS': macro redefinition
+D:\CapstoneProject\GameEngines4\Game\Scene\NetworkScene.cpp : message : see previous definition of '_CRT_SECURE_NO_WARNINGS'
+D:\CapstoneProject\GameEngines4\Engine\Network\Server.h(556,30): warning C4018: '<': signed/unsigned mismatch
+D:\CapstoneProject\GameEngines4\Engine\Network\Server.h(607,30): warning C4018: '<': signed/unsigned mismatch
+  StartScene.cpp
+D:\CapstoneProject\GameEngines4\Engine\Math\Randomizer.h(56,20): warning C4244: 'return': conversion from 'double' to 'float', possible loss of data
+D:\CapstoneProject\GameEngines4\Engine\Animation\animation_sub\Animation.h(64,31): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+D:\CapstoneProject\GameEngines4\Engine\Animation\animation_sub\Animation.h(68,36): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+D:\CapstoneProject\GameEngines4\Engine\Animation\animation_sub\Animation.h(74,21): warning C4018: '<': signed/unsigned mismatch
+D:\CapstoneProject\GameEngines4\Engine\Animation\animation_sub\Animation.h(77,22): warning C4018: '<': signed/unsigned mismatch
+D:\CapstoneProject\GameEngines4\Engine\Animation\animation_sub\Animation.h(78,65): warning C4244: 'argument': conversion from 'double' to 'const _Ty', possible loss of data
+          with
+          [
+              _Ty=float
+          ]
+D:\CapstoneProject\GameEngines4\Engine\Animation\animation_sub\Animation.h(81,22): warning C4018: '<': signed/unsigned mismatch
+D:\CapstoneProject\GameEngines4\Engine\Animation\animation_sub\Animation.h(82,65): warning C4244: 'argument': conversion from 'double' to 'const _Ty', possible loss of data
+          with
+          [
+              _Ty=float
+          ]
+D:\CapstoneProject\GameEngines4\Engine\Animation\animation_sub\Animation.h(86,22): warning C4018: '<': signed/unsigned mismatch
+D:\CapstoneProject\GameEngines4\Engine\Animation\animation_sub\Animation.h(87,61): warning C4244: 'argument': conversion from 'double' to 'const _Ty', possible loss of data
+          with
+          [
+              _Ty=float
+          ]
+D:\CapstoneProject\GameEngines4\Engine\Rendering\3D\Model.h(17): warning C4091: 'static ': ignored on left of 'Model::<unnamed-enum-OUTSIDE>' when no variable is declared
+D:\CapstoneProject\GameEngines4\Engine\Math\AI\Arrive.h(31,26): warning C4305: 'initializing': truncation from 'double' to 'float'
+D:\CapstoneProject\GameEngines4\Engine\Math\AI\AStarPathFinding.h(4,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+D:\CapstoneProject\GameEngines4\Engine\Network\Client.h(6,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+D:\CapstoneProject\GameEngines4\Engine\Network\Address.h(114,34): warning C4244: 'return': conversion from 'network1::SocketHandle' to 'int', possible loss of data
+D:\CapstoneProject\GameEngines4\Engine\Network\Address.h(130,1): warning C4005: '_CRT_SECURE_NO_WARNINGS': macro redefinition
+D:\CapstoneProject\GameEngines4\Game\Scene\StartScene.cpp : message : see previous definition of '_CRT_SECURE_NO_WARNINGS'
+D:\CapstoneProject\GameEngines4\Engine\Network\Server.h(556,30): warning C4018: '<': signed/unsigned mismatch
+D:\CapstoneProject\GameEngines4\Engine\Network\Server.h(607,30): warning C4018: '<': signed/unsigned mismatch
   Main.cpp
 D:\CapstoneProject\GameEngines4\Engine\Math\Randomizer.h(56,20): warning C4244: 'return': conversion from 'double' to 'float', possible loss of data
 D:\CapstoneProject\GameEngines4\Engine\Animation\animation_sub\Animation.h(64,31): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
@@ -400,11 +939,9 @@ D:\CapstoneProject\GameEngines4\Engine\Network\Address.h(130,1): warning C4005: 
 D:\CapstoneProject\GameEngines4\Main.cpp : message : see previous definition of '_CRT_SECURE_NO_WARNINGS'
 D:\CapstoneProject\GameEngines4\Engine\Network\Server.h(556,30): warning C4018: '<': signed/unsigned mismatch
 D:\CapstoneProject\GameEngines4\Engine\Network\Server.h(607,30): warning C4018: '<': signed/unsigned mismatch
-D:\CapstoneProject\GameEngines4\Engine\Animation\animation_sub\Animator.h(102,21): warning C4018: '<': signed/unsigned mismatch
-D:\CapstoneProject\GameEngines4\Main.cpp(12,9): warning C4129: 's': unrecognized character escape sequence
-D:\CapstoneProject\GameEngines4\Main.cpp(23,10): warning C4129: 'A': unrecognized character escape sequence
+D:\CapstoneProject\GameEngines4\Engine\Animation\animation_sub\Animator.h(85,21): warning C4018: '<': signed/unsigned mismatch
   Generating Code...
 D:\CapstoneProject\GameEngines4\Engine\Rendering\2D\GuiObject.h(78): warning C4715: 'GuiObject::GetComponent<GuiImageComponent>': not all control paths return a value
 D:\CapstoneProject\GameEngines4\Engine\Rendering\2D\GuiObject.h(78): warning C4715: 'GuiObject::GetComponent<GuiImageComponent>': not all control paths return a value
-D:\CapstoneProject\GameEngines4\Engine\Rendering\SceneGraph\SceneGraph.cpp(140): warning C4715: 'SceneGraph::isExist': not all control paths return a value
+D:\CapstoneProject\GameEngines4\Engine\Rendering\2D\GuiObject.h(78): warning C4715: 'GuiObject::GetComponent<GuiImageComponent>': not all control paths return a value
   GameEngines4.vcxproj -> D:\CapstoneProject\Debug\GameEngines4.exe

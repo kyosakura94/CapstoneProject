@@ -182,16 +182,12 @@ void Animator::getPose(Animation_B* animation, Joint& skeletion, float dt, std::
 		output[skeletion.id] = test * model * finaltransform;
 
 
-		//output[skeletion.id] = finaltransform;
-
-
 		//update values for children bones
 
 		for (Joint& child : skeletion.children) {
 			getPose(animation, child, dt, output, globalTransform, globalInverseTransform);
 		}
 
-		//std::cout << dt << " => " << position.x << ":" << position.y << ":" << position.z << ":" << std::endl;
 	}
 
 

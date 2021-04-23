@@ -33,8 +33,6 @@ bool GameTest::OnCreate()
 
 			return false;
 		}
-		//currentSceneNum = CoreEngine::GetInstance()->GetCurrentScene();
-
 		return true;
 	}
 	Debug::Fatal_error("Engine SceneNumber is not zero", "GameTest.cpp", __LINE__);
@@ -55,12 +53,9 @@ void GameTest::Update(const float deltaTime_)
 void GameTest::Render()
 {
 	glClearColor(0.0f, 0.0f, 0.0f, 1);
-	//glClearColor(1.0f, 1.0f, 1.0f, 1);
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
 	currentScene->Render();
-	//currentScene->Draw();
-
 	//Game's render
 	SDL_GL_SwapWindow(CoreEngine::GetInstance()->getWindow()->GetWindow());
 }
@@ -97,40 +92,5 @@ void GameTest::BuildScene()
 	}
 
 	currentSceneNum = CoreEngine::GetInstance()->GetCurrentScene();
-
-	//this will send a packet to a server said that I want to create a player -> could server do it for me?
-	if (Client::getInstance()->IsConnected())
-	{
-		//Send packet to Server
-		Client::getInstance()->SendPackets();
-
-		//Server get data and echo back to client
-		
-		//Server::getInstance()->ReceivePackets(Timer::Timer().GetDeltaTime());
-		
-	}
-
-	//Packet* packet = Client::getInstance()->ReceivePackets();
-
-	//const TestPacket& data = *(TestPacket*)packet;
-
-	//currentScene->CreatePlayer(data.position, (char*)data.modelName, (char*)data.tagName);
-
-	//if (Client::getInstance()->IsConnected())
-	//{
-	//	Packet* packet = Client::getInstance()->ReceiveAPacket(Timer::Timer().GetDeltaTime());
-
-	//	if (packet != nullptr)
-	//	{
-	//		switch (packet->GetType())
-	//		{
-	//		case PACKET_JSON:
-	//			const JsonPacket* jsonpacket;
-	//			jsonpacket = (JsonPacket*)packet;
-	//			currentScene->CreatePlayer((char*)jsonpacket->jsonString);
-	//			break;
-	//		}
-	//	}
-	//}
 
 }

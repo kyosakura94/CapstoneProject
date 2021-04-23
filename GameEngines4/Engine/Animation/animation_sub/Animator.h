@@ -19,7 +19,6 @@ class Animator : public Component
 {
 
 private:
-	//unordered_map<string, mat4> currentPose;
 	Anim currentAnim;
 	Animation* currentAnimation;
 	Animation_B * currentAnimation_B;
@@ -37,7 +36,6 @@ private:
 public:
 
 	Animator();
-	//Animator(AnimatedModel* entity);
 	virtual ~Animator();
 	virtual bool OnCreate(GameObject* parent_);
 	virtual void Update(float deltaTime_);
@@ -58,22 +56,7 @@ public:
 
 	void getPose(Animation_B* animation, Joint& skeletion, float dt, std::vector<glm::mat4>& output, glm::mat4& parentTransform, glm::mat4& globalInverseTransform);
 	
-	void update(float deltaTime_)
-	{
-		//if (currentAnimation == nullptr) {
-		//	return;
-		//}
-		//increaseAnimationTime(deltaTime_);
-
-		//unordered_map<string, mat4> currentPose = calculateCurrentAnimationPose();
-
-		//applyPoseToJoints(currentPose, rootJoint, mat4(1.0f));
-		//
-		//modelEntity->setJoint(rootJoint);
-
-		//cout << "Update Animator" << endl;
-
-	};
+	void update(float deltaTime_){};
 
 
 	void doAnimation(Animation_B* animation);
@@ -140,23 +123,6 @@ public:
 			currentPose.insert(pair);
 		}
 
-
-		//for (std::pair<std::string, JointTransform> jointName : previousFrame.getJointKeyFrames())
-		//{
-		//	JointTransform previousTransform = previousFrame.getJointKeyFrames().at(jointName.first);
-
-		//	JointTransform nextTransform = nextFrame.getJointKeyFrames().at(jointName.first);
-
-		//	JointTransform currentTransform = JointTransform::interpolate(previousTransform, nextTransform, progression);
-
-		//	mat4 localTransform = currentTransform.getLocalTransform();
-
-		//	currentPose[jointName.first] = localTransform;
-		//	//std::pair<std::string, mat4> currentPair(jointName.first, localTranform);
-
-		//	//currentPose.insert(currentPair);
-		//}
-
 		return currentPose;
 	}
 
@@ -173,12 +139,6 @@ public:
 		for (Joint childJoint : joint.children) {
 			applyPoseToJoints(currentPose, childJoint, currentTransform);
 		}
-
-		/*currentTransform = modelEntity->getglobalInverseTransform() * currentTransform;
-
-		joint.animatedTransform = currentTransform;*/
-
-		//joint.setanimatedTransform(currentTransform);
 	}
 };
 

@@ -16,8 +16,6 @@ public:
 	virtual void Update(const float deltaTime_) = 0;
 	virtual void Render() = 0;
 	virtual void Draw() = 0;
-	virtual void CreatePlayer(vec3 pos, string modelName, string tag) = 0;
-	virtual void CreatePlayer(string json_) = 0;
 private:
 
 };
