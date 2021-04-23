@@ -4,7 +4,7 @@ The repository is meant for Game Programming capstone project at Humber College,
 
 For this capstone project, I built a OPENGL-based game engine using entirely in C/C++. In order to show off these features, I built a 3D Puzzle style prototype game using my engine.
 
-Feel free to check out my [engine code](NoRoEngine/NoRoEngine/Engine/) or the [game protype](NoRoEngine/NoRoEngine/Game/) that I made. You can also find more media, such as our technical design document or the game engine architecture in [media folder](NoRoEngine/media).
+Feel free to check out my [engine code](NoRoEngine/NoRoEngine/Engine/) or the [game protype](NoRoEngine/NoRoEngine/Game/) that I made. You can also find more media, such as our technical design document or the game engine architecture in [media folder](/Media).
 <br></br>
 <br></br>
 <p align="center">Check out a trailer of my game below!</p>
