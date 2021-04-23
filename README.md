@@ -1,6 +1,6 @@
 ![NoRo Logo](/Media/logo.png)
 
-This is the repository for our Game Programming capstone project at Humber College, developed by [Nghia Tran](https://kyosakura94.com). 
+This is the repository for our Game Programming capstone project at Humber College, developed by [Nghia Tran](http://kyosakura94.com/). 
 
 For our capstone, we built a DirectX 12 based game engine entirely in C/C++, which we started writing in late August, 2020. In order to show off these features, we built a Mario-party style game entirely using our engine, which we started working on in January, 2021.
 
