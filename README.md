@@ -2,7 +2,7 @@
 
 The repository is meant for Game Programming capstone project at Humber College, developed by [Nghia Tran](http://kyosakura94.com/). 
 
-For our this capstone project, I built a OPENGL-based game engine using entirely in C/C++, which I have been started writing in late August, 2020. In order to show off these features, I built a 3D Puzzle style game using my engine.
+For this capstone project, I built a OPENGL-based game engine using entirely in C/C++. In order to show off these features, I built a 3D Puzzle style prototype game using my engine.
 
 Feel free to check out my [engine code](NoRoEngine/NoRoEngine/Engine/) or the [game protype](NoRoEngine/NoRoEngine/Game/) that I made. You can also find more media, such as our technical design document or the game engine architecture in [media folder](media).
 <br></br>
@@ -16,9 +16,9 @@ NoRoGameEngine features an advanced renderer, fully supported object and materia
 
 ## Last Accient Tower - Game prototype
 
-Last Accient Tower is a 3D puzzle game. During the game, the main missison is collect the item and bring it to disgned destination in order to complete the game. The player need to controller the character and make it move back-and-forth by using WSAD key while carefully avoid obstacle in the level. 
+Last Accident Tower is a 3D puzzle game. During the game, the main mission is to collect the item and bring it to the designed destination in order to complete the game. The player needs to controller the character and make it move back and forth by using the WSAD key while carefully avoiding obstacles in the level. 
 
-The game features an opening menu that allows the player to start the game 
+The game features an opening menu that allows the player to start the game, and move between scenes.
 
 ## Using our engine
 
@@ -61,6 +61,6 @@ Do Quang - 2D Artist for background image [ArtStation](https://www.artstation.co
 
 ## Copyrights
 
-I've also included copyright notices for all of the assets include background imgage, textures, sound, etc. that I used in the game. They can be found in the copyright pdf in this folder.
+I've also included copyright notices for all of the assets include background images, textures, sound, etc. that I used in the game. They can be found in the copyright pdf in this folder.
 
 I used a few C++ libraries to help build our engine, including FMOD, Nlohmann's JSON library, AssImp, Network Protocols and I used a number of files from OpenGL Tutorial samples for developing shadows. These files include their original licenses.
