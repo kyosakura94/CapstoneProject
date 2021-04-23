@@ -22,7 +22,7 @@ The game features an opening menu that allows the player to start the game, and 
 
 ## Using my engine
 
-In order to use my engine to make a game, first make sure that all the [libraries reference](/CopyRight/Using Libraries/) have been linked properly. Second try an create an instance of NoRoGameEngine, and initialize it with an instance of a GameInterface in the entry point.
+In order to use my engine to make a game, first make sure that all the [libraries reference](NoRoEngine/CopyRight/Using Libraries) have been linked properly. Second try an create an instance of NoRoGameEngine, and initialize it with an instance of a GameInterface in the entry point.
 
 ```C++
 int main(int argc, char* argv[]) 
