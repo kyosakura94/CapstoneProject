@@ -52,7 +52,7 @@ Nghia Tran - Engine, Graphics, Animator, Systems programmer
 
 ## Special Thanks
 
-Thuy Minh - 2D Artist for cube textures  [ArtStation](http://kyosakura94.com)
+Thuy Minh - 2D Artist for cube textures  [Portfolio](https://minhthuy2410.portfoliobox.net/)
 
 Duc Huy - 3D Animator for character's animation [ArtStation](http://kyosakura94.com)
 
