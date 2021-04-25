@@ -4,7 +4,7 @@ The repository is meant for Game Programming capstone project at Humber College,
 
 For this capstone project, I built a OPENGL-based game engine using entirely in C/C++. In order to show off these features, I built a 3D Puzzle style prototype game using my engine.
 
-Feel free to check out my [engine code](NoRoEngine/NoRoEngine/Engine/) or the [game protype](NoRoEngine/NoRoEngine/Game/) that I made. You can also find more media, such as our technical design document or the game engine architecture in [media folder](/Media).
+Feel free to check out my [engine code](NoRoEngine/Engine/) or the [game protype](NoRoEngine/Game/) that I made. You can also find more media, such as our technical design document or the game engine architecture in [media folder](/Media).
 <br></br>
 <br></br>
 <p align="center">Check out a trailer of my game below!</p>
@@ -22,7 +22,7 @@ The game features an opening menu that allows the player to start the game, and 
 
 ## Using my engine
 
-In order to use my engine to make a game, first make sure that all the libraries reference have been linked properly. Second try an create an instance of NoRoGameEngine, and initialize it with an instance of a GameInterface in the entry point.
+In order to use my engine to make a game, first make sure that all the [libraries reference](/CopyRight) have been linked properly. Second try an create an instance of NoRoGameEngine, and initialize it with an instance of GameInterface in the entry point.
 
 ```C++
 int main(int argc, char* argv[]) 
@@ -52,7 +52,7 @@ Nghia Tran - Engine, Graphics, Animator, Systems programmer
 
 ## Special Thanks
 
-Thuy Minh - 2D Artist for cube textures  [ArtStation](http://kyosakura94.com)
+Thuy Minh - 2D Artist for cube textures  [Portfolio](https://minhthuy2410.portfoliobox.net/)
 
 Duc Huy - 3D Animator for character's animation [ArtStation](http://kyosakura94.com)
 
